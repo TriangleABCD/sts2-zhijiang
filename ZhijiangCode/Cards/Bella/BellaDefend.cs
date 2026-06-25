@@ -3,16 +3,16 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
-using Zhijiang.ZhijiangCode.Characters.Zhijiang;
+using Zhijiang.ZhijiangCode.Characters.Bella;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
-namespace Zhijiang.ZhijiangCode.Cards.Zhijiang;
+namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 // 防御牌和打击一样注册到角色卡池，并作为 4 张初始卡加入角色卡组。
-[RegisterCard(typeof(ZhijiangCardPool))]
-[RegisterCharacterStarterCard(typeof(ZhijiangCharacter), 4)]
-public sealed class ZhijiangDefend : ModCardTemplate
+[RegisterCard(typeof(BellaCardPool))]
+[RegisterCharacterStarterCard(typeof(BellaCharacter), 4)]
+public sealed class BellaDefend : ModCardTemplate
 {
     // 基础耗能。
     private const int BaseEnergyCost = 0;
@@ -30,7 +30,7 @@ public sealed class ZhijiangDefend : ModCardTemplate
     // 卡图资源。
     // 如果你按这行代码写，文件名就对应 Zhijiang/images/cards/ZhijiangDefend.png。
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: $"{Entry.ResPath}/images/cards/{GetType().Name}.png");
+        PortraitPath: $"{Entry.ResPath}/images/cards/ZhijiangDefend.png");
 
     protected override HashSet<CardTag> CanonicalTags => new() { CardTag.Defend };
 
@@ -41,7 +41,7 @@ public sealed class ZhijiangDefend : ModCardTemplate
         new BlockVar(29m, ValueProp.Move)
     ];
 
-    public ZhijiangDefend() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
+    public BellaDefend() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {
     }
 

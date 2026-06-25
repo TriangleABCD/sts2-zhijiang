@@ -1,12 +1,12 @@
 using Godot;
 using STS2RitsuLib.Scaffolding.Content;
 
-namespace Zhijiang.ZhijiangCode.Characters.Zhijiang;
+namespace Zhijiang.ZhijiangCode.Characters.Bella;
 
-public sealed class ZhijiangRelicPool : TypeListRelicPoolModel
+public sealed class BellaRelicPool : TypeListRelicPoolModel
 {
-    public override string EnergyColorName => "Zhijiang";
-    public override Color LabOutlineColor => ZhijiangCharacter.ThemeColor;
+    public override string EnergyColorName => "Bella";
+    public override Color LabOutlineColor => BellaCharacter.ThemeColor;
 
     // 遗物实验室和文本也会读取池子的能量图标路径。
     // 资源路径以 res:// 开头，并且要能在 PCK 内找到对应文件。

@@ -1,12 +1,12 @@
 using Godot;
 using STS2RitsuLib.Scaffolding.Content;
 
-namespace Zhijiang.ZhijiangCode.Characters.Zhijiang;
+namespace Zhijiang.ZhijiangCode.Characters.Bella;
 
-public sealed class ZhijiangPotionPool : TypeListPotionPoolModel
+public sealed class BellaPotionPool : TypeListPotionPoolModel
 {
-    public override string EnergyColorName => "Zhijiang";
-    public override Color LabOutlineColor => ZhijiangCharacter.ThemeColor;
+    public override string EnergyColorName => "Bella";
+    public override Color LabOutlineColor => BellaCharacter.ThemeColor;
 
     // 即使模板暂时没有示例药水，也先把角色药水池结构留好。
     // AssetProfile 里的资源路径不存在时，RitsuLib 会输出诊断并回退；模板这里提供真实 PNG 占位。

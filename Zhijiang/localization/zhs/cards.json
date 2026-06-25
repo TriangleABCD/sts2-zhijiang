@@ -4,5 +4,12 @@
   "ZHIJIANG_CARD_ZHIJIANG_STRIKE.smartDescription": "造成 {Damage:diff()} 点伤害。",
   "ZHIJIANG_CARD_ZHIJIANG_DEFEND.title": "模板防御",
   "ZHIJIANG_CARD_ZHIJIANG_DEFEND.description": "获得 {Block:diff()} 点格挡。",
-  "ZHIJIANG_CARD_ZHIJIANG_DEFEND.smartDescription": "获得 {Block:diff()} 点格挡。"
+  "ZHIJIANG_CARD_ZHIJIANG_DEFEND.smartDescription": "获得 {Block:diff()} 点格挡。",
+
+  "ZHIJIANG_CARD_BELLA_STRIKE.title": "贝拉打击",
+  "ZHIJIANG_CARD_BELLA_STRIKE.description": "造成 {Damage:diff()} 点伤害。",
+  "ZHIJIANG_CARD_BELLA_STRIKE.smartDescription": "造成 {Damage:diff()} 点伤害。",
+  "ZHIJIANG_CARD_BELLA_DEFEND.title": "贝拉防御",
+  "ZHIJIANG_CARD_BELLA_DEFEND.description": "获得 {Block:diff()} 点格挡。",
+  "ZHIJIANG_CARD_BELLA_DEFEND.smartDescription": "获得 {Block:diff()} 点格挡。"
 }

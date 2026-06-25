@@ -3,7 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Zhijiang.ZhijiangCode.Characters.Zhijiang;
+using Zhijiang.ZhijiangCode.Characters.Bella;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
@@ -11,9 +11,9 @@ namespace Zhijiang.ZhijiangCode.Relics;
 
 // RegisterRelic 会把遗物注册进指定遗物池。
 // RegisterCharacterStarterRelic 会把它作为 ZhijiangCharacter 的初始遗物。
-[RegisterRelic(typeof(ZhijiangRelicPool))]
-[RegisterCharacterStarterRelic(typeof(ZhijiangCharacter))]
-public sealed class ZhijiangRelic : ModRelicTemplate
+[RegisterRelic(typeof(BellaRelicPool))]
+[RegisterCharacterStarterRelic(typeof(BellaCharacter))]
+public sealed class BellaRelic : ModRelicTemplate
 {
     // 稀有度。
     public override RelicRarity Rarity => RelicRarity.Common;
@@ -28,11 +28,11 @@ public sealed class ZhijiangRelic : ModRelicTemplate
     // 三个路径可以先指向同一张图。后续有高清图或轮廓图时再拆开。
     public override RelicAssetProfile AssetProfile => new(
         // 小图标（原版 85x85）。
-        IconPath: $"{Entry.ResPath}/images/relics/{GetType().Name}.png",
+        IconPath: $"{Entry.ResPath}/images/relics/ZhijiangRelic.png",
         // 轮廓图标（原版 85x85）。
-        IconOutlinePath: $"{Entry.ResPath}/images/relics/{GetType().Name}.png",
+        IconOutlinePath: $"{Entry.ResPath}/images/relics/ZhijiangRelic.png",
         // 大图标（原版 256x256）。
-        BigIconPath: $"{Entry.ResPath}/images/relics/{GetType().Name}.png");
+        BigIconPath: $"{Entry.ResPath}/images/relics/ZhijiangRelic.png");
 
     // 每回合开始时，抽一张牌。
     // 这里使用 DynamicVars.Cards.IntValue，保证效果和本地化显示保持一致。

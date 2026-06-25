@@ -5,7 +5,7 @@ using STS2RitsuLib;
 using STS2RitsuLib.Interop;
 using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 
-namespace Zhijiang;
+namespace Zhijiang.ZhijiangCode;
 
 [ModInitializer(nameof(Initialize))]
 public partial class Entry

@@ -17,5 +17,25 @@
   "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.title": "模板角色",
   "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.titleObject": "模板角色",
   "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.unlockText": "用[pink]{Prerequisite}[/pink]进行一局游戏来解锁这个角色。",
-  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.victoryMessage": "模板验证完成。"
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.victoryMessage": "模板验证完成。",
+
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.aromaPrinciple": "[sine][blue]新的旅程，从一份干净模板开始。[/blue][/sine]",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.banter.alive.endTurnPing": "回合结束。",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.banter.dead.endTurnPing": "我先撤退。",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.cardsModifierDescription": "贝拉的卡牌现在会出现在奖励和商店中。",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.cardsModifierTitle": "贝拉卡牌",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.defeatMessage": "贝拉还需要继续调整。",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.description": "这里是 A-SOUL 的队长以及舞蹈担当--贝拉\n大家也可以叫我的英文名 Beeeeeeeella !",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.eventDeathPrevention": "贝拉继续坚持。",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.flavor": "一份干净的模板，等待被改造成新的冒险。",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.goldMonologue": "这些金币足够开始测试。",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.possessiveAdjective": "她的",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.pronounObject": "她",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.pronounPossessive": "她的",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.pronounSubject": "她",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.selectMessage": "贝拉准备就绪。",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.title": "贝拉",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.titleObject": "贝拉",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.unlockText": "用[pink]{Prerequisite}[/pink]进行一局游戏来解锁这个角色。",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.victoryMessage": "贝拉验证完成。"
 }

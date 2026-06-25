@@ -3,17 +3,17 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
-using Zhijiang.ZhijiangCode.Characters.Zhijiang;
+using Zhijiang.ZhijiangCode.Characters.Bella;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
-namespace Zhijiang.ZhijiangCode.Cards.Zhijiang;
+namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 // RegisterCard 会把这张牌交给 RitsuLib 自动注册。
-// RegisterCharacterStarterCard 会把它追加进 ZhijiangCharacter 的初始卡组。
-[RegisterCard(typeof(ZhijiangCardPool))]
-[RegisterCharacterStarterCard(typeof(ZhijiangCharacter), 4)]
-public sealed class ZhijiangStrike : ModCardTemplate
+// RegisterCharacterStarterCard 会把它追加进 BellaCharacter 的初始卡组。
+[RegisterCard(typeof(BellaCardPool))]
+[RegisterCharacterStarterCard(typeof(BellaCharacter), 4)]
+public sealed class BellaStrike : ModCardTemplate
 {
     // 基础耗能。
     private const int BaseEnergyCost = 0;
@@ -30,7 +30,7 @@ public sealed class ZhijiangStrike : ModCardTemplate
     // 如果你按这行代码写，文件名就对应 Zhijiang/images/cards/ZhijiangStrike.png。
     // 这里的 res://Zhijiang/... 是 Godot 资源路径，对应的是你的资源文件夹名字。
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: $"{Entry.ResPath}/images/cards/{GetType().Name}.png");
+        PortraitPath: $"{Entry.ResPath}/images/cards/ZhijiangStrike.png");
 
     // CanonicalVars 翻译是“规范值”，指卡牌的基础数值。
     // 添加一个 DamageVar 意为指定卡牌的基础伤害是多少；它会自动绑定到本地化里的 {Damage:diff()} 占位符。
@@ -41,7 +41,7 @@ public sealed class ZhijiangStrike : ModCardTemplate
 
     protected override HashSet<CardTag> CanonicalTags => new() { CardTag.Strike };
 
-    public ZhijiangStrike() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
+    public BellaStrike() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {
     }
 

@@ -5,10 +5,10 @@ using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Characters;
 using STS2RitsuLib.Scaffolding.Godot;
 
-namespace Zhijiang.ZhijiangCode.Characters.Zhijiang;
+namespace Zhijiang.ZhijiangCode.Characters.Bella;
 
 [RegisterCharacter]
-public sealed class ZhijiangCharacter : ModCharacterTemplate<ZhijiangCardPool, ZhijiangRelicPool, ZhijiangPotionPool>
+public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRelicPool, BellaPotionPool>
 {
     public static readonly Color ThemeColor = new(0.42f, 0.65f, 0.72f);
 
