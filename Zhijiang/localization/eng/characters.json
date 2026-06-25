@@ -1,0 +1,21 @@
+{
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.aromaPrinciple": "[sine][blue]A clean template is ready for a new run.[/blue][/sine]",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.banter.alive.endTurnPing": "Turn complete.",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.banter.dead.endTurnPing": "I am out for now.",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.cardsModifierDescription": "Template Character cards can now appear in rewards and shops.",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.cardsModifierTitle": "Template Cards",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.defeatMessage": "The template still needs a little tuning.",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.description": "A sample character used to verify the RitsuLib template project.\nReplace this text with your own character concept after copying the template.",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.eventDeathPrevention": "Template Character keeps going.",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.flavor": "A clean template waiting to become a new adventure.",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.goldMonologue": "This gold is enough to start testing.",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.possessiveAdjective": "their",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.pronounObject": "them",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.pronounPossessive": "theirs",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.pronounSubject": "they",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.selectMessage": "Template Character is ready.",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.title": "Template Character",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.titleObject": "Template Character",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.unlockText": "Complete a run as [pink]{Prerequisite}[/pink] to unlock this character.",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.victoryMessage": "Template verification complete."
+}

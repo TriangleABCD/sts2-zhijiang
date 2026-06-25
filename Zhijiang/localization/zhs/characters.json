@@ -1,0 +1,21 @@
+{
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.aromaPrinciple": "[sine][blue]新的旅程，从一份干净模板开始。[/blue][/sine]",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.banter.alive.endTurnPing": "回合结束。",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.banter.dead.endTurnPing": "我先撤退。",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.cardsModifierDescription": "模板角色的卡牌现在会出现在奖励和商店中。",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.cardsModifierTitle": "模板卡牌",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.defeatMessage": "模板还需要继续调整。",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.description": "一个用于验证 RitsuLib 模板工程的示例角色。\n复制模板后，把这里替换成你的角色设定。",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.eventDeathPrevention": "模板角色继续坚持。",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.flavor": "一份干净的模板，等待被改造成新的冒险。",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.goldMonologue": "这些金币足够开始测试。",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.possessiveAdjective": "他的",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.pronounObject": "他",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.pronounPossessive": "他的",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.pronounSubject": "他",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.selectMessage": "模板角色准备就绪。",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.title": "模板角色",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.titleObject": "模板角色",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.unlockText": "用[pink]{Prerequisite}[/pink]进行一局游戏来解锁这个角色。",
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.victoryMessage": "模板验证完成。"
+}

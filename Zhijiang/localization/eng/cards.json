@@ -1,0 +1,8 @@
+{
+  "ZHIJIANG_CARD_ZHIJIANG_STRIKE.title": "Template Strike",
+  "ZHIJIANG_CARD_ZHIJIANG_STRIKE.description": "Deal {Damage:diff()} damage.",
+  "ZHIJIANG_CARD_ZHIJIANG_STRIKE.smartDescription": "Deal {Damage:diff()} damage.",
+  "ZHIJIANG_CARD_ZHIJIANG_DEFEND.title": "Template Defend",
+  "ZHIJIANG_CARD_ZHIJIANG_DEFEND.description": "Gain {Block:diff()} Block.",
+  "ZHIJIANG_CARD_ZHIJIANG_DEFEND.smartDescription": "Gain {Block:diff()} Block."
+}
