@@ -7,6 +7,9 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 
+using Zhijiang.ZhijiangCode.SecondResource;
+using STS2RitsuLib.Combat.SecondaryResources;
+
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 // RegisterCard 会把这张牌交给 RitsuLib 自动注册。
@@ -16,7 +19,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 public sealed class BellaStrike : ModCardTemplate
 {
     // 基础耗能。
-    private const int BaseEnergyCost = 0;
+    private const int BaseEnergyCost = 1;
     // 卡牌类型。
     private const CardType CardKind = CardType.Attack;
     // 卡牌稀有度。
@@ -36,7 +39,7 @@ public sealed class BellaStrike : ModCardTemplate
     // 添加一个 DamageVar 意为指定卡牌的基础伤害是多少；它会自动绑定到本地化里的 {Damage:diff()} 占位符。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(92, ValueProp.Move)
+        new DamageVar(7, ValueProp.Move)
     ];
 
     protected override HashSet<CardTag> CanonicalTags => new() { CardTag.Strike };
@@ -61,6 +64,6 @@ public sealed class BellaStrike : ModCardTemplate
     // 升级后的效果逻辑。
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars.Damage.UpgradeValueBy(4);
     }
 }

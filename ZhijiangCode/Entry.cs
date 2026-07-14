@@ -5,6 +5,8 @@ using STS2RitsuLib;
 using STS2RitsuLib.Interop;
 using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 
+using Zhijiang.ZhijiangCode.SecondResource;
+
 namespace Zhijiang.ZhijiangCode;
 
 [ModInitializer(nameof(Initialize))]
@@ -32,6 +34,7 @@ public partial class Entry
         // 自动注册扫描会读取当前程序集里的 RegisterCard/RegisterRelic 等 attribute。
         // 新增内容类后，只要 attribute 写对，通常不需要在入口里手动逐个注册。
         ModTypeDiscoveryHub.RegisterModAssembly(ModId, assembly);
+        HeartWall.Register();
 
         Logger.Info("Zhijiang initialized.");
     }
