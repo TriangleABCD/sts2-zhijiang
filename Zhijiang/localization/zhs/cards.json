@@ -11,5 +11,13 @@
   "ZHIJIANG_CARD_BELLA_STRIKE.smartDescription": "造成 {Damage:diff()} 点伤害。",
   "ZHIJIANG_CARD_BELLA_DEFEND.title": "贝拉防御",
   "ZHIJIANG_CARD_BELLA_DEFEND.description": "获得 {Block:diff()} 点格挡。",
-  "ZHIJIANG_CARD_BELLA_DEFEND.smartDescription": "获得 {Block:diff()} 点格挡。"
+  "ZHIJIANG_CARD_BELLA_DEFEND.smartDescription": "获得 {Block:diff()} 点格挡。",
+
+  "ZHIJIANG_CARD_PREVENTION_SHOT.title": "预防针了",
+  "ZHIJIANG_CARD_PREVENTION_SHOT.description": "获得 {HeartWallGain} 点心之壁。获得 {Block:diff()} 点格挡。失去 {StrengthLoss} 点力量。",
+  "ZHIJIANG_CARD_PREVENTION_SHOT.smartDescription": "获得 {HeartWallGain} 点心之壁。获得 {Block:diff()} 点格挡。失去 {StrengthLoss} 点力量。",
+
+  "ZHIJIANG_CARD_HEARTFELT.title": "真情实感",
+  "ZHIJIANG_CARD_HEARTFELT.description": "去除所有敌人 {StripAmount} 点格挡。",
+  "ZHIJIANG_CARD_HEARTFELT.smartDescription": "去除所有敌人 {StripAmount} 点格挡。"
 }

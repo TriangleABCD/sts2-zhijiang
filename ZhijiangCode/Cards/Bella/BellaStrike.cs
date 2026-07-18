@@ -39,7 +39,7 @@ public sealed class BellaStrike : ModCardTemplate
     // 添加一个 DamageVar 意为指定卡牌的基础伤害是多少；它会自动绑定到本地化里的 {Damage:diff()} 占位符。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, ValueProp.Move)
+        new DamageVar(6, ValueProp.Move)
     ];
 
     protected override HashSet<CardTag> CanonicalTags => new() { CardTag.Strike };
@@ -64,6 +64,6 @@ public sealed class BellaStrike : ModCardTemplate
     // 升级后的效果逻辑。
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4);
+        DynamicVars.Damage.UpgradeValueBy(3);
     }
 }

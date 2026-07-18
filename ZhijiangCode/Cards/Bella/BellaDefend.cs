@@ -15,7 +15,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 public sealed class BellaDefend : ModCardTemplate
 {
     // 基础耗能。
-    private const int BaseEnergyCost = 0;
+    private const int BaseEnergyCost = 1;
     // 卡牌类型。
     private const CardType CardKind = CardType.Skill;
     // 卡牌稀有度。
@@ -38,7 +38,7 @@ public sealed class BellaDefend : ModCardTemplate
     // BlockVar 会绑定到本地化里的 {Block:diff()}，升级时文本会自动显示差值。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(29m, ValueProp.Move)
+        new BlockVar(5m, ValueProp.Move)
     ];
 
     public BellaDefend() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)

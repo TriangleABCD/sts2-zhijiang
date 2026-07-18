@@ -17,5 +17,25 @@
   "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.title": "Template Character",
   "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.titleObject": "Template Character",
   "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.unlockText": "Complete a run as [pink]{Prerequisite}[/pink] to unlock this character.",
-  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.victoryMessage": "Template verification complete."
+  "ZHIJIANG_CHARACTER_ZHIJIANG_CHARACTER.victoryMessage": "Template verification complete.",
+
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.aromaPrinciple": "[sine][blue]A new journey begins with a clean template.[/blue][/sine]",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.banter.alive.endTurnPing": "Turn complete.",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.banter.dead.endTurnPing": "I am out for now.",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.cardsModifierDescription": "Bella's cards can now appear in rewards and shops.",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.cardsModifierTitle": "Bella Cards",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.defeatMessage": "Bella still needs a little tuning.",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.description": "The leader and main dancer of A-SOUL \u2014 Bella!\nYou can also call me by my English name, Beeeeeeeella!",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.eventDeathPrevention": "Bella keeps going.",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.flavor": "A clean template waiting to become a new adventure.",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.goldMonologue": "This gold is enough to start testing.",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.possessiveAdjective": "her",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.pronounObject": "her",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.pronounPossessive": "hers",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.pronounSubject": "she",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.selectMessage": "Bella is ready.",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.title": "Bella",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.titleObject": "Bella",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.unlockText": "Complete a run as [pink]{Prerequisite}[/pink] to unlock this character.",
+  "ZHIJIANG_CHARACTER_BELLA_CHARACTER.victoryMessage": "Bella verification complete."
 }

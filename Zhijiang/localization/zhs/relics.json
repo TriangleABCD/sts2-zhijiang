@@ -3,7 +3,7 @@
   "ZHIJIANG_RELIC_ZHIJIANG_RELIC.description": "每回合开始时，抽 [blue]{Cards}[/blue] 张牌。",
   "ZHIJIANG_RELIC_ZHIJIANG_RELIC.flavor": "一个用于验证模板工程的示例遗物。",
 
-  "ZHIJIANG_RELIC_BELLA_RELIC.title": "贝拉遗物",
-  "ZHIJIANG_RELIC_BELLA_RELIC.description": "每回合开始时，抽 [blue]{Cards}[/blue] 张牌。",
-  "ZHIJIANG_RELIC_BELLA_RELIC.flavor": "贝拉的专属遗物。"
+  "ZHIJIANG_RELIC_BELLARIS.title": "贝极星",
+  "ZHIJIANG_RELIC_BELLARIS.description": "每回合开始时，每拥有 15 点心之壁，获得 1 点 [green]敏捷[/green]，敏捷仅本回合有效。所有攻击牌造成的伤害 +2，升级后的攻击牌额外 +3 伤害。",
+  "ZHIJIANG_RELIC_BELLARIS.flavor": "贝武圣"
 }

@@ -18,10 +18,10 @@ public static class HeartWall
 
 		// 注册次级资源
 		HeartWallDefinition = registry.Register("HeartWall", new SecondaryResourceDefinition(
-			defaultAmount: 0,
-			baseMaxAmount: 10,
-			turnStartPolicy:SecondaryResourceTurnStartPolicy.AddMaxToCurrent,
-			persistencePolicy: SecondaryResourcePersistencePolicy.Run,
+			defaultAmount: 10,
+			baseMaxAmount: null,
+			turnStartPolicy: SecondaryResourceTurnStartPolicy.None,
+			persistencePolicy: SecondaryResourcePersistencePolicy.Combat,
 			smallIconPath: $"{Entry.ResPath}/images/characters/energy_text.png",
 			largeIconPath: $"{Entry.ResPath}/images/characters/energy_big.png"
 		));

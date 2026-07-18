@@ -18,7 +18,7 @@ public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRe
     private const string EnergyCounterScenePath = $"{SceneRoot}/Zhijiang_energy_counter.tscn";
     private const string MerchantScenePath = $"{SceneRoot}/Zhijiang_merchant.tscn";
     private const string RestSiteScenePath = $"{SceneRoot}/Zhijiang_rest_site.tscn";
-    private const string CharacterSelectBgScenePath = $"{SceneRoot}/Zhijiang_character_select_bg.tscn";
+    private const string CharacterSelectBgScenePath = $"{SceneRoot}/Bella/Bella_character_select_bg.tscn";
 
     // 角色名称颜色。
     public override Color NameColor => ThemeColor;
@@ -28,7 +28,7 @@ public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRe
     public override Color MapDrawingColor => ThemeColor;
 
     // 人物性别（男女中立）。
-    public override CharacterGender Gender => CharacterGender.Neutral;
+    public override CharacterGender Gender => CharacterGender.Feminine;
 
     // 初始血量和金币。
     public override int StartingHp => 75;
@@ -48,15 +48,17 @@ public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRe
             RestSiteAnimPath: RestSiteScenePath),
         Ui: new CharacterUiAssetSet(
             // 人物头像路径。
-            IconTexturePath: $"{ImageRoot}/Zhijiang_character_icon.png",
+            IconTexturePath: $"{ImageRoot}/Bella/Bella_character_icon.png",
+            // 左上角头像
+            IconPath: $"{SceneRoot}/Bella/Bella_character_icon.tscn",
             // 人物头像轮廓。
-            IconOutlineTexturePath: $"{ImageRoot}/Zhijiang_character_icon_outline.png",
+            IconOutlineTexturePath: $"{ImageRoot}/Bella/Bella_character_icon_outline.png",
             // 人物选择背景。
             CharacterSelectBgPath: CharacterSelectBgScenePath,
             // 人物选择图标。
-            CharacterSelectIconPath: $"{ImageRoot}/Zhijiang_character_select.png",
+            CharacterSelectIconPath: $"{ImageRoot}/Bella/Bella_character_select.png",
             // 人物选择图标-锁定状态。
-            CharacterSelectLockedIconPath: $"{ImageRoot}/Zhijiang_character_select_locked.png",
+            CharacterSelectLockedIconPath: $"{ImageRoot}/Bella/Bella_character_select_locked.png",
             // 地图上的角色标记图标、表情轮盘上的角色头像。
             MapMarkerPath: $"{ImageRoot}/Zhijiang_map_marker.png")
         );
