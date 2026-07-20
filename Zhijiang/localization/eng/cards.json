@@ -14,10 +14,10 @@
   "ZHIJIANG_CARD_BELLA_DEFEND.smartDescription": "Gain {Block:diff()} Block.",
 
   "ZHIJIANG_CARD_PREVENTION_SHOT.title": "Prevention Shot",
-  "ZHIJIANG_CARD_PREVENTION_SHOT.description": "Gain {HeartWallGain} Heart Wall. Gain {Block:diff()} Block. Lose {StrengthLoss} Strength.",
-  "ZHIJIANG_CARD_PREVENTION_SHOT.smartDescription": "Gain {HeartWallGain} Heart Wall. Gain {Block:diff()} Block. Lose {StrengthLoss} Strength.",
+  "ZHIJIANG_CARD_PREVENTION_SHOT.description": "Gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]. Gain {Block:diff()} Block. Lose {StrengthLoss} Strength.",
+  "ZHIJIANG_CARD_PREVENTION_SHOT.smartDescription": "Gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]. Gain {Block:diff()} Block. Lose {StrengthLoss} Strength.",
 
   "ZHIJIANG_CARD_HEARTFELT.title": "Heartfelt",
-  "ZHIJIANG_CARD_HEARTFELT.description": "Remove up to {StripAmount} Block from ALL enemies. Costs 10 Heart Wall.",
-  "ZHIJIANG_CARD_HEARTFELT.smartDescription": "Remove up to {StripAmount} Block from ALL enemies. Costs 10 Heart Wall."
+  "ZHIJIANG_CARD_HEARTFELT.description": "Remove up to {StripAmount} Block from ALL enemies.",
+  "ZHIJIANG_CARD_HEARTFELT.smartDescription": "Remove up to {StripAmount} Block from ALL enemies."
 }

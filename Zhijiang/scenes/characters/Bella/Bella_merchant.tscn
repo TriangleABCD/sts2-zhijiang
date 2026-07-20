@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://fer4osrhbg60"]
+
+[ext_resource type="Texture2D" uid="uid://dfjqdnb7mxldc" path="res://Zhijiang/images/characters/Bella/Bella_character.png" id="1_twd6x"]
+
+[node name="BellaMerchant" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="BellaCharacter" type="Sprite2D" parent="Node2D"]
+position = Vector2(-36, -439)
+scale = Vector2(0.47729492, 0.47729492)
+texture = ExtResource("1_twd6x")

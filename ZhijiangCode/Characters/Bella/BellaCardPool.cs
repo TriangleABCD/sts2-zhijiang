@@ -7,8 +7,8 @@ namespace Zhijiang.ZhijiangCode.Characters.Bella;
 
 public sealed class BellaCardPool : TypeListCardPoolModel
 {
-    private static readonly Material? PoolFrameTintMaterial =
-        MaterialUtils.CreateReplaceHueShaderMaterial(0.42f, 0.65f, 0.72f);
+    private static readonly Material? _poolFrameMaterial = MaterialUtils.CreateHsvShaderMaterial(0.015f, 0.47f, 0.859f);
+    public override Material? PoolFrameMaterial => _poolFrameMaterial;
 
     // Title 和 EnergyColorName 是池子的稳定标识，不是玩家看到的角色名。
     // 自定义角色卡、遗物、药水池保持同一个 EnergyColorName，方便实验室和文本统一读取能量图标。
@@ -17,13 +17,11 @@ public sealed class BellaCardPool : TypeListCardPoolModel
 
     // 这里指定卡牌文本和大图使用的能量图标路径。
     // res://Zhijiang/... 里的 Zhijiang 是 PCK 资源目录，不是 C# namespace。
-    public override string? BigEnergyIconPath => $"{Entry.ResPath}/images/characters/energy_big.png";
-    public override string? TextEnergyIconPath => $"{Entry.ResPath}/images/characters/energy_text.png";
+    public override string? BigEnergyIconPath => $"{Entry.ResPath}/images/characters/Bella/Bella_energy_big.png";
+    public override string? TextEnergyIconPath => $"{Entry.ResPath}/images/characters/Bella/Bella_energy_text.png";
 
     public override Color DeckEntryCardColor => BellaCharacter.ThemeColor;
     public override Color EnergyOutlineColor => new(0.08f, 0.18f, 0.24f);
-    public override Material? PoolFrameMaterial => PoolFrameTintMaterial;
-
     // false 表示这是角色专属卡池，不是事件/状态那类无色卡池。
     public override bool IsColorless => false;
 }

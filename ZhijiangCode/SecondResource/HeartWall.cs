@@ -22,8 +22,8 @@ public static class HeartWall
 			baseMaxAmount: null,
 			turnStartPolicy: SecondaryResourceTurnStartPolicy.None,
 			persistencePolicy: SecondaryResourcePersistencePolicy.Combat,
-			smallIconPath: $"{Entry.ResPath}/images/characters/energy_text.png",
-			largeIconPath: $"{Entry.ResPath}/images/characters/energy_big.png"
+			smallIconPath: $"{Entry.ResPath}/images/characters/Bella/HeartWall_text.png",
+			largeIconPath: $"{Entry.ResPath}/images/characters/Bella/HeartWall_big.png"
 		));
 
 		HeartWallId = HeartWallDefinition.Id;
@@ -35,18 +35,20 @@ public static class HeartWall
 			{
 				var row = NSecondaryResourceCounter.Create(HeartWallDefinition, new SecondaryResourceCounterStyle
 				{
-					FontSize = 32,
-					PositiveColor = Colors.Cyan,
+					CounterSize = new Vector2(90, 90),
+					IconSize = new Vector2(90, 90),
+					FontSize = 28,
+					PositiveColor = Colors.White,
 					FormatAmount = (amount, max) => amount.ToString(),
 					IconStyle = SecondaryResourceIconStyle.Default with
 					{
-						Size = new Vector2(80, 80),
+						Size = new Vector2(90, 90),
 						HoverTip = SecondaryResourceHoverTipStyle.Default,
 					},
 				});
 				// 自由指定位置。例如这里我们找到能量计数器的位置，放在它旁边
 				var energyCounter = parent.GetNode<Control>("%EnergyCounterContainer");
-				row.Position = energyCounter.Position + new Vector2(120, -120);
+				row.Position = energyCounter.Position + new Vector2(60, -100);
 				return row;
 			},
 			ctx => ctx.Node.Bind(ctx.Player)

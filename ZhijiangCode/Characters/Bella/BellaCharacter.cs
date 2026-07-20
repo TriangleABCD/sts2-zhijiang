@@ -15,9 +15,9 @@ public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRe
     private const string SceneRoot = $"{Entry.ResPath}/scenes/characters";
     private const string ImageRoot = $"{Entry.ResPath}/images/characters";
     private const string CharacterScenePath = $"{SceneRoot}/Bella/Bella_character.tscn";
-    private const string EnergyCounterScenePath = $"{SceneRoot}/Zhijiang_energy_counter.tscn";
-    private const string MerchantScenePath = $"{SceneRoot}/Zhijiang_merchant.tscn";
-    private const string RestSiteScenePath = $"{SceneRoot}/Zhijiang_rest_site.tscn";
+    private const string EnergyCounterScenePath = $"{SceneRoot}/Bella/Bella_energy_counter.tscn";
+    private const string MerchantScenePath = $"{SceneRoot}/Bella/Bella_merchant.tscn";
+    private const string RestSiteScenePath = $"{SceneRoot}/Bella/Bella_rest_site.tscn";
     private const string CharacterSelectBgScenePath = $"{SceneRoot}/Bella/Bella_character_select_bg.tscn";
 
     // 角色名称颜色。
@@ -60,7 +60,7 @@ public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRe
             // 人物选择图标-锁定状态。
             CharacterSelectLockedIconPath: $"{ImageRoot}/Bella/Bella_character_select_locked.png",
             // 地图上的角色标记图标、表情轮盘上的角色头像。
-            MapMarkerPath: $"{ImageRoot}/Zhijiang_map_marker.png")
+            MapMarkerPath: $"{ImageRoot}/Bella/Bella_map_icon.png")
         );
 
     // 某个字段没写时，RitsuLib 会从占位角色配置里补齐。

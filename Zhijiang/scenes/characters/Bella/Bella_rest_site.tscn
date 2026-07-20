@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcn8laxjbxqy7"]
+
+[ext_resource type="Texture2D" uid="uid://c2vxo3px02bdk" path="res://Zhijiang/images/characters/Bella/Bella_site.png" id="1_mkajv"]
+
+[node name="TestCharacterRestSite" type="Node2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(55, 0)
+texture = ExtResource("1_mkajv")
+
+[node name="ControlRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="SelectionReticle" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -153.0
+offset_top = -384.0
+offset_right = 267.0
+offset_bottom = 381.0
+
+[node name="Hitbox" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -155.0
+offset_top = -165.0
+offset_right = 154.0
+offset_bottom = 166.0
+
+[node name="ThoughtBubbleRight" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 121.0
+offset_top = -281.0
+offset_right = 121.0
+offset_bottom = -281.0
+
+[node name="ThoughtBubbleLeft" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -77.0
+offset_top = -241.0
+offset_right = -77.0
+offset_bottom = -241.0

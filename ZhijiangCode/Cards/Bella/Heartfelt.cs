@@ -26,7 +26,7 @@ public sealed class Heartfelt : ModCardTemplate
     private const bool ShowInCardLibrary = true;
 
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: $"{Entry.ResPath}/images/cards/ZhijiangSkill.png");
+        PortraitPath: $"{Entry.ResPath}/images/Characters/Bella/Bella_energy_text.png");
 
     // 规范值：去除格挡量。
     // {StripAmount} 显示去除的格挡值。

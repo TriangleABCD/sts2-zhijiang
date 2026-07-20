@@ -4,6 +4,6 @@
   "ZHIJIANG_RELIC_ZHIJIANG_RELIC.flavor": "A sample relic used to verify the template project.",
 
   "ZHIJIANG_RELIC_BELLARIS.title": "Bellaris",
-  "ZHIJIANG_RELIC_BELLARIS.description": "At the start of each turn, gain 1 [green]Dexterity[/green] for every 15 Heart Wall. Lasts until end of turn. All Attacks deal +2 damage (+5 if upgraded).",
+  "ZHIJIANG_RELIC_BELLARIS.description": "At the start of each turn, gain 1 [green]Dexterity[/green] for every 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]. Lasts until end of turn. All Attacks deal +2 damage (+5 if upgraded).",
   "ZHIJIANG_RELIC_BELLARIS.flavor": "Bella the Martial Saint."
 }

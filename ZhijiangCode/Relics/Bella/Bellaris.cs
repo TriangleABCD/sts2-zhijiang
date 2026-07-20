@@ -39,9 +39,9 @@ public sealed class Bellaris : ModStarterRelicTemplate
 
     // 图片资源统一放在 AssetProfile 里配置。
     public override RelicAssetProfile AssetProfile => new(
-        IconPath: $"{Entry.ResPath}/images/relics/ZhijiangRelic.png",
-        IconOutlinePath: $"{Entry.ResPath}/images/relics/ZhijiangRelic.png",
-        BigIconPath: $"{Entry.ResPath}/images/relics/ZhijiangRelic.png");
+        IconPath: $"{Entry.ResPath}/images/relics/Bellaris_85x85.png",
+        IconOutlinePath: $"{Entry.ResPath}/images/relics/Bellaris_85x85.png",
+        BigIconPath: $"{Entry.ResPath}/images/relics/Bellaris_256x256.png");
 
     // ---- 心之壁 → 敏捷（共用逻辑，来自 ModStarterRelicTemplate） ----
     protected override Task ApplyHeartWallDexterity(PlayerChoiceContext choiceContext, Creature creature, int amount)
