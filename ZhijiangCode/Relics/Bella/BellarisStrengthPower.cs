@@ -27,12 +27,12 @@ public sealed class BellarisStrengthPower : PowerModel
         if (!props.IsPoweredAttack())
             return 0m;
 
-        // 基础加成：所有攻击牌 +2 伤害
-        decimal bonus = 2m;
+        // 基础加成：所有攻击牌 +1 伤害
+        decimal bonus = 1m;
 
-        // 升级加成：升级后的攻击牌额外 +3 伤害（共 +5）
+        // 升级加成：升级后的攻击牌额外 +2 伤害（共 +3）
         if (cardSource != null && cardSource.IsUpgraded)
-            bonus += 3m;
+            bonus += 2m;
 
         return bonus;
     }

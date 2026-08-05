@@ -19,5 +19,25 @@
 
   "ZHIJIANG_CARD_HEARTFELT.title": "Heartfelt",
   "ZHIJIANG_CARD_HEARTFELT.description": "Remove up to {StripAmount} Block from ALL enemies.",
-  "ZHIJIANG_CARD_HEARTFELT.smartDescription": "Remove up to {StripAmount} Block from ALL enemies."
+  "ZHIJIANG_CARD_HEARTFELT.smartDescription": "Remove up to {StripAmount} Block from ALL enemies.",
+
+  "ZHIJIANG_CARD_A_SOUL_IS_COMING.title": "A Soul is coming",
+  "ZHIJIANG_CARD_A_SOUL_IS_COMING.description": "Add 1 Soul to each player's draw pile, hand, and discard pile.",
+  "ZHIJIANG_CARD_A_SOUL_IS_COMING.smartDescription": "Add 1 Soul to each player's draw pile, hand, and discard pile.",
+
+  "ZHIJIANG_CARD_YGNN.title": "ygnn",
+  "ZHIJIANG_CARD_YGNN.description": "Deal {Damage:diff()} damage 3 times. Gain {StrengthGain} Strength.",
+  "ZHIJIANG_CARD_YGNN.smartDescription": "Deal {Damage:diff()} damage 3 times. Gain {StrengthGain} Strength.",
+
+  "ZHIJIANG_CARD_BPKN.title": "bpkn",
+  "ZHIJIANG_CARD_BPKN.description": "Gain {Block:diff()} Block. ALL enemies lose {StrengthLoss} Strength this turn.",
+  "ZHIJIANG_CARD_BPKN.smartDescription": "Gain {Block:diff()} Block. ALL enemies lose {StrengthLoss} Strength this turn.",
+
+  "ZHIJIANG_CARD_EVIL_BELLA.title": "Evil Bella",
+  "ZHIJIANG_CARD_EVIL_BELLA.description": "Whenever you lose HP, Channel {OrbCount} Dark Orb.",
+  "ZHIJIANG_CARD_EVIL_BELLA.smartDescription": "Whenever you lose HP, Channel {OrbCount} Dark Orb.",
+
+  "ZHIJIANG_CARD_LOOP_IN20.title": "Loop in 20",
+  "ZHIJIANG_CARD_LOOP_IN20.description": "Your next Attack is played 20 additional times.",
+  "ZHIJIANG_CARD_LOOP_IN20.smartDescription": "Your next Attack is played 20 additional times."
 }

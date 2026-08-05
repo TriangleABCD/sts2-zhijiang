@@ -19,5 +19,25 @@
 
   "ZHIJIANG_CARD_HEARTFELT.title": "真情实感",
   "ZHIJIANG_CARD_HEARTFELT.description": "去除所有敌人 {StripAmount} 点格挡。",
-  "ZHIJIANG_CARD_HEARTFELT.smartDescription": "去除所有敌人 {StripAmount} 点格挡。"
+  "ZHIJIANG_CARD_HEARTFELT.smartDescription": "去除所有敌人 {StripAmount} 点格挡。",
+
+  "ZHIJIANG_CARD_A_SOUL_IS_COMING.title": "一个魂来咯",
+  "ZHIJIANG_CARD_A_SOUL_IS_COMING.description": "所有玩家的抽牌堆、手牌、弃牌堆各加入 1 张灵魂。",
+  "ZHIJIANG_CARD_A_SOUL_IS_COMING.smartDescription": "所有玩家的抽牌堆、手牌、弃牌堆各加入 1 张灵魂。",
+
+  "ZHIJIANG_CARD_YGNN.title": "勇敢牛牛",
+  "ZHIJIANG_CARD_YGNN.description": "造成 {Damage:diff()} 点伤害 3 次。获得 {StrengthGain} 点力量。",
+  "ZHIJIANG_CARD_YGNN.smartDescription": "造成 {Damage:diff()} 点伤害 3 次。获得 {StrengthGain} 点力量。",
+
+  "ZHIJIANG_CARD_BPKN.title": "不怕困难",
+  "ZHIJIANG_CARD_BPKN.description": "获得 {Block:diff()} 点格挡。所有敌人本回合失去 {StrengthLoss} 点力量。",
+  "ZHIJIANG_CARD_BPKN.smartDescription": "获得 {Block:diff()} 点格挡。所有敌人本回合失去 {StrengthLoss} 点力量。",
+
+  "ZHIJIANG_CARD_EVIL_BELLA.title": "黑拉",
+  "ZHIJIANG_CARD_EVIL_BELLA.description": "每当你损失生命值时，生成 {OrbCount} 个黑暗充能球。",
+  "ZHIJIANG_CARD_EVIL_BELLA.smartDescription": "每当你损失生命值时，生成 {OrbCount} 个黑暗充能球。",
+
+  "ZHIJIANG_CARD_LOOP_IN20.title": "20号循环",
+  "ZHIJIANG_CARD_LOOP_IN20.description": "你打出的下一张攻击牌会额外打出 20 次。",
+  "ZHIJIANG_CARD_LOOP_IN20.smartDescription": "你打出的下一张攻击牌会额外打出 20 次。"
 }

@@ -30,7 +30,7 @@ public sealed class BellaDefend : ModCardTemplate
     // 卡图资源。
     // 如果你按这行代码写，文件名就对应 Zhijiang/images/cards/ZhijiangDefend.png。
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: $"{Entry.ResPath}/images/cards/ZhijiangDefend.png");
+        PortraitPath: $"{Entry.ResPath}/images/cards/Bella/bella_defend.png");
 
     protected override HashSet<CardTag> CanonicalTags => new() { CardTag.Defend };
 

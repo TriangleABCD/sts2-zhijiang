@@ -16,12 +16,11 @@ using Zhijiang.ZhijiangCode.SecondResource;
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 [RegisterCard(typeof(BellaCardPool))]
-[RegisterCharacterStarterCard(typeof(BellaCharacter), 1)]
 public sealed class PreventionShot : ModCardTemplate
 {
     private const int BaseEnergyCost = 1;
     private const CardType CardKind = CardType.Skill;
-    private const CardRarity CardRarityValue = CardRarity.Basic;
+    private const CardRarity CardRarityValue = CardRarity.Common;
     private const TargetType CardTarget = TargetType.Self;
     private const bool ShowInCardLibrary = true;
 

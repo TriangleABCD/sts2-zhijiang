@@ -24,8 +24,8 @@ public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRe
     public override Color NameColor => ThemeColor;
     // 能量图标轮廓颜色。
     public override Color EnergyLabelOutlineColor => new(0.08f, 0.18f, 0.24f);
-    // 地图绘制颜色。
-    public override Color MapDrawingColor => ThemeColor;
+    // 地图绘制颜色（#DB7D74）。
+    public override Color MapDrawingColor => new(0.8588f, 0.4902f, 0.4549f);
 
     // 人物性别（男女中立）。
     public override CharacterGender Gender => CharacterGender.Feminine;
