@@ -14,16 +14,13 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Relics;
 
-// RegisterRelic 会把遗物注册进指定遗物池。
-// RegisterCharacterStarterRelic 会把它作为 BellaCharacter 的初始遗物。
-// RegisterTouchOfOrobasRefinement 让"先古之民"（奥罗巴斯）事件把贝极星替换为闪耀贝极星。
+// 闪耀贝极星：贝极星经"先古之民"（奥罗巴斯）事件替换后的升级版。
+// 升级后攻击牌伤害加成从 +1 提升到 +3（升级牌额外 +2，共 +5）。
 [RegisterRelic(typeof(BellaRelicPool))]
-[RegisterCharacterStarterRelic(typeof(BellaCharacter))]
-[RegisterTouchOfOrobasRefinement(typeof(KiraBellaris))]
-public sealed class Bellaris : ModStarterRelicTemplate
+public sealed class KiraBellaris : ModStarterRelicTemplate
 {
-    // 稀有度。
-    public override RelicRarity Rarity => RelicRarity.Common;
+    // 升级遗物沿用初始遗物稀有度，保证后续仍被识别为初始遗物。
+    public override RelicRarity Rarity => RelicRarity.Starter;
 
     // 遗物的数值。DexterityPower 和 StrengthPower 用于在本地化悬浮提示中展示能力图标。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -39,7 +36,7 @@ public sealed class Bellaris : ModStarterRelicTemplate
         HoverTipFactory.FromPower<StrengthPower>()
     ];
 
-    // 图片资源统一放在 AssetProfile 里配置。
+    // 暂复用贝极星图片，后续可替换为专属资源。
     public override RelicAssetProfile AssetProfile => new(
         IconPath: $"{Entry.ResPath}/images/relics/Bellaris_85x85.png",
         IconOutlinePath: $"{Entry.ResPath}/images/relics/Bellaris_85x85.png",
@@ -51,15 +48,15 @@ public sealed class Bellaris : ModStarterRelicTemplate
         return PowerCmd.Apply<BellarisHeartWallPower>(choiceContext, creature, amount, creature, null);
     }
 
-    // ---- 贝极星独有效果：攻击牌伤害 +1（基础）/ +3（升级后） ----
-    // 每场战斗开始时施加。
+    // ---- 闪耀贝极星独有效果：攻击牌伤害 +3（基础）/ +5（升级后） ----
+    // 每场战斗开始时施加 3 层加成能力（层数即基础加成）。
     public override async Task AfterRoomEntered(AbstractRoom room)
     {
         if (room is CombatRoom)
         {
             Flash();
             await PowerCmd.Apply<BellarisStrengthPower>(
-                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 1, base.Owner.Creature, null);
+                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 3, base.Owner.Creature, null);
         }
     }
 }

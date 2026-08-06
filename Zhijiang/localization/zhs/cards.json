@@ -39,5 +39,17 @@
 
   "ZHIJIANG_CARD_LOOP_IN20.title": "20号循环",
   "ZHIJIANG_CARD_LOOP_IN20.description": "你打出的下一张攻击牌会额外打出 20 次。",
-  "ZHIJIANG_CARD_LOOP_IN20.smartDescription": "你打出的下一张攻击牌会额外打出 20 次。"
+  "ZHIJIANG_CARD_LOOP_IN20.smartDescription": "你打出的下一张攻击牌会额外打出 20 次。",
+
+  "ZHIJIANG_CARD_ICE_BEAUTY.title": "冰山美人",
+  "ZHIJIANG_CARD_ICE_BEAUTY.description": "生成 2 个冰霜充能球。",
+  "ZHIJIANG_CARD_ICE_BEAUTY.smartDescription": "生成 2 个冰霜充能球。",
+
+  "ZHIJIANG_CARD_MAD_COW.title": "疯牛！",
+  "ZHIJIANG_CARD_MAD_COW.description": "造成 {Damage:diff()} 点伤害 3 次。获得 {StrengthGain} 点力量。",
+  "ZHIJIANG_CARD_MAD_COW.smartDescription": "造成 {Damage:diff()} 点伤害 3 次。获得 {StrengthGain} 点力量。",
+
+  "ZHIJIANG_CARD_TEAR_OF_BELLARIS.title": "贝极星的眼泪",
+  "ZHIJIANG_CARD_TEAR_OF_BELLARIS.description": "对所有敌人造成 {Damage:diff()} 点伤害。消耗所有心之壁值，每消耗 10 点心之壁，获得 {StrengthPer10} 点力量。",
+  "ZHIJIANG_CARD_TEAR_OF_BELLARIS.smartDescription": "对所有敌人造成 {Damage:diff()} 点伤害。消耗所有心之壁值，每消耗 10 点心之壁，获得 {StrengthPer10} 点力量。"
 }

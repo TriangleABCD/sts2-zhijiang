@@ -5,5 +5,9 @@
 
   "ZHIJIANG_RELIC_BELLARIS.title": "Bellaris",
   "ZHIJIANG_RELIC_BELLARIS.description": "At the start of each turn, gain 1 [green]Dexterity[/green] for every 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]. Lasts until end of turn. All Attacks deal +1 damage (+3 if upgraded).",
-  "ZHIJIANG_RELIC_BELLARIS.flavor": "Bella the Martial Saint."
+  "ZHIJIANG_RELIC_BELLARIS.flavor": "Bella the Martial Saint.",
+
+  "ZHIJIANG_RELIC_KIRA_BELLARIS.title": "Kira Bellaris",
+  "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "At the start of each turn, gain 1 [green]Dexterity[/green] for every 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]. Lasts until end of turn. All Attacks deal +3 damage (+5 if upgraded).",
+  "ZHIJIANG_RELIC_KIRA_BELLARIS.flavor": "Bella the Radiant Martial Saint."
 }

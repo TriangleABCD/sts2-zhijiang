@@ -39,5 +39,17 @@
 
   "ZHIJIANG_CARD_LOOP_IN20.title": "Loop in 20",
   "ZHIJIANG_CARD_LOOP_IN20.description": "Your next Attack is played 20 additional times.",
-  "ZHIJIANG_CARD_LOOP_IN20.smartDescription": "Your next Attack is played 20 additional times."
+  "ZHIJIANG_CARD_LOOP_IN20.smartDescription": "Your next Attack is played 20 additional times.",
+
+  "ZHIJIANG_CARD_ICE_BEAUTY.title": "Ice Beauty",
+  "ZHIJIANG_CARD_ICE_BEAUTY.description": "Channel 2 Frost Orbs.",
+  "ZHIJIANG_CARD_ICE_BEAUTY.smartDescription": "Channel 2 Frost Orbs.",
+
+  "ZHIJIANG_CARD_MAD_COW.title": "Mad Cow",
+  "ZHIJIANG_CARD_MAD_COW.description": "Deal {Damage:diff()} damage 3 times. Gain {StrengthGain} Strength.",
+  "ZHIJIANG_CARD_MAD_COW.smartDescription": "Deal {Damage:diff()} damage 3 times. Gain {StrengthGain} Strength.",
+
+  "ZHIJIANG_CARD_TEAR_OF_BELLARIS.title": "Tear of Bellaris",
+  "ZHIJIANG_CARD_TEAR_OF_BELLARIS.description": "Deal {Damage:diff()} damage to ALL enemies. Lose all Heart Wall. For every 10 Heart Wall lost, gain {StrengthPer10} Strength.",
+  "ZHIJIANG_CARD_TEAR_OF_BELLARIS.smartDescription": "Deal {Damage:diff()} damage to ALL enemies. Lose all Heart Wall. For every 10 Heart Wall lost, gain {StrengthPer10} Strength."
 }

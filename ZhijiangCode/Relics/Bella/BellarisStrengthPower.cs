@@ -7,7 +7,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Zhijiang.ZhijiangCode.Relics;
 
 /// <summary>
-/// 贝极星遗物：所有攻击牌造成伤害 +2，升级后的攻击牌额外 +3 伤害（共 +5）。
+/// 贝极星遗物攻击加成能力：所有攻击牌造成伤害 +Amount（层数即基础加成）。
+/// 贝极星施加 1 层（+1），闪耀贝极星施加 3 层（+3）。
+/// 升级后的攻击牌额外 +2 伤害。
 /// 对连续攻击的每段均生效（由 ModifyDamageAdditive 按 ValueProp 逐段返回）。
 /// </summary>
 public sealed class BellarisStrengthPower : PowerModel
@@ -27,10 +29,10 @@ public sealed class BellarisStrengthPower : PowerModel
         if (!props.IsPoweredAttack())
             return 0m;
 
-        // 基础加成：所有攻击牌 +1 伤害
-        decimal bonus = 1m;
+        // 基础加成：层数即基础加成（贝极星=1，闪耀贝极星=3）。
+        decimal bonus = base.Amount;
 
-        // 升级加成：升级后的攻击牌额外 +2 伤害（共 +3）
+        // 升级加成：升级后的攻击牌额外 +2 伤害。
         if (cardSource != null && cardSource.IsUpgraded)
             bonus += 2m;
 

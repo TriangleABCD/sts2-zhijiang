@@ -2,6 +2,8 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Orbs;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
@@ -14,16 +16,14 @@ namespace Zhijiang.ZhijiangCode.Powers;
 /// <summary>
 /// 黑拉能力：每次损失生命值时，生成黑暗充能球。
 /// 层数决定每次生成的充能球数量（未升级=1，升级后=2）。
-/// 栏位已满时先激发最前面的球再放入新球。
+/// 栏位已满时先激发最靠前的球，再放入新球。
+/// 栏位占用数直接读取玩家真实充能球队列，与其他来源的充能球（如冰山美人）互不冲突。
 /// </summary>
 public sealed class EvilBellaPower : PowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     protected override bool IsVisibleInternal => true;
-
-    // 跟踪当前栏位中的充能球数量。
-    private int _orbCount;
 
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
@@ -35,19 +35,15 @@ public sealed class EvilBellaPower : PowerModel
         if (base.Owner.Player is not { } player)
             return;
 
-        // Amount=1（未升级）→ 1 栏位；Amount=2（升级）→ 2 栏位。
-        int capacity = Amount;
-        int toChannel = Amount;
-        for (int i = 0; i < toChannel; i++)
+        for (int i = 0; i < Amount; i++)
         {
             // 栏位已满时先激发最靠前的球，为新球腾出位置。
-            if (_orbCount >= capacity)
+            if (player.PlayerCombatState?.OrbQueue is { } queue
+                && queue.Orbs.Count >= queue.Capacity && queue.Capacity > 0)
             {
                 await OrbCmd.EvokeNext(choiceContext, player);
-                _orbCount--;
             }
             await OrbCmd.Channel<DarkOrb>(choiceContext, player);
-            _orbCount++;
         }
     }
 }

@@ -13,15 +13,13 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
+// 疯牛：勇敢牛牛经"远古之牙"转化后的远古版。
 [RegisterCard(typeof(BellaCardPool))]
-[RegisterCharacterStarterCard(typeof(BellaCharacter), 1)]
-// RegisterArchaicToothTranscendence 让"先古之民"（奥罗巴斯）事件的远古之牙把勇敢牛牛转化为疯牛。
-[RegisterArchaicToothTranscendence(typeof(MadCow))]
-public sealed class Ygnn : ModCardTemplate
+public sealed class MadCow : ModCardTemplate
 {
     private const int BaseEnergyCost = 2;
     private const CardType CardKind = CardType.Attack;
-    private const CardRarity CardRarityValue = CardRarity.Basic;
+    private const CardRarity CardRarityValue = CardRarity.Ancient;
     private const TargetType CardTarget = TargetType.AnyEnemy;
     private const bool ShowInCardLibrary = true;
     private const int HitCount = 3;
@@ -32,8 +30,8 @@ public sealed class Ygnn : ModCardTemplate
     // 伤害值与力量增益。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(4, ValueProp.Move),
-        new DynamicVar("StrengthGain", 3)
+        new DamageVar(10, ValueProp.Move),
+        new DynamicVar("StrengthGain", 6)
     ];
 
     // 力量悬浮提示。
@@ -42,7 +40,7 @@ public sealed class Ygnn : ModCardTemplate
         HoverTipFactory.FromPower<StrengthPower>()
     ];
 
-    public Ygnn() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
+    public MadCow() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {
     }
 
@@ -66,7 +64,7 @@ public sealed class Ygnn : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2);
-        DynamicVars["StrengthGain"].UpgradeValueBy(1);
+        DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars["StrengthGain"].UpgradeValueBy(2);
     }
 }
