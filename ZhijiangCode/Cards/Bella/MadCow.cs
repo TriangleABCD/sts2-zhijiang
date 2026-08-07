@@ -25,7 +25,7 @@ public sealed class MadCow : ModCardTemplate
     private const int HitCount = 3;
 
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: $"{Entry.ResPath}/images/cards/Bella/ygnn.png");
+        PortraitPath: $"{Entry.ResPath}/images/cards/Bella/mad_cow.png");
 
     // 伤害值与力量增益。
     protected override IEnumerable<DynamicVar> CanonicalVars =>

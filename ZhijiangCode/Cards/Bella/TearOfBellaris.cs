@@ -27,7 +27,7 @@ public sealed class TearOfBellaris : ModCardTemplate
     private const bool ShowInCardLibrary = true;
 
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: $"{Entry.ResPath}/images/cards/Bella/bella_attack.png");
+        PortraitPath: $"{Entry.ResPath}/images/cards/Bella/tear_of_bellaris.png");
 
     // 消耗。
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

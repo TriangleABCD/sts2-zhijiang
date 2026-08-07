@@ -21,7 +21,7 @@ public sealed class EvilBella : ModCardTemplate
     private const bool ShowInCardLibrary = true;
 
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: $"{Entry.ResPath}/images/cards/ZhijiangPower.png");
+        PortraitPath: $"{Entry.ResPath}/images/cards/Bella/evil_bella.png");
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

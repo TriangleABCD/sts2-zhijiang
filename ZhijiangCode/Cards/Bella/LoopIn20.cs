@@ -24,7 +24,7 @@ public sealed class LoopIn20 : ModCardTemplate
     private const bool ShowInCardLibrary = true;
 
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: $"{Entry.ResPath}/images/cards/ZhijiangSkill.png");
+        PortraitPath: $"{Entry.ResPath}/images/cards/Bella/loop_in_20.png");
 
     // 消耗。
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

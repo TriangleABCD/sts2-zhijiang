@@ -1,0 +1,5 @@
+{
+  "ZHIJIANG_POWER_EVIL_BELLA_POWER.title": "黑拉",
+  "ZHIJIANG_POWER_EVIL_BELLA_POWER.description": "每当你损失生命值时，生成 1 个黑暗充能球。",
+  "ZHIJIANG_POWER_EVIL_BELLA_POWER.smartDescription": "每当你损失生命值时，生成 {Amount} 个黑暗充能球。"
+}

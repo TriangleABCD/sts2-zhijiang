@@ -24,7 +24,7 @@ public sealed class IceBeauty : ModCardTemplate
     private const int OrbCount = 2;
 
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: $"{Entry.ResPath}/images/cards/ZhijiangSkill.png");
+        PortraitPath: $"{Entry.ResPath}/images/cards/Bella/ice_beauty.png");
 
     public IceBeauty() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {

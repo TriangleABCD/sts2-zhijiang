@@ -10,6 +10,8 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using STS2RitsuLib.Interop.AutoRegistration;
+using STS2RitsuLib.Scaffolding.Content;
 
 namespace Zhijiang.ZhijiangCode.Powers;
 
@@ -18,12 +20,19 @@ namespace Zhijiang.ZhijiangCode.Powers;
 /// 层数决定每次生成的充能球数量（未升级=1，升级后=2）。
 /// 栏位已满时先激发最靠前的球，再放入新球。
 /// 栏位占用数直接读取玩家真实充能球队列，与其他来源的充能球（如冰山美人）互不冲突。
+/// 可见能力，本地化见 powers.json。
 /// </summary>
-public sealed class EvilBellaPower : PowerModel
+[RegisterPower]
+public sealed class EvilBellaPower : ModPowerTemplate
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     protected override bool IsVisibleInternal => true;
+
+    // 图标占位：暂用贝拉能量图标，后续可替换为专属能力图标。
+    public override PowerAssetProfile AssetProfile => new(
+        IconPath: $"{Entry.ResPath}/images/characters/Bella/evil_bella_power_64x64.png",
+        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/evil_bella_power_256x256.png");
 
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)

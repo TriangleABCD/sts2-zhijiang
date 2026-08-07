@@ -25,7 +25,7 @@ public sealed class PreventionShot : ModCardTemplate
     private const bool ShowInCardLibrary = true;
 
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: $"{Entry.ResPath}/images/Characters/Bella/Bella_energy_text.png");
+        PortraitPath: $"{Entry.ResPath}/images/cards/Bella/prevension_shot.png");
 
     // 规范值：格挡、心之壁、力量损失。
     // {Block:diff()} 显示格挡值，{HeartWallGain} 显示心之壁增益，{StrengthLoss} 显示力量损失。
