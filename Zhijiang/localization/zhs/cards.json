@@ -35,8 +35,8 @@
   "ZHIJIANG_CARD_LOOP_IN20.smartDescription": "你打出的下一张攻击牌会额外打出 20 次。",
 
   "ZHIJIANG_CARD_ICE_BEAUTY.title": "冰山美人",
-  "ZHIJIANG_CARD_ICE_BEAUTY.description": "生成 2 个冰霜充能球。",
-  "ZHIJIANG_CARD_ICE_BEAUTY.smartDescription": "生成 2 个冰霜充能球。",
+  "ZHIJIANG_CARD_ICE_BEAUTY.description": "生成 1 个冰霜充能球。",
+  "ZHIJIANG_CARD_ICE_BEAUTY.smartDescription": "生成 1 个冰霜充能球。",
 
   "ZHIJIANG_CARD_MAD_COW.title": "疯牛！",
   "ZHIJIANG_CARD_MAD_COW.description": "造成 {Damage:diff()} 点伤害 3 次。获得 {StrengthGain} 点力量。",

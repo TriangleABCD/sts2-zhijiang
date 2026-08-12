@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Models.Orbs;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Characters;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
@@ -21,10 +22,16 @@ public sealed class IceBeauty : ModCardTemplate
     private const CardRarity CardRarityValue = CardRarity.Common;
     private const TargetType CardTarget = TargetType.Self;
     private const bool ShowInCardLibrary = true;
-    private const int OrbCount = 2;
+    private const int OrbCount = 1;
 
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/ice_beauty.png");
+
+    // 阴阳属性：冰山美人为阳牌。
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        BellaYinYangService.YangKeywordId.GetModCardKeyword()
+    ];
 
     public IceBeauty() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {

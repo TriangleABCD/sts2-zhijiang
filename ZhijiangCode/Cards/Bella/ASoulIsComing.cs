@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Cards;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
@@ -36,7 +37,9 @@ public sealed class ASoulIsComing : ModCardTemplate
     // 消耗。
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Exhaust
+        CardKeyword.Exhaust,
+        // 阴阳属性：一个魂来咯为阳牌。
+        BellaYinYangService.YangKeywordId.GetModCardKeyword()
     ];
 
     public ASoulIsComing() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)

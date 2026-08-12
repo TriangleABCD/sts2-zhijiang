@@ -9,13 +9,14 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 // 疯牛：勇敢牛牛经"远古之牙"转化后的远古版。
 [RegisterCard(typeof(BellaCardPool))]
-public sealed class MadCow : ModCardTemplate
+public sealed class MadCow : ModCardTemplate, IBellaYinYangCorrectionCard
 {
     private const int BaseEnergyCost = 2;
     private const CardType CardKind = CardType.Attack;
@@ -30,8 +31,8 @@ public sealed class MadCow : ModCardTemplate
     // 伤害值与力量增益。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(10, ValueProp.Move),
-        new DynamicVar("StrengthGain", 6)
+        new DamageVar(7, ValueProp.Move),
+        new DynamicVar("StrengthGain", 4)
     ];
 
     // 力量悬浮提示。
@@ -39,6 +40,16 @@ public sealed class MadCow : ModCardTemplate
     [
         HoverTipFactory.FromPower<StrengthPower>()
     ];
+
+    // 阴阳属性：疯牛为阴牌。
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        BellaYinYangService.YinKeywordId.GetModCardKeyword()
+    ];
+
+    // 参与差值修正：仅伤害修正（次数与力量固定）。
+    public bool CorrectDamage => true;
+    public bool CorrectBlock => false;
 
     public MadCow() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {

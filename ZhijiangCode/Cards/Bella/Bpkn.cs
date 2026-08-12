@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.Powers;
 
@@ -18,7 +19,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 [RegisterCard(typeof(BellaCardPool))]
 [RegisterCharacterStarterCard(typeof(BellaCharacter), 1)]
-public sealed class Bpkn : ModCardTemplate
+public sealed class Bpkn : ModCardTemplate, IBellaYinYangCorrectionCard
 {
     private const int BaseEnergyCost = 3;
     private const CardType CardKind = CardType.Skill;
@@ -32,8 +33,8 @@ public sealed class Bpkn : ModCardTemplate
     // 格挡值与力量削减。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(10, ValueProp.Move),
-        new DynamicVar("StrengthLoss", 7)
+        new BlockVar(8, ValueProp.Move),
+        new DynamicVar("StrengthLoss", 5)
     ];
 
     // 格挡与力量悬浮提示。
@@ -42,6 +43,16 @@ public sealed class Bpkn : ModCardTemplate
         HoverTipFactory.Static(StaticHoverTip.Block),
         HoverTipFactory.FromPower<StrengthPower>()
     ];
+
+    // 阴阳属性：不怕困难为阳牌。
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        BellaYinYangService.YangKeywordId.GetModCardKeyword()
+    ];
+
+    // 参与差值修正：仅格挡修正（削敌力量固定）。
+    public bool CorrectDamage => false;
+    public bool CorrectBlock => true;
 
     public Bpkn() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {

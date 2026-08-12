@@ -10,13 +10,14 @@ using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.SecondResource;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 [RegisterCard(typeof(BellaCardPool))]
-public sealed class PreventionShot : ModCardTemplate
+public sealed class PreventionShot : ModCardTemplate, IBellaYinYangCorrectionCard
 {
     private const int BaseEnergyCost = 1;
     private const CardType CardKind = CardType.Skill;
@@ -31,7 +32,7 @@ public sealed class PreventionShot : ModCardTemplate
     // {Block:diff()} 显示格挡值，{HeartWallGain} 显示心之壁增益，{StrengthLoss} 显示力量损失。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(10m, ValueProp.Move),
+        new BlockVar(8m, ValueProp.Move),
         new DynamicVar("HeartWallGain", 5m),
         new DynamicVar("StrengthLoss", 1m)
     ];
@@ -41,6 +42,16 @@ public sealed class PreventionShot : ModCardTemplate
     [
         HoverTipFactory.FromPower<StrengthPower>()
     ];
+
+    // 阴阳属性：预防针了为阳牌。
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        BellaYinYangService.YangKeywordId.GetModCardKeyword()
+    ];
+
+    // 参与差值修正：仅格挡修正（心之壁与力量损失固定）。
+    public bool CorrectDamage => false;
+    public bool CorrectBlock => true;
 
     public PreventionShot() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {

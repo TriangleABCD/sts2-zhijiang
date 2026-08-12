@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.Powers;
 using Zhijiang.ZhijiangCode.SecondResource;
@@ -29,7 +30,9 @@ public sealed class LoopIn20 : ModCardTemplate
     // 消耗。
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Exhaust
+        CardKeyword.Exhaust,
+        // 阴阳属性：20号循环为阴牌。
+        BellaYinYangService.YinKeywordId.GetModCardKeyword()
     ];
 
     public LoopIn20() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)

@@ -35,8 +35,8 @@
   "ZHIJIANG_CARD_LOOP_IN20.smartDescription": "Your next Attack is played 20 additional times.",
 
   "ZHIJIANG_CARD_ICE_BEAUTY.title": "Ice Beauty",
-  "ZHIJIANG_CARD_ICE_BEAUTY.description": "Channel 2 Frost Orbs.",
-  "ZHIJIANG_CARD_ICE_BEAUTY.smartDescription": "Channel 2 Frost Orbs.",
+  "ZHIJIANG_CARD_ICE_BEAUTY.description": "Channel 1 Frost Orb.",
+  "ZHIJIANG_CARD_ICE_BEAUTY.smartDescription": "Channel 1 Frost Orb.",
 
   "ZHIJIANG_CARD_MAD_COW.title": "Mad Cow",
   "ZHIJIANG_CARD_MAD_COW.description": "Deal {Damage:diff()} damage 3 times. Gain {StrengthGain} Strength.",

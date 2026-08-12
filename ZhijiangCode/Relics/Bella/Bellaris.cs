@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Rooms;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using Zhijiang.ZhijiangCode.Characters.Bella;
+using Zhijiang.ZhijiangCode.Powers;
 
 namespace Zhijiang.ZhijiangCode.Relics;
 
@@ -32,12 +33,29 @@ public sealed class Bellaris : ModStarterRelicTemplate
         new PowerVar<StrengthPower>(2m)
     ];
 
-    // 敏捷和力量悬浮提示。
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
-    [
-        HoverTipFactory.FromPower<DexterityPower>(),
-        HoverTipFactory.FromPower<StrengthPower>()
-    ];
+    // 敏捷、格挡和力量悬浮提示，以及动态的当前阴阳状态提示。
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips
+    {
+        get
+        {
+            var tips = new List<IHoverTip>
+            {
+                HoverTipFactory.FromPower<DexterityPower>(),
+                HoverTipFactory.Static(StaticHoverTip.Block),
+                HoverTipFactory.FromPower<StrengthPower>()
+            };
+
+            // 动态追加当前阴阳状态（白拉/黑拉）。
+            if (base.Owner is { } player)
+            {
+                tips.Add(BellaYinYangService.IsBaiLa(player)
+                    ? HoverTipFactory.FromPower<BaiLaPower>()
+                    : HoverTipFactory.FromPower<HeiLaPower>());
+            }
+
+            return tips;
+        }
+    }
 
     // 图片资源统一放在 AssetProfile 里配置。
     public override RelicAssetProfile AssetProfile => new(
@@ -51,15 +69,20 @@ public sealed class Bellaris : ModStarterRelicTemplate
         return PowerCmd.Apply<BellarisHeartWallPower>(choiceContext, creature, amount, creature, null);
     }
 
-    // ---- 贝极星独有效果：攻击牌伤害 +1（基础）/ +3（升级后） ----
-    // 每场战斗开始时施加。
+    // ---- 贝极星独有效果：阴阳双面加成 ----
+    // 黑拉（阴多于阳）：攻击牌伤害 +2；白拉（阳多于阴）：每打出 1 张技能牌获得 3 格挡。
+    // 每场战斗开始时施加，效果由两个能力各自按当前状态判定。
     public override async Task AfterRoomEntered(AbstractRoom room)
     {
         if (room is CombatRoom)
         {
             Flash();
+            // 黑拉攻击加成：层数即加成值（+2）。
             await PowerCmd.Apply<BellarisStrengthPower>(
-                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 1, base.Owner.Creature, null);
+                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 2, base.Owner.Creature, null);
+            // 白拉技能格挡：层数即格挡值（+3）。
+            await PowerCmd.Apply<BellarisBlockPower>(
+                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 3, base.Owner.Creature, null);
         }
     }
 }

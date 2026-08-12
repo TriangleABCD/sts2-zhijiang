@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.SecondResource;
 
@@ -40,6 +41,12 @@ public sealed class Heartfelt : ModCardTemplate
         HoverTipFactory.Static(StaticHoverTip.Block)
     ];
 
+    // 阴阳属性：真情实感为阳牌。
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        BellaYinYangService.YangKeywordId.GetModCardKeyword()
+    ];
+
     public Heartfelt() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {
         // 消耗 10 点心之壁。
@@ -48,7 +55,13 @@ public sealed class Heartfelt : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 去格挡量参与差值修正：相符 +|d|÷3、相反 -|d|÷3，至少保留 1 点。
         int stripAmount = DynamicVars["StripAmount"].IntValue;
+        {
+            int magnitude = BellaYinYangService.ComputeMagnitude(base.Owner);
+            stripAmount += BellaYinYangService.IsAligned(base.Owner, this) ? magnitude : -magnitude;
+            stripAmount = Math.Max(stripAmount, 1);
+        }
 
         // 遍历所有可攻击敌人，去除格挡（最多 stripAmount 点）。
         foreach (var enemy in base.CombatState?.HittableEnemies ?? Array.Empty<Creature>())

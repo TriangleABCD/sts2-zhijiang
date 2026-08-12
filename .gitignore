@@ -17,6 +17,7 @@ local.props
 
 # 开发辅助工具目录
 .agents/
+.trae/
 
 # Bella 测试用的 idle 序列帧图片（数量多、非正式资源）
 Zhijiang/images/characters/Bella/idle_images/

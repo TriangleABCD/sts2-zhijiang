@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Keywords;
 
 using Zhijiang.ZhijiangCode.SecondResource;
 using STS2RitsuLib.Combat.SecondaryResources;
@@ -16,7 +17,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 // RegisterCharacterStarterCard 会把它追加进 BellaCharacter 的初始卡组。
 [RegisterCard(typeof(BellaCardPool))]
 [RegisterCharacterStarterCard(typeof(BellaCharacter), 4)]
-public sealed class BellaStrike : ModCardTemplate
+public sealed class BellaStrike : ModCardTemplate, IBellaYinYangCorrectionCard
 {
     // 基础耗能。
     private const int BaseEnergyCost = 1;
@@ -43,6 +44,16 @@ public sealed class BellaStrike : ModCardTemplate
     ];
 
     protected override HashSet<CardTag> CanonicalTags => new() { CardTag.Strike };
+
+    // 阴阳属性：打击为阴牌。
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        BellaYinYangService.YinKeywordId.GetModCardKeyword()
+    ];
+
+    // 参与差值修正：伤害修正。
+    public bool CorrectDamage => true;
+    public bool CorrectBlock => false;
 
     public BellaStrike() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {

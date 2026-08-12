@@ -3,8 +3,11 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
 using STS2RitsuLib;
 using STS2RitsuLib.Interop;
+using STS2RitsuLib.Patching.Core;
 using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 
+using Zhijiang.ZhijiangCode.Characters.Bella;
+using Zhijiang.ZhijiangCode.Patches;
 using Zhijiang.ZhijiangCode.SecondResource;
 
 namespace Zhijiang.ZhijiangCode;
@@ -35,6 +38,11 @@ public partial class Entry
         // 新增内容类后，只要 attribute 写对，通常不需要在入口里手动逐个注册。
         ModTypeDiscoveryHub.RegisterModAssembly(ModId, assembly);
         HeartWall.Register();
+        BellaYinYangService.RegisterCombatCorrection();
+
+        // 去掉贝拉「阳/阴」关键词内联文本末尾的句号。
+        RitsuLibFramework.CreatePatcher(ModId, "KeywordPeriodRemoval")
+            .RegisterPatch<ModKeywordPeriodRemovalPatch>();
 
         Logger.Info("Zhijiang initialized.");
     }

@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.Powers;
 
@@ -23,6 +24,12 @@ public sealed class EvilBella : ModCardTemplate
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/evil_bella.png");
 
+    // 阴阳属性：黑拉为阴牌。
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        BellaYinYangService.YinKeywordId.GetModCardKeyword()
+    ];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar("OrbCount", 1m)
@@ -37,12 +44,6 @@ public sealed class EvilBella : ModCardTemplate
         int orbCount = DynamicVars["OrbCount"].IntValue;
         await PowerCmd.Apply<EvilBellaPower>(choiceContext, base.Owner.Creature,
             orbCount, base.Owner.Creature, this);
-
-        // 升级后额外获得 2 个充能球栏位（未升级时依赖 OrbCmd.Channel 自动给 1 栏位）。
-        if (IsUpgraded)
-        {
-            await OrbCmd.AddSlots(base.Owner, 2);
-        }
     }
 
     protected override void OnUpgrade()

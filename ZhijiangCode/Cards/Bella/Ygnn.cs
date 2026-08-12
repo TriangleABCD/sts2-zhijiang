@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
@@ -32,14 +33,20 @@ public sealed class Ygnn : ModCardTemplate
     // 伤害值与力量增益。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(4, ValueProp.Move),
-        new DynamicVar("StrengthGain", 3)
+        new DamageVar(3, ValueProp.Move),
+        new DynamicVar("StrengthGain", 2)
     ];
 
     // 力量悬浮提示。
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         HoverTipFactory.FromPower<StrengthPower>()
+    ];
+
+    // 阴阳属性：勇敢牛牛为阴牌。
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        BellaYinYangService.YinKeywordId.GetModCardKeyword()
     ];
 
     public Ygnn() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
@@ -50,8 +57,16 @@ public sealed class Ygnn : ModCardTemplate
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
+        // 攻击次数参与差值修正：相符 +|d|÷3 次、相反 -|d|÷3 次，至少保留 1 次。
+        int hitCount = HitCount;
+        {
+            int magnitude = BellaYinYangService.ComputeMagnitude(base.Owner);
+            hitCount += BellaYinYangService.IsAligned(base.Owner, this) ? magnitude : -magnitude;
+            hitCount = Math.Max(hitCount, 1);
+        }
+
         // 多段攻击：造成 {Damage} 点伤害 {HitCount} 次。
-        for (int i = 0; i < HitCount; i++)
+        for (int i = 0; i < hitCount; i++)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
@@ -66,7 +81,7 @@ public sealed class Ygnn : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2);
+        DynamicVars.Damage.UpgradeValueBy(1);
         DynamicVars["StrengthGain"].UpgradeValueBy(1);
     }
 }
