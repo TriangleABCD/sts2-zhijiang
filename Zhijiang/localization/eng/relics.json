@@ -1,8 +1,4 @@
 {
-  "ZHIJIANG_RELIC_ZHIJIANG_RELIC.title": "Template Relic",
-  "ZHIJIANG_RELIC_ZHIJIANG_RELIC.description": "At the start of each turn, draw [blue]{Cards}[/blue] card.",
-  "ZHIJIANG_RELIC_ZHIJIANG_RELIC.flavor": "A sample relic used to verify the template project.",
-
   "ZHIJIANG_RELIC_BELLARIS.title": "Bellaris",
   "ZHIJIANG_RELIC_BELLARIS.description": "At the start of each turn, gain 1 [green]Dexterity[/green] for every 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]. Lasts until end of turn. In [gold]Bai La[/gold] state, gain 3 Block whenever you play a Skill. In [gold]Hei La[/gold] state, Attacks deal +2 damage.",
   "ZHIJIANG_RELIC_BELLARIS.flavor": "Bella the Martial Saint.",

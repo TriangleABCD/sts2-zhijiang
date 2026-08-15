@@ -1,8 +1,4 @@
 {
-  "ZHIJIANG_RELIC_ZHIJIANG_RELIC.title": "模板遗物",
-  "ZHIJIANG_RELIC_ZHIJIANG_RELIC.description": "每回合开始时，抽 [blue]{Cards}[/blue] 张牌。",
-  "ZHIJIANG_RELIC_ZHIJIANG_RELIC.flavor": "一个用于验证模板工程的示例遗物。",
-
   "ZHIJIANG_RELIC_BELLARIS.title": "贝极星",
   "ZHIJIANG_RELIC_BELLARIS.description": "每回合开始时，每拥有 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]，获得 1 点 [green]敏捷[/green]，敏捷仅本回合有效。处于[gold]白拉[/gold]状态时，每打出 1 张技能牌获得 3 点格挡；处于[gold]黑拉[/gold]状态时，攻击牌造成的伤害 +2。",
   "ZHIJIANG_RELIC_BELLARIS.flavor": "贝武圣",

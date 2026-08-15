@@ -1,0 +1,251 @@
+<!-- 由 Trae 项目记忆迁移而来，原文件：.trae/memory/projects/-d-Files-Project-sts2-mod-project-sts2-zhijiang/project_memory.md（迁移于 2026-08-15）。DSH 会在每次会话启动时自动加载本文件作为工作区指令；请在 DSH 中继续维护本文件。 -->
+
+# 枝江 Mod 项目记忆
+
+## 新增卡牌标准化流程
+
+每次新增贝拉卡牌时，先向用户确认以下信息，全部确认后再开始编码：
+
+### 必问项
+
+1. **卡牌名称**（中文 + 英文）
+2. **稀有度**：Basic / Common / Uncommon / Rare / Ancient
+3. **卡牌类型**：Attack / Skill / Power
+4. **耗能**：耗能点数（0~X）
+5. **目标类型**：Self / AnyEnemy / AllEnemies / AllAllies / 其他
+6. **效果描述**：打出后的具体效果（包括具体数值）
+7. **升级效果**：升级后效果有何变化（数值变化、添加/移除关键词等）
+8. **特殊属性**：是否需要消耗(Exhaust)、固有(Innate)、保留(Retain) 等关键词
+9. **是否初始卡**：是则需指定数量（如 1 张或 4 张），否则为普通可收集卡
+10. **是否消耗心之壁**：是则需指定消耗量
+
+### 需要修改的文件
+
+| 文件 | 内容 |
+|------|------|
+| `ZhijiangCode/Cards/Bella/{CardName}.cs` | 卡牌代码 |
+| `Zhijiang/localization/zhs/cards.json` | 中文本地化 |
+| `Zhijiang/localization/eng/cards.json` | 英文本地化 |
+| `doc/Bella.md` | 卡牌文档 |
+
+### 代码规范
+
+- 继承 `ModCardTemplate`
+- 使用 `[RegisterCard(typeof(BellaCardPool))]` 注册到贝拉卡池
+- 若是初始卡，额外添加 `[RegisterCharacterStarterCard(typeof(BellaCharacter), N)]`
+- 本地化 key 格式：`ZHIJIANG_CARD_{类名Slugify大写}.title/description`（项目里顺手写的 `.smartDescription` 游戏不读，见下）
+- Slugify 规则：PascalCase → SCREAMING_SNAKE_CASE（如 `ASoulIsComing` → `A_SOUL_IS_COMING`；数字不前后加下划线，如 `LoopIn20` → `LOOP_IN20`）；算法见原版 `StringHelper.Slugify`（大写边界插下划线、转大写、数字视为普通字符，边缘如 `HTTPServer2Card` → `H_TT_P_SERVER2_CARD`）
+- 参考原版游戏对应效果卡牌的实现
+- 升级改耗能用 `base.EnergyCost.UpgradeBy(-1)`（参考 `IceBeauty`/`LoopIn20`）；加减关键词用 `AddKeyword`/`RemoveKeyword`；改次级费用用 `this.SecondaryCosts().Set(...)` 覆盖（参考 `LoopIn20` 150→120）
+- 卡牌本地化只有 `.title` + `.description` 两个 key（原版 cards.json 没有 smartDescription）；`smartDescription` 只属于 Power/Orb——运行时实例化版、用 `{Amount}`/`{OwnerName}` 显示实时数值，`description` 是静态概念版。项目 cards.json 里每卡多写的 smartDescription 是习惯性冗余、游戏不读
+- 卡池卡框色/能量色在 `BellaCardPool` 配置：`MaterialUtils.CreateHsvShaderMaterial(0.015f, 0.47f, 0.859f)`（#DB7D74），`EnergyColorName = "Bella"`，卡面/名字色取 `BellaCharacter.ThemeColor`（0.42, 0.65, 0.72）；地图画线色是 `BellaCharacter.MapDrawingColor`（#DB7D74），与 ThemeColor 相互独立
+
+### 注意事项
+
+- 新卡在卡牌纵览显示"未知"是正常的，需游戏中实际遇到后才会解锁显示
+- 有多名玩家时注意用 `&& c.Player != base.Owner` 排除自身重复
+- 添加卡牌到抽牌堆/弃牌堆后需调用 `CardCmd.PreviewCardPileAdd()` 刷新 UI
+- 遗物能力图标需要禁用显示
+- **能力图标规则**：只有能力牌（CardType.Power）直接施加的能力才显示图标（`IsVisibleInternal = true`）；非能力牌（Attack/Skill）用能力间接实现效果的能力一律不显示图标（`IsVisibleInternal = false`）。`IsVisible` 不是虚方法，只能覆写 `IsVisibleInternal`（false 时连 hover tip 也不生成）
+- **本地化必须中英同步**：zhs 新增条目而 eng 缺失会导致构建警告，新内容两个文件一起改
+- **描述中的占位符必须对应 CanonicalVars 中定义的 DynamicVar 名称**，C# 常量（如 `private const int HitCount`）不是 DynamicVar，需在描述中直接写死数值，否则卡面会显示原始占位符文本
+- `CardPlay` 在 `MegaCrit.Sts2.Core.Entities.Cards`、`CardModel` 在 `MegaCrit.Sts2.Core.Models`；卡牌/遗物里 `base.Owner` 已是 Player，取生物用 `base.Owner.Creature`（不要写 `.Player`）。⚠️ 遗物回调参数里的 player 引用跨回合会变，施加能力一律用 `base.Owner.Creature`，否则第二回合起加成失效（历史 bug）
+- DynamicVar 的 `BaseValue` 是 decimal，传给 int 参数要 cast 或取 `.IntValue`（如 `(int)DynamicVars["HeartWallGain"].BaseValue`，参考 `PreventionShot`）
+- 临时减力量用 `TemporaryStrengthPower` + `IsPositive => false`（参考 `BpknPower`）
+- `GetTeammatesOf` 单人局也会返回自己，联机逻辑一律先 `c.Player != base.Owner` 去重（参考 `ASoulIsComing`）
+- 测试时卡池卡牌太少会导致商店黑屏（保证卡池里有足够多的卡再逛商店）；游戏内按 `~` 打开控制台，`card ZHIJIANG_CARD_XXX`（本地化 key）可直接把卡加入手牌
+- CanonicalVars 只做"描述占位符→数值"映射、不是效果逻辑：若 OnPlay 里手动生成卡牌（如灵魂），不要再加对应 CardsVar，否则引擎会额外自动生成一份、总数翻倍
+- 项目启用 ImplicitUsings（net9.0 / LangVersion 13 / Nullable enable），但 `CardPlay`/`CardModel` 等仍需显式 using
+- 充能球 API 坑：RitsuLib 无 Orb 操作封装，直接用原生 `OrbCmd`/`OrbQueue`；`OrbCmd.Channel` 无栏位时自动补 1 栏，栏位满时不会自动激发而是直接替换——想腾位置要先 `OrbCmd.EvokeNext`（参考 `EvilBellaPower`）；`OrbCmd.AddSlots/RemoveSlots` 上限 10；栏位队列取 `player.PlayerCombatState.OrbQueue`（`Orbs`/`Capacity`）
+- "每当生命值减少"没有独立事件，用 `AfterDamageReceived` + `result.UnblockedDamage > 0` 判定（被格挡不掉血不触发，参考 `EvilBellaPower`）；治疗走 `AfterCurrentHpChanged`（delta 为负即伤害）；`DamageResult` 常用字段：UnblockedDamage/BlockedDamage/TotalDamage/WasFullyBlocked/WasTargetKilled
+- 远古体系注册：遗物升级 `[RegisterTouchOfOrobasRefinement(typeof(KiraBellaris))]`（贝极星→闪耀贝极星，升级遗物 `RelicRarity` 保持 `Starter`，未命中降级为 Circlet）；卡牌转化 `[RegisterArchaicToothTranscendence(typeof(MadCow))]`（勇敢牛牛→疯牛，转化保留升级与附魔）；远古卡仍 `[RegisterCard(typeof(BellaCardPool))]` 但 Ancient 不进奖励池
+
+### 卡牌框架代码
+
+```csharp
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using STS2RitsuLib.Interop.AutoRegistration;
+using STS2RitsuLib.Scaffolding.Content;
+using Zhijiang.ZhijiangCode.Characters.Bella;
+
+namespace Zhijiang.ZhijiangCode.Cards.Bella;
+
+[RegisterCard(typeof(BellaCardPool))]
+public sealed class {CardName} : ModCardTemplate
+{
+    private const int BaseEnergyCost = {N};
+    private const CardType CardKind = CardType.{Type};
+    private const CardRarity CardRarityValue = CardRarity.{Rarity};
+    private const TargetType CardTarget = TargetType.{Target};
+    private const bool ShowInCardLibrary = true;
+
+    public override CardAssetProfile AssetProfile => new(
+        PortraitPath: $"{Entry.ResPath}/images/cards/Zhijiang{Skill|Attack|Power}.png");
+
+    public {CardName}() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
+    {
+    }
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        // TODO: 卡牌效果
+    }
+
+    protected override void OnUpgrade()
+    {
+        // TODO: 升级效果
+    }
+}
+```
+
+### 当前卡牌统计
+
+| 稀有度 | 已完成 | 目标 |
+|--------|--------|------|
+| Basic | 4 (BellaStrike, BellaDefend, Ygnn, Bpkn) | 4 |
+| Common | 3 (PreventionShot, Heartfelt, IceBeauty) | 20 |
+| Uncommon | 1 (ASoulIsComing) | 36 |
+| Rare | 2 (LoopIn20, EvilBella) | 26 |
+| Ancient | 2 (MadCow, TearOfBellaris) | 2 |
+
+> 初始卡组 10 张 = 打击×4 + 防御×4 + 勇敢牛牛×1 + 不怕困难×1。勇敢牛牛/不怕困难原为普通牌，已改为基础牌并各给 1 张；预防针了/真情实感原为基础牌，已改为普通牌、不再是初始牌（见会话导出 2）。
+
+## 心之壁（第二费用）机制定稿
+
+- 注册位置：`ZhijiangCode/SecondResource/HeartWall.cs`（`HeartWall.Register()` 由 Entry 初始化时调用），RitsuLib `SecondaryResource`，仅贝拉角色显示（`AlwaysShowInCombatUiForCharacter<BellaCharacter>`）。
+- **定稿行为**（曾设计为"每回合回满 10 / 整局 Run 持久"，后改为）：`defaultAmount: 10`、`baseMaxAmount: null`（**无上限**）、`turnStartPolicy: None`（回合开始不自动变化）、`persistencePolicy: Combat`（**每场战斗重置为 10**）、下限 0。增减完全由卡牌/遗物驱动。
+- RitsuLib `SecondaryResourceDefinition` 共 11 个构造参数（后 5 个为图标/本地化）；`baseMaxAmount: null` = 无上限概念，另有 `hardMaxAmount` 硬上限与 `minAmount` 硬下限。枚举语义（v0.4.57）：`turnStartPolicy` = None/ResetToMax/AddMaxToCurrent/Clear（注意 ResetToMax 与 AddMaxToCurrent 不同）；`persistencePolicy` = None/Combat/Run（Combat = 每场战斗重置）。
+- 战斗 UI 计数器：能量计数器旁 `(+60, -100)`，90×90，字号 28，白色正数，格式为纯数字（不带 /max）；图标 `Zhijiang/images/characters/Bella/HeartWall_text.png` / `HeartWall_big.png`（已有专属图标，不再复用能量图标）。
+- 卡牌消耗显示：能量图标下方 `(0, +80)`，48×48 图标 + 字号 24（`NSecondaryResourceCardCostUi`）。
+- 卡牌侧 API：完整资源 ID 是 `Zhijiang.HeartWall`，代码里用 `HeartWall.HeartWallId` 静态属性；增减 `SecondaryResourceCmd.Get/Gain(base.Owner, HeartWall.HeartWallId, n, this)`；卡牌费用在构造函数里 `this.SecondaryCosts().Set(HeartWall.HeartWallId, N)`（升级用 Set 覆盖，支付/CanPlay 校验/卡面费用显示由 RitsuLib 自动处理）；耗空全部心之壁：`Get` 读当前值 → `SecondaryResourceCmd.Lose` 全扣（参考 `TearOfBellaris`）
+- 本地化里心之壁图标用 Godot BBCode 直接渲染：`[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]`；⚠️ RitsuLib 的 `{secondaryResource:secondaryResourceIcons(...)}` formatter 在本地化管线里不生效（原样显示占位符），统一用 `[img]`
+- 本地化（`static_hover_tips.json`）：key `ZHIJIANG_SECONDARY_RESOURCE_HEART_WALL.title/.description`（第二资源 key 格式 `ZHIJIANG_SECONDARY_RESOURCE_{LocalId大写}`）；zhs「心之壁 / 唉，有心之壁了」，eng「A.T. Field / An impenetrable barrier of the heart.」（A.T. Field = EVA 绝对恐怖领域梗）。
+
+## 开发环境注意
+
+- 本机用 PowerShell 提交 git：中文提交信息用 `git commit -F <UTF-8文件>`（或 `--amend -F`）避免 PS 传参 GBK 乱码；验证仓库实际存储内容用 `git log --output=<文件>` 绕过终端编码
+- `.trae/` 与 `.agents/` 已在 .gitignore，不提交；根目录 `AGENTS.md` 会随仓库提交、供所有协作者/工具共享
+
+## 阴阳机制（核心玩法）设计定稿
+
+> 设计决策已确认（2026-08-12），详细设计见 `doc/Bella.md` 1.2 节。编码时以此为准。
+
+### 机制规则
+
+- **卡牌属性**：所有贝拉卡牌带「阳」或「阴」标签（用 RitsuLib CardKeyword 实现，见下）。灵魂/诅咒/战斗临时牌为**中立**，无标签、不计数、不受影响。
+- **颜色对应**：白拉 = 阳（白），黑拉 = 阴（黑）。
+- **攻防独立**：卡牌的阴阳属性与它偏攻击还是偏防守**互相独立**、不绑定。阴阳只看卡牌属性本身。（「阳=心之壁·守护、阴=充能球·激进」只是历史提案，已作废，2026-08-15 确认）
+- **状态判定**：统计贝拉拥有的全部卡牌（含各牌堆）。
+  - 阳 > 阴 → **白拉**；阴 > 阳 → **黑拉**；相等 → **白拉**（此时 d=0 无修正）。
+  - ⚠️ **消耗堆（ExhaustPile）不参与计数**：战斗中消耗掉的阴阳牌会被移除出状态统计（`GetOwnedCards` 用 `AllPiles.Where(p => p.Type != PileType.Exhaust)`，注意 `CardPile.Type` 不是 `PileType` 属性）。
+- **差值制修正**：`d = |阳牌数 − 阴牌数|`，相符牌按 `±(d ÷ 3)` 修正（d 每 3 张差 ±1），相反牌削弱。
+  - 无上限（鼓励极限偏科）；削弱保底 1 点，避免完全失效。
+  - 加成/削弱作用于卡牌效果数值（伤害、格挡、心之壁获得等）。
+- **初始遗物 = 通用能力① + 角色专属能力②**：
+  - ① 心之壁→敏捷（**本 mod 所有角色初始遗物共有的能力**）：每回合开始敏捷 = 心之壁 ÷ 15（整除），临时敏捷仅本回合有效、回合结束移除。通用逻辑在共享基类 `ModStarterRelicTemplate.AfterPlayerTurnStart`，子类覆写 `ApplyHeartWallDexterity` 施加各角色专属的 TemporaryDexterityPower（贝拉为 `BellarisHeartWallPower`）。**以后每新增一个角色，其初始遗物都要继承 `ModStarterRelicTemplate` 带上这条。**
+  - ② 角色专属双面加成（白拉防御 / 黑拉进攻）：贝极星：白拉时每打出 1 张技能牌获得 3 格挡；黑拉时攻击牌伤害 +2。闪耀贝极星：白拉时每打出 1 张技能牌获得 6 格挡；黑拉时攻击牌伤害 +4。
+  - ⚠️ 方向是**白拉防御、黑拉进攻**（不是进攻/防守的常规直觉），文档 1.5 和 2.1 已同步。
+  - 实现模式：战斗开始时（`AfterRoomEntered` 判 `CombatRoom`）**同时施加两个 Power**——`BellarisStrengthPower`（内部判黑拉才生效）与 `BellarisBlockPower`（内部判白拉才生效），各自按状态判断、天然互斥。"每打出卡牌"没有 PowerModel 钩子，用 `AbstractModel.AfterCardPlayed`（参考 `BellarisBlockPower`）
+- **状态展示**：战斗内用可见 Power（白拉 Power / 黑拉 Power）挂在角色下方；战斗外用初始遗物 hover tip 动态文本显示当前状态。
+- 角色基础数值：`StartingHp = 75`、`StartingGold = 99`、`Gender = Feminine`、占位角色 `PlaceholderCharacterId = "ironclad"`（缺字段时从占位角色回退）
+
+### 已实现卡牌的阴阳属性（已确认）
+
+| 卡牌 | 稀有度 | 类型 | 阴阳 |
+|------|--------|------|------|
+| 打击 | 基础 | 攻击 | 阴 |
+| 勇敢牛牛 | 基础 | 攻击 | 阴 |
+| 防御 | 基础 | 技能 | 阳 |
+| 不怕困难 | 基础 | 技能 | 阳 |
+| 预防针了 | 普通 | 技能 | 阳 |
+| 真情实感 | 普通 | 技能 | 阳 |
+| 冰山美人 | 普通 | 技能 | 阳 |
+| 一个魂来咯 | 罕见 | 技能 | 阳 |
+| 20号循环 | 稀有 | 技能 | 阴 |
+| 黑拉 | 稀有 | 能力 | 阴 |
+| 疯牛！ | 远古 | 攻击 | 阴 |
+| 贝极星的眼泪 | 远古 | 攻击 | 阴 |
+
+> 初始卡组配比：5 阴（打击×4+勇敢牛牛×1）5 阳（防御×4+不怕困难×1），开局白拉。
+> 代码实现：各卡牌 `CanonicalKeywords` 挂载 `BellaYinYangService.YangKeywordId/YinKeywordId.GetModCardKeyword()`。新增卡牌必须先登记属性（见 `doc/Bella.md` 4.0）。
+
+### 卡牌数值定稿（已按阴阳平衡下调）
+
+| 卡牌 | 数值（基础→升级） | 阴阳 |
+|------|------|------|
+| 打击 | 6→9 伤害（对齐原版） | 阴 |
+| 勇敢牛牛 | 3→4×3次 + 2→3力量 | 阴 |
+| 防御 | 5→8 格挡（对齐原版） | 阳 |
+| 不怕困难 | 8 格挡 + 全敌-5力量，升级保留 | 阳 |
+| 预防针了 | 5→10心壁 + 8→11格挡，-1力量 | 阳 |
+| 真情实感 | 去全敌 5→8 格挡，耗10心壁 | 阳 |
+| 冰山美人 | 1→0费，1 冰霜球 | 阳 |
+| 一个魂来咯 | 3 灵魂，升级移除消耗 | 阳 |
+| 20号循环 | 3→2费，下一攻击×20次，耗150→120心壁 | 阴 |
+| 黑拉 | 掉血生 1→2 黑暗球（无栏位加成） | 阴 |
+| 疯牛！ | 7→10×3次 + 4→6力量 | 阴 |
+| 贝极星的眼泪 | 全敌 17 伤害，每10心壁 1→2力量 | 阴 |
+
+> 原数值（如打击6、勇敢牛牛4×3+3等）已下调，为阴阳差值修正留空间。冰山美人从2球改1球（本地化已同步）。
+> ⚠️ 打击/防御后改为对齐原版：打击 6→9（升级+3），防御 5→8（升级+3），与 `DefendIronclad`/`StrikeIronclad` 一致。
+
+### 关键词句号补丁（⚠️ 补丁已写但实测无效，用户决定搁置）
+
+- RitsuLib `GetCardText` 会在金色关键词后拼接 `card_keywords.PERIOD`（句号），原版"消耗"等关键词沿用此样式。
+- 已写补丁 `ZhijiangCode/Patches/ModKeywordPeriodRemovalPatch.cs`（`IPatchMethod`，Postfix patch `ModKeywordRegistry.GetCardText`，对 `ZHIJIANG_KEYWORD_YANG/YIN` 去句号），但**实测句号仍然存在**，用户拍板"算了、这个不影响"（2026-08-13）。若以后真要修，应改 patch 注入点 `ModKeywordCardDescriptionInjector` 而不是 `GetCardText`。
+- 注册方式：`RitsuLibFramework.CreatePatcher(ModId, "KeywordPeriodRemoval").RegisterPatch<ModKeywordPeriodRemovalPatch>()`，需 `using STS2RitsuLib.Patching.Core`。
+
+### 差值修正配置定稿
+
+- **公式**：相符牌 `+|d|÷3`、相反牌 `-|d|÷3`，修正后保底 1。d = |阳牌数−阴牌数|。
+- ⚠️ 幅度必须取 `Math.Abs(d) / 3`、方向由相符/相反决定——曾因直接用带符号 `d/3` 且 `<= 0` 提前 return，导致黑拉（d<0）时全部差值修正失效（已修复，见 `BellaYinYangCorrectionPower.CorrectionFor`）；卡牌自身读差值走 `BellaYinYangService.ComputeMagnitude`（内部已 Abs）
+- **实现**：`BellaYinYangCorrectionPower`（重写 `ModifyDamageAdditive`/`ModifyBlockAdditive`），战斗开始时（`CombatStartingEvent` 订阅，见 `BellaYinYangService.RegisterCombatCorrection()`）对贝拉玩家施加。
+- **参与标记**：卡牌实现 `IBellaYinYangCorrectionCard`（`CorrectDamage`/`CorrectBlock`），豁免牌不实现。
+- **逐卡参与项**：
+  - 伤害修正（Power 钩子）：打击、疯牛、贝极星的眼泪
+  - 格挡修正（Power 钩子）：防御、不怕困难、预防针了
+  - 次数修正（卡牌自身读差值，无钩子）：勇敢牛牛
+  - 去格挡量修正（卡牌自身读差值，无钩子）：真情实感
+  - 完全豁免：冰山美人、一个魂来咯、20号循环、黑拉
+- ⚠️ `ModifyCardPlayCount` 是"整张卡重复打出"（Burst/Echo 类），**不是**多段攻击段数；次数修正必须在卡牌 OnPlay 里自己读差值（参考 `Ygnn` 实现）。"下一张攻击牌额外打出 N 次"的正确用法见 `LoopIn20Power`：`ModifyCardPlayCount` 返回 `playCount + N`，`AfterModifyingCardPlayCount` 里 `PowerCmd.Decrement` 消耗 1 层
+
+### 状态展示（已实现）
+
+- 战斗内：`BaiLaPower` / `HeiLaPower`（`ZhijiangCode/Powers/`，可见 Power，`StackType.Single`，`IsVisibleInternal=true`），战斗开始时由 `BellaYinYangService.RegisterCombatCorrection()` 的 `CombatStartingEvent` 订阅按当前状态施加到贝拉玩家。
+- 战斗外：贝极星/闪耀贝极星的 `AdditionalHoverTips` 动态追加当前状态 Power 的 hover tip（`base.Owner` 即 Player，每次悬停重算）。
+- 本地化：`powers.json`（zhs/eng）新增 `ZHIJIANG_POWER_BAI_LA_POWER` / `ZHIJIANG_POWER_HEI_LA_POWER`。
+- ⚠️ 状态标记图标暂用贝拉能量图标占位，后续替换专属图标。
+- 阴阳机制源文件清单：`Keywords/BellaYinYangKeywords.cs`；`Characters/Bella/{BellaYinYangService.cs, IBellaYinYangCorrectionCard.cs}`；`Relics/Bella/{BellaYinYangCorrectionPower.cs, BellarisStrengthPower.cs, BellarisBlockPower.cs}`；`Powers/{BaiLaPower.cs, HeiLaPower.cs}`；`Patches/ModKeywordPeriodRemovalPatch.cs`
+
+### 本轮开发范围（静态框架）
+
+- ✅ 卡牌标签（阳/阴 CardKeyword）+ 差值修正逻辑
+- ✅ 遗物双面加成改造（替换此前的攻击无条件加成；历史版本数值几经调整——早期 +2 基础/+5 升级牌、后来 +1/+3——均已废弃，勿再参考；`KiraBellaris.cs` 顶部还留着旧版注释，同样已过时）
+- ✅ 状态展示（战斗内 Power + 战斗外遗物文本）
+- ⏸ 动态机制（切换牌「阴阳逆转」/临时状态「趋光·堕影」/立场宣言/双极牌「太极劲」）、转化牌「拨乱反正」、反其道牌「混沌之心」、升级翻转属性、药水「阴阳灵液」、事件「阴阳师」→ **后续版本**
+- ⚠️ 纪元系统不适用（`RequiresEpochAndTimeline = false`），文档「五、纪元系统」标记为暂不适用
+
+### 代码实现方案
+
+1. **关键词注册**：用 `[RegisterOwnedCardKeyword]` attribute 注册 `yang` / `yin` 两个 CardKeyword
+   - `CardDescriptionPlacement = ModKeywordCardDescriptionPlacement.BeforeCardDescription`（显示在卡牌描述**上方**，区别于"消耗/固有"的 AfterCardDescription 显示在下方）
+   - 本地化 key：`ZHIJIANG_KEYWORD_YANG.title/.description`、`ZHIJIANG_KEYWORD_YIN.*`，写入 `card_keywords` 本地化表（zhs/eng）
+   - 卡牌上挂载：覆盖 `CardModel.CanonicalKeywords` 返回 `"ZHIJIANG_KEYWORD_YANG".GetModCardKeyword()`，或旧式 `RegisteredKeywordIds`（已过时，用新的）
+   - **覆盖 `CanonicalKeywords` 必须合并既有关键词**：若该卡已有 `CardKeyword.Exhaust`（消耗），要把阴阳关键词与它一起返回（参考 `ASoulIsComing`/`LoopIn20`/`TearOfBellaris`），否则会挤掉"消耗"
+   - 运行时判定：字符串重载 `card.HasModKeyword("...")` 已过时（编译警告），实际代码用 minted 值比较 `card.Keywords.Contains("ZHIJIANG_KEYWORD_YANG".GetModCardKeyword())`（见 `BellaYinYangService.ComputeDiff`）
+   - 相关源码：`STS2-RitsuLib/src/Keywords/`（ModKeywordRegistry、ModKeywordDefinition、ModKeywordCardDescriptionPlacement）、`STS2-RitsuLib/src/Interop/AutoRegistration/RegistrationAttributes.cs`（RegisterOwnedCardKeyword）
+2. **状态计算**：写 `BellaYinYangService`（静态工具类）：遍历玩家卡组统计阳/阴数量算 d、判状态。**实时计算**，不缓存变量（状态是派生状态，卡组几十张遍历开销可忽略，避免更新时机不同步问题）。
+3. **修正层**：战斗开始时（`CombatStartingEvent`）按 d 施加修正 Power：相符牌加成、相反牌削弱（保底 1）。卡牌数值动态修正参考现有 `BellarisStrengthPower.ModifyDamageAdditive` 模式。
+4. **状态展示**：两个可见 Power（`BaiLaPower` / `HeiLaPower`）挂角色下方，参考 `EvilBellaPower`（`IsVisibleInternal = true`）；遗物 hover tip 动态文本显示当前状态。
+5. **遗物改造**：`Bellaris.cs` / `KiraBellaris.cs` 的②能力改为双面加成，替换 `BellarisStrengthPower` 无条件攻击加成逻辑。
+6. **初始卡组配比**：10 张起始牌配 5 阳 5 阴（开局白拉、可自由转向）。
+
+### 遗留事项
+
+- 状态名「黑拉」与已有稀有能力牌「黑拉」（`EvilBella`）重名，命名冲突后续统一处理。
+- 卡牌阴阳具体分配（打击/勇敢牛牛等各属阳还是阴）编码时按 5 阳 5 阴配比分配。
+- **待办：状态展示 Power 的实时动态更新**——战斗开始时施加的白拉/黑拉 Power 是战斗瞬间快照；若战斗中消耗/加入牌导致状态翻转，图标不会自动更新。差值修正本身实时正确，仅图标需要监听状态变化（如 `CardMovedBetweenPilesEvent` 或弃牌/消耗事件）后替换 Power。属"动态机制"范围，后续实现。
