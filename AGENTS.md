@@ -125,6 +125,36 @@ public sealed class {CardName} : ModCardTemplate
 - 本地化里心之壁图标用 Godot BBCode 直接渲染：`[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]`；⚠️ RitsuLib 的 `{secondaryResource:secondaryResourceIcons(...)}` formatter 在本地化管线里不生效（原样显示占位符），统一用 `[img]`
 - 本地化（`static_hover_tips.json`）：key `ZHIJIANG_SECONDARY_RESOURCE_HEART_WALL.title/.description`（第二资源 key 格式 `ZHIJIANG_SECONDARY_RESOURCE_{LocalId大写}`）；zhs「心之壁 / 唉，有心之壁了」，eng「A.T. Field / An impenetrable barrier of the heart.」（A.T. Field = EVA 绝对恐怖领域梗）。
 
+## 卡牌拖尾特效（Trail VFX）配置（新角色复用指南）
+
+- 回合结束弃牌/奖励拿牌时卡牌飞行的发光拖尾由 `CharacterModel.TrailPath` 指定场景（原版按角色 id 拼 `vfx/card_trail_{id}`，完整路径 `res://scenes/vfx/card_trail_{id}.tscn`，见 `SceneHelper.GetScenePath`）。
+- Mod 角色未提供专属场景时回退占位角色的拖尾（贝拉 = ironclad）；RitsuLib 补丁 `CharacterTrailPathPatch` / `CharacterTrailStyleOverridePatch` 支持覆盖，无需自建资源。
+- **给新角色指定颜色（两步）**：① 角色类加应援色常量（如 `SupportColor`）；② `CharacterAssetProfile.Vfx` 配 `TrailStyle`（`CharacterTrailStyle`，全字段可选），按节点路径染色：
+  - `Trails/OuterTrail`、`Trails/InnerTrail`（Line2D：`Modulate` **相乘**染色 + `Width` 宽度）
+  - `Sprites/BigSparks`、`Sprites/LittleSparks`（CPUParticles2D：`Color`，会与 color ramp **相乘**）
+  - `Sprites/Sprite2D2`、`Sprites/Sprite2D3`（Sprite2D：`Modulate` + `Scale`）
+  ```csharp
+  Vfx: new CharacterVfxAssetSet(
+      TrailStyle: new CharacterTrailStyle(
+          OuterTrailModulate: SupportColor,
+          InnerTrailModulate: SupportColor,
+          BigSparksColor: SupportColor,
+          LittleSparksColor: SupportColor,
+          PrimarySpriteModulate: SupportColor,
+          SecondarySpriteModulate: SupportColor))
+  ```
+- **颜色原理（实测结论）**：所有原版拖尾的缎带渐变最亮段都是纯白 (1,1,1)、剪影精灵是白底 → 相乘染色后**亮部即精确等于所设颜色，无需反算**；小火花 ramp 是暖白 → 染后≈目标色；大火花 ramp 是各角色专属彩色渐变（随粒子寿命变化），单值相乘无法全程精确，染后呈「目标色×原ramp」的暗色调。选底建议：目标色与哪个原版场景同色系就回退哪个（或设 `Vfx.TrailPath` 指向它），观感最协调。要 100% 精确需自建专属拖尾场景（节点结构：`Trails/OuterTrail`、`Trails/InnerTrail`、`Sprites/BigSparks`、`Sprites/LittleSparks`、`Sprites/Sprite2D2`、`Sprites/Sprite2D3`）。
+- **原版 5 个拖尾场景底色**（外缎带 modulate / 大火花 ramp 主色，供选底参考）：
+  | 场景 | 外缎带 | 大火花 ramp |
+  |------|------|------|
+  | ironclad | 红橙 (1, 0.169, 0) | 红→橙→暗红 |
+  | silent | 绿 (0, 0.668, 0.118) | 黄绿→暗绿 |
+  | defect | 蓝 (~0, 0.604, 0.79) | 蓝青→暗青 |
+  | regent | 橙棕 (0.624, 0.276, 0) | 金黄→棕 |
+  | necrobinder | 粉红 (1, 0.126, 0.288) | 粉红→紫红 |
+- **查看原版场景内容的方法**：用本机 Godot headless 加载游戏 pck 直接读 `res://` 文本（无需反编译）：临时工程放一个 `SceneTree` 脚本，`ProjectSettings.load_resource_pack("<游戏目录>/SlayTheSpire2.pck", true)` 后 `FileAccess.open("res://scenes/vfx/card_trail_xxx.tscn", FileAccess.READ)` 导出文本即可。
+- 贝拉已配置：全部染成 `SupportColor`（0.8588, 0.4902, 0.4549 = #DB7D74，应援色，与 `MapDrawingColor` 同值），底为 ironclad 拖尾（红橙系，与粉色同暖色系），实测观感好。
+
 ## 开发环境注意
 
 - 本机用 PowerShell 提交 git：中文提交信息用 `git commit -F <UTF-8文件>`（或 `--amend -F`）避免 PS 传参 GBK 乱码；验证仓库实际存储内容用 `git log --output=<文件>` 绕过终端编码

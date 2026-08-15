@@ -11,6 +11,8 @@ namespace Zhijiang.ZhijiangCode.Characters.Bella;
 public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRelicPool, BellaPotionPool>
 {
     public static readonly Color ThemeColor = new(0.42f, 0.65f, 0.72f);
+    // 应援色（#DB7D74）。
+    public static readonly Color SupportColor = new(0.8588f, 0.4902f, 0.4549f);
 
     private const string SceneRoot = $"{Entry.ResPath}/scenes/characters";
     private const string ImageRoot = $"{Entry.ResPath}/images/characters";
@@ -24,8 +26,8 @@ public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRe
     public override Color NameColor => ThemeColor;
     // 能量图标轮廓颜色。
     public override Color EnergyLabelOutlineColor => new(0.08f, 0.18f, 0.24f);
-    // 地图绘制颜色（#DB7D74）。
-    public override Color MapDrawingColor => new(0.8588f, 0.4902f, 0.4549f);
+    // 地图绘制颜色（应援色 #DB7D74）。
+    public override Color MapDrawingColor => SupportColor;
 
     // 人物性别（男女中立）。
     public override CharacterGender Gender => CharacterGender.Feminine;
@@ -60,7 +62,19 @@ public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRe
             // 人物选择图标-锁定状态。
             CharacterSelectLockedIconPath: $"{ImageRoot}/Bella/Bella_character_select_locked.png",
             // 地图上的角色标记图标、表情轮盘上的角色头像。
-            MapMarkerPath: $"{ImageRoot}/Bella/Bella_map_icon.png")
+            MapMarkerPath: $"{ImageRoot}/Bella/Bella_map_icon.png"),
+        // 卡牌拖尾特效：未提供专属拖尾场景时沿用占位角色（ironclad）的拖尾，
+        // 颜色通过 TrailStyle 染成贝拉应援色（SupportColor #DB7D74）。
+        // 原版缎带渐变亮段与剪影精灵贴图均为白色，相乘染色后亮部即精确的 #DB7D74；
+        // 大火花自带红橙 color ramp，相乘后呈暗红火花（与粉色拖尾同一暖色系）。
+        Vfx: new CharacterVfxAssetSet(
+            TrailStyle: new CharacterTrailStyle(
+                OuterTrailModulate: SupportColor,
+                InnerTrailModulate: SupportColor,
+                BigSparksColor: SupportColor,
+                LittleSparksColor: SupportColor,
+                PrimarySpriteModulate: SupportColor,
+                SecondarySpriteModulate: SupportColor))
         );
 
     // 某个字段没写时，RitsuLib 会从占位角色配置里补齐。
