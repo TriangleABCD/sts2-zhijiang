@@ -1,6 +1,6 @@
 {
   "ZHIJIANG_KEYWORD_YANG.title": "Yang",
-  "ZHIJIANG_KEYWORD_YANG.description": "Yang card. Gains bonuses in Bai La state (more Yang than Yin), and is weakened in Hei La state.",
+  "ZHIJIANG_KEYWORD_YANG.description": "Yang card. Bella is in the Bai La state when Yang cards outnumber Yin cards. The Yin-Yang difference is the gap between the number of Yang and Yin cards.",
   "ZHIJIANG_KEYWORD_YIN.title": "Yin",
-  "ZHIJIANG_KEYWORD_YIN.description": "Yin card. Gains bonuses in Hei La state (more Yin than Yang), and is weakened in Bai La state."
+  "ZHIJIANG_KEYWORD_YIN.description": "Yin card. Bella is in the Hei La state when Yin cards outnumber Yang cards. The Yin-Yang difference is the gap between the number of Yang and Yin cards."
 }

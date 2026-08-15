@@ -1,13 +1,13 @@
 {
-  "ZHIJIANG_POWER_EVIL_BELLA_POWER.title": "黑拉",
+  "ZHIJIANG_POWER_EVIL_BELLA_POWER.title": "黑贝拉sama",
   "ZHIJIANG_POWER_EVIL_BELLA_POWER.description": "每当你损失生命值时，生成 1 个黑暗充能球。",
   "ZHIJIANG_POWER_EVIL_BELLA_POWER.smartDescription": "每当你损失生命值时，生成 {Amount} 个黑暗充能球。",
 
   "ZHIJIANG_POWER_BAI_LA_POWER.title": "白拉",
-  "ZHIJIANG_POWER_BAI_LA_POWER.description": "贝拉处于白拉状态：阳牌多于阴牌（或相等）。阳牌获得加成，阴牌被削弱。",
-  "ZHIJIANG_POWER_BAI_LA_POWER.smartDescription": "贝拉处于白拉状态：阳牌多于阴牌（或相等）。阳牌获得加成，阴牌被削弱。",
+  "ZHIJIANG_POWER_BAI_LA_POWER.description": "贝拉处于白拉状态：阳牌多于阴牌（或相等）。",
+  "ZHIJIANG_POWER_BAI_LA_POWER.smartDescription": "贝拉处于白拉状态：阳牌多于阴牌（或相等）。",
 
   "ZHIJIANG_POWER_HEI_LA_POWER.title": "黑拉",
-  "ZHIJIANG_POWER_HEI_LA_POWER.description": "贝拉处于黑拉状态：阴牌多于阳牌。阴牌获得加成，阳牌被削弱。",
-  "ZHIJIANG_POWER_HEI_LA_POWER.smartDescription": "贝拉处于黑拉状态：阴牌多于阳牌。阴牌获得加成，阳牌被削弱。"
+  "ZHIJIANG_POWER_HEI_LA_POWER.description": "贝拉处于黑拉状态：阴牌多于阳牌。",
+  "ZHIJIANG_POWER_HEI_LA_POWER.smartDescription": "贝拉处于黑拉状态：阴牌多于阳牌。"
 }

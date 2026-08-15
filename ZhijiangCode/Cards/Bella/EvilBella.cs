@@ -24,7 +24,7 @@ public sealed class EvilBella : ModCardTemplate
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/evil_bella.png");
 
-    // 阴阳属性：黑拉为阴牌。
+    // 阴阳属性：黑贝拉sama为阴牌。
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         BellaYinYangService.YinKeywordId.GetModCardKeyword()

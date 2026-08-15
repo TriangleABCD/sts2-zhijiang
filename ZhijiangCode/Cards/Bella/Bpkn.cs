@@ -19,7 +19,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 [RegisterCard(typeof(BellaCardPool))]
 [RegisterCharacterStarterCard(typeof(BellaCharacter), 1)]
-public sealed class Bpkn : ModCardTemplate, IBellaYinYangCorrectionCard
+public sealed class Bpkn : ModCardTemplate
 {
     private const int BaseEnergyCost = 3;
     private const CardType CardKind = CardType.Skill;
@@ -50,9 +50,6 @@ public sealed class Bpkn : ModCardTemplate, IBellaYinYangCorrectionCard
         BellaYinYangService.YangKeywordId.GetModCardKeyword()
     ];
 
-    // 参与差值修正：仅格挡修正（削敌力量固定）。
-    public bool CorrectDamage => false;
-    public bool CorrectBlock => true;
 
     public Bpkn() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {

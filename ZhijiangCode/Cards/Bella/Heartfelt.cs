@@ -55,13 +55,8 @@ public sealed class Heartfelt : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 去格挡量参与差值修正：相符 +|d|÷3、相反 -|d|÷3，至少保留 1 点。
+        // 去除所有敌人格挡（最多 stripAmount 点）。
         int stripAmount = DynamicVars["StripAmount"].IntValue;
-        {
-            int magnitude = BellaYinYangService.ComputeMagnitude(base.Owner);
-            stripAmount += BellaYinYangService.IsAligned(base.Owner, this) ? magnitude : -magnitude;
-            stripAmount = Math.Max(stripAmount, 1);
-        }
 
         // 遍历所有可攻击敌人，去除格挡（最多 stripAmount 点）。
         foreach (var enemy in base.CombatState?.HittableEnemies ?? Array.Empty<Creature>())

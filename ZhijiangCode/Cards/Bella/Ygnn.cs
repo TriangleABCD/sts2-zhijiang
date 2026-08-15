@@ -57,16 +57,8 @@ public sealed class Ygnn : ModCardTemplate
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
-        // 攻击次数参与差值修正：相符 +|d|÷3 次、相反 -|d|÷3 次，至少保留 1 次。
-        int hitCount = HitCount;
-        {
-            int magnitude = BellaYinYangService.ComputeMagnitude(base.Owner);
-            hitCount += BellaYinYangService.IsAligned(base.Owner, this) ? magnitude : -magnitude;
-            hitCount = Math.Max(hitCount, 1);
-        }
-
         // 多段攻击：造成 {Damage} 点伤害 {HitCount} 次。
-        for (int i = 0; i < hitCount; i++)
+        for (int i = 0; i < HitCount; i++)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)

@@ -17,7 +17,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 // RegisterCharacterStarterCard 会把它追加进 BellaCharacter 的初始卡组。
 [RegisterCard(typeof(BellaCardPool))]
 [RegisterCharacterStarterCard(typeof(BellaCharacter), 4)]
-public sealed class BellaStrike : ModCardTemplate, IBellaYinYangCorrectionCard
+public sealed class BellaStrike : ModCardTemplate
 {
     // 基础耗能。
     private const int BaseEnergyCost = 1;
@@ -51,9 +51,6 @@ public sealed class BellaStrike : ModCardTemplate, IBellaYinYangCorrectionCard
         BellaYinYangService.YinKeywordId.GetModCardKeyword()
     ];
 
-    // 参与差值修正：伤害修正。
-    public bool CorrectDamage => true;
-    public bool CorrectBlock => false;
 
     public BellaStrike() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {

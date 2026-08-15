@@ -1,9 +1,9 @@
 {
   "ZHIJIANG_RELIC_BELLARIS.title": "贝极星",
-  "ZHIJIANG_RELIC_BELLARIS.description": "每回合开始时，每拥有 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]，获得 1 点 [green]敏捷[/green]，敏捷仅本回合有效。处于[gold]白拉[/gold]状态时，每打出 1 张技能牌获得 3 点格挡；处于[gold]黑拉[/gold]状态时，攻击牌造成的伤害 +2。",
+  "ZHIJIANG_RELIC_BELLARIS.description": "每回合开始时，每拥有 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]，获得 1 点 [green]敏捷[/green]，敏捷仅本回合有效。处于[gold]白拉[/gold]状态时，每打出一张技能牌获得 1 点格挡，阴阳差每有 3 点额外获得 1 点，并在战斗开始时失去 1 点力量，阴阳差每有 3 点额外失去 1 点；处于[gold]黑拉[/gold]状态时，每打出一张攻击牌对随机一名敌人造成 1 点伤害，阴阳差每有 3 点额外造成 1 点，并在战斗开始时失去 1 点敏捷，阴阳差每有 3 点额外失去 1 点。",
   "ZHIJIANG_RELIC_BELLARIS.flavor": "贝武圣",
 
   "ZHIJIANG_RELIC_KIRA_BELLARIS.title": "闪耀贝极星",
-  "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "每回合开始时，每拥有 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]，获得 1 点 [green]敏捷[/green]，敏捷仅本回合有效。处于[gold]白拉[/gold]状态时，每打出 1 张技能牌获得 6 点格挡；处于[gold]黑拉[/gold]状态时，攻击牌造成的伤害 +4。",
+  "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "每回合开始时，每拥有 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]，获得 1 点 [green]敏捷[/green]，敏捷仅本回合有效。处于[gold]白拉[/gold]状态时，每打出一张技能牌获得 1 点格挡，阴阳差每有 3 点额外获得 1 点；处于[gold]黑拉[/gold]状态时，每打出一张攻击牌对随机一名敌人造成 1 点伤害，阴阳差每有 3 点额外造成 1 点。",
   "ZHIJIANG_RELIC_KIRA_BELLARIS.flavor": "贝武圣·闪耀"
 }

@@ -16,21 +16,20 @@ using Zhijiang.ZhijiangCode.Powers;
 namespace Zhijiang.ZhijiangCode.Relics;
 
 // 闪耀贝极星：贝极星经"先古之民"（奥罗巴斯）事件替换后的升级版。
-// 升级后攻击牌伤害加成从 +1 提升到 +3（升级牌额外 +2，共 +5）。
+// 与贝极星拥有相同的阴阳馈赠（白拉技能格挡 / 黑拉攻击伤害），但没有阴阳代价（不失去力量/敏捷）。
 [RegisterRelic(typeof(BellaRelicPool))]
 public sealed class KiraBellaris : ModStarterRelicTemplate
 {
     // 升级遗物沿用初始遗物稀有度，保证后续仍被识别为初始遗物。
     public override RelicRarity Rarity => RelicRarity.Starter;
 
-    // 遗物的数值。DexterityPower 和 StrengthPower 用于在本地化悬浮提示中展示能力图标。
+    // 遗物的数值。DexterityPower 用于在本地化悬浮提示中展示能力图标。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DexterityPower>(1m),
-        new PowerVar<StrengthPower>(4m)
+        new PowerVar<DexterityPower>(1m)
     ];
 
-    // 敏捷、格挡和力量悬浮提示，以及动态的当前阴阳状态提示。
+    // 敏捷与格挡悬浮提示，以及动态的当前阴阳状态提示。
     protected override IEnumerable<IHoverTip> AdditionalHoverTips
     {
         get
@@ -38,8 +37,7 @@ public sealed class KiraBellaris : ModStarterRelicTemplate
             var tips = new List<IHoverTip>
             {
                 HoverTipFactory.FromPower<DexterityPower>(),
-                HoverTipFactory.Static(StaticHoverTip.Block),
-                HoverTipFactory.FromPower<StrengthPower>()
+                HoverTipFactory.Static(StaticHoverTip.Block)
             };
 
             // 动态追加当前阴阳状态（白拉/黑拉）。
@@ -54,7 +52,7 @@ public sealed class KiraBellaris : ModStarterRelicTemplate
         }
     }
 
-    // 暂复用贝极星图片，后续可替换为专属资源。
+    // 图片资源。暂复用贝极星素材，后续可替换为专属资源。
     public override RelicAssetProfile AssetProfile => new(
         IconPath: $"{Entry.ResPath}/images/relics/KiraBellaris_85x85.png",
         IconOutlinePath: $"{Entry.ResPath}/images/relics/KiraBellaris_85x85.png",
@@ -66,20 +64,20 @@ public sealed class KiraBellaris : ModStarterRelicTemplate
         return PowerCmd.Apply<BellarisHeartWallPower>(choiceContext, creature, amount, creature, null);
     }
 
-    // ---- 闪耀贝极星独有效果：阴阳双面加成 ----
-    // 黑拉（阴多于阳）：攻击牌伤害 +4；白拉（阳多于阴）：每打出 1 张技能牌获得 6 格挡。
-    // 每场战斗开始时施加，效果由两个能力各自按当前状态判定。
+    // ---- 闪耀贝极星独有效果：阴阳姿态的馈赠（无代价） ----
+    // 白拉时每打出 1 张技能牌获得 1+|d|÷3 格挡；黑拉时每打出 1 张攻击牌对随机敌人造成 1+|d|÷3 伤害。
+    // 数值与贝极星一致，但不施加力量/敏捷代价。
     public override async Task AfterRoomEntered(AbstractRoom room)
     {
         if (room is CombatRoom)
         {
             Flash();
-            // 黑拉攻击加成：层数即加成值（+4）。
-            await PowerCmd.Apply<BellarisStrengthPower>(
-                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 4, base.Owner.Creature, null);
-            // 白拉技能格挡：层数即格挡值（+6）。
+            // 白拉技能格挡。
             await PowerCmd.Apply<BellarisBlockPower>(
-                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 6, base.Owner.Creature, null);
+                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 1, base.Owner.Creature, null);
+            // 黑拉攻击伤害。
+            await PowerCmd.Apply<BellarisHeiLaAttackPower>(
+                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 1, base.Owner.Creature, null);
         }
     }
 }

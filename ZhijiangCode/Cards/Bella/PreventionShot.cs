@@ -17,7 +17,7 @@ using Zhijiang.ZhijiangCode.SecondResource;
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 [RegisterCard(typeof(BellaCardPool))]
-public sealed class PreventionShot : ModCardTemplate, IBellaYinYangCorrectionCard
+public sealed class PreventionShot : ModCardTemplate
 {
     private const int BaseEnergyCost = 1;
     private const CardType CardKind = CardType.Skill;
@@ -49,9 +49,6 @@ public sealed class PreventionShot : ModCardTemplate, IBellaYinYangCorrectionCar
         BellaYinYangService.YangKeywordId.GetModCardKeyword()
     ];
 
-    // 参与差值修正：仅格挡修正（心之壁与力量损失固定）。
-    public bool CorrectDamage => false;
-    public bool CorrectBlock => true;
 
     public PreventionShot() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {

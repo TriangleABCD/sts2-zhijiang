@@ -38,7 +38,7 @@ public partial class Entry
         // 新增内容类后，只要 attribute 写对，通常不需要在入口里手动逐个注册。
         ModTypeDiscoveryHub.RegisterModAssembly(ModId, assembly);
         HeartWall.Register();
-        BellaYinYangService.RegisterCombatCorrection();
+        BellaYinYangService.RegisterCombatStateSync();
 
         // 去掉贝拉「阳/阴」关键词内联文本末尾的句号。
         RitsuLibFramework.CreatePatcher(ModId, "KeywordPeriodRemoval")

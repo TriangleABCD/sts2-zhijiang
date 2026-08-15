@@ -19,7 +19,7 @@ using Zhijiang.ZhijiangCode.SecondResource;
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 [RegisterCard(typeof(BellaCardPool))]
-public sealed class TearOfBellaris : ModCardTemplate, IBellaYinYangCorrectionCard
+public sealed class TearOfBellaris : ModCardTemplate
 {
     private const int BaseEnergyCost = 1;
     private const CardType CardKind = CardType.Attack;
@@ -38,9 +38,6 @@ public sealed class TearOfBellaris : ModCardTemplate, IBellaYinYangCorrectionCar
         BellaYinYangService.YinKeywordId.GetModCardKeyword()
     ];
 
-    // 参与差值修正：仅伤害修正（力量增益固定）。
-    public bool CorrectDamage => true;
-    public bool CorrectBlock => false;
 
     // 伤害与每 10 点心之壁的力量增益。
     protected override IEnumerable<DynamicVar> CanonicalVars =>

@@ -16,7 +16,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 // 疯牛：勇敢牛牛经"远古之牙"转化后的远古版。
 [RegisterCard(typeof(BellaCardPool))]
-public sealed class MadCow : ModCardTemplate, IBellaYinYangCorrectionCard
+public sealed class MadCow : ModCardTemplate
 {
     private const int BaseEnergyCost = 2;
     private const CardType CardKind = CardType.Attack;
@@ -47,9 +47,6 @@ public sealed class MadCow : ModCardTemplate, IBellaYinYangCorrectionCard
         BellaYinYangService.YinKeywordId.GetModCardKeyword()
     ];
 
-    // 参与差值修正：仅伤害修正（次数与力量固定）。
-    public bool CorrectDamage => true;
-    public bool CorrectBlock => false;
 
     public MadCow() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {

@@ -26,7 +26,7 @@
   "ZHIJIANG_CARD_BPKN.description": "获得 {Block:diff()} 点格挡。所有敌人本回合失去 {StrengthLoss} 点力量。",
   "ZHIJIANG_CARD_BPKN.smartDescription": "获得 {Block:diff()} 点格挡。所有敌人本回合失去 {StrengthLoss} 点力量。",
 
-  "ZHIJIANG_CARD_EVIL_BELLA.title": "黑拉",
+  "ZHIJIANG_CARD_EVIL_BELLA.title": "黑贝拉sama",
   "ZHIJIANG_CARD_EVIL_BELLA.description": "每当你损失生命值时，生成 {OrbCount} 个黑暗充能球。",
   "ZHIJIANG_CARD_EVIL_BELLA.smartDescription": "每当你损失生命值时，生成 {OrbCount} 个黑暗充能球。",
 

@@ -132,7 +132,7 @@ public sealed class {CardName} : ModCardTemplate
 
 ## 阴阳机制（核心玩法）设计定稿
 
-> 设计决策已确认（2026-08-12），详细设计见 `doc/Bella.md` 1.2 节。编码时以此为准。
+> 设计决策已确认（2026-08-12），2026-08-15 重构为「贝极星馈赠与代价」（废除逐卡差值修正），详细设计见 `doc/Bella.md` 1.2 节。编码时以此为准。
 
 ### 机制规则
 
@@ -140,17 +140,20 @@ public sealed class {CardName} : ModCardTemplate
 - **颜色对应**：白拉 = 阳（白），黑拉 = 阴（黑）。
 - **攻防独立**：卡牌的阴阳属性与它偏攻击还是偏防守**互相独立**、不绑定。阴阳只看卡牌属性本身。（「阳=心之壁·守护、阴=充能球·激进」只是历史提案，已作废，2026-08-15 确认）
 - **状态判定**：统计贝拉拥有的全部卡牌（含各牌堆）。
-  - 阳 > 阴 → **白拉**；阴 > 阳 → **黑拉**；相等 → **白拉**（此时 d=0 无修正）。
-  - ⚠️ **消耗堆（ExhaustPile）不参与计数**：战斗中消耗掉的阴阳牌会被移除出状态统计（`GetOwnedCards` 用 `AllPiles.Where(p => p.Type != PileType.Exhaust)`，注意 `CardPile.Type` 不是 `PileType` 属性）。
-- **差值制修正**：`d = |阳牌数 − 阴牌数|`，相符牌按 `±(d ÷ 3)` 修正（d 每 3 张差 ±1），相反牌削弱。
-  - 无上限（鼓励极限偏科）；削弱保底 1 点，避免完全失效。
-  - 加成/削弱作用于卡牌效果数值（伤害、格挡、心之壁获得等）。
+  - 阳 > 阴 → **白拉**；阴 > 阳 → **黑拉**；相等 → **白拉**（此时 d=0，馈赠/代价均为基数 1）。
+  - ⚠️ **消耗堆（ExhaustPile）不参与计数**：战斗中消耗掉的阴阳牌会被移除出状态统计。
+  - ⚠️ **打出堆（PlayPile）中的能力牌不参与计数**：能力牌打出后停留在打出堆、本场战斗不再回到循环，视同离场（`GetOwnedCards` 对 Play 堆只计入非能力牌）。打出堆中的非能力牌只是"正在打出"的瞬态，仍参与计数，避免打牌瞬间状态反复翻转。注意 `CardPile.Type`（牌堆类型）与 `CardModel.Type`（卡牌类型）是两回事。
+- **状态效果 = 初始遗物「贝极星」的馈赠与代价**（2026-08-15 定稿：阴阳不再逐张修正卡牌数值，改由力量/敏捷属性系统自动作用于卡牌）：
+  - **白拉**（阳 ≥ 阴）：馈赠——每打出 1 张技能牌获得 `1+d÷3` 格挡（固定值、不受敏捷）；代价——战斗开始时失去 `1+d÷3` 力量（整场战斗，压低攻击牌）。
+  - **黑拉**（阴 > 阳）：馈赠——每打出 1 张攻击牌对随机一名敌人造成 `1+d÷3` 伤害（纯固定伤害、不受力量、不触发反击）；代价——战斗开始时失去 `1+d÷3` 敏捷（整场战斗，压低防御牌）。
+  - `d = |阳牌数 − 阴牌数|`，无上限（鼓励极限偏科）；d=0 时白拉、馈赠/代价均为基数 1。
+  - **闪耀贝极星**：馈赠与贝极星数值完全一致，**只有馈赠、没有代价**。
+  - 实现：馈赠 `BellarisBlockPower` / `BellarisHeiLaAttackPower`（`AfterCardPlayed` 实时判状态与数值，两遗物共用）；代价控制器 `BellarisYinYangDebuffPower`（仅贝极星施加，内部施加原版 `StrengthPower`/`DexterityPower` 负层数、带图标可见）。
 - **初始遗物 = 通用能力① + 角色专属能力②**：
   - ① 心之壁→敏捷（**本 mod 所有角色初始遗物共有的能力**）：每回合开始敏捷 = 心之壁 ÷ 15（整除），临时敏捷仅本回合有效、回合结束移除。通用逻辑在共享基类 `ModStarterRelicTemplate.AfterPlayerTurnStart`，子类覆写 `ApplyHeartWallDexterity` 施加各角色专属的 TemporaryDexterityPower（贝拉为 `BellarisHeartWallPower`）。**以后每新增一个角色，其初始遗物都要继承 `ModStarterRelicTemplate` 带上这条。**
-  - ② 角色专属双面加成（白拉防御 / 黑拉进攻）：贝极星：白拉时每打出 1 张技能牌获得 3 格挡；黑拉时攻击牌伤害 +2。闪耀贝极星：白拉时每打出 1 张技能牌获得 6 格挡；黑拉时攻击牌伤害 +4。
-  - ⚠️ 方向是**白拉防御、黑拉进攻**（不是进攻/防守的常规直觉），文档 1.5 和 2.1 已同步。
-  - 实现模式：战斗开始时（`AfterRoomEntered` 判 `CombatRoom`）**同时施加两个 Power**——`BellarisStrengthPower`（内部判黑拉才生效）与 `BellarisBlockPower`（内部判白拉才生效），各自按状态判断、天然互斥。"每打出卡牌"没有 PowerModel 钩子，用 `AbstractModel.AfterCardPlayed`（参考 `BellarisBlockPower`）
-- **状态展示**：战斗内用可见 Power（白拉 Power / 黑拉 Power）挂在角色下方；战斗外用初始遗物 hover tip 动态文本显示当前状态。
+  - ② 角色专属阴阳馈赠与代价（见上）。⚠️ 方向是**白拉防御、黑拉进攻**（不是进攻/防守的常规直觉），文档 1.2.2/1.5/2.1 已同步。
+  - 实现模式：进入战斗（`AfterRoomEntered` 判 `CombatRoom`）时施加 Power——`BellarisBlockPower`（内部判白拉才生效）与 `BellarisHeiLaAttackPower`（内部判黑拉才生效），各自按状态判断、天然互斥；贝极星额外施加 `BellarisYinYangDebuffPower`（代价控制器）。"每打出卡牌"没有 PowerModel 钩子，用 `AbstractModel.AfterCardPlayed`（参考 `BellarisBlockPower`）
+- **状态展示**：战斗内用可见 Power（白拉 Power / 黑拉 Power）挂在角色下方，状态翻转时动态替换；战斗外用初始遗物 hover tip 动态文本显示当前状态。
 - 角色基础数值：`StartingHp = 75`、`StartingGold = 99`、`Gender = Feminine`、占位角色 `PlaceholderCharacterId = "ironclad"`（缺字段时从占位角色回退）
 
 ### 已实现卡牌的阴阳属性（已确认）
@@ -166,7 +169,7 @@ public sealed class {CardName} : ModCardTemplate
 | 冰山美人 | 普通 | 技能 | 阳 |
 | 一个魂来咯 | 罕见 | 技能 | 阳 |
 | 20号循环 | 稀有 | 技能 | 阴 |
-| 黑拉 | 稀有 | 能力 | 阴 |
+| 黑贝拉sama | 稀有 | 能力 | 阴 |
 | 疯牛！ | 远古 | 攻击 | 阴 |
 | 贝极星的眼泪 | 远古 | 攻击 | 阴 |
 
@@ -186,11 +189,11 @@ public sealed class {CardName} : ModCardTemplate
 | 冰山美人 | 1→0费，1 冰霜球 | 阳 |
 | 一个魂来咯 | 3 灵魂，升级移除消耗 | 阳 |
 | 20号循环 | 3→2费，下一攻击×20次，耗150→120心壁 | 阴 |
-| 黑拉 | 掉血生 1→2 黑暗球（无栏位加成） | 阴 |
+| 黑贝拉sama | 掉血生 1→2 黑暗球（无栏位加成） | 阴 |
 | 疯牛！ | 7→10×3次 + 4→6力量 | 阴 |
 | 贝极星的眼泪 | 全敌 17 伤害，每10心壁 1→2力量 | 阴 |
 
-> 原数值（如打击6、勇敢牛牛4×3+3等）已下调，为阴阳差值修正留空间。冰山美人从2球改1球（本地化已同步）。
+> 原数值（如打击6、勇敢牛牛4×3+3等）已下调，为阴阳效果留空间。冰山美人从2球改1球（本地化已同步）。
 > ⚠️ 打击/防御后改为对齐原版：打击 6→9（升级+3），防御 5→8（升级+3），与 `DefendIronclad`/`StrikeIronclad` 一致。
 
 ### 关键词句号补丁（⚠️ 补丁已写但实测无效，用户决定搁置）
@@ -199,33 +202,29 @@ public sealed class {CardName} : ModCardTemplate
 - 已写补丁 `ZhijiangCode/Patches/ModKeywordPeriodRemovalPatch.cs`（`IPatchMethod`，Postfix patch `ModKeywordRegistry.GetCardText`，对 `ZHIJIANG_KEYWORD_YANG/YIN` 去句号），但**实测句号仍然存在**，用户拍板"算了、这个不影响"（2026-08-13）。若以后真要修，应改 patch 注入点 `ModKeywordCardDescriptionInjector` 而不是 `GetCardText`。
 - 注册方式：`RitsuLibFramework.CreatePatcher(ModId, "KeywordPeriodRemoval").RegisterPatch<ModKeywordPeriodRemovalPatch>()`，需 `using STS2RitsuLib.Patching.Core`。
 
-### 差值修正配置定稿
+### 贝极星馈赠与代价（定稿）
 
-- **公式**：相符牌 `+|d|÷3`、相反牌 `-|d|÷3`，修正后保底 1。d = |阳牌数−阴牌数|。
-- ⚠️ 幅度必须取 `Math.Abs(d) / 3`、方向由相符/相反决定——曾因直接用带符号 `d/3` 且 `<= 0` 提前 return，导致黑拉（d<0）时全部差值修正失效（已修复，见 `BellaYinYangCorrectionPower.CorrectionFor`）；卡牌自身读差值走 `BellaYinYangService.ComputeMagnitude`（内部已 Abs）
-- **实现**：`BellaYinYangCorrectionPower`（重写 `ModifyDamageAdditive`/`ModifyBlockAdditive`），战斗开始时（`CombatStartingEvent` 订阅，见 `BellaYinYangService.RegisterCombatCorrection()`）对贝拉玩家施加。
-- **参与标记**：卡牌实现 `IBellaYinYangCorrectionCard`（`CorrectDamage`/`CorrectBlock`），豁免牌不实现。
-- **逐卡参与项**：
-  - 伤害修正（Power 钩子）：打击、疯牛、贝极星的眼泪
-  - 格挡修正（Power 钩子）：防御、不怕困难、预防针了
-  - 次数修正（卡牌自身读差值，无钩子）：勇敢牛牛
-  - 去格挡量修正（卡牌自身读差值，无钩子）：真情实感
-  - 完全豁免：冰山美人、一个魂来咯、20号循环、黑拉
-- ⚠️ `ModifyCardPlayCount` 是"整张卡重复打出"（Burst/Echo 类），**不是**多段攻击段数；次数修正必须在卡牌 OnPlay 里自己读差值（参考 `Ygnn` 实现）。"下一张攻击牌额外打出 N 次"的正确用法见 `LoopIn20Power`：`ModifyCardPlayCount` 返回 `playCount + N`，`AfterModifyingCardPlayCount` 里 `PowerCmd.Decrement` 消耗 1 层
+- **公式**：馈赠/代价 = `1 + |d|÷3`，d = |阳牌数−阴牌数|。白拉：技能牌 → 格挡 / 代价 −力量；黑拉：攻击牌 → 随机敌人伤害 / 代价 −敏捷。
+- ⚠️ 幅度必须取 `Math.Abs(d) / 3`——曾因直接用带符号 `d/3` 且 `<= 0` 提前 return，导致黑拉（d<0）时全部差值修正失效（已修复）；现统一走 `BellaYinYangService.ComputeMagnitude`（内部已 Abs）。
+- **实现**：馈赠 `BellarisBlockPower` / `BellarisHeiLaAttackPower`（`AfterCardPlayed` 实时判状态与数值，伤害/格挡均为 `ValueProp.Unpowered` 固定值）；代价控制器 `BellarisYinYangDebuffPower.Sync`（施加原版力量/敏捷负层数，撤销旧代价再施加新代价，带图标可见）。
+- **施加**：遗物 `AfterRoomEntered`（判 `CombatRoom`）施加三个 Power（闪耀贝极星只施加前两个，无代价）。
+- **状态同步**：`BellaYinYangService.RegisterCombatStateSync()` 订阅 `CombatStartingEvent`（初始施加白拉/黑拉标记 + 同步代价）与 `CardMovedBetweenPilesEvent`（任何牌堆变动——消耗、打出能力牌、生成牌等——改变阴阳计数时重算状态、替换状态标记、切换代价）。馈赠每次出牌实时判状态，无需同步。
+- **随机敌人**：`player.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies)`（同原版 `JuggernautPower`/`Tingsha` 模式）；黑拉伤害用 `CreatureCmd.Damage(..., ValueProp.Unpowered, ...)`。
+- ⚠️ `ModifyCardPlayCount` 是"整张卡重复打出"（Burst/Echo 类），**不是**多段攻击段数。"下一张攻击牌额外打出 N 次"的正确用法见 `LoopIn20Power`：`ModifyCardPlayCount` 返回 `playCount + N`，`AfterModifyingCardPlayCount` 里 `PowerCmd.Decrement` 消耗 1 层
 
 ### 状态展示（已实现）
 
-- 战斗内：`BaiLaPower` / `HeiLaPower`（`ZhijiangCode/Powers/`，可见 Power，`StackType.Single`，`IsVisibleInternal=true`），战斗开始时由 `BellaYinYangService.RegisterCombatCorrection()` 的 `CombatStartingEvent` 订阅按当前状态施加到贝拉玩家。
+- 战斗内：`BaiLaPower` / `HeiLaPower`（`ZhijiangCode/Powers/`，可见 Power，`StackType.Single`，`IsVisibleInternal=true`），战斗开始时由 `BellaYinYangService.RegisterCombatStateSync()` 的 `CombatStartingEvent` 订阅按当前状态施加，状态翻转时由 `CardMovedBetweenPilesEvent` 订阅动态替换（此前"快照不更新"的遗留问题已随本次改造解决）。
 - 战斗外：贝极星/闪耀贝极星的 `AdditionalHoverTips` 动态追加当前状态 Power 的 hover tip（`base.Owner` 即 Player，每次悬停重算）。
-- 本地化：`powers.json`（zhs/eng）新增 `ZHIJIANG_POWER_BAI_LA_POWER` / `ZHIJIANG_POWER_HEI_LA_POWER`。
+- 本地化：`powers.json`（zhs/eng）的 `ZHIJIANG_POWER_BAI_LA_POWER` / `ZHIJIANG_POWER_HEI_LA_POWER`（文案已按新机制更新）。
 - ⚠️ 状态标记图标暂用贝拉能量图标占位，后续替换专属图标。
-- 阴阳机制源文件清单：`Keywords/BellaYinYangKeywords.cs`；`Characters/Bella/{BellaYinYangService.cs, IBellaYinYangCorrectionCard.cs}`；`Relics/Bella/{BellaYinYangCorrectionPower.cs, BellarisStrengthPower.cs, BellarisBlockPower.cs}`；`Powers/{BaiLaPower.cs, HeiLaPower.cs}`；`Patches/ModKeywordPeriodRemovalPatch.cs`
+- 阴阳机制源文件清单：`Keywords/BellaYinYangKeywords.cs`；`Characters/Bella/BellaYinYangService.cs`；`Relics/Bella/{Bellaris.cs, KiraBellaris.cs, BellarisBlockPower.cs, BellarisHeiLaAttackPower.cs, BellarisYinYangDebuffPower.cs, BellarisHeartWallPower.cs}`；`Powers/{BaiLaPower.cs, HeiLaPower.cs}`；`Patches/ModKeywordPeriodRemovalPatch.cs`
 
 ### 本轮开发范围（静态框架）
 
-- ✅ 卡牌标签（阳/阴 CardKeyword）+ 差值修正逻辑
-- ✅ 遗物双面加成改造（替换此前的攻击无条件加成；历史版本数值几经调整——早期 +2 基础/+5 升级牌、后来 +1/+3——均已废弃，勿再参考；`KiraBellaris.cs` 顶部还留着旧版注释，同样已过时）
-- ✅ 状态展示（战斗内 Power + 战斗外遗物文本）
+- ✅ 卡牌标签（阳/阴 CardKeyword）+ 状态判定（白拉/黑拉）
+- ✅ 初始遗物「贝极星」的阴阳馈赠与代价（白拉技能格挡/黑拉随机攻击 + 力量/敏捷代价），闪耀贝极星同馈赠无代价。2026-08-15 由"逐卡差值修正"重构而来，旧版 `IBellaYinYangCorrectionCard`/`BellaYinYangCorrectionPower`/`BellarisStrengthPower` 已删除；更早的固定加成数值（+2/+3/+4/+6 等）均已废弃，勿再参考
+- ✅ 状态展示（战斗内 Power + 战斗外遗物文本）+ 状态翻转动态同步（标记替换 + 代价切换）
 - ⏸ 动态机制（切换牌「阴阳逆转」/临时状态「趋光·堕影」/立场宣言/双极牌「太极劲」）、转化牌「拨乱反正」、反其道牌「混沌之心」、升级翻转属性、药水「阴阳灵液」、事件「阴阳师」→ **后续版本**
 - ⚠️ 纪元系统不适用（`RequiresEpochAndTimeline = false`），文档「五、纪元系统」标记为暂不适用
 
@@ -239,13 +238,13 @@ public sealed class {CardName} : ModCardTemplate
    - 运行时判定：字符串重载 `card.HasModKeyword("...")` 已过时（编译警告），实际代码用 minted 值比较 `card.Keywords.Contains("ZHIJIANG_KEYWORD_YANG".GetModCardKeyword())`（见 `BellaYinYangService.ComputeDiff`）
    - 相关源码：`STS2-RitsuLib/src/Keywords/`（ModKeywordRegistry、ModKeywordDefinition、ModKeywordCardDescriptionPlacement）、`STS2-RitsuLib/src/Interop/AutoRegistration/RegistrationAttributes.cs`（RegisterOwnedCardKeyword）
 2. **状态计算**：写 `BellaYinYangService`（静态工具类）：遍历玩家卡组统计阳/阴数量算 d、判状态。**实时计算**，不缓存变量（状态是派生状态，卡组几十张遍历开销可忽略，避免更新时机不同步问题）。
-3. **修正层**：战斗开始时（`CombatStartingEvent`）按 d 施加修正 Power：相符牌加成、相反牌削弱（保底 1）。卡牌数值动态修正参考现有 `BellarisStrengthPower.ModifyDamageAdditive` 模式。
-4. **状态展示**：两个可见 Power（`BaiLaPower` / `HeiLaPower`）挂角色下方，参考 `EvilBellaPower`（`IsVisibleInternal = true`）；遗物 hover tip 动态文本显示当前状态。
-5. **遗物改造**：`Bellaris.cs` / `KiraBellaris.cs` 的②能力改为双面加成，替换 `BellarisStrengthPower` 无条件攻击加成逻辑。
+3. **状态效果层**：遗物 `AfterRoomEntered`（`CombatRoom`）施加 `BellarisBlockPower` + `BellarisHeiLaAttackPower`（馈赠，出牌时实时判状态与差值）+ `BellarisYinYangDebuffPower`（代价，仅贝极星；`Sync` 撤销旧代价、施加新代价，内部施加原版力量/敏捷负层数）。
+4. **状态展示与同步**：两个可见 Power（`BaiLaPower` / `HeiLaPower`）挂角色下方，参考 `EvilBellaPower`（`IsVisibleInternal = true`）；`RegisterCombatStateSync()` 订阅 `CombatStartingEvent` 初始同步 + `CardMovedBetweenPilesEvent` 翻转同步；遗物 hover tip 动态文本显示当前状态。
+5. **随机目标**：`player.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies)`（同原版 `JuggernautPower`/`Tingsha` 模式）；黑拉伤害用 `CreatureCmd.Damage(..., ValueProp.Unpowered, ...)`。
 6. **初始卡组配比**：10 张起始牌配 5 阳 5 阴（开局白拉、可自由转向）。
 
 ### 遗留事项
 
-- 状态名「黑拉」与已有稀有能力牌「黑拉」（`EvilBella`）重名，命名冲突后续统一处理。
+- ✅ 状态名「黑拉」与稀有能力牌的重名冲突已解决（2026-08-15）：卡牌更名为「黑贝拉sama」（zhs 卡牌与可见能力标题同步改名），代码类名/文件名保持 `EvilBella` 不变；eng 标题仍为 Evil Bella（英文无重名冲突）。
 - 卡牌阴阳具体分配（打击/勇敢牛牛等各属阳还是阴）编码时按 5 阳 5 阴配比分配。
-- **待办：状态展示 Power 的实时动态更新**——战斗开始时施加的白拉/黑拉 Power 是战斗瞬间快照；若战斗中消耗/加入牌导致状态翻转，图标不会自动更新。差值修正本身实时正确，仅图标需要监听状态变化（如 `CardMovedBetweenPilesEvent` 或弃牌/消耗事件）后替换 Power。属"动态机制"范围，后续实现。
+- ⚠️ 代价撤销采用"补回差值"实现：若战斗中其他效果把力量/敏捷整体清空（非按数值抵消），后续翻转时补回可能多算。当前卡池与原版主流效果无此类场景，若未来引入"移除全部力量"类效果需复查。

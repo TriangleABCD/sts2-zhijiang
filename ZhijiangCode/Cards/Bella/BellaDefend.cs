@@ -13,7 +13,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 // 防御牌和打击一样注册到角色卡池，并作为 4 张初始卡加入角色卡组。
 [RegisterCard(typeof(BellaCardPool))]
 [RegisterCharacterStarterCard(typeof(BellaCharacter), 4)]
-public sealed class BellaDefend : ModCardTemplate, IBellaYinYangCorrectionCard
+public sealed class BellaDefend : ModCardTemplate
 {
     // 基础耗能。
     private const int BaseEnergyCost = 1;
@@ -41,9 +41,6 @@ public sealed class BellaDefend : ModCardTemplate, IBellaYinYangCorrectionCard
         BellaYinYangService.YangKeywordId.GetModCardKeyword()
     ];
 
-    // 参与差值修正：格挡修正。
-    public bool CorrectDamage => false;
-    public bool CorrectBlock => true;
 
     // 卡牌基础数值。
     // BlockVar 会绑定到本地化里的 {Block:diff()}，升级时文本会自动显示差值。

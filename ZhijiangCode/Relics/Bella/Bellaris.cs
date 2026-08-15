@@ -30,10 +30,10 @@ public sealed class Bellaris : ModStarterRelicTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<DexterityPower>(1m),
-        new PowerVar<StrengthPower>(2m)
+        new PowerVar<StrengthPower>(1m)
     ];
 
-    // 敏捷、格挡和力量悬浮提示，以及动态的当前阴阳状态提示。
+    // 敏捷、力量与格挡悬浮提示，以及动态的当前阴阳状态提示。
     protected override IEnumerable<IHoverTip> AdditionalHoverTips
     {
         get
@@ -41,8 +41,8 @@ public sealed class Bellaris : ModStarterRelicTemplate
             var tips = new List<IHoverTip>
             {
                 HoverTipFactory.FromPower<DexterityPower>(),
-                HoverTipFactory.Static(StaticHoverTip.Block),
-                HoverTipFactory.FromPower<StrengthPower>()
+                HoverTipFactory.FromPower<StrengthPower>(),
+                HoverTipFactory.Static(StaticHoverTip.Block)
             };
 
             // 动态追加当前阴阳状态（白拉/黑拉）。
@@ -69,20 +69,26 @@ public sealed class Bellaris : ModStarterRelicTemplate
         return PowerCmd.Apply<BellarisHeartWallPower>(choiceContext, creature, amount, creature, null);
     }
 
-    // ---- 贝极星独有效果：阴阳双面加成 ----
-    // 黑拉（阴多于阳）：攻击牌伤害 +2；白拉（阳多于阴）：每打出 1 张技能牌获得 3 格挡。
-    // 每场战斗开始时施加，效果由两个能力各自按当前状态判定。
+    // ---- 贝极星独有效果：阴阳姿态的馈赠与代价 ----
+    // 馈赠：白拉时每打出 1 张技能牌获得 1+|d|÷3 格挡；黑拉时每打出 1 张攻击牌对随机敌人造成 1+|d|÷3 伤害。
+    // 代价：白拉战斗开始失去 1+|d|÷3 力量；黑拉失去 1+|d|÷3 敏捷（由 BellarisYinYangDebuffPower 控制，状态翻转时动态切换）。
+    // buff 数值在每次出牌时按当前阴阳差实时计算；代价在战斗开始时按当时状态施加，并随状态翻转动态切换。
     public override async Task AfterRoomEntered(AbstractRoom room)
     {
         if (room is CombatRoom)
         {
             Flash();
-            // 黑拉攻击加成：层数即加成值（+2）。
-            await PowerCmd.Apply<BellarisStrengthPower>(
-                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 2, base.Owner.Creature, null);
-            // 白拉技能格挡：层数即格挡值（+3）。
+            // 白拉技能格挡。
             await PowerCmd.Apply<BellarisBlockPower>(
-                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 3, base.Owner.Creature, null);
+                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 1, base.Owner.Creature, null);
+            // 黑拉攻击伤害。
+            await PowerCmd.Apply<BellarisHeiLaAttackPower>(
+                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 1, base.Owner.Creature, null);
+            // 阴阳代价控制器：施加力量/敏捷代价，并随状态翻转动态切换。
+            var debuff = await PowerCmd.Apply<BellarisYinYangDebuffPower>(
+                new ThrowingPlayerChoiceContext(), base.Owner.Creature, 1, base.Owner.Creature, null);
+            if (debuff is not null)
+                await debuff.Sync(new ThrowingPlayerChoiceContext());
         }
     }
 }
