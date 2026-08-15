@@ -30,7 +30,7 @@
         <PackageReference Include="Krafs.Publicizer" Version="2.2.1" PrivateAssets="all"/>
         <PackageReference Include="Nothing.STS2RitsuLib.ModAnalyzers" Version="*" PrivateAssets="all"/>
         <!-- STS2 0.107.1 兼容分支。兼容分支和 manifest 版本对齐规则见 README。 -->
-        <PackageReference Include="STS2.RitsuLib.Compat.0.107.1" Version="*" GeneratePathProperty="true"/>
+        <PackageReference Include="STS2.RitsuLib.Compat.0.107.1" Version="0.5.11" GeneratePathProperty="true"/>
     </ItemGroup>
 
     <ItemGroup>
