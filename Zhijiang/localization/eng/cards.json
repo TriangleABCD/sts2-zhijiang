@@ -38,9 +38,41 @@
   "ZHIJIANG_CARD_ICE_BEAUTY.description": "Channel 1 Frost Orb.",
   "ZHIJIANG_CARD_ICE_BEAUTY.smartDescription": "Channel 1 Frost Orb.",
 
+  "ZHIJIANG_CARD_HIHI.title": "hihi",
+  "ZHIJIANG_CARD_HIHI.description": "Double your Energy.",
+  "ZHIJIANG_CARD_HIHI.smartDescription": "Double your Energy.",
+
+  "ZHIJIANG_CARD_AT_FIELD.title": "A.T. Field",
+  "ZHIJIANG_CARD_AT_FIELD.description": "Gain Block equal to your current [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] divided by {Divisor} (rounded down).",
+  "ZHIJIANG_CARD_AT_FIELD.smartDescription": "Gain Block equal to your current [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] divided by {Divisor} (rounded down).",
+
+  "ZHIJIANG_CARD_GURENGE.title": "Gurenge",
+  "ZHIJIANG_CARD_GURENGE.description": "Gain {Block:diff()} Block. Gain {PerContrast} additional Block for each card you have played this turn whose Yin-Yang opposes your current Bai La / Hei La state.",
+  "ZHIJIANG_CARD_GURENGE.smartDescription": "Gain {Block:diff()} Block. Gain {PerContrast} additional Block for each card you have played this turn whose Yin-Yang opposes your current Bai La / Hei La state.",
+
+  "ZHIJIANG_CARD_NEVER_FORGIVE.title": "Never Forgive",
+  "ZHIJIANG_CARD_NEVER_FORGIVE.description": "Whenever you lose HP, gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_CARD_NEVER_FORGIVE.smartDescription": "Whenever you lose HP, gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+
+  "ZHIJIANG_CARD_TURN_OVER.title": "Turn Over",
+  "ZHIJIANG_CARD_TURN_OVER.description": "For the rest of this combat, your Bai La / Hei La state is inverted.",
+  "ZHIJIANG_CARD_TURN_OVER.smartDescription": "For the rest of this combat, your Bai La / Hei La state is inverted.",
+
+  "ZHIJIANG_CARD_VIRTUAL_SENSE.title": "Virtual Sense",
+  "ZHIJIANG_CARD_VIRTUAL_SENSE.description": "Whenever you play a Skill, gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_CARD_VIRTUAL_SENSE.smartDescription": "Whenever you play a Skill, gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+
+  "ZHIJIANG_CARD_ZHIJIANG_HELL.title": "Zhijiang Hell",
+  "ZHIJIANG_CARD_ZHIJIANG_HELL.description": "Gain {Energy:energyIcons()}.",
+  "ZHIJIANG_CARD_ZHIJIANG_HELL.smartDescription": "Gain {Energy:energyIcons()}.",
+
   "ZHIJIANG_CARD_MAD_COW.title": "Mad Cow",
   "ZHIJIANG_CARD_MAD_COW.description": "Deal {Damage:diff()} damage 3 times. Gain {StrengthGain} Strength.",
   "ZHIJIANG_CARD_MAD_COW.smartDescription": "Deal {Damage:diff()} damage 3 times. Gain {StrengthGain} Strength.",
+
+  "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.title": "More Lover More Powerful",
+  "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.description": "Deal {Damage:diff()} damage. Deal it 1 additional time for each card you have played this turn whose Yin-Yang opposes your current Bai La / Hei La state.",
+  "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.smartDescription": "Deal {Damage:diff()} damage. Deal it 1 additional time for each card you have played this turn whose Yin-Yang opposes your current Bai La / Hei La state.",
 
   "ZHIJIANG_CARD_TEAR_OF_BELLARIS.title": "Tear of Bellaris",
   "ZHIJIANG_CARD_TEAR_OF_BELLARIS.description": "Deal {Damage:diff()} damage to ALL enemies. Lose all Heart Wall. For every 10 Heart Wall lost, gain {StrengthPer10} Strength.",

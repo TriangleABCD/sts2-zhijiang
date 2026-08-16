@@ -38,9 +38,41 @@
   "ZHIJIANG_CARD_ICE_BEAUTY.description": "生成 1 个冰霜充能球。",
   "ZHIJIANG_CARD_ICE_BEAUTY.smartDescription": "生成 1 个冰霜充能球。",
 
+  "ZHIJIANG_CARD_HIHI.title": "嘿嘿！",
+  "ZHIJIANG_CARD_HIHI.description": "将你的能量翻倍。",
+  "ZHIJIANG_CARD_HIHI.smartDescription": "将你的能量翻倍。",
+
+  "ZHIJIANG_CARD_AT_FIELD.title": "A.T. 立场",
+  "ZHIJIANG_CARD_AT_FIELD.description": "获得格挡，数值等于当前[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]除以{Divisor}（向下取整）。",
+  "ZHIJIANG_CARD_AT_FIELD.smartDescription": "获得格挡，数值等于当前[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]除以{Divisor}（向下取整）。",
+
+  "ZHIJIANG_CARD_GURENGE.title": "红莲华",
+  "ZHIJIANG_CARD_GURENGE.description": "获得 {Block:diff()} 点格挡。本回合你每打出过 1 张阴阳性与当前黑白拉状态相反的牌，额外获得 {PerContrast} 点格挡。",
+  "ZHIJIANG_CARD_GURENGE.smartDescription": "获得 {Block:diff()} 点格挡。本回合你每打出过 1 张阴阳性与当前黑白拉状态相反的牌，额外获得 {PerContrast} 点格挡。",
+
+  "ZHIJIANG_CARD_NEVER_FORGIVE.title": "绝无拉我",
+  "ZHIJIANG_CARD_NEVER_FORGIVE.description": "每当你损失生命值时，获得 {HeartWallGain} 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_CARD_NEVER_FORGIVE.smartDescription": "每当你损失生命值时，获得 {HeartWallGain} 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+
+  "ZHIJIANG_CARD_TURN_OVER.title": "了转反",
+  "ZHIJIANG_CARD_TURN_OVER.description": "本场战斗内，你的白拉/黑拉状态判定翻转。",
+  "ZHIJIANG_CARD_TURN_OVER.smartDescription": "本场战斗内，你的白拉/黑拉状态判定翻转。",
+
+  "ZHIJIANG_CARD_VIRTUAL_SENSE.title": "虚拟感",
+  "ZHIJIANG_CARD_VIRTUAL_SENSE.description": "每当你打出一张技能牌时，获得 {HeartWallGain} 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_CARD_VIRTUAL_SENSE.smartDescription": "每当你打出一张技能牌时，获得 {HeartWallGain} 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+
+  "ZHIJIANG_CARD_ZHIJIANG_HELL.title": "枝江地狱",
+  "ZHIJIANG_CARD_ZHIJIANG_HELL.description": "获得{Energy:energyIcons()}。",
+  "ZHIJIANG_CARD_ZHIJIANG_HELL.smartDescription": "获得{Energy:energyIcons()}。",
+
   "ZHIJIANG_CARD_MAD_COW.title": "疯牛！",
   "ZHIJIANG_CARD_MAD_COW.description": "造成 {Damage:diff()} 点伤害 3 次。获得 {StrengthGain} 点力量。",
   "ZHIJIANG_CARD_MAD_COW.smartDescription": "造成 {Damage:diff()} 点伤害 3 次。获得 {StrengthGain} 点力量。",
+
+  "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.title": "情人越多越气派",
+  "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.description": "造成 {Damage:diff()} 点伤害。本回合你每打出过 1 张阴阳性与当前黑白拉状态相反的牌，此牌额外造成 1 次伤害。",
+  "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.smartDescription": "造成 {Damage:diff()} 点伤害。本回合你每打出过 1 张阴阳性与当前黑白拉状态相反的牌，此牌额外造成 1 次伤害。",
 
   "ZHIJIANG_CARD_TEAR_OF_BELLARIS.title": "贝极星的眼泪",
   "ZHIJIANG_CARD_TEAR_OF_BELLARIS.description": "对所有敌人造成 {Damage:diff()} 点伤害。消耗所有心之壁值，每消耗 10 点心之壁，获得 {StrengthPer10} 点力量。",

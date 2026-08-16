@@ -9,5 +9,13 @@
 
   "ZHIJIANG_POWER_HEI_LA_POWER.title": "Hei La",
   "ZHIJIANG_POWER_HEI_LA_POWER.description": "Bella is in the Hei La state: Yin cards outnumber Yang cards.",
-  "ZHIJIANG_POWER_HEI_LA_POWER.smartDescription": "Bella is in the Hei La state: Yin cards outnumber Yang cards."
+  "ZHIJIANG_POWER_HEI_LA_POWER.smartDescription": "Bella is in the Hei La state: Yin cards outnumber Yang cards.",
+
+  "ZHIJIANG_POWER_VIRTUAL_SENSE_POWER.title": "Virtual Sense",
+  "ZHIJIANG_POWER_VIRTUAL_SENSE_POWER.description": "Whenever you play a Skill, gain 2 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_POWER_VIRTUAL_SENSE_POWER.smartDescription": "Whenever you play a Skill, gain {Amount} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+
+  "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.title": "Never Forgive",
+  "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.description": "Whenever you lose HP, gain 3 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.smartDescription": "Whenever you lose HP, gain {Amount} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]."
 }

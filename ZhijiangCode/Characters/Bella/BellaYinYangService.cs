@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -26,6 +27,9 @@ public static class BellaYinYangService
     public const string YangKeywordId = "ZHIJIANG_KEYWORD_YANG";
     public const string YinKeywordId = "ZHIJIANG_KEYWORD_YIN";
 
+    // 本回合各贝拉玩家已打出的反差牌计数（打出瞬间按当时状态判定；玩家回合开始时清零）。
+    private static readonly Dictionary<Player, int> ContrastPlaysThisTurn = new();
+
     /// <summary>
     /// 注册战斗状态同步，在 Entry.Initialize 中调用：
     /// 1. 战斗开始时为贝拉玩家施加可见状态标记（白拉/黑拉），并同步贝极星的阴阳代价。
@@ -39,6 +43,9 @@ public static class BellaYinYangService
         {
             if (evt.CombatState is not { } combat)
                 return;
+
+            // 新战斗清空反差牌计数。
+            ContrastPlaysThisTurn.Clear();
 
             foreach (var player in combat.Players)
             {
@@ -58,6 +65,39 @@ public static class BellaYinYangService
 
             await SyncStateEffects(player);
         });
+
+        // 反差牌计数：每张牌的第一段打出瞬间（CardPlayingEvent 早于 OnPlay）按当时状态判定。
+        // 仅计 IsFirstInSeries，Replay 类多段重复打出只算一张牌。
+        RitsuLibFramework.SubscribeLifecycle<CardPlayingEvent>(evt =>
+        {
+            if (!evt.CardPlay.IsFirstInSeries)
+                return;
+
+            if (evt.CardPlay.Card.Owner is not { } player || player.Character is not BellaCharacter)
+                return;
+
+            if (!IsContrastCard(player, evt.CardPlay.Card))
+                return;
+
+            ContrastPlaysThisTurn.TryGetValue(player, out int count);
+            ContrastPlaysThisTurn[player] = count + 1;
+        });
+
+        // 玩家侧回合开始时清零本回合计数。
+        RitsuLibFramework.SubscribeLifecycle<SideTurnStartedEvent>(evt =>
+        {
+            if (evt.Side != CombatSide.Player)
+                return;
+
+            foreach (var player in evt.CombatState.Players)
+            {
+                if (player.Character is BellaCharacter)
+                    ContrastPlaysThisTurn[player] = 0;
+            }
+        });
+
+        // 战斗结束释放引用。
+        RitsuLibFramework.SubscribeLifecycle<CombatEndedEvent>(_ => ContrastPlaysThisTurn.Clear());
     }
 
     /// <summary>
@@ -108,11 +148,14 @@ public static class BellaYinYangService
         return yang - yin;
     }
 
-    /// <summary>是否处于白拉状态（阳 ≥ 阴）。</summary>
-    public static bool IsBaiLa(Player player) => ComputeDiff(player) >= 0;
+    /// <summary>是否处于白拉状态（阳 ≥ 阴；被「了转反」翻转时取反）。</summary>
+    public static bool IsBaiLa(Player player) => (ComputeDiff(player) >= 0) != IsInverted(player);
 
-    /// <summary>是否处于黑拉状态（阴 &gt; 阳）。</summary>
-    public static bool IsHeiLa(Player player) => ComputeDiff(player) < 0;
+    /// <summary>是否处于黑拉状态（阴 &gt; 阳；被「了转反」翻转时取反）。</summary>
+    public static bool IsHeiLa(Player player) => (ComputeDiff(player) < 0) != IsInverted(player);
+
+    /// <summary>本场战斗内是否持有「了转反」判定翻转标记。</summary>
+    public static bool IsInverted(Player player) => player.Creature.HasPower<TurnOverPower>();
 
     /// <summary>
     /// 阴阳差修正幅度：|d| ÷ 3（d = 阳牌数 − 阴牌数）。
@@ -121,6 +164,29 @@ public static class BellaYinYangService
     public static int ComputeMagnitude(Player player)
     {
         return Math.Abs(ComputeDiff(player)) / 3;
+    }
+
+    /// <summary>
+    /// 是否反差牌：与当前状态阴阳相反的牌（白拉时的阴牌、黑拉时的阳牌）。
+    /// 无阴阳标签的中立牌恒为 false。
+    /// </summary>
+    public static bool IsContrastCard(Player player, CardModel card)
+    {
+        if (card.Keywords.Contains(YangKeywordId.GetModCardKeyword()))
+            return !IsBaiLa(player);
+        if (card.Keywords.Contains(YinKeywordId.GetModCardKeyword()))
+            return IsBaiLa(player);
+        return false;
+    }
+
+    /// <summary>
+    /// 本回合此前已打出的反差牌数量。
+    /// 注意：当前卡牌打出瞬间自身已被计数（CardPlayingEvent 早于 OnPlay），
+    /// 卡牌读取时若自身是反差牌需自行扣 1。
+    /// </summary>
+    public static int GetContrastPlaysThisTurn(Player player)
+    {
+        return ContrastPlaysThisTurn.TryGetValue(player, out int count) ? count : 0;
     }
 
     /// <summary>

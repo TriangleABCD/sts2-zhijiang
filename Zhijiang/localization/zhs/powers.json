@@ -9,5 +9,13 @@
 
   "ZHIJIANG_POWER_HEI_LA_POWER.title": "黑拉",
   "ZHIJIANG_POWER_HEI_LA_POWER.description": "贝拉处于黑拉状态：阴牌多于阳牌。",
-  "ZHIJIANG_POWER_HEI_LA_POWER.smartDescription": "贝拉处于黑拉状态：阴牌多于阳牌。"
+  "ZHIJIANG_POWER_HEI_LA_POWER.smartDescription": "贝拉处于黑拉状态：阴牌多于阳牌。",
+
+  "ZHIJIANG_POWER_VIRTUAL_SENSE_POWER.title": "虚拟感",
+  "ZHIJIANG_POWER_VIRTUAL_SENSE_POWER.description": "每当你打出一张技能牌时，获得 2 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_POWER_VIRTUAL_SENSE_POWER.smartDescription": "每当你打出一张技能牌时，获得 {Amount} 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+
+  "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.title": "绝无拉我",
+  "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.description": "每当你损失生命值时，获得 3 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.smartDescription": "每当你损失生命值时，获得 {Amount} 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。"
 }

@@ -107,9 +107,9 @@ public sealed class {CardName} : ModCardTemplate
 | 稀有度 | 已完成 | 目标 |
 |--------|--------|------|
 | Basic | 4 (BellaStrike, BellaDefend, Ygnn, Bpkn) | 4 |
-| Common | 3 (PreventionShot, Heartfelt, IceBeauty) | 20 |
-| Uncommon | 1 (ASoulIsComing) | 36 |
-| Rare | 2 (LoopIn20, EvilBella) | 26 |
+| Common | 5 (PreventionShot, Heartfelt, IceBeauty, Hihi, AtField) | 20 |
+| Uncommon | 6 (ASoulIsComing, MoreLoverMorePowerful, Gurenge, VirtualSense, NeverForgive, ZhijiangHell) | 36 |
+| Rare | 3 (LoopIn20, EvilBella, TurnOver) | 26 |
 | Ancient | 2 (MadCow, TearOfBellaris) | 2 |
 
 > 初始卡组 10 张 = 打击×4 + 防御×4 + 勇敢牛牛×1 + 不怕困难×1。勇敢牛牛/不怕困难原为普通牌，已改为基础牌并各给 1 张；预防针了/真情实感原为基础牌，已改为普通牌、不再是初始牌（见会话导出 2）。
@@ -183,6 +183,8 @@ public sealed class {CardName} : ModCardTemplate
   - ① 心之壁→敏捷（**本 mod 所有角色初始遗物共有的能力**）：每回合开始敏捷 = 心之壁 ÷ 15（整除），临时敏捷仅本回合有效、回合结束移除。通用逻辑在共享基类 `ModStarterRelicTemplate.AfterPlayerTurnStart`，子类覆写 `ApplyHeartWallDexterity` 施加各角色专属的 TemporaryDexterityPower（贝拉为 `BellarisHeartWallPower`）。**以后每新增一个角色，其初始遗物都要继承 `ModStarterRelicTemplate` 带上这条。**
   - ② 角色专属阴阳馈赠与代价（见上）。⚠️ 方向是**白拉防御、黑拉进攻**（不是进攻/防守的常规直觉），文档 1.2.2/1.5/2.1 已同步。
   - 实现模式：进入战斗（`AfterRoomEntered` 判 `CombatRoom`）时施加 Power——`BellarisBlockPower`（内部判白拉才生效）与 `BellarisHeiLaAttackPower`（内部判黑拉才生效），各自按状态判断、天然互斥；贝极星额外施加 `BellarisYinYangDebuffPower`（代价控制器）。"每打出卡牌"没有 PowerModel 钩子，用 `AbstractModel.AfterCardPlayed`（参考 `BellarisBlockPower`）
+- **反差牌**：与当前状态阴阳相反的牌（白拉时的阴牌、黑拉时的阳牌），无标签牌恒不是。计数机制（供后续卡牌复用）：`BellaYinYangService` 订阅 `CardPlayingEvent` 在每张牌**第一段**打出瞬间按当时状态累加每玩家计数（`IsFirstInSeries` 判定，Replay 多段只算一张），`SideTurnStartedEvent`（玩家侧）清零，`CombatStartingEvent`/`CombatEndedEvent` 清理；卡牌 OnPlay 读 `GetContrastPlaysThisTurn` 时注意自身已在打出瞬间被计入，若自身是反差牌需扣 1（参考 `MoreLoverMorePowerful`）。
+- **判定翻转（了转反）**：`IsBaiLa/IsHeiLa` 结果与 `IsInverted`（检测隐藏 Power `TurnOverPower`，由「了转反」施加、战斗结束自动清除）取异或；状态图标与贝极星代价经牌堆变动事件实时同步翻转，反差牌判定也随之取反。了转反本身是无标签中立牌、不参与计数。
 - **状态展示**：战斗内用可见 Power（白拉 Power / 黑拉 Power）挂在角色下方，状态翻转时动态替换；战斗外用初始遗物 hover tip 动态文本显示当前状态。
 - 角色基础数值：`StartingHp = 75`、`StartingGold = 99`、`Gender = Feminine`、占位角色 `PlaceholderCharacterId = "ironclad"`（缺字段时从占位角色回退）
 
@@ -197,9 +199,17 @@ public sealed class {CardName} : ModCardTemplate
 | 预防针了 | 普通 | 技能 | 阳 |
 | 真情实感 | 普通 | 技能 | 阳 |
 | 冰山美人 | 普通 | 技能 | 阳 |
+| 嘿嘿！ | 普通 | 技能 | 阳 |
+| A.T. 立场 | 普通 | 技能 | 阳 |
 | 一个魂来咯 | 罕见 | 技能 | 阳 |
+| 红莲华 | 罕见 | 技能 | 阳 |
+| 枝江地狱 | 罕见 | 技能 | 阳 |
+| 虚拟感 | 罕见 | 能力 | 阳 |
+| 绝无拉我 | 罕见 | 能力 | 阴 |
 | 20号循环 | 稀有 | 技能 | 阴 |
 | 黑贝拉sama | 稀有 | 能力 | 阴 |
+| 了转反 | 稀有 | 技能 | 中立（判定翻转） |
+| 情人越多越气派 | 罕见 | 攻击 | 阴 |
 | 疯牛！ | 远古 | 攻击 | 阴 |
 | 贝极星的眼泪 | 远古 | 攻击 | 阴 |
 
@@ -217,6 +227,13 @@ public sealed class {CardName} : ModCardTemplate
 | 预防针了 | 5→10心壁 + 8→11格挡，-1力量 | 阳 |
 | 真情实感 | 去全敌 5→8 格挡，耗10心壁 | 阳 |
 | 冰山美人 | 1→0费，1 冰霜球 | 阳 |
+| 嘿嘿！ | 1⇢0费，能量翻倍，耗10心壁 | 阳 |
+| A.T. 立场 | 1费，格挡=心壁÷5⇢4（向下取整） | 阳 |
+| 红莲华 | 1费，6⇢8格挡+每反差牌2⇢3格挡 | 阳 |
+| 枝江地狱 | 0费，1能量，耗12⇢8心壁 | 阳 |
+| 虚拟感 | 2费能力，每技能牌 2⇢3 心壁 | 阳 |
+| 绝无拉我 | 1费能力，掉血 3⇢4 心壁 | 阴 |
+| 了转反 | 1费，消耗，本场战斗黑白拉判定翻转，升级移除消耗 | 中立 |
 | 一个魂来咯 | 3 灵魂，升级移除消耗 | 阳 |
 | 20号循环 | 3→2费，下一攻击×20次，耗150→120心壁 | 阴 |
 | 黑贝拉sama | 掉血生 1→2 黑暗球（无栏位加成） | 阴 |
@@ -255,7 +272,8 @@ public sealed class {CardName} : ModCardTemplate
 - ✅ 卡牌标签（阳/阴 CardKeyword）+ 状态判定（白拉/黑拉）
 - ✅ 初始遗物「贝极星」的阴阳馈赠与代价（白拉技能格挡/黑拉随机攻击 + 力量/敏捷代价），闪耀贝极星同馈赠无代价。2026-08-15 由"逐卡差值修正"重构而来，旧版 `IBellaYinYangCorrectionCard`/`BellaYinYangCorrectionPower`/`BellarisStrengthPower` 已删除；更早的固定加成数值（+2/+3/+4/+6 等）均已废弃，勿再参考
 - ✅ 状态展示（战斗内 Power + 战斗外遗物文本）+ 状态翻转动态同步（标记替换 + 代价切换）
-- ⏸ 动态机制（切换牌「阴阳逆转」/临时状态「趋光·堕影」/立场宣言/双极牌「太极劲」）、转化牌「拨乱反正」、反其道牌「混沌之心」、升级翻转属性、药水「阴阳灵液」、事件「阴阳师」→ **后续版本**
+- ✅ 切换牌「阴阳逆转」已实现：「了转反」（稀有技能，消耗；判定翻转）。
+- ⏸ 动态机制（临时状态「趋光·堕影」/立场宣言/双极牌「太极劲」）、转化牌「拨乱反正」、反其道牌「混沌之心」、升级翻转属性、药水「阴阳灵液」、事件「阴阳师」→ **后续版本**
 - ⚠️ 纪元系统不适用（`RequiresEpochAndTimeline = false`），文档「五、纪元系统」标记为暂不适用
 
 ### 代码实现方案
