@@ -44,6 +44,12 @@ public partial class Entry
         RitsuLibFramework.CreatePatcher(ModId, "KeywordPeriodRemoval")
             .RegisterPatch<ModKeywordPeriodRemovalPatch>();
 
+        // 洗牌拖尾（弃牌堆 → 抽牌堆）染成贝拉应援色：
+        // RitsuLib 的 TrailStyle 染色只覆盖"跟随节点是 NCard"的普通拖尾，
+        // 洗牌特效（NCardFlyShuffleVfx）需要此补丁补上，否则仍是占位角色（战士）的颜色。
+        RitsuLibFramework.CreatePatcher(ModId, "BellaShuffleTrailStyle")
+            .RegisterPatch<BellaShuffleTrailStylePatch>();
+
         Logger.Info("Zhijiang initialized.");
     }
 }

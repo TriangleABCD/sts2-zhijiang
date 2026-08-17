@@ -7,6 +7,6 @@
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="BellaCharacter" type="Sprite2D" parent="Node2D"]
-position = Vector2(-36, -439)
-scale = Vector2(0.47729492, 0.47729492)
+position = Vector2(-22.000015, -295.99997)
+scale = Vector2(0.3182373, 0.3182373)
 texture = ExtResource("1_twd6x")

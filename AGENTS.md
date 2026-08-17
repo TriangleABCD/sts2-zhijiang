@@ -107,9 +107,9 @@ public sealed class {CardName} : ModCardTemplate
 | 稀有度 | 已完成 | 目标 |
 |--------|--------|------|
 | Basic | 4 (BellaStrike, BellaDefend, Ygnn, Bpkn) | 4 |
-| Common | 5 (PreventionShot, Heartfelt, IceBeauty, Hihi, AtField) | 20 |
-| Uncommon | 6 (ASoulIsComing, MoreLoverMorePowerful, Gurenge, VirtualSense, NeverForgive, ZhijiangHell) | 36 |
-| Rare | 3 (LoopIn20, EvilBella, TurnOver) | 26 |
+| Common | 9 (PreventionShot, Heartfelt, IceBeauty, Hihi, AtField, BellaRexIsComing, PotatoMine, BellaIsZero, BellaIsOne) | 20 |
+| Uncommon | 7 (ASoulIsComing, MoreLoverMorePowerful, Gurenge, VirtualSense, NeverForgive, ZhijiangHell, ZhijiangLes) | 36 |
+| Rare | 4 (LoopIn20, EvilBella, TurnOver, OxTalisman) | 26 |
 | Ancient | 2 (MadCow, TearOfBellaris) | 2 |
 
 > 初始卡组 10 张 = 打击×4 + 防御×4 + 勇敢牛牛×1 + 不怕困难×1。勇敢牛牛/不怕困难原为普通牌，已改为基础牌并各给 1 张；预防针了/真情实感原为基础牌，已改为普通牌、不再是初始牌（见会话导出 2）。
@@ -154,6 +154,7 @@ public sealed class {CardName} : ModCardTemplate
   | necrobinder | 粉红 (1, 0.126, 0.288) | 粉红→紫红 |
 - **查看原版场景内容的方法**：用本机 Godot headless 加载游戏 pck 直接读 `res://` 文本（无需反编译）：临时工程放一个 `SceneTree` 脚本，`ProjectSettings.load_resource_pack("<游戏目录>/SlayTheSpire2.pck", true)` 后 `FileAccess.open("res://scenes/vfx/card_trail_xxx.tscn", FileAccess.READ)` 导出文本即可。
 - 贝拉已配置：全部染成 `SupportColor`（0.8588, 0.4902, 0.4549 = #DB7D74，应援色，与 `MapDrawingColor` 同值），底为 ironclad 拖尾（红橙系，与粉色同暖色系），实测观感好。
+- ⚠️ **洗牌拖尾例外（2026-08-17 已修）**：弃牌堆→抽牌堆的洗牌飞行特效（`NCardFlyShuffleVfx`）调用 `NCardTrailVfx.Create` 时跟随节点是洗牌特效本身、不是 `NCard`，RitsuLib 的 `CharacterTrailStyleOverridePatch`（靠 `card is NCard` 反查角色）不会给它染 TrailStyle，会显示占位角色的原色（贝拉显示战士红）。本项目补丁 `ZhijiangCode/Patches/BellaShuffleTrailStylePatch.cs`（注册于 `Entry.cs`）在 `NCardTrailVfx.Create` 后拦截洗牌特效，读私有字段 `_targetPile` 与当前战斗各玩家牌堆实例做引用相等反查贝拉玩家，染成与 TrailStyle 完全相同的 `SupportColor`。以后新角色若也要洗牌拖尾染色，需在该补丁中加对应角色分支（或把染色逻辑抽成共享方法）。
 
 ## 开发环境注意
 
@@ -201,11 +202,17 @@ public sealed class {CardName} : ModCardTemplate
 | 冰山美人 | 普通 | 技能 | 阳 |
 | 嘿嘿！ | 普通 | 技能 | 阳 |
 | A.T. 立场 | 普通 | 技能 | 阳 |
+| 拉龙来袭 | 普通 | 攻击 | 阳 |
+| 小土豆雷 | 普通 | 攻击 | 阴 |
+| 贝0 | 普通 | 攻击 | 阴 |
+| 贝1 | 普通 | 攻击 | 阳 |
 | 一个魂来咯 | 罕见 | 技能 | 阳 |
 | 红莲华 | 罕见 | 技能 | 阳 |
 | 枝江地狱 | 罕见 | 技能 | 阳 |
 | 虚拟感 | 罕见 | 能力 | 阳 |
 | 绝无拉我 | 罕见 | 能力 | 阴 |
+| 枝江小百合 | 罕见 | 能力 | 阴 |
+| 牛符咒 | 稀有 | 技能 | 阳 |
 | 20号循环 | 稀有 | 技能 | 阴 |
 | 黑贝拉sama | 稀有 | 能力 | 阴 |
 | 了转反 | 稀有 | 技能 | 中立（判定翻转） |
@@ -229,10 +236,16 @@ public sealed class {CardName} : ModCardTemplate
 | 冰山美人 | 1→0费，1 冰霜球 | 阳 |
 | 嘿嘿！ | 1⇢0费，能量翻倍，耗10心壁 | 阳 |
 | A.T. 立场 | 1费，格挡=心壁÷5⇢4（向下取整） | 阳 |
+| 拉龙来袭 | 0费，给敌人 1→2 易伤 + 1→2 虚弱 | 阳 |
+| 小土豆雷 | 1费，3回合后对血量最多的敌人造成17→20伤害 | 阴 |
+| 贝0 | 1费，3→4伤害 + 抽牌堆随机2→3张0费牌入手 | 阴 |
+| 贝1 | 1费，3→4伤害 + 抽牌堆随机2→3张1费牌入手 | 阳 |
+| 牛符咒 | 2费，消耗，本回合+5→7力量 | 阳 |
 | 红莲华 | 1费，6⇢8格挡+每反差牌2⇢3格挡 | 阳 |
 | 枝江地狱 | 0费，1能量，耗12⇢8心壁 | 阳 |
 | 虚拟感 | 2费能力，每技能牌 2⇢3 心壁 | 阳 |
 | 绝无拉我 | 1费能力，掉血 3⇢4 心壁 | 阴 |
+| 枝江小百合 | 1费能力，每5⇢3张反差牌 +1敏捷 | 阴 |
 | 了转反 | 1费，消耗，本场战斗黑白拉判定翻转，升级移除消耗 | 中立 |
 | 一个魂来咯 | 3 灵魂，升级移除消耗 | 阳 |
 | 20号循环 | 3→2费，下一攻击×20次，耗150→120心壁 | 阴 |

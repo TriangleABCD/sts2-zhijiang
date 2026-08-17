@@ -17,5 +17,13 @@
 
   "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.title": "绝无拉我",
   "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.description": "每当你损失生命值时，获得 3 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
-  "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.smartDescription": "每当你损失生命值时，获得 {Amount} 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。"
+  "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.smartDescription": "每当你损失生命值时，获得 {Amount} 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+
+  "ZHIJIANG_POWER_POTATO_MINE_POWER.title": "小土豆雷",
+  "ZHIJIANG_POWER_POTATO_MINE_POWER.description": "倒计时结束后，对血量最多的敌人造成 17 点伤害。",
+  "ZHIJIANG_POWER_POTATO_MINE_POWER.smartDescription": "倒计时：{Amount} 回合。结束后对血量最多的敌人造成 [blue]{Damage}[/blue] 点伤害。",
+
+  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.title": "枝江小百合",
+  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.description": "每当你打出 5 张阴阳性与当前黑白拉状态相反的牌时，获得 1 点敏捷。",
+  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.smartDescription": "每当你打出 {ContrastThreshold} 张阴阳性与当前黑白拉状态相反的牌时，获得 1 点敏捷。"
 }

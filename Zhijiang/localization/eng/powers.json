@@ -17,5 +17,13 @@
 
   "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.title": "Never Forgive",
   "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.description": "Whenever you lose HP, gain 3 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
-  "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.smartDescription": "Whenever you lose HP, gain {Amount} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]."
+  "ZHIJIANG_POWER_NEVER_FORGIVE_POWER.smartDescription": "Whenever you lose HP, gain {Amount} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+
+  "ZHIJIANG_POWER_POTATO_MINE_POWER.title": "potato mine",
+  "ZHIJIANG_POWER_POTATO_MINE_POWER.description": "When the countdown ends, deal 17 damage to the enemy with the most HP.",
+  "ZHIJIANG_POWER_POTATO_MINE_POWER.smartDescription": "Countdown: {Amount} turns. When it ends, deal [blue]{Damage}[/blue] damage to the enemy with the most HP.",
+
+  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.title": "Zhijiang Les",
+  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.description": "Every time you play 5 cards whose Yin-Yang opposes your current Bai La / Hei La state, gain 1 Dexterity.",
+  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.smartDescription": "Every time you play {ContrastThreshold} cards whose Yin-Yang opposes your current Bai La / Hei La state, gain 1 Dexterity."
 }

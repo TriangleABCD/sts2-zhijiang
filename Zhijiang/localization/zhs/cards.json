@@ -76,5 +76,29 @@
 
   "ZHIJIANG_CARD_TEAR_OF_BELLARIS.title": "贝极星的眼泪",
   "ZHIJIANG_CARD_TEAR_OF_BELLARIS.description": "对所有敌人造成 {Damage:diff()} 点伤害。消耗所有心之壁值，每消耗 10 点心之壁，获得 {StrengthPer10} 点力量。",
-  "ZHIJIANG_CARD_TEAR_OF_BELLARIS.smartDescription": "对所有敌人造成 {Damage:diff()} 点伤害。消耗所有心之壁值，每消耗 10 点心之壁，获得 {StrengthPer10} 点力量。"
+  "ZHIJIANG_CARD_TEAR_OF_BELLARIS.smartDescription": "对所有敌人造成 {Damage:diff()} 点伤害。消耗所有心之壁值，每消耗 10 点心之壁，获得 {StrengthPer10} 点力量。",
+
+  "ZHIJIANG_CARD_BELLA_REX_IS_COMING.title": "拉龙来袭",
+  "ZHIJIANG_CARD_BELLA_REX_IS_COMING.description": "给予{VulnerablePower:diff()}层[gold]易伤[/gold]。\n给予{WeakPower:diff()}层[gold]虚弱[/gold]。",
+  "ZHIJIANG_CARD_BELLA_REX_IS_COMING.smartDescription": "给予{VulnerablePower:diff()}层[gold]易伤[/gold]。\n给予{WeakPower:diff()}层[gold]虚弱[/gold]。",
+
+  "ZHIJIANG_CARD_OX_TALISMAN.title": "牛符咒",
+  "ZHIJIANG_CARD_OX_TALISMAN.description": "本回合获得 {StrengthGain} 点力量。",
+  "ZHIJIANG_CARD_OX_TALISMAN.smartDescription": "本回合获得 {StrengthGain} 点力量。",
+
+  "ZHIJIANG_CARD_POTATO_MINE.title": "小土豆雷",
+  "ZHIJIANG_CARD_POTATO_MINE.description": "在 {Turns:diff()} 回合结束后，对血量最多的敌人造成 {BombDamage:diff()} 点伤害。",
+  "ZHIJIANG_CARD_POTATO_MINE.smartDescription": "在 {Turns:diff()} 回合结束后，对血量最多的敌人造成 {BombDamage:diff()} 点伤害。",
+
+  "ZHIJIANG_CARD_ZHIJIANG_LES.title": "枝江小百合",
+  "ZHIJIANG_CARD_ZHIJIANG_LES.description": "每当你打出 {ContrastThreshold} 张阴阳性与当前黑白拉状态相反的牌时，获得 1 点敏捷。",
+  "ZHIJIANG_CARD_ZHIJIANG_LES.smartDescription": "每当你打出 {ContrastThreshold} 张阴阳性与当前黑白拉状态相反的牌时，获得 1 点敏捷。",
+
+  "ZHIJIANG_CARD_BELLA_IS_ZERO.title": "贝0",
+  "ZHIJIANG_CARD_BELLA_IS_ZERO.description": "造成 {Damage:diff()} 点伤害。将抽牌堆中随机 {Cards} 张耗能为 0 的牌加入手牌。",
+  "ZHIJIANG_CARD_BELLA_IS_ZERO.smartDescription": "造成 {Damage:diff()} 点伤害。将抽牌堆中随机 {Cards} 张耗能为 0 的牌加入手牌。",
+
+  "ZHIJIANG_CARD_BELLA_IS_ONE.title": "贝1",
+  "ZHIJIANG_CARD_BELLA_IS_ONE.description": "造成 {Damage:diff()} 点伤害。将抽牌堆中随机 {Cards} 张耗能为 1 的牌加入手牌。",
+  "ZHIJIANG_CARD_BELLA_IS_ONE.smartDescription": "造成 {Damage:diff()} 点伤害。将抽牌堆中随机 {Cards} 张耗能为 1 的牌加入手牌。"
 }

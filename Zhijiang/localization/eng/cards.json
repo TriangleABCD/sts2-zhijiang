@@ -76,5 +76,29 @@
 
   "ZHIJIANG_CARD_TEAR_OF_BELLARIS.title": "Tear of Bellaris",
   "ZHIJIANG_CARD_TEAR_OF_BELLARIS.description": "Deal {Damage:diff()} damage to ALL enemies. Lose all Heart Wall. For every 10 Heart Wall lost, gain {StrengthPer10} Strength.",
-  "ZHIJIANG_CARD_TEAR_OF_BELLARIS.smartDescription": "Deal {Damage:diff()} damage to ALL enemies. Lose all Heart Wall. For every 10 Heart Wall lost, gain {StrengthPer10} Strength."
+  "ZHIJIANG_CARD_TEAR_OF_BELLARIS.smartDescription": "Deal {Damage:diff()} damage to ALL enemies. Lose all Heart Wall. For every 10 Heart Wall lost, gain {StrengthPer10} Strength.",
+
+  "ZHIJIANG_CARD_BELLA_REX_IS_COMING.title": "Bella Rex is coming",
+  "ZHIJIANG_CARD_BELLA_REX_IS_COMING.description": "Apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {WeakPower:diff()} [gold]Weak[/gold].",
+  "ZHIJIANG_CARD_BELLA_REX_IS_COMING.smartDescription": "Apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {WeakPower:diff()} [gold]Weak[/gold].",
+
+  "ZHIJIANG_CARD_OX_TALISMAN.title": "Ox Talisman",
+  "ZHIJIANG_CARD_OX_TALISMAN.description": "Gain {StrengthGain} Strength this turn.",
+  "ZHIJIANG_CARD_OX_TALISMAN.smartDescription": "Gain {StrengthGain} Strength this turn.",
+
+  "ZHIJIANG_CARD_POTATO_MINE.title": "potato mine",
+  "ZHIJIANG_CARD_POTATO_MINE.description": "At the end of {Turns:diff()} turns, deal {BombDamage:diff()} damage to the enemy with the most HP.",
+  "ZHIJIANG_CARD_POTATO_MINE.smartDescription": "At the end of {Turns:diff()} turns, deal {BombDamage:diff()} damage to the enemy with the most HP.",
+
+  "ZHIJIANG_CARD_ZHIJIANG_LES.title": "Zhijiang Les",
+  "ZHIJIANG_CARD_ZHIJIANG_LES.description": "Every time you play {ContrastThreshold} cards whose Yin-Yang opposes your current Bai La / Hei La state, gain 1 Dexterity.",
+  "ZHIJIANG_CARD_ZHIJIANG_LES.smartDescription": "Every time you play {ContrastThreshold} cards whose Yin-Yang opposes your current Bai La / Hei La state, gain 1 Dexterity.",
+
+  "ZHIJIANG_CARD_BELLA_IS_ZERO.title": "Bella is zero",
+  "ZHIJIANG_CARD_BELLA_IS_ZERO.description": "Deal {Damage:diff()} damage. Add {Cards} random 0-cost cards from your draw pile to your hand.",
+  "ZHIJIANG_CARD_BELLA_IS_ZERO.smartDescription": "Deal {Damage:diff()} damage. Add {Cards} random 0-cost cards from your draw pile to your hand.",
+
+  "ZHIJIANG_CARD_BELLA_IS_ONE.title": "Bella is one",
+  "ZHIJIANG_CARD_BELLA_IS_ONE.description": "Deal {Damage:diff()} damage. Add {Cards} random 1-cost cards from your draw pile to your hand.",
+  "ZHIJIANG_CARD_BELLA_IS_ONE.smartDescription": "Deal {Damage:diff()} damage. Add {Cards} random 1-cost cards from your draw pile to your hand."
 }
