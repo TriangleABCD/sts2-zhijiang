@@ -74,7 +74,12 @@ public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRe
                 BigSparksColor: SupportColor,
                 LittleSparksColor: SupportColor,
                 PrimarySpriteModulate: SupportColor,
-                SecondarySpriteModulate: SupportColor))
+                SecondarySpriteModulate: SupportColor)),
+            Multiplayer: new CharacterMultiplayerAssetSet(
+                ArmPointingTexturePath: $"{ImageRoot}/Bella/multiplayer_hand_bella_point.png",
+                ArmRockTexturePath: $"{ImageRoot}/Bella/multiplayer_hand_bella_rock.png",
+                ArmPaperTexturePath: $"{ImageRoot}/Bella/multiplayer_hand_bella_paper.png",
+                ArmScissorsTexturePath: $"{ImageRoot}/Bella/multiplayer_hand_bella_scissors.png")
         );
 
     // 某个字段没写时，RitsuLib 会从占位角色配置里补齐。

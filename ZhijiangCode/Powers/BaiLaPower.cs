@@ -21,8 +21,8 @@ public sealed class BaiLaPower : ModPowerTemplate
 
     protected override bool IsVisibleInternal => true;
 
-    // 图标占位：暂用贝拉能量图标，后续可替换为专属状态图标。
+    // 专属状态图标：bai_la_power_64x64.png / bai_la_power_256x256.png（待替换为成品图）。
     public override PowerAssetProfile AssetProfile => new(
-        IconPath: $"{Entry.ResPath}/images/characters/Bella/Bella_energy_big.png",
-        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/Bella_energy_big.png");
+        IconPath: $"{Entry.ResPath}/images/characters/Bella/bai_la_power_64x64.png",
+        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/bai_la_power_256x256.png");
 }

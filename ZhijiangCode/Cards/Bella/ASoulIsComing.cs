@@ -26,7 +26,7 @@ public sealed class ASoulIsComing : ModCardTemplate
     private const bool ShowInCardLibrary = true;
 
     public override CardAssetProfile AssetProfile => new(
-        PortraitPath: $"{Entry.ResPath}/images/cards/ZhijiangSkill.png");
+        PortraitPath: $"{Entry.ResPath}/images/cards/Bella/a_soul_is_coming.png");
 
     // 灵魂卡悬浮提示。
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
