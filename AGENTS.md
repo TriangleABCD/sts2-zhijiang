@@ -109,9 +109,9 @@ public sealed class {CardName} : ModCardTemplate
 | 稀有度 | 已完成 | 目标 |
 |--------|--------|------|
 | Basic | 4 (BellaStrike, BellaDefend, Ygnn, Bpkn) | 4 |
-| Common | 9 (PreventionShot, Heartfelt, IceBeauty, Hihi, AtField, BellaRexIsComing, PotatoMine, BellaIsZero, BellaIsOne) | 20 |
-| Uncommon | 7 (ASoulIsComing, MoreLoverMorePowerful, Gurenge, VirtualSense, NeverForgive, ZhijiangHell, ZhijiangLes) | 36 |
-| Rare | 4 (LoopIn20, EvilBella, TurnOver, OxTalisman) | 26 |
+| Common | 16 (10 existing：PreventionShot, Heartfelt, IceBeauty, Hihi, AtField, BellaRexIsComing, PotatoMine, BellaIsZero, BellaIsOne, OxNeverDie + 6 new：Schedule, FlowerInDeath, BellaPraysForRain, LittleSkateboard, Marionette, LittlePenguin) | 20 |
+| Uncommon | 10 (7 existing + Boomerang, AllAreMyWings, Tryhard) | 36 |
+| Rare | 9 (LoopIn20, EvilBella, TurnOver, OxTalisman, Npk48, Unit01, YuriDomainExpert, YouDontChooseRed, ReliableSisterLa) | 26 |
 | Ancient | 2 (MadCow, TearOfBellaris) | 2 |
 
 > 初始卡组 10 张 = 打击×4 + 防御×4 + 勇敢牛牛×1 + 不怕困难×1。勇敢牛牛/不怕困难原为普通牌，已改为基础牌并各给 1 张；预防针了/真情实感原为基础牌，已改为普通牌、不再是初始牌（见会话导出 2）。
@@ -223,6 +223,20 @@ public sealed class {CardName} : ModCardTemplate
 | 贝极星的眼泪 | 远古 | 攻击 | 阴 |
 | 牛不灭 | 普通 | 攻击 | 阳 |
 | 牛批 | 状态牌 | 状态 | 阴 |
+| NPK48 | 稀有 | 攻击 | 阴 |
+| 日程表 | 普通 | 技能 | 阳 | |
+| 末路狂花 | 普通 | 攻击 | 阴 | |
+| 贝拉求雨 | 普通 | 攻击 | 阳 | |
+| 小滑板 | 普通 | 技能 | 阴 | |
+| 提线木偶 | 普通 | 技能 | 阴 | |
+| 小企鹅 | 普通 | 技能 | 阳 | |
+| 回旋镖 | 罕见 | 攻击 | 阴 | |
+| 都是我的翅膀 | 罕见 | 能力 | 中立 | |
+| 分奴 | 罕见 | 技能 | 阴 | |
+| 初号机 | 稀有 | 攻击 | 阴 | 耗 15 心之壁 |
+| 女女关系领域大神 | 稀有 | 攻击 | 阳 | |
+| 你不选...红色 | 稀有 | 技能 | 中立 | |
+| 喔拉姐，可靠的拉姐 | 稀有 | 能力 | 阴 | |
 
 > 初始卡组配比：5 阴（打击×4+勇敢牛牛×1）5 阳（防御×4+不怕困难×1），开局白拉。
 > 代码实现：各卡牌 `CanonicalKeywords` 挂载 `BellaYinYangService.YangKeywordId/YinKeywordId.GetModCardKeyword()`。新增卡牌必须先登记属性（见 `doc/Bella.md` 4.0）。
@@ -258,6 +272,7 @@ public sealed class {CardName} : ModCardTemplate
 | 贝极星的眼泪 | 全敌 17 伤害，每10心壁 1→2力量 | 阴 |
 | 牛不灭 | 1费，7→12伤害 + 弃牌堆2张牛批 | 阳 |
 | 牛批 | 状态牌：无法打出 | 阴 |
+| NPK48 | 3费+25心壁，消耗所有牛批，每张随机敌人7伤害；升级移除消耗 | 阴 |
 
 > 原数值（如打击6、勇敢牛牛4×3+3等）已下调，为阴阳效果留空间。冰山美人从2球改1球（本地化已同步）。
 > ⚠️ 打击/防御后改为对齐原版：打击 6→9（升级+3），防御 5→8（升级+3），与 `DefendIronclad`/`StrikeIronclad` 一致。

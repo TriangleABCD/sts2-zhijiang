@@ -30,6 +30,13 @@ public static class BellaYinYangService
     // 本回合各贝拉玩家已打出的反差牌计数（打出瞬间按当时状态判定；玩家回合开始时清零）。
     private static readonly Dictionary<Player, int> ContrastPlaysThisTurn = new();
 
+    // 本回合各贝拉玩家已打出的技能牌数（Replay 多段只算第一段）。
+    private static readonly Dictionary<Player, int> SkillPlaysThisTurn = new();
+
+    // 本回合各贝拉玩家已打出的阳/阴牌数（Replay 多段只算第一段）。
+    private static readonly Dictionary<Player, int> YangPlaysThisTurn = new();
+    private static readonly Dictionary<Player, int> YinPlaysThisTurn = new();
+
     /// <summary>
     /// 注册战斗状态同步，在 Entry.Initialize 中调用：
     /// 1. 战斗开始时为贝拉玩家施加可见状态标记（白拉/黑拉），并同步贝极星的阴阳代价。
@@ -44,8 +51,11 @@ public static class BellaYinYangService
             if (evt.CombatState is not { } combat)
                 return;
 
-            // 新战斗清空反差牌计数。
+            // 新战斗清空各回合计数。
             ContrastPlaysThisTurn.Clear();
+            SkillPlaysThisTurn.Clear();
+            YangPlaysThisTurn.Clear();
+            YinPlaysThisTurn.Clear();
 
             foreach (var player in combat.Players)
             {
@@ -76,6 +86,25 @@ public static class BellaYinYangService
             if (evt.CardPlay.Card.Owner is not { } player || player.Character is not BellaCharacter)
                 return;
 
+            // 技能牌计数。
+            if (evt.CardPlay.Card.Type == CardType.Skill)
+            {
+                SkillPlaysThisTurn.TryGetValue(player, out int skillCount);
+                SkillPlaysThisTurn[player] = skillCount + 1;
+            }
+
+            // 阳/阴牌计数。
+            if (evt.CardPlay.Card.Keywords.Contains(YangKeywordId.GetModCardKeyword()))
+            {
+                YangPlaysThisTurn.TryGetValue(player, out int yangCount);
+                YangPlaysThisTurn[player] = yangCount + 1;
+            }
+            else if (evt.CardPlay.Card.Keywords.Contains(YinKeywordId.GetModCardKeyword()))
+            {
+                YinPlaysThisTurn.TryGetValue(player, out int yinCount);
+                YinPlaysThisTurn[player] = yinCount + 1;
+            }
+
             if (!IsContrastCard(player, evt.CardPlay.Card))
                 return;
 
@@ -92,12 +121,23 @@ public static class BellaYinYangService
             foreach (var player in evt.CombatState.Players)
             {
                 if (player.Character is BellaCharacter)
+                {
                     ContrastPlaysThisTurn[player] = 0;
+                    SkillPlaysThisTurn[player] = 0;
+                    YangPlaysThisTurn[player] = 0;
+                    YinPlaysThisTurn[player] = 0;
+                }
             }
         });
 
         // 战斗结束释放引用。
-        RitsuLibFramework.SubscribeLifecycle<CombatEndedEvent>(_ => ContrastPlaysThisTurn.Clear());
+        RitsuLibFramework.SubscribeLifecycle<CombatEndedEvent>(_ =>
+        {
+            ContrastPlaysThisTurn.Clear();
+            SkillPlaysThisTurn.Clear();
+            YangPlaysThisTurn.Clear();
+            YinPlaysThisTurn.Clear();
+        });
     }
 
     /// <summary>
@@ -187,6 +227,30 @@ public static class BellaYinYangService
     public static int GetContrastPlaysThisTurn(Player player)
     {
         return ContrastPlaysThisTurn.TryGetValue(player, out int count) ? count : 0;
+    }
+
+    /// <summary>本回合此前已打出的技能牌数量。</summary>
+    public static int GetSkillPlaysThisTurn(Player player)
+    {
+        return SkillPlaysThisTurn.TryGetValue(player, out int count) ? count : 0;
+    }
+
+    /// <summary>本回合此前已打出的阳牌数量。</summary>
+    public static int GetYangPlaysThisTurn(Player player)
+    {
+        return YangPlaysThisTurn.TryGetValue(player, out int count) ? count : 0;
+    }
+
+    /// <summary>本回合此前已打出的阴牌数量。</summary>
+    public static int GetYinPlaysThisTurn(Player player)
+    {
+        return YinPlaysThisTurn.TryGetValue(player, out int count) ? count : 0;
+    }
+
+    /// <summary>本回合阴阳打出差（阳 − 阴）。</summary>
+    public static int GetYinYangBalanceThisTurn(Player player)
+    {
+        return GetYangPlaysThisTurn(player) - GetYinPlaysThisTurn(player);
     }
 
     /// <summary>
