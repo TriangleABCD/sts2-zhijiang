@@ -100,5 +100,13 @@
 
   "ZHIJIANG_CARD_BELLA_IS_ONE.title": "贝1",
   "ZHIJIANG_CARD_BELLA_IS_ONE.description": "造成 {Damage:diff()} 点伤害。将抽牌堆中随机 {Cards} 张耗能为 1 的牌加入手牌。",
-  "ZHIJIANG_CARD_BELLA_IS_ONE.smartDescription": "造成 {Damage:diff()} 点伤害。将抽牌堆中随机 {Cards} 张耗能为 1 的牌加入手牌。"
+  "ZHIJIANG_CARD_BELLA_IS_ONE.smartDescription": "造成 {Damage:diff()} 点伤害。将抽牌堆中随机 {Cards} 张耗能为 1 的牌加入手牌。",
+
+  "ZHIJIANG_CARD_OX_NEVER_DIE.title": "牛不灭",
+  "ZHIJIANG_CARD_OX_NEVER_DIE.description": "造成 {Damage:diff()} 点伤害。弃牌堆中加入 2 张牛批。",
+  "ZHIJIANG_CARD_OX_NEVER_DIE.smartDescription": "造成 {Damage:diff()} 点伤害。弃牌堆中加入 2 张牛批。",
+
+  "ZHIJIANG_CARD_NP.title": "牛批",
+  "ZHIJIANG_CARD_NP.description": "无法打出。",
+  "ZHIJIANG_CARD_NP.smartDescription": "无法打出。"
 }

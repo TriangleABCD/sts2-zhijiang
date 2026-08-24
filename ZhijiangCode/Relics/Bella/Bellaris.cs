@@ -23,8 +23,11 @@ namespace Zhijiang.ZhijiangCode.Relics;
 [RegisterTouchOfOrobasRefinement(typeof(KiraBellaris))]
 public sealed class Bellaris : ModStarterRelicTemplate
 {
-    // 稀有度。
-    public override RelicRarity Rarity => RelicRarity.Common;
+    // 稀有度：初始遗物（Starter）——与原版初始遗物一致，不会进入商店/奖励池，也不会被交易/出售。
+    public override RelicRarity Rarity => RelicRarity.Starter;
+
+    // 初始遗物不可在商店出现（防御性限制；Starter 稀有度本就不会被商店抽取）。
+    public override bool IsAllowedInShops => false;
 
     // 遗物的数值。DexterityPower 和 StrengthPower 用于在本地化悬浮提示中展示能力图标。
     protected override IEnumerable<DynamicVar> CanonicalVars =>

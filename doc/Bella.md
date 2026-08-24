@@ -23,7 +23,7 @@
   - 相等 → **白拉**
   - 战斗中：消耗掉的牌与打出后的能力牌不再参与计数（能力牌打出后停留在打出堆、本场战斗不再回到循环），状态随牌堆变动实时更新。
 - 状态随卡组变动（抓牌、删牌、转化等）自动更新。
-- **中立牌**：灵魂、诅咒、战斗中生成的临时牌等无标签，不参与计数、不受状态影响（「了转反」也是无标签的中立牌）。
+- **中立牌**：灵魂、诅咒、战斗中生成的临时牌等无标签，不参与计数、不受状态影响（「了转反」也是无标签的中立牌）。**例外**：本 mod 状态牌「牛批」带阴标签，参与阴阳计数，可在局内通过加入/移除「牛批」改变黑白拉状态。
 - **反差牌**：与当前状态阴阳相反的牌（白拉时的阴牌、黑拉时的阳牌），无标签牌恒不是反差牌。部分卡牌（如「情人越多越气派」）按本回合此前打出的反差牌数量结算（打出瞬间按当时状态判定，Replay 类多段重复打出只算一张）。
 
 #### 1.2.2 状态效果：贝极星的馈赠与代价（2026-08-15 定稿）
@@ -97,7 +97,7 @@
 
 | 遗物 | 稀有度 | 效果 |
 |------|--------|------|
-| [贝极星 (Bellaris)](#) | 普通 | ① 每回合开始时，每 15 点心之壁获得 1 点敏捷（整除），回合结束时移除。② 阴阳馈赠与代价：白拉时每打出 1 张技能牌获得 1+d÷3 点格挡，战斗开始时失去 1+d÷3 点力量；黑拉时每打出 1 张攻击牌对随机一名敌人造成 1+d÷3 点伤害，战斗开始时失去 1+d÷3 点敏捷 |
+| [贝极星 (Bellaris)](#) | 初始 | ① 每回合开始时，每 15 点心之壁获得 1 点敏捷（整除），回合结束时移除。② 阴阳馈赠与代价：白拉时每打出 1 张技能牌获得 1+d÷3 点格挡，战斗开始时失去 1+d÷3 点力量；黑拉时每打出 1 张攻击牌对随机一名敌人造成 1+d÷3 点伤害，战斗开始时失去 1+d÷3 点敏捷 |
 | [闪耀贝极星 (KiraBellaris)](#) | 初始 | 贝极星的升级版，由"先古之民"（奥罗巴斯）事件中的奥罗巴斯之触替换获得。① 心之壁→敏捷同贝极星。② 阴阳馈赠同贝极星（白拉技能格挡 / 黑拉随机攻击，1+d÷3），但**没有代价**（不失去力量/敏捷） |
 
 ---
@@ -108,7 +108,7 @@
 
 | 图标 | 名称 | 稀有度 | 效果 | 代码路径 |
 |------|------|--------|------|----------|
-| <!-- TODO --> | 贝极星 (Bellaris) | 普通 | ① 心之壁÷15（整除）→ 临时敏捷（共用基类 `ModStarterRelicTemplate`）。② 阴阳馈赠与代价：白拉技能牌 → 1+d÷3 格挡，代价 −(1+d÷3) 力量；黑拉攻击牌 → 随机敌人 1+d÷3 伤害，代价 −(1+d÷3) 敏捷 | `Relics/Bella/Bellaris.cs` / `BellarisBlockPower.cs` / `BellarisHeiLaAttackPower.cs` / `BellarisYinYangDebuffPower.cs` / `BellarisHeartWallPower.cs` |
+| <!-- TODO --> | 贝极星 (Bellaris) | 初始 | ① 心之壁÷15（整除）→ 临时敏捷（共用基类 `ModStarterRelicTemplate`）。② 阴阳馈赠与代价：白拉技能牌 → 1+d÷3 格挡，代价 −(1+d÷3) 力量；黑拉攻击牌 → 随机敌人 1+d÷3 伤害，代价 −(1+d÷3) 敏捷 | `Relics/Bella/Bellaris.cs` / `BellarisBlockPower.cs` / `BellarisHeiLaAttackPower.cs` / `BellarisYinYangDebuffPower.cs` / `BellarisHeartWallPower.cs` |
 | <!-- TODO --> | 闪耀贝极星 (KiraBellaris) | 初始 | 贝极星的升级版（奥罗巴斯之触替换获得）：① 心之壁→敏捷同贝极星。② 阴阳馈赠同贝极星（无代价） | `Relics/Bella/KiraBellaris.cs` |
 
 ### 2.2 专属遗物
@@ -163,6 +163,8 @@
 | 牛符咒 | 稀有 | 技能 | 阳 | |
 | 疯牛！ | 远古 | 攻击 | 阴 | 勇敢牛牛转化 |
 | 贝极星的眼泪 | 远古 | 攻击 | 阴 | |
+| 牛不灭 | 普通 | 攻击 | 阳 | |
+| 牛批 | 状态牌 | 状态 | 阴 | 注册到原版 StatusCardPool，无法打出 |
 
 > 已有卡牌阴阳属性已按此表在代码中实现（`CanonicalKeywords` 挂载阳/阴关键词）。后续新增卡牌必须先在 4.0 表中登记阴阳属性。
 
@@ -194,6 +196,7 @@
 | 小土豆雷 | 1 | 3 回合后对血量最多的敌人造成 17→20 点伤害（固定伤害，爆炸时自动选目标） | `Cards/Bella/PotatoMine.cs` |
 | 贝0 | 1 | 造成 3→4 点伤害，抽牌堆随机 2→3 张 0 费牌加入手牌 | `Cards/Bella/BellaIsZero.cs` |
 | 贝1 | 1 | 造成 3→4 点伤害，抽牌堆随机 2→3 张 1 费牌加入手牌 | `Cards/Bella/BellaIsOne.cs` |
+| 牛不灭 | 1 | 造成 7→12 点伤害，弃牌堆中加入 2 张牛批 | `Cards/Bella/OxNeverDie.cs` |
 
 #### 技能牌
 
@@ -283,6 +286,20 @@
 | 名称 | 费用 | 效果 | 代码路径 |
 |------|------|------|----------|
 | <!-- TODO --> | | | |
+
+### 4.6 人物独有的内容注册（已完成，2026-08-18）
+
+> 依据 RitsuLib 教程「14 - 添加新人物 → 人物独有的内容注册」补齐：
+
+| 项目 | 措施 |
+|------|------|
+| 古老牙齿（初始卡→先古牌） | 勇敢牛牛 `[RegisterArchaicToothTranscendence(typeof(MadCow))]`（→疯牛） |
+| 欧洛巴斯之触（初始遗物升级） | 贝极星 `[RegisterTouchOfOrobasRefinement(typeof(KiraBellaris))]`（→闪耀贝极星；稀有度须为 `Starter` 才能被事件识别） |
+| 尘封魔典（获得先古卡） | 卡池已有「贝极星的眼泪」（Ancient，非古老牙齿产物） |
+| 美味饼干（按人物换图标） | `AssetProfile.VanillaRelicVisualOverrides` 配 `CharacterOwnedVanillaRelicModelId.YummyCookie`（占位图 `images/relics/Bella_yummy_cookie_override.png`） |
+| 海玻璃（按人物卡池生效） | `relics.json` 写 `SEA_GLASS.ZHIJIANG_CHARACTER_BELLA_CHARACTER.title`（“贝拉之璃”） |
+| 色彩哲学家（人物卡池成奖励色） | `BellaCardPool` 实现 `IModColorfulPhilosophersCardPool` + `events.json` 写 `COLORFUL_PHILOSOPHERS.pages.INITIAL.options.BELLA.*`（“应援珊瑚粉”） |
+| 先古对话 | `ancients.json`（zhs/eng）补齐贝拉与 DARV/NEOW/NONUPEIPE/OROBAS/PAEL/TANX/TEZCATARA/VAKUU/THE_ARCHITECT 的专属台词 |
 
 ---
 

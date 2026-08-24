@@ -5,5 +5,7 @@
 
   "ZHIJIANG_RELIC_KIRA_BELLARIS.title": "闪耀贝极星",
   "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "回合开始，每 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] 获得 1 点[green]敏捷[/green]。[gold]白拉[/gold]：打出技能牌获得 1+阴阳牌数量差÷3 点格挡；[gold]黑拉[/gold]：打出攻击牌对随机一名敌人造成 1+阴阳牌数量差÷3 点伤害。",
-  "ZHIJIANG_RELIC_KIRA_BELLARIS.flavor": "贝武圣·闪耀"
+  "ZHIJIANG_RELIC_KIRA_BELLARIS.flavor": "贝武圣·闪耀",
+
+  "SEA_GLASS.ZHIJIANG_CHARACTER_BELLA_CHARACTER.title": "贝拉之璃"
 }

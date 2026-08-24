@@ -1,11 +1,13 @@
 
 using Godot;
+using STS2RitsuLib.Scaffolding.Characters;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Utils;
 
 namespace Zhijiang.ZhijiangCode.Characters.Bella;
 
-public sealed class BellaCardPool : TypeListCardPoolModel
+// 实现 IModColorfulPhilosophersCardPool，让「色彩哲学家」事件把贝拉卡池作为奖励颜色之一。
+public sealed class BellaCardPool : TypeListCardPoolModel, IModColorfulPhilosophersCardPool
 {
     private static readonly Material? _poolFrameMaterial = MaterialUtils.CreateHsvShaderMaterial(0.015f, 0.47f, 0.859f);
     public override Material? PoolFrameMaterial => _poolFrameMaterial;

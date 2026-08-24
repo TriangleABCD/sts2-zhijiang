@@ -59,6 +59,8 @@
 - 充能球 API 坑：RitsuLib 无 Orb 操作封装，直接用原生 `OrbCmd`/`OrbQueue`；`OrbCmd.Channel` 无栏位时自动补 1 栏，栏位满时不会自动激发而是直接替换——想腾位置要先 `OrbCmd.EvokeNext`（参考 `EvilBellaPower`）；`OrbCmd.AddSlots/RemoveSlots` 上限 10；栏位队列取 `player.PlayerCombatState.OrbQueue`（`Orbs`/`Capacity`）
 - "每当生命值减少"没有独立事件，用 `AfterDamageReceived` + `result.UnblockedDamage > 0` 判定（被格挡不掉血不触发，参考 `EvilBellaPower`）；治疗走 `AfterCurrentHpChanged`（delta 为负即伤害）；`DamageResult` 常用字段：UnblockedDamage/BlockedDamage/TotalDamage/WasFullyBlocked/WasTargetKilled
 - 远古体系注册：遗物升级 `[RegisterTouchOfOrobasRefinement(typeof(KiraBellaris))]`（贝极星→闪耀贝极星，升级遗物 `RelicRarity` 保持 `Starter`，未命中降级为 Circlet）；卡牌转化 `[RegisterArchaicToothTranscendence(typeof(MadCow))]`（勇敢牛牛→疯牛，转化保留升级与附魔）；远古卡仍 `[RegisterCard(typeof(BellaCardPool))]` 但 Ancient 不进奖励池
+- ⚠️ **初始遗物 `Rarity` 必须是 `RelicRarity.Starter`**，且建议同时 `IsAllowedInShops => false`：否则会被商店 RelicGrabBag 当作 Common/Uncommon/Rare 抽出来售卖，也会被「先古之民」事件漏判（该事件靠 `Rarity == RelicRarity.Starter` 找初始遗物）。贝极星已于 2026-08-18 修复（原误设 Common）
+- ✅ **人物独有内容注册已补齐**（2026-08-18，见 `doc/Bella.md` 4.6）：古老牙齿（勇敢牛牛→疯牛）、欧洛巴斯之触（贝极星→闪耀贝极星）、尘封魔典（已有贝极星的眼泪）、美味饼干（`VanillaRelicVisualOverrides`，占位图）、海玻璃（`SEA_GLASS.ZHIJIANG_CHARACTER_BELLA_CHARACTER.title`）、色彩哲学家（`BellaCardPool` 实现 `IModColorfulPhilosophersCardPool` + `events.json`）、先古对话（`ancients.json` 补齐）
 
 ### 卡牌框架代码
 
@@ -219,6 +221,8 @@ public sealed class {CardName} : ModCardTemplate
 | 情人越多越气派 | 罕见 | 攻击 | 阴 |
 | 疯牛！ | 远古 | 攻击 | 阴 |
 | 贝极星的眼泪 | 远古 | 攻击 | 阴 |
+| 牛不灭 | 普通 | 攻击 | 阳 |
+| 牛批 | 状态牌 | 状态 | 阴 |
 
 > 初始卡组配比：5 阴（打击×4+勇敢牛牛×1）5 阳（防御×4+不怕困难×1），开局白拉。
 > 代码实现：各卡牌 `CanonicalKeywords` 挂载 `BellaYinYangService.YangKeywordId/YinKeywordId.GetModCardKeyword()`。新增卡牌必须先登记属性（见 `doc/Bella.md` 4.0）。
@@ -252,6 +256,8 @@ public sealed class {CardName} : ModCardTemplate
 | 黑贝拉sama | 掉血生 1→2 黑暗球（无栏位加成） | 阴 |
 | 疯牛！ | 7→10×3次 + 4→6力量 | 阴 |
 | 贝极星的眼泪 | 全敌 17 伤害，每10心壁 1→2力量 | 阴 |
+| 牛不灭 | 1费，7→12伤害 + 弃牌堆2张牛批 | 阳 |
+| 牛批 | 状态牌：无法打出 | 阴 |
 
 > 原数值（如打击6、勇敢牛牛4×3+3等）已下调，为阴阳效果留空间。冰山美人从2球改1球（本地化已同步）。
 > ⚠️ 打击/防御后改为对齐原版：打击 6→9（升级+3），防御 5→8（升级+3），与 `DefendIronclad`/`StrikeIronclad` 一致。

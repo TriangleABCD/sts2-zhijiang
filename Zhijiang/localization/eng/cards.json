@@ -100,5 +100,13 @@
 
   "ZHIJIANG_CARD_BELLA_IS_ONE.title": "Bella is one",
   "ZHIJIANG_CARD_BELLA_IS_ONE.description": "Deal {Damage:diff()} damage. Add {Cards} random 1-cost cards from your draw pile to your hand.",
-  "ZHIJIANG_CARD_BELLA_IS_ONE.smartDescription": "Deal {Damage:diff()} damage. Add {Cards} random 1-cost cards from your draw pile to your hand."
+  "ZHIJIANG_CARD_BELLA_IS_ONE.smartDescription": "Deal {Damage:diff()} damage. Add {Cards} random 1-cost cards from your draw pile to your hand.",
+
+  "ZHIJIANG_CARD_OX_NEVER_DIE.title": "Ox Never Die",
+  "ZHIJIANG_CARD_OX_NEVER_DIE.description": "Deal {Damage:diff()} damage. Add 2 np to your discard pile.",
+  "ZHIJIANG_CARD_OX_NEVER_DIE.smartDescription": "Deal {Damage:diff()} damage. Add 2 np to your discard pile.",
+
+  "ZHIJIANG_CARD_NP.title": "np",
+  "ZHIJIANG_CARD_NP.description": "Unplayable.",
+  "ZHIJIANG_CARD_NP.smartDescription": "Unplayable."
 }

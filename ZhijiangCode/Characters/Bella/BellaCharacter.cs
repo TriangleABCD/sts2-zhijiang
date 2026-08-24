@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Characters;
+using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Scaffolding.Godot;
 
 namespace Zhijiang.ZhijiangCode.Characters.Bella;
@@ -79,7 +80,14 @@ public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRe
                 ArmPointingTexturePath: $"{ImageRoot}/Bella/multiplayer_hand_bella_point.png",
                 ArmRockTexturePath: $"{ImageRoot}/Bella/multiplayer_hand_bella_rock.png",
                 ArmPaperTexturePath: $"{ImageRoot}/Bella/multiplayer_hand_bella_paper.png",
-                ArmScissorsTexturePath: $"{ImageRoot}/Bella/multiplayer_hand_bella_scissors.png")
+                ArmScissorsTexturePath: $"{ImageRoot}/Bella/multiplayer_hand_bella_scissors.png"),
+            // 美味饼干：按人物显示专属图标（占位路径，后续补图）。
+            VanillaRelicVisualOverrides:
+            [
+                new(
+                    CharacterOwnedVanillaRelicModelId.YummyCookie,
+                    new RelicAssetProfile(IconPath: $"{Entry.ResPath}/images/relics/Bella_yummy_cookie_override.png"))
+            ]
         );
 
     // 某个字段没写时，RitsuLib 会从占位角色配置里补齐。
