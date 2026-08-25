@@ -151,5 +151,14 @@
   "ZHIJIANG_CARD_YOU_DONT_CHOOSE_RED.smartDescription": "Add all 0-cost cards in your [gold]draw pile[/gold], [gold]discard pile[/gold], and [gold]hand[/gold] to your [gold]hand[/gold] and [gold]Upgrade[/gold] them.",
   "ZHIJIANG_CARD_RELIABLE_SISTER_LA.title": "Oh Sister La, Reliable Sister La",
   "ZHIJIANG_CARD_RELIABLE_SISTER_LA.description": "Whenever you lose A.T. Field, deal damage equal to the amount lost ÷ {Divisor} to a random enemy.",
-  "ZHIJIANG_CARD_RELIABLE_SISTER_LA.smartDescription": "Whenever you lose A.T. Field, deal damage equal to the amount lost ÷ {Divisor} to a random enemy."
+  "ZHIJIANG_CARD_RELIABLE_SISTER_LA.smartDescription": "Whenever you lose A.T. Field, deal damage equal to the amount lost ÷ {Divisor} to a random enemy.",
+"ZHIJIANG_CARD_ELEGANT.title": "Elegant",
+  "ZHIJIANG_CARD_ELEGANT.description": "Classy!",
+  "ZHIJIANG_CARD_ELEGANT.smartDescription": "Classy!",
+  "ZHIJIANG_CARD_MOON_RABBIT_SPINNING_IN_THE_AIR.title": "Moon Rabbit Spinning in the Air",
+  "ZHIJIANG_CARD_MOON_RABBIT_SPINNING_IN_THE_AIR.description": "Gain {Block:diff()} Block. Add 2 Elegants to your draw pile.",
+  "ZHIJIANG_CARD_MOON_RABBIT_SPINNING_IN_THE_AIR.smartDescription": "Gain {Block:diff()} Block. Add 2 Elegants to your draw pile.",
+  "ZHIJIANG_CARD_NO_MORE_ABSTRACTION.title": "No More Abstraction",
+  "ZHIJIANG_CARD_NO_MORE_ABSTRACTION.description": "[gold]Exhaust[/gold] all Elegants. For every 3 Elegants [gold]Exhausted[/gold], gain 1 Energy and draw 1 card.{InCombat:（Gain {CalculatedEnergy} Energy, draw {CalculatedDraw} cards）|}",
+  "ZHIJIANG_CARD_NO_MORE_ABSTRACTION.smartDescription": "[gold]Exhaust[/gold] all Elegants. For every 3 Elegants [gold]Exhausted[/gold], gain 1 Energy and draw 1 card.{InCombat:（Gain {CalculatedEnergy} Energy, draw {CalculatedDraw} cards）|}"
 }

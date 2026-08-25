@@ -151,5 +151,14 @@
   "ZHIJIANG_CARD_YOU_DONT_CHOOSE_RED.smartDescription": "将你[gold]抽牌堆[/gold]、[gold]弃牌堆[/gold]和[gold]手牌[/gold]中的所有 0 费牌放入你的[gold]手牌[/gold]并[gold]升级[/gold]。",
   "ZHIJIANG_CARD_RELIABLE_SISTER_LA.title": "喔拉姐，可靠的拉姐",
   "ZHIJIANG_CARD_RELIABLE_SISTER_LA.description": "每当你失去[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]，对随机一名敌人造成损失量 ÷ {Divisor} 的伤害。",
-  "ZHIJIANG_CARD_RELIABLE_SISTER_LA.smartDescription": "每当你失去[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]，对随机一名敌人造成损失量 ÷ {Divisor} 的伤害。"
+  "ZHIJIANG_CARD_RELIABLE_SISTER_LA.smartDescription": "每当你失去[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]，对随机一名敌人造成损失量 ÷ {Divisor} 的伤害。",
+"ZHIJIANG_CARD_ELEGANT.title": "高雅",
+  "ZHIJIANG_CARD_ELEGANT.description": "上流。",
+  "ZHIJIANG_CARD_ELEGANT.smartDescription": "上流。",
+  "ZHIJIANG_CARD_MOON_RABBIT_SPINNING_IN_THE_AIR.title": "月兔回旋于空中",
+  "ZHIJIANG_CARD_MOON_RABBIT_SPINNING_IN_THE_AIR.description": "获得 {Block:diff()} 点格挡。将 2 张高雅加入你的抽牌堆。",
+  "ZHIJIANG_CARD_MOON_RABBIT_SPINNING_IN_THE_AIR.smartDescription": "获得 {Block:diff()} 点格挡。将 2 张高雅加入你的抽牌堆。",
+  "ZHIJIANG_CARD_NO_MORE_ABSTRACTION.title": "我再也不玩抽象了",
+  "ZHIJIANG_CARD_NO_MORE_ABSTRACTION.description": "[gold]消耗[/gold]所有高雅。每消耗 3 张高雅，获得 1 点能量并抽 1 张牌。{InCombat:（获得 {CalculatedEnergy} 点能量，抽 {CalculatedDraw} 张牌）|}",
+  "ZHIJIANG_CARD_NO_MORE_ABSTRACTION.smartDescription": "[gold]消耗[/gold]所有高雅。每消耗 3 张高雅，获得 1 点能量并抽 1 张牌。{InCombat:（获得 {CalculatedEnergy} 点能量，抽 {CalculatedDraw} 张牌）|}"
 }

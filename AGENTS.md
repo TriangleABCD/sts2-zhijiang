@@ -109,9 +109,9 @@ public sealed class {CardName} : ModCardTemplate
 | 稀有度 | 已完成 | 目标 |
 |--------|--------|------|
 | Basic | 4 (BellaStrike, BellaDefend, Ygnn, Bpkn) | 4 |
-| Common | 16 (10 existing：PreventionShot, Heartfelt, IceBeauty, Hihi, AtField, BellaRexIsComing, PotatoMine, BellaIsZero, BellaIsOne, OxNeverDie + 6 new：Schedule, FlowerInDeath, BellaPraysForRain, LittleSkateboard, Marionette, LittlePenguin) | 20 |
+| Common | 17 (10 existing：PreventionShot, Heartfelt, IceBeauty, Hihi, AtField, BellaRexIsComing, PotatoMine, BellaIsZero, BellaIsOne, OxNeverDie + 7 new：Schedule, FlowerInDeath, BellaPraysForRain, LittleSkateboard, Marionette, LittlePenguin, MoonRabbitSpinningInTheAir) | 20 |
 | Uncommon | 10 (7 existing + Boomerang, AllAreMyWings, Tryhard) | 36 |
-| Rare | 9 (LoopIn20, EvilBella, TurnOver, OxTalisman, Npk48, Unit01, YuriDomainExpert, YouDontChooseRed, ReliableSisterLa) | 26 |
+| Rare | 10 (LoopIn20, EvilBella, TurnOver, OxTalisman, Npk48, Unit01, YuriDomainExpert, YouDontChooseRed, ReliableSisterLa, NoMoreAbstraction) | 26 |
 | Ancient | 2 (MadCow, TearOfBellaris) | 2 |
 
 > 初始卡组 10 张 = 打击×4 + 防御×4 + 勇敢牛牛×1 + 不怕困难×1。勇敢牛牛/不怕困难原为普通牌，已改为基础牌并各给 1 张；预防针了/真情实感原为基础牌，已改为普通牌、不再是初始牌（见会话导出 2）。
@@ -224,6 +224,9 @@ public sealed class {CardName} : ModCardTemplate
 | 牛不灭 | 普通 | 攻击 | 阳 |
 | 牛批 | 状态牌 | 状态 | 阴 |
 | NPK48 | 稀有 | 攻击 | 阴 |
+| 高雅 | 状态牌 | 状态 | 阳 | 注册到原版 StatusCardPool，无法打出；与牛批对称 |
+| 月兔回旋于空中 | 普通 | 技能 | 阴 | |
+| 我再也不玩抽象了 | 稀有 | 技能 | 阳 | 耗 25 心之壁 |
 | 日程表 | 普通 | 技能 | 阳 | |
 | 末路狂花 | 普通 | 攻击 | 阴 | |
 | 贝拉求雨 | 普通 | 攻击 | 阳 | |
@@ -273,6 +276,9 @@ public sealed class {CardName} : ModCardTemplate
 | 牛不灭 | 1费，7→12伤害 + 弃牌堆2张牛批 | 阳 |
 | 牛批 | 状态牌：无法打出 | 阴 |
 | NPK48 | 3费+25心壁，消耗所有牛批，每张随机敌人7伤害；升级移除消耗 | 阴 |
+| 高雅 | 状态牌：无法打出 | 阳 |
+| 月兔回旋于空中 | 1费，13→17格挡，加入2张高雅（抽牌堆） | 阴 |
+| 我再也不玩抽象了 | 3费+25心壁，每消耗3张高雅：1能量+抽1张；升级移除消耗 | 阳 |
 
 > 原数值（如打击6、勇敢牛牛4×2+2等）已下调，为阴阳效果留空间。冰山美人从2球改1球（本地化已同步）。
 > ⚠️ 打击/防御后改为对齐原版：打击 6→9（升级+3），防御 5→8（升级+3），与 `DefendIronclad`/`StrikeIronclad` 一致。
