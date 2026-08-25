@@ -31,5 +31,11 @@
   "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.smartDescription": "若你的回合打出的阳牌数等于阴牌数，下回合获得 {Amount} 点能量。",
   "ZHIJIANG_POWER_RELIABLE_SISTER_LA_POWER.title": "喔拉姐，可靠的拉姐",
   "ZHIJIANG_POWER_RELIABLE_SISTER_LA_POWER.description": "每当你失去[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]，对随机一名敌人造成损失量 ÷ 5 的伤害。",
-  "ZHIJIANG_POWER_RELIABLE_SISTER_LA_POWER.smartDescription": "每当你失去[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]，对随机一名敌人造成损失量 ÷ {Amount} 的伤害。"
+  "ZHIJIANG_POWER_RELIABLE_SISTER_LA_POWER.smartDescription": "每当你失去[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]，对随机一名敌人造成损失量 ÷ {Amount} 的伤害。",
+"ZHIJIANG_POWER_COW_LOVER_POWER.title": "牛牛民",
+  "ZHIJIANG_POWER_COW_LOVER_POWER.description": "每当你消耗一张牛批，获得 1 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_POWER_COW_LOVER_POWER.smartDescription": "每当你消耗一张牛批，获得 {Amount} 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.title": "情感障碍",
+  "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.description": "每回合开始时，若你处于白拉，获得（[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] ÷ 10）点格挡。升级后每回合额外获得 1 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.smartDescription": "每回合开始时，若你处于白拉，获得（[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] ÷ 10）点格挡。升级后每回合额外获得 1 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。"
 }

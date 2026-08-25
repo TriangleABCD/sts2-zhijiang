@@ -31,5 +31,11 @@
   "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.smartDescription": "If you played equal numbers of Yang and Yin cards this turn, gain {Amount} Energy at the start of your next turn.",
   "ZHIJIANG_POWER_RELIABLE_SISTER_LA_POWER.title": "Oh Sister La, Reliable Sister La",
   "ZHIJIANG_POWER_RELIABLE_SISTER_LA_POWER.description": "Whenever you lose A.T. Field, deal damage equal to the amount lost ÷ 5 to a random enemy.",
-  "ZHIJIANG_POWER_RELIABLE_SISTER_LA_POWER.smartDescription": "Whenever you lose A.T. Field, deal damage equal to the amount lost ÷ {Amount} to a random enemy."
+  "ZHIJIANG_POWER_RELIABLE_SISTER_LA_POWER.smartDescription": "Whenever you lose A.T. Field, deal damage equal to the amount lost ÷ {Amount} to a random enemy.",
+"ZHIJIANG_POWER_COW_LOVER_POWER.title": "Cow Lover",
+  "ZHIJIANG_POWER_COW_LOVER_POWER.description": "Whenever you Exhaust an np, gain 1 A.T. Field.",
+  "ZHIJIANG_POWER_COW_LOVER_POWER.smartDescription": "Whenever you Exhaust an np, gain {Amount} A.T. Field.",
+  "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.title": "Emotional Disorder",
+  "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.description": "At the start of your turn, if you are Bai La, gain Block equal to your A.T. Field ÷ 10. Upgraded: also gain 1 A.T. Field each turn.",
+  "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.smartDescription": "At the start of your turn, if you are Bai La, gain Block equal to your A.T. Field ÷ 10. Upgraded: also gain 1 A.T. Field each turn."
 }

@@ -109,9 +109,9 @@ public sealed class {CardName} : ModCardTemplate
 | 稀有度 | 已完成 | 目标 |
 |--------|--------|------|
 | Basic | 4 (BellaStrike, BellaDefend, Ygnn, Bpkn) | 4 |
-| Common | 17 (10 existing：PreventionShot, Heartfelt, IceBeauty, Hihi, AtField, BellaRexIsComing, PotatoMine, BellaIsZero, BellaIsOne, OxNeverDie + 7 new：Schedule, FlowerInDeath, BellaPraysForRain, LittleSkateboard, Marionette, LittlePenguin, MoonRabbitSpinningInTheAir) | 20 |
-| Uncommon | 10 (7 existing + Boomerang, AllAreMyWings, Tryhard) | 36 |
-| Rare | 10 (LoopIn20, EvilBella, TurnOver, OxTalisman, Npk48, Unit01, YuriDomainExpert, YouDontChooseRed, ReliableSisterLa, NoMoreAbstraction) | 26 |
+| Common | 20 (10 existing：PreventionShot, Heartfelt, IceBeauty, Hihi, AtField, BellaRexIsComing, PotatoMine, BellaIsZero, BellaIsOne, OxNeverDie + 10 new：Schedule, FlowerInDeath, BellaPraysForRain, LittleSkateboard, Marionette, LittlePenguin, MoonRabbitSpinningInTheAir, PotHammerStrike, ScorchedBella, SorryLittleFriends) | 20 |
+| Uncommon | 16 (7 existing + Boomerang, AllAreMyWings, Tryhard, TmallGenie, BellarisBear, OneWomanCantSatisfyMe, CowsAreComing, AngelBella, CowLover) | 36 |
+| Rare | 12 (LoopIn20, EvilBella, TurnOver, OxTalisman, Npk48, Unit01, YuriDomainExpert, YouDontChooseRed, ReliableSisterLa, NoMoreAbstraction, EmotionalDisorder, CourageBurst) | 26 |
 | Ancient | 2 (MadCow, TearOfBellaris) | 2 |
 
 > 初始卡组 10 张 = 打击×4 + 防御×4 + 勇敢牛牛×1 + 不怕困难×1。勇敢牛牛/不怕困难原为普通牌，已改为基础牌并各给 1 张；预防针了/真情实感原为基础牌，已改为普通牌、不再是初始牌（见会话导出 2）。
@@ -227,6 +227,17 @@ public sealed class {CardName} : ModCardTemplate
 | 高雅 | 状态牌 | 状态 | 阳 | 注册到原版 StatusCardPool，无法打出；与牛批对称 |
 | 月兔回旋于空中 | 普通 | 技能 | 阴 | |
 | 我再也不玩抽象了 | 稀有 | 技能 | 阳 | 耗 25 心之壁 |
+| 锅锤打击 | 普通 | 攻击 | 阳 | |
+| 焦拉 | 普通 | 技能 | 阴 | |
+| 小伙伴对不起 | 普通 | 技能 | 中立 | |
+| 天猫精灵 | 罕见 | 攻击 | 阴 | |
+| 贝极熊 | 罕见 | 技能 | 阳 | |
+| 一个女人满足不了我 | 罕见 | 技能 | 中立 | |
+| 牛来 | 罕见 | 技能 | 阴 | |
+| 天使贝拉 | 罕见 | 技能 | 阳 | |
+| 牛牛民 | 罕见 | 能力 | 阴 | |
+| 情感障碍 | 稀有 | 能力 | 阳 | |
+| 勇气大爆发 | 稀有 | 攻击 | 阴 | |
 | 日程表 | 普通 | 技能 | 阳 | |
 | 末路狂花 | 普通 | 攻击 | 阴 | |
 | 贝拉求雨 | 普通 | 攻击 | 阳 | |
@@ -279,6 +290,17 @@ public sealed class {CardName} : ModCardTemplate
 | 高雅 | 状态牌：无法打出 | 阳 |
 | 月兔回旋于空中 | 1费，13→17格挡，加入2张高雅（抽牌堆） | 阴 |
 | 我再也不玩抽象了 | 3费+25心壁，每消耗3张高雅：1能量+抽1张；升级移除消耗 | 阳 |
+| 锅锤打击 | 1费，4→6伤害；白拉额外3→4 | 阳 |
+| 焦拉 | 1费，抽2→3；黑拉抽到的阴牌耗能-1 | 阴 |
+| 小伙伴对不起 | 1费，5心壁+抽1→2 | 中立 |
+| 天猫精灵 | 2费，全敌6→9；黑拉随机敌人再4→6 | 阴 |
+| 贝极熊 | 1费，8→11格挡；打出3→2技能后额外5→6 | 阳 |
+| 一个女人满足不了我 | 2费，抽3，洗回3→5张，0费牌每张2格挡 | 中立 |
+| 牛来 | 1费，6→9格挡 + 弃牌堆2→3牛批 | 阴 |
+| 天使贝拉 | 1费，抽牌堆2→3高雅 + 抽1→2 | 阳 |
+| 牛牛民 | 1费能力，每消耗牛批1→2心壁 | 阴 |
+| 情感障碍 | 2费能力，白拉每回合心壁÷10格挡；升级+1心壁/回合 | 阳 |
+| 勇气大爆发 | 3费，全敌7→10；黑拉血量最少敌人再10→15 | 阴 |
 
 > 原数值（如打击6、勇敢牛牛4×2+2等）已下调，为阴阳效果留空间。冰山美人从2球改1球（本地化已同步）。
 > ⚠️ 打击/防御后改为对齐原版：打击 6→9（升级+3），防御 5→8（升级+3），与 `DefendIronclad`/`StrikeIronclad` 一致。
