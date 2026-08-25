@@ -27,7 +27,7 @@
   "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.description": "Every time you play 5 cards whose Yin-Yang opposes your current Bai La / Hei La state, gain 1 Dexterity.",
   "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.smartDescription": "Every time you play {ContrastThreshold} cards whose Yin-Yang opposes your current Bai La / Hei La state, gain 1 Dexterity.",
 "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.title": "All Are My Wings",
-  "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.description": "If you played equal numbers of Yang and Yin cards this turn, gain 3 Energy at the start of your next turn.",
+  "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.description": "If you played equal numbers of Yang and Yin cards this turn, gain 1 Energy at the start of your next turn.",
   "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.smartDescription": "If you played equal numbers of Yang and Yin cards this turn, gain {Amount} Energy at the start of your next turn.",
   "ZHIJIANG_POWER_RELIABLE_SISTER_LA_POWER.title": "Oh Sister La, Reliable Sister La",
   "ZHIJIANG_POWER_RELIABLE_SISTER_LA_POWER.description": "Whenever you lose A.T. Field, deal damage equal to the amount lost ÷ 5 to a random enemy.",

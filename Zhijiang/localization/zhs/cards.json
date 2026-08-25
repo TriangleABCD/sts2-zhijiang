@@ -19,8 +19,8 @@
   "ZHIJIANG_CARD_A_SOUL_IS_COMING.smartDescription": "所有玩家的抽牌堆、手牌、弃牌堆各加入 1 张灵魂。",
 
   "ZHIJIANG_CARD_YGNN.title": "勇敢牛牛",
-  "ZHIJIANG_CARD_YGNN.description": "造成 {Damage:diff()} 点伤害 3 次。获得 {StrengthGain} 点力量。",
-  "ZHIJIANG_CARD_YGNN.smartDescription": "造成 {Damage:diff()} 点伤害 3 次。获得 {StrengthGain} 点力量。",
+  "ZHIJIANG_CARD_YGNN.description": "造成 {Damage:diff()} 点伤害 2 次。获得 {StrengthGain} 点力量。",
+  "ZHIJIANG_CARD_YGNN.smartDescription": "造成 {Damage:diff()} 点伤害 2 次。获得 {StrengthGain} 点力量。",
 
   "ZHIJIANG_CARD_BPKN.title": "不怕困难",
   "ZHIJIANG_CARD_BPKN.description": "获得 {Block:diff()} 点格挡。所有敌人本回合失去 {StrengthLoss} 点力量。",
@@ -67,8 +67,8 @@
   "ZHIJIANG_CARD_ZHIJIANG_HELL.smartDescription": "获得{Energy:energyIcons()}。",
 
   "ZHIJIANG_CARD_MAD_COW.title": "疯牛！",
-  "ZHIJIANG_CARD_MAD_COW.description": "造成 {Damage:diff()} 点伤害 3 次。获得 {StrengthGain} 点力量。",
-  "ZHIJIANG_CARD_MAD_COW.smartDescription": "造成 {Damage:diff()} 点伤害 3 次。获得 {StrengthGain} 点力量。",
+  "ZHIJIANG_CARD_MAD_COW.description": "造成 {Damage:diff()} 点伤害 2 次。获得 {StrengthGain} 点力量。",
+  "ZHIJIANG_CARD_MAD_COW.smartDescription": "造成 {Damage:diff()} 点伤害 2 次。获得 {StrengthGain} 点力量。",
 
   "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.title": "情人越多越气派",
   "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.description": "造成 {Damage:diff()} 点伤害。本回合你每打出过 1 张阴阳性与当前黑白拉状态相反的牌，此牌额外造成 1 次伤害。",
@@ -135,8 +135,8 @@
   "ZHIJIANG_CARD_BOOMERANG.description": "造成 {Damage:diff()} 点伤害。本回合每打出过 1 张反差牌，此牌伤害 +{PerContrast}。",
   "ZHIJIANG_CARD_BOOMERANG.smartDescription": "造成 {Damage:diff()} 点伤害。本回合每打出过 1 张反差牌，此牌伤害 +{PerContrast}。",
   "ZHIJIANG_CARD_ALL_ARE_MY_WINGS.title": "都是我的翅膀",
-  "ZHIJIANG_CARD_ALL_ARE_MY_WINGS.description": "每回合结束时，若你本回合打出的阳牌数等于阴牌数，下回合获得 {Reward} 点能量。",
-  "ZHIJIANG_CARD_ALL_ARE_MY_WINGS.smartDescription": "每回合结束时，若你本回合打出的阳牌数等于阴牌数，下回合获得 {Reward} 点能量。",
+  "ZHIJIANG_CARD_ALL_ARE_MY_WINGS.description": "每回合结束时，若你本回合打出的阳牌数等于阴牌数，下回合获得{Energy:energyIcons()}。",
+  "ZHIJIANG_CARD_ALL_ARE_MY_WINGS.smartDescription": "每回合结束时，若你本回合打出的阳牌数等于阴牌数，下回合获得{Energy:energyIcons()}。",
   "ZHIJIANG_CARD_TRYHARD.title": "分奴",
   "ZHIJIANG_CARD_TRYHARD.description": "[gold]消耗[/gold]你手中所有阴牌。每[gold]消耗[/gold]一张阴牌，抽 {CardsPerYin} 张牌。",
   "ZHIJIANG_CARD_TRYHARD.smartDescription": "[gold]消耗[/gold]你手中所有阴牌。每[gold]消耗[/gold]一张阴牌，抽 {CardsPerYin} 张牌。",

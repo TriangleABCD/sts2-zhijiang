@@ -19,8 +19,8 @@
   "ZHIJIANG_CARD_A_SOUL_IS_COMING.smartDescription": "Add 1 Soul to each player's draw pile, hand, and discard pile.",
 
   "ZHIJIANG_CARD_YGNN.title": "ygnn",
-  "ZHIJIANG_CARD_YGNN.description": "Deal {Damage:diff()} damage 3 times. Gain {StrengthGain} Strength.",
-  "ZHIJIANG_CARD_YGNN.smartDescription": "Deal {Damage:diff()} damage 3 times. Gain {StrengthGain} Strength.",
+  "ZHIJIANG_CARD_YGNN.description": "Deal {Damage:diff()} damage 2 times. Gain {StrengthGain} Strength.",
+  "ZHIJIANG_CARD_YGNN.smartDescription": "Deal {Damage:diff()} damage 2 times. Gain {StrengthGain} Strength.",
 
   "ZHIJIANG_CARD_BPKN.title": "bpkn",
   "ZHIJIANG_CARD_BPKN.description": "Gain {Block:diff()} Block. ALL enemies lose {StrengthLoss} Strength this turn.",
@@ -67,8 +67,8 @@
   "ZHIJIANG_CARD_ZHIJIANG_HELL.smartDescription": "Gain {Energy:energyIcons()}.",
 
   "ZHIJIANG_CARD_MAD_COW.title": "Mad Cow",
-  "ZHIJIANG_CARD_MAD_COW.description": "Deal {Damage:diff()} damage 3 times. Gain {StrengthGain} Strength.",
-  "ZHIJIANG_CARD_MAD_COW.smartDescription": "Deal {Damage:diff()} damage 3 times. Gain {StrengthGain} Strength.",
+  "ZHIJIANG_CARD_MAD_COW.description": "Deal {Damage:diff()} damage 2 times. Gain {StrengthGain} Strength.",
+  "ZHIJIANG_CARD_MAD_COW.smartDescription": "Deal {Damage:diff()} damage 2 times. Gain {StrengthGain} Strength.",
 
   "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.title": "More Lover More Powerful",
   "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.description": "Deal {Damage:diff()} damage. Deal it 1 additional time for each card you have played this turn whose Yin-Yang opposes your current Bai La / Hei La state.",
@@ -135,8 +135,8 @@
   "ZHIJIANG_CARD_BOOMERANG.description": "Deal {Damage:diff()} damage. This deals +{PerContrast} damage for each Contrast card played this turn.",
   "ZHIJIANG_CARD_BOOMERANG.smartDescription": "Deal {Damage:diff()} damage. This deals +{PerContrast} damage for each Contrast card played this turn.",
   "ZHIJIANG_CARD_ALL_ARE_MY_WINGS.title": "All Are My Wings",
-  "ZHIJIANG_CARD_ALL_ARE_MY_WINGS.description": "At the end of your turn, if you played the same number of [gold]Yang[/gold] and [gold]Yin[/gold] cards this turn, gain {Reward} Energy at the start of your next turn.",
-  "ZHIJIANG_CARD_ALL_ARE_MY_WINGS.smartDescription": "At the end of your turn, if you played the same number of [gold]Yang[/gold] and [gold]Yin[/gold] cards this turn, gain {Reward} Energy at the start of your next turn.",
+  "ZHIJIANG_CARD_ALL_ARE_MY_WINGS.description": "At the end of your turn, if you played the same number of [gold]Yang[/gold] and [gold]Yin[/gold] cards this turn, gain {Energy:energyIcons()} at the start of your next turn.",
+  "ZHIJIANG_CARD_ALL_ARE_MY_WINGS.smartDescription": "At the end of your turn, if you played the same number of [gold]Yang[/gold] and [gold]Yin[/gold] cards this turn, gain {Energy:energyIcons()} at the start of your next turn.",
   "ZHIJIANG_CARD_TRYHARD.title": "Tryhard",
   "ZHIJIANG_CARD_TRYHARD.description": "[gold]Exhaust[/gold] all [gold]Yin[/gold] cards in your hand. Draw {CardsPerYin} cards for each card [gold]Exhausted[/gold].",
   "ZHIJIANG_CARD_TRYHARD.smartDescription": "[gold]Exhaust[/gold] all [gold]Yin[/gold] cards in your hand. Draw {CardsPerYin} cards for each card [gold]Exhausted[/gold].",

@@ -27,7 +27,7 @@
   "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.description": "每当你打出 5 张阴阳性与当前黑白拉状态相反的牌时，获得 1 点敏捷。",
   "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.smartDescription": "每当你打出 {ContrastThreshold} 张阴阳性与当前黑白拉状态相反的牌时，获得 1 点敏捷。",
 "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.title": "都是我的翅膀",
-  "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.description": "若你的回合打出的阳牌数等于阴牌数，下回合获得 3 点能量。",
+  "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.description": "若你的回合打出的阳牌数等于阴牌数，下回合获得 1 点能量。",
   "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.smartDescription": "若你的回合打出的阳牌数等于阴牌数，下回合获得 {Amount} 点能量。",
   "ZHIJIANG_POWER_RELIABLE_SISTER_LA_POWER.title": "喔拉姐，可靠的拉姐",
   "ZHIJIANG_POWER_RELIABLE_SISTER_LA_POWER.description": "每当你失去[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]，对随机一名敌人造成损失量 ÷ 5 的伤害。",

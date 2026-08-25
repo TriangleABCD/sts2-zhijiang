@@ -13,7 +13,7 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 // 都是我的翅膀：罕见牌（中立 / 能力）。若玩家本回合打出的阳牌数等于阴牌数，
-// 下回合获得 3→4 点能量。
+// 下回合获得 1→2 点能量。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class AllAreMyWings : ModCardTemplate
 {
@@ -27,10 +27,10 @@ public sealed class AllAreMyWings : ModCardTemplate
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/all_are_my_wings.png");
 
-    // 奖励能量数（3 → 升级后 4）。
+    // 奖励能量数（1 → 升级后 2）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Reward", 3m)
+        new EnergyVar(1)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
@@ -47,13 +47,13 @@ public sealed class AllAreMyWings : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int reward = DynamicVars["Reward"].IntValue;
+        int reward = DynamicVars.Energy.IntValue;
         await PowerCmd.Apply<AllAreMyWingsPower>(choiceContext, base.Owner.Creature, reward, base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
         // 奖励 3 → 4。
-        DynamicVars["Reward"].UpgradeValueBy(1m);
+        DynamicVars.Energy.UpgradeValueBy(1m);
     }
 }

@@ -25,7 +25,7 @@ public sealed class Ygnn : ModCardTemplate
     private const CardRarity CardRarityValue = CardRarity.Basic;
     private const TargetType CardTarget = TargetType.AnyEnemy;
     private const bool ShowInCardLibrary = true;
-    private const int HitCount = 3;
+    private const int HitCount = 2;
 
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/ygnn.png");
@@ -34,7 +34,7 @@ public sealed class Ygnn : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(3, ValueProp.Move),
-        new DynamicVar("StrengthGain", 2)
+        new DynamicVar("StrengthGain", 1)
     ];
 
     // 力量悬浮提示。
