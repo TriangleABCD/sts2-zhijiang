@@ -37,5 +37,14 @@
   "ZHIJIANG_POWER_COW_LOVER_POWER.smartDescription": "Whenever you Exhaust an np, gain {Amount} A.T. Field.",
   "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.title": "Emotional Disorder",
   "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.description": "At the start of your turn, if you are Bai La, gain Block equal to your A.T. Field ÷ 10. Upgraded: also gain 1 A.T. Field each turn.",
-  "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.smartDescription": "At the start of your turn, if you are Bai La, gain Block equal to your A.T. Field ÷ 10. Upgraded: also gain 1 A.T. Field each turn."
+  "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.smartDescription": "At the start of your turn, if you are Bai La, gain Block equal to your A.T. Field ÷ 10. Upgraded: also gain 1 A.T. Field each turn.",
+"ZHIJIANG_POWER_CAPTAINS_POWER_IS_INFINITE_POWER.title": "The Captain's Power Is Infinite",
+  "ZHIJIANG_POWER_CAPTAINS_POWER_IS_INFINITE_POWER.description": "At the start of your turn, you may discard a card. If it is a Skill, draw 1 card.",
+  "ZHIJIANG_POWER_CAPTAINS_POWER_IS_INFINITE_POWER.smartDescription": "At the start of your turn, you may discard a card. If it is a Skill, draw {Amount} cards.",
+"ZHIJIANG_POWER_SOUL_GAZE_POWER.title": "I Gaze at Your Heart with My Soul",
+  "ZHIJIANG_POWER_SOUL_GAZE_POWER.description": "At the start of your turn, gain 1 Soul.",
+  "ZHIJIANG_POWER_SOUL_GAZE_POWER.smartDescription": "At the start of your turn, gain 1 Soul.",
+  "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.title": "Then I'm Just Stupid",
+  "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.description": "At the start of your turn, lose 1 Dexterity and heal 1 HP.",
+  "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.smartDescription": "At the start of your turn, lose 1 Dexterity and heal {Amount} HP."
 }

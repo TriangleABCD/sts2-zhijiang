@@ -37,5 +37,14 @@
   "ZHIJIANG_POWER_COW_LOVER_POWER.smartDescription": "每当你消耗一张牛批，获得 {Amount} 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
   "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.title": "情感障碍",
   "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.description": "每回合开始时，若你处于白拉，获得（[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] ÷ 10）点格挡。升级后每回合额外获得 1 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
-  "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.smartDescription": "每回合开始时，若你处于白拉，获得（[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] ÷ 10）点格挡。升级后每回合额外获得 1 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。"
+  "ZHIJIANG_POWER_EMOTIONAL_DISORDER_POWER.smartDescription": "每回合开始时，若你处于白拉，获得（[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] ÷ 10）点格挡。升级后每回合额外获得 1 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+"ZHIJIANG_POWER_CAPTAINS_POWER_IS_INFINITE_POWER.title": "队长的权力是无限的",
+  "ZHIJIANG_POWER_CAPTAINS_POWER_IS_INFINITE_POWER.description": "每回合开始时，你可以丢弃一张牌。若弃的是技能牌，抽 1 张牌。",
+  "ZHIJIANG_POWER_CAPTAINS_POWER_IS_INFINITE_POWER.smartDescription": "每回合开始时，你可以丢弃一张牌。若弃的是技能牌，抽 {Amount} 张牌。",
+"ZHIJIANG_POWER_SOUL_GAZE_POWER.title": "我以灵魂注视你的心",
+  "ZHIJIANG_POWER_SOUL_GAZE_POWER.description": "每回合开始时，获得 1 张灵魂。",
+  "ZHIJIANG_POWER_SOUL_GAZE_POWER.smartDescription": "每回合开始时，获得 1 张灵魂。",
+  "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.title": "那我就是笨嘛",
+  "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.description": "每回合开始时，失去 1 点敏捷，回复 1 点生命。",
+  "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.smartDescription": "每回合开始时，失去 1 点敏捷，回复 {Amount} 点生命。"
 }

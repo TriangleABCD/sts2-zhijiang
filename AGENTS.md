@@ -110,8 +110,8 @@ public sealed class {CardName} : ModCardTemplate
 |--------|--------|------|
 | Basic | 4 (BellaStrike, BellaDefend, Ygnn, Bpkn) | 4 |
 | Common | 20 (10 existing：PreventionShot, Heartfelt, IceBeauty, Hihi, AtField, BellaRexIsComing, PotatoMine, BellaIsZero, BellaIsOne, OxNeverDie + 10 new：Schedule, FlowerInDeath, BellaPraysForRain, LittleSkateboard, Marionette, LittlePenguin, MoonRabbitSpinningInTheAir, PotHammerStrike, ScorchedBella, SorryLittleFriends) | 20 |
-| Uncommon | 16 (7 existing + Boomerang, AllAreMyWings, Tryhard, TmallGenie, BellarisBear, OneWomanCantSatisfyMe, CowsAreComing, AngelBella, CowLover) | 36 |
-| Rare | 12 (LoopIn20, EvilBella, TurnOver, OxTalisman, Npk48, Unit01, YuriDomainExpert, YouDontChooseRed, ReliableSisterLa, NoMoreAbstraction, EmotionalDisorder, CourageBurst) | 26 |
+| Uncommon | 28 (7 existing + Boomerang, AllAreMyWings, Tryhard, TmallGenie, BellarisBear, OneWomanCantSatisfyMe, CowsAreComing, AngelBella, CowLover, DoubleWidow, BellaFlyingKick, BoilingExpectation, JumpTogether, Ultraman, Ballerina, NoseBlowWhen9000Concurrent, FlattenedBella, LittleSisterBella, Dizzy3D, BbqBellaris, HeadsUp) | 36 |
+| Rare | 21 (LoopIn20, EvilBella, TurnOver, OxTalisman, Npk48, Unit01, YuriDomainExpert, YouDontChooseRed, ReliableSisterLa, NoMoreAbstraction, EmotionalDisorder, CourageBurst, CommanderKira, BellaTeng, CaptainsPowerIsInfinite, LongRoadHome, GiantDragonSoars, SoulGaze, ThenImJustStupid, LittleLighter, ShinyDancer) | 26 |
 | Ancient | 2 (MadCow, TearOfBellaris) | 2 |
 
 > 初始卡组 10 张 = 打击×4 + 防御×4 + 勇敢牛牛×1 + 不怕困难×1。勇敢牛牛/不怕困难原为普通牌，已改为基础牌并各给 1 张；预防针了/真情实感原为基础牌，已改为普通牌、不再是初始牌（见会话导出 2）。
@@ -238,6 +238,27 @@ public sealed class {CardName} : ModCardTemplate
 | 牛牛民 | 罕见 | 能力 | 阴 | |
 | 情感障碍 | 稀有 | 能力 | 阳 | |
 | 勇气大爆发 | 稀有 | 攻击 | 阴 | |
+| 双倍的寡妇 | 罕见 | 攻击 | 阴 | |
+| 贝拉飞踢 | 罕见 | 攻击 | 阳 | |
+| 沸腾期待 | 罕见 | 攻击 | 阴 | |
+| 一起跳起来 | 罕见 | 攻击 | 阳 | |
+| 奥特大英雄 | 罕见 | 技能 | 阴 | |
+| 芭蕾舞者 | 罕见 | 技能 | 阳 | |
+| 9000同接擤鼻涕 | 罕见 | 技能 | 中立 | |
+| 指挥官山药姐 | 稀有 | 攻击 | 阳 | |
+| 贝丽君 | 稀有 | 技能 | 阳 | |
+| 队长的权力是无限的 | 稀有 | 能力 | 中立 | |
+| 长路归航 | 稀有 | 技能 | 中立 | |
+| 扁拉 | 罕见 | 技能 | 阴 | |
+| 巨龙腾飞 | 稀有 | 攻击 | 阳 | 耗 10 心之壁 |
+| 我以灵魂注视你的心 | 稀有 | 能力 | 阳 | |
+| 妹宝 | 罕见 | 技能 | 阴 | |
+| 那我就是笨嘛 | 稀有 | 能力 | 阴 | 耗 10 心之壁 |
+| 晕3D | 罕见 | 技能 | 阴 | |
+| 烧烤贝极星 | 罕见 | 攻击 | 阴 | 耗 5 心之壁 |
+| 小打火机 | 稀有 | 攻击 | 阴 | |
+| 抬头！ | 罕见 | 技能 | 阳 | 耗 5 心之壁 |
+| 闪光弹 | 稀有 | 攻击 | 阴 | |
 | 日程表 | 普通 | 技能 | 阳 | |
 | 末路狂花 | 普通 | 攻击 | 阴 | |
 | 贝拉求雨 | 普通 | 攻击 | 阳 | |
@@ -301,6 +322,27 @@ public sealed class {CardName} : ModCardTemplate
 | 牛牛民 | 1费能力，每消耗牛批1→2心壁 | 阴 |
 | 情感障碍 | 2费能力，白拉每回合心壁÷10格挡；升级+1心壁/回合 | 阳 |
 | 勇气大爆发 | 3费，全敌7→10；黑拉血量最少敌人再10→15 | 阴 |
+| 双倍的寡妇 | 1费，5→8伤害；目标有状态则额外1次 | 阴 |
+| 贝拉飞踢 | 1费，6→9伤害；本回合有技能牌则抽1 | 阳 |
+| 沸腾期待 | 2费，6→9伤害；每5心壁+1→+2 | 阴 |
+| 一起跳起来 | 1费，5→7伤害；有反差牌则额外攻1→2次 | 阳 |
+| 奥特大英雄 | 1费，6→9格挡+手牌1→2牛批 | 阴 |
+| 芭蕾舞者 | 1费，6→9格挡+手牌1→2高雅 | 阳 |
+| 9000同接擤鼻涕 | 0费，1→2能量；回合结束-5心壁 | 中立 |
+| 指挥官山药姐 | 2费，6→8伤害；阴阳平衡再1次 | 阳 |
+| 贝丽君 | 1费，8→12格挡+3高雅入抽牌堆 | 阳 |
+| 队长的权力是无限的 | 2费能力，每回合可弃1牌；弃技能抽1→2 | 中立 |
+| 长路归航 | 3费，0费牌入手升级+1费牌本回合减0；升级移除消耗 | 中立 |
+| 扁拉 | 1费，弃牌堆1→2压扁（本场免费打出）；消耗 | 阴 |
+| 巨龙腾飞 | 2费+10心壁，13→15伤害；击杀全玩家+30→40金币；消耗 | 阳 |
+| 我以灵魂注视你的心 | 3→2费能力，每回合开始1张灵魂 | 阳 |
+| 妹宝 | 0费，全敌1→2虚弱 | 阴 |
+| 那我就是笨嘛 | 3费+10心壁，每回合-1敏捷+1→2生命 | 阴 |
+| 晕3D | 1→0费，抽2+2晕眩入抽牌堆 | 阴 |
+| 烧烤贝极星 | 0费+5心壁，伤害=手牌数+1灼伤入弃牌堆；升级固有 | 阴 |
+| 小打火机 | 2费，1+累计伤害；消耗状态牌每张+1→+2 | 阴 |
+| 抬头！ | 0费+5心壁，全玩家1→2力量 | 阳 |
+| 闪光弹 | 3费，17→20伤害；击杀则击晕其他敌人 | 阴 |
 
 > 原数值（如打击6、勇敢牛牛4×2+2等）已下调，为阴阳效果留空间。冰山美人从2球改1球（本地化已同步）。
 > ⚠️ 打击/防御后改为对齐原版：打击 6→9（升级+3），防御 5→8（升级+3），与 `DefendIronclad`/`StrikeIronclad` 一致。
