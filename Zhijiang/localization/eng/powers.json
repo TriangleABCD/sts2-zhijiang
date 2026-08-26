@@ -46,5 +46,8 @@
   "ZHIJIANG_POWER_SOUL_GAZE_POWER.smartDescription": "At the start of your turn, gain 1 Soul.",
   "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.title": "Then I'm Just Stupid",
   "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.description": "At the start of your turn, lose 1 Dexterity and heal 1 HP.",
-  "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.smartDescription": "At the start of your turn, lose 1 Dexterity and heal {Amount} HP."
+  "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.smartDescription": "At the start of your turn, lose 1 Dexterity and heal {Amount} HP.",
+"ZHIJIANG_POWER_BIFANG_SAMA_POWER.title": "Bifang Sama",
+  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.description": "At the start of your turn, if you are Bai La, gain {Amount} temporary Strength this turn.",
+  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.smartDescription": "At the start of your turn, if you are Bai La, gain {Amount} temporary Strength this turn."
 }

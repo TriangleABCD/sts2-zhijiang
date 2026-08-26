@@ -46,5 +46,8 @@
   "ZHIJIANG_POWER_SOUL_GAZE_POWER.smartDescription": "每回合开始时，获得 1 张灵魂。",
   "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.title": "那我就是笨嘛",
   "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.description": "每回合开始时，失去 1 点敏捷，回复 1 点生命。",
-  "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.smartDescription": "每回合开始时，失去 1 点敏捷，回复 {Amount} 点生命。"
+  "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.smartDescription": "每回合开始时，失去 1 点敏捷，回复 {Amount} 点生命。",
+"ZHIJIANG_POWER_BIFANG_SAMA_POWER.title": "毕方大人",
+  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.description": "每回合开始时，若你处于白拉，本回合获得 1 点临时力量。",
+  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.smartDescription": "每回合开始时，若你处于白拉，本回合获得 {Amount} 点临时力量。"
 }

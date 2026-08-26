@@ -33,6 +33,9 @@ public static class BellaYinYangService
     // 本回合各贝拉玩家已打出的技能牌数（Replay 多段只算第一段）。
     private static readonly Dictionary<Player, int> SkillPlaysThisTurn = new();
 
+    // 本回合各贝拉玩家已打出的攻击牌数（Replay 多段只算第一段）。
+    private static readonly Dictionary<Player, int> AttackPlaysThisTurn = new();
+
     // 本回合各贝拉玩家已打出的阳/阴牌数（Replay 多段只算第一段）。
     private static readonly Dictionary<Player, int> YangPlaysThisTurn = new();
     private static readonly Dictionary<Player, int> YinPlaysThisTurn = new();
@@ -54,6 +57,7 @@ public static class BellaYinYangService
             // 新战斗清空各回合计数。
             ContrastPlaysThisTurn.Clear();
             SkillPlaysThisTurn.Clear();
+            AttackPlaysThisTurn.Clear();
             YangPlaysThisTurn.Clear();
             YinPlaysThisTurn.Clear();
 
@@ -85,6 +89,13 @@ public static class BellaYinYangService
 
             if (evt.CardPlay.Card.Owner is not { } player || player.Character is not BellaCharacter)
                 return;
+
+            // 攻击牌计数。
+            if (evt.CardPlay.Card.Type == CardType.Attack)
+            {
+                AttackPlaysThisTurn.TryGetValue(player, out int attackCount);
+                AttackPlaysThisTurn[player] = attackCount + 1;
+            }
 
             // 技能牌计数。
             if (evt.CardPlay.Card.Type == CardType.Skill)
@@ -124,6 +135,7 @@ public static class BellaYinYangService
                 {
                     ContrastPlaysThisTurn[player] = 0;
                     SkillPlaysThisTurn[player] = 0;
+                    AttackPlaysThisTurn[player] = 0;
                     YangPlaysThisTurn[player] = 0;
                     YinPlaysThisTurn[player] = 0;
                 }
@@ -135,6 +147,7 @@ public static class BellaYinYangService
         {
             ContrastPlaysThisTurn.Clear();
             SkillPlaysThisTurn.Clear();
+            AttackPlaysThisTurn.Clear();
             YangPlaysThisTurn.Clear();
             YinPlaysThisTurn.Clear();
         });
@@ -233,6 +246,12 @@ public static class BellaYinYangService
     public static int GetSkillPlaysThisTurn(Player player)
     {
         return SkillPlaysThisTurn.TryGetValue(player, out int count) ? count : 0;
+    }
+
+    /// <summary>本回合此前已打出的攻击牌数量。</summary>
+    public static int GetAttackPlaysThisTurn(Player player)
+    {
+        return AttackPlaysThisTurn.TryGetValue(player, out int count) ? count : 0;
     }
 
     /// <summary>本回合此前已打出的阳牌数量。</summary>
