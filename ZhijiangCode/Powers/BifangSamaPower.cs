@@ -25,9 +25,10 @@ public sealed class BifangSamaPower : ModPowerTemplate
     public override PowerStackType StackType => PowerStackType.Counter;
     protected override bool IsVisibleInternal => true;
 
+    // 专属能力图标：bifang_sama_power_64x64.png / bifang_sama_power_256x256.png（待补成品图）。
     public override PowerAssetProfile AssetProfile => new(
-        IconPath: $"{Entry.ResPath}/images/characters/Bella/bai_la_power_64x64.png",
-        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/bai_la_power_256x256.png");
+        IconPath: $"{Entry.ResPath}/images/characters/Bella/bifang_sama_power_64x64.png",
+        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/bifang_sama_power_256x256.png");
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {

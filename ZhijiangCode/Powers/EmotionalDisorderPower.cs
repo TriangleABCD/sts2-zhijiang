@@ -26,10 +26,10 @@ public sealed class EmotionalDisorderPower : ModPowerTemplate
     public override PowerStackType StackType => PowerStackType.Counter;
     protected override bool IsVisibleInternal => true;
 
-    // 图标占位：暂用白拉图标。
+    // 专属能力图标：emotional_disorder_power_64x64.png / emotional_disorder_power_256x256.png（待补成品图）。
     public override PowerAssetProfile AssetProfile => new(
-        IconPath: $"{Entry.ResPath}/images/characters/Bella/bai_la_power_64x64.png",
-        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/bai_la_power_256x256.png");
+        IconPath: $"{Entry.ResPath}/images/characters/Bella/emotional_disorder_power_64x64.png",
+        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/emotional_disorder_power_256x256.png");
 
     /// <summary>升级后每回合额外获得的心之壁数量（0/1）。</summary>
     public void SetHeartWallGain(decimal gain)

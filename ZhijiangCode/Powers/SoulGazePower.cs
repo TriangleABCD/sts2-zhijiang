@@ -23,10 +23,10 @@ public sealed class SoulGazePower : ModPowerTemplate
     public override PowerStackType StackType => PowerStackType.Counter;
     protected override bool IsVisibleInternal => true;
 
-    // 图标占位：暂用白拉图标。
+    // 专属能力图标：soul_gaze_power_64x64.png / soul_gaze_power_256x256.png（待补成品图）。
     public override PowerAssetProfile AssetProfile => new(
-        IconPath: $"{Entry.ResPath}/images/characters/Bella/bai_la_power_64x64.png",
-        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/bai_la_power_256x256.png");
+        IconPath: $"{Entry.ResPath}/images/characters/Bella/soul_gaze_power_64x64.png",
+        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/soul_gaze_power_256x256.png");
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {

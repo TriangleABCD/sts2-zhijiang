@@ -21,10 +21,10 @@ public sealed class ThenImJustStupidPower : ModPowerTemplate
     public override PowerStackType StackType => PowerStackType.Counter;
     protected override bool IsVisibleInternal => true;
 
-    // 图标占位：暂用黑贝拉图标。
+    // 专属能力图标：then_im_just_stupid_power_64x64.png / then_im_just_stupid_power_256x256.png（待补成品图）。
     public override PowerAssetProfile AssetProfile => new(
-        IconPath: $"{Entry.ResPath}/images/characters/Bella/evil_bella_power_64x64.png",
-        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/evil_bella_power_256x256.png");
+        IconPath: $"{Entry.ResPath}/images/characters/Bella/then_im_just_stupid_power_64x64.png",
+        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/then_im_just_stupid_power_256x256.png");
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {

@@ -50,10 +50,10 @@ public sealed class AllAreMyWingsPower : ModPowerTemplate, IPowerExtraIconAmount
         ];
     }
 
-    // 图标占位：暂用白拉图标。
+    // 专属能力图标：all_are_my_wings_power_64x64.png / all_are_my_wings_power_256x256.png（待补成品图）。
     public override PowerAssetProfile AssetProfile => new(
-        IconPath: $"{Entry.ResPath}/images/characters/Bella/bai_la_power_64x64.png",
-        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/bai_la_power_256x256.png");
+        IconPath: $"{Entry.ResPath}/images/characters/Bella/all_are_my_wings_power_64x64.png",
+        BigIconPath: $"{Entry.ResPath}/images/characters/Bella/all_are_my_wings_power_256x256.png");
 
     /// <summary>
     /// 每次自己打出卡牌后更新本回合阳/阴计数并刷新图标角标。
