@@ -69,6 +69,8 @@
 #### 1.2.4 落地要求
 
 - **UI 标注**：卡牌奖励与牌组界面需显式显示阴阳标签，否则玩家无法决策。
+- **数量角标**：初始遗物「贝极星」（及升级版「闪耀贝极星」）图标左下角显示当前阳牌数、右下角显示当前阴牌数；战斗外读卡组、战斗内随牌堆变动实时刷新，口径与状态判断一致。
+- **手牌泛光**：战斗中手牌与当前状态同向的牌（白拉=阳牌、黑拉=阴牌）泛金色光，反差牌（白拉=阴牌、黑拉=阳牌）泛红色光；使用 RitsuLib ModCardHandOutlineRegistry 逐帧刷新（BellaHandGlow.Register()），状态翻转时自动变色，中立牌不发光。
 - **状态展示**：战斗内由可见状态 Power（`BaiLaPower` / `HeiLaPower`）挂在角色下方（战斗开始时按当前状态施加，状态翻转时动态替换）；战斗外由初始遗物 hover tip 动态显示当前状态（`AdditionalHoverTips` 每次悬停重算）。
 - **初始卡组配比**：10 张起始牌配成 5 阳 5 阴（开局白拉、可自由转向）。
 - ~~状态名「黑拉」与已有稀有能力牌「黑拉」（`EvilBella`）重名~~：已解决（2026-08-15），卡牌更名为「黑贝拉sama」（代码文件名不变）。
@@ -113,9 +115,17 @@
 
 ### 2.2 专属遗物
 
+> 2026-08-28 定稿：7 件，稀有度按原版模板 Common×1 / Uncommon×2 / Rare×3 / Shop×1。图标已配置独立素材。
+
 | 图标 | 名称 | 稀有度 | 效果 | 代码路径 |
 |------|------|--------|------|----------|
-| <!-- TODO --> | | | | |
+| <!-- TODO --> | 晃悠悠 (Swaying Hairpin) | 普通 | 每回合第一次打出反差牌时，获得 4 心之壁 | `Relics/Bella/SwayingHairpin.cs` |
+| <!-- TODO --> | 锤子 (Hammer) | 罕见 | 拾起时，牌组中所有打击获得重放 1 并消耗 | `Relics/Bella/Hammer.cs` |
+| <!-- TODO --> | 平底锅 (Frying Pan) | 罕见 | 拾起时，牌组中所有防御获得重放 1 并虚无 | `Relics/Bella/FryingPan.cs` |
+| <!-- TODO --> | 露西亚痛机 (LuciaPC) | 稀有 | 每当白拉/黑拉状态翻转时，抽 1 张牌并获得 2 格挡 | `Relics/Bella/LuciaPC.cs` |
+| <!-- TODO --> | 烧麦 (Shaomai) | 稀有 | 拾起时获得 17 点最大生命 | `Relics/Bella/Shaomai.cs` |
+| <!-- TODO --> | 神光棒 (Spark Lence) | 稀有 | 拾起时选择牌组中最多 4 张非中立卡牌，反转其阴阳属性 | `Relics/Bella/SparkLence.cs` |
+| <!-- TODO --> | 牛肉干 (Beef Jerky) | 商店 | 你可以在卡牌奖励中多选一张牌 | `Relics/Bella/BeefJerky.cs` |
 
 ---
 
@@ -123,9 +133,15 @@
 
 ### 3.1 专属药水
 
+> 参考：原版模板为每角色 **3 瓶**（Common ×1 + Uncommon ×1 + Rare ×1，无初始药水），原版通过 `{角色}4Epoch` 一次性解锁；贝拉不启用纪元/时间线，3 瓶开局即可进入奖励池。统计详见 [原版角色专属药水统计](./原版角色专属药水统计.md)。
+
 | 图标 | 名称 | 稀有度 | 效果 | 代码路径 |
 |------|------|--------|------|----------|
-| <!-- TODO --> | | | | |
+| <!-- TODO 占位图 --> | 鲜榨杨桃汁 (Bellaris Juicy) | 普通 | 获得 30 点心之壁 | `Potions/Bella/BellarisJuicy.cs` |
+| <!-- TODO 占位图 --> | 贝拉洗脚水 (Bella's Foot Wash Water) | 罕见 | 你的下一张阴攻击牌造成 3 倍伤害 | `Potions/Bella/BellaFootWashWater.cs` / `Powers/BellaYinTriplePower.cs` |
+| <!-- TODO 占位图 --> | 贝极星气泡水 (Bellaris Bubble Water) | 稀有 | 获得 7 层再生 | `Potions/Bella/BellarisBubbleWater.cs` |
+
+> 本地化：`Zhijiang/localization/{zhs,eng}/potions.json`（`ZHIJIANG_POTION_*`）。图标占位待补：`images/potions/Bella/*.png`（文件缺失时 RitsuLib 回退默认药水）。
 
 ---
 

@@ -39,6 +39,7 @@
 - 升级改耗能用 `base.EnergyCost.UpgradeBy(-1)`（参考 `IceBeauty`/`LoopIn20`）；加减关键词用 `AddKeyword`/`RemoveKeyword`；改次级费用用 `this.SecondaryCosts().Set(...)` 覆盖（参考 `LoopIn20` 150→120）
 - 卡牌本地化只有 `.title` + `.description` 两个 key（原版 cards.json 没有 smartDescription）；`smartDescription` 只属于 Power/Orb——运行时实例化版、用 `{Amount}`/`{OwnerName}` 显示实时数值，`description` 是静态概念版。项目 cards.json 里每卡多写的 smartDescription 是习惯性冗余、游戏不读
 - 卡池卡框色/能量色在 `BellaCardPool` 配置：`MaterialUtils.CreateHsvShaderMaterial(0.015f, 0.47f, 0.859f)`（#DB7D74），`EnergyColorName = "Bella"`，卡面/名字色取 `BellaCharacter.ThemeColor`（0.42, 0.65, 0.72）；地图画线色是 `BellaCharacter.MapDrawingColor`（#DB7D74），与 ThemeColor 相互独立
+- 本地化术语高亮统一用原版风格 `[gold]...[/gold]`（不要再用 `[green]`）：白拉/黑拉/黑白拉/白拉/黑拉、阳牌/阴牌/阴阳牌、阴阳性/阴阳差/阴阳平衡、敏捷/力量/格挡、消耗/升级、抽牌堆/弃牌堆/手牌、易伤/虚弱，中英文两个文件同步修改
 
 ### 注意事项
 

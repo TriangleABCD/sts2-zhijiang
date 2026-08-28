@@ -1,11 +1,40 @@
 {
   "ZHIJIANG_RELIC_BELLARIS.title": "Bellaris",
-  "ZHIJIANG_RELIC_BELLARIS.description": "At turn start, gain 1 [green]Dexterity[/green] per 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]. [gold]Bai La[/gold]: playing a Skill gains 1 Block, +1 per 3 Yin-Yang card diff; lose equal Strength. [gold]Hei La[/gold]: playing an Attack deals 1 damage to a random enemy, +1 per 3 Yin-Yang card diff; lose equal Dexterity.",
+  "ZHIJIANG_RELIC_BELLARIS.description": "At turn start, gain 1 [gold]Dexterity[/gold] per 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]. [gold]Bai La[/gold]: playing a Skill gains 1 [gold]Block[/gold], +1 per 3 [gold]Yin-Yang[/gold] card diff; lose equal [gold]Strength[/gold]. [gold]Hei La[/gold]: playing an Attack deals 1 damage to a random enemy, +1 per 3 [gold]Yin-Yang[/gold] card diff; lose equal [gold]Dexterity[/gold].",
   "ZHIJIANG_RELIC_BELLARIS.flavor": "Bella the Martial Saint.",
 
   "ZHIJIANG_RELIC_KIRA_BELLARIS.title": "Kira Bellaris",
-  "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "At turn start, gain 1 [green]Dexterity[/green] per 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]. [gold]Bai La[/gold]: playing a Skill gains 1 Block, +1 per 3 Yin-Yang card diff. [gold]Hei La[/gold]: playing an Attack deals 1 damage to a random enemy, +1 per 3 Yin-Yang card diff.",
+  "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "At turn start, gain 1 [gold]Dexterity[/gold] per 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]. [gold]Bai La[/gold]: playing a Skill gains 1 [gold]Block[/gold], +1 per 3 [gold]Yin-Yang[/gold] card diff. [gold]Hei La[/gold]: playing an Attack deals 1 damage to a random enemy, +1 per 3 [gold]Yin-Yang[/gold] card diff.",
   "ZHIJIANG_RELIC_KIRA_BELLARIS.flavor": "Bella the Radiant Martial Saint.",
+
+  "ZHIJIANG_RELIC_SWAYING_HAIRPIN.title": "Swaying Hairpin",
+  "ZHIJIANG_RELIC_SWAYING_HAIRPIN.description": "The first [gold]contrast card[/gold] you play each turn grants {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_RELIC_SWAYING_HAIRPIN.flavor": "The hairpin sways gently.",
+
+  "ZHIJIANG_RELIC_HAMMER.title": "Hammer",
+  "ZHIJIANG_RELIC_HAMMER.description": "Upon pickup, all [gold]Strikes[/gold] in your deck gain [gold]Replay[/gold] 1 and [gold]Exhaust[/gold].",
+  "ZHIJIANG_RELIC_HAMMER.flavor": "One strike, two echoes.",
+
+  "ZHIJIANG_RELIC_FRYING_PAN.title": "Frying Pan",
+  "ZHIJIANG_RELIC_FRYING_PAN.description": "Upon pickup, all [gold]Defends[/gold] in your deck gain [gold]Replay[/gold] 1 and [gold]Ethereal[/gold].",
+  "ZHIJIANG_RELIC_FRYING_PAN.flavor": "Dancing on a hot pan.",
+
+  "ZHIJIANG_RELIC_LUCIA_PC.title": "LuciaPC",
+  "ZHIJIANG_RELIC_LUCIA_PC.description": "Whenever your [gold]Bai La[/gold]/[gold]Hei La[/gold] state flips, draw {Cards} card and gain {Block} [gold]Block[/gold].",
+  "ZHIJIANG_RELIC_LUCIA_PC.flavor": "The painful machine keeps running.",
+
+  "ZHIJIANG_RELIC_SHAOMAI.title": "Shaomai",
+  "ZHIJIANG_RELIC_SHAOMAI.description": "Upon pickup, gain {MaxHp} [gold]Max HP[/gold].",
+  "ZHIJIANG_RELIC_SHAOMAI.flavor": "Thin skin, hearty filling.",
+
+  "ZHIJIANG_RELIC_SPARK_LENCE.title": "Spark Lence",
+  "ZHIJIANG_RELIC_SPARK_LENCE.description": "Upon pickup, choose up to {MaxSelect} non-neutral cards from your deck and [gold]flip[/gold] their [gold]Yin-Yang[/gold] attribute.",
+  "ZHIJIANG_RELIC_SPARK_LENCE.flavor": "Where the spark points, yin and yang are reversed.",
+  "ZHIJIANG_RELIC_SPARK_LENCE.selectionScreenPrompt": "Choose up to {MaxSelect} cards to flip their Yin-Yang attribute",
+
+  "ZHIJIANG_RELIC_BEEF_JERKY.title": "Beef Jerky",
+  "ZHIJIANG_RELIC_BEEF_JERKY.description": "You may select one additional card from a card reward.",
+  "ZHIJIANG_RELIC_BEEF_JERKY.flavor": "Chewy, filling, and dependable.",
 
   "SEA_GLASS.ZHIJIANG_CHARACTER_BELLA_CHARACTER.title": "Bella Glass"
 }
