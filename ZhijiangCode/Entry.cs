@@ -41,14 +41,18 @@ public partial class Entry
         BellaYinYangService.RegisterCombatStateSync();
 
         // 去掉贝拉「阳/阴」关键词内联文本末尾的句号。
+        // 注意：RitsuLib 的 RegisterPatch 只是登记，未调用 PatchAll 不会真正应用；该补丁按 AGENTS 约定暂缓，保持未应用。
         RitsuLibFramework.CreatePatcher(ModId, "KeywordPeriodRemoval")
             .RegisterPatch<ModKeywordPeriodRemovalPatch>();
 
         // 洗牌拖尾（弃牌堆 → 抽牌堆）染成贝拉应援色：
         // RitsuLib 的 TrailStyle 染色只覆盖"跟随节点是 NCard"的普通拖尾，
         // 洗牌特效（NCardFlyShuffleVfx）需要此补丁补上，否则仍是占位角色（战士）的颜色。
-        RitsuLibFramework.CreatePatcher(ModId, "BellaShuffleTrailStyle")
-            .RegisterPatch<BellaShuffleTrailStylePatch>();
+        // 之前只 RegisterPatch 而漏了 PatchAll，补丁实际从未生效，本次补上应用调用。
+        var shuffleTrailPatcher = RitsuLibFramework.CreatePatcher(ModId, "BellaShuffleTrailStyle");
+        shuffleTrailPatcher.RegisterPatch<BellaShuffleTrailStylePatch>();
+        if (!shuffleTrailPatcher.PatchAll())
+            throw new InvalidOperationException("Critical patches failed: BellaShuffleTrailStyle.");
 
         Logger.Info("Zhijiang initialized.");
     }

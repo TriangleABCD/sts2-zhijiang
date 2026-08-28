@@ -58,6 +58,7 @@ public sealed class BellaShuffleTrailStylePatch : IPatchMethod
                 continue;
 
             ApplyBellaStyle(__result);
+            Entry.Logger.Info("[BellaShuffleTrailStyle] Applied Bella SupportColor (#DB7D74) to discard->draw shuffle trail.");
             return;
         }
     }

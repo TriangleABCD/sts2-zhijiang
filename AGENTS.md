@@ -156,7 +156,7 @@ public sealed class {CardName} : ModCardTemplate
   | necrobinder | 粉红 (1, 0.126, 0.288) | 粉红→紫红 |
 - **查看原版场景内容的方法**：用本机 Godot headless 加载游戏 pck 直接读 `res://` 文本（无需反编译）：临时工程放一个 `SceneTree` 脚本，`ProjectSettings.load_resource_pack("<游戏目录>/SlayTheSpire2.pck", true)` 后 `FileAccess.open("res://scenes/vfx/card_trail_xxx.tscn", FileAccess.READ)` 导出文本即可。
 - 贝拉已配置：全部染成 `SupportColor`（0.8588, 0.4902, 0.4549 = #DB7D74，应援色，与 `MapDrawingColor` 同值），底为 ironclad 拖尾（红橙系，与粉色同暖色系），实测观感好。
-- ⚠️ **洗牌拖尾例外（2026-08-17 已修）**：弃牌堆→抽牌堆的洗牌飞行特效（`NCardFlyShuffleVfx`）调用 `NCardTrailVfx.Create` 时跟随节点是洗牌特效本身、不是 `NCard`，RitsuLib 的 `CharacterTrailStyleOverridePatch`（靠 `card is NCard` 反查角色）不会给它染 TrailStyle，会显示占位角色的原色（贝拉显示战士红）。本项目补丁 `ZhijiangCode/Patches/BellaShuffleTrailStylePatch.cs`（注册于 `Entry.cs`）在 `NCardTrailVfx.Create` 后拦截洗牌特效，读私有字段 `_targetPile` 与当前战斗各玩家牌堆实例做引用相等反查贝拉玩家，染成与 TrailStyle 完全相同的 `SupportColor`。以后新角色若也要洗牌拖尾染色，需在该补丁中加对应角色分支（或把染色逻辑抽成共享方法）。
+- ⚠️ **洗牌拖尾例外（2026-08-17 首次尝试；2026-08-29 确认根因并修复）**：弃牌堆→抽牌堆的洗牌飞行特效（`NCardFlyShuffleVfx`）调用 `NCardTrailVfx.Create` 时跟随节点是洗牌特效本身、不是 `NCard`，RitsuLib 的 `CharacterTrailStyleOverridePatch`（靠 `card is NCard` 反查角色）不会给它染 TrailStyle，会显示占位角色的原色（贝拉显示战士红）。本项目补丁 `ZhijiangCode/Patches/BellaShuffleTrailStylePatch.cs`（注册于 `Entry.cs`）在 `NCardTrailVfx.Create` 后拦截洗牌特效，读私有字段 `_targetPile` 与当前战斗各玩家牌堆实例做引用相等反查贝拉玩家，染成与 TrailStyle 完全相同的 `SupportColor`。⚠️ 根因：此前 `Entry.cs` 只调用了 `RegisterPatch` 而漏掉 `PatchAll()`，补丁实际从未应用到游戏；修复后需在 `Entry.cs` 对洗牌拖尾补丁调用 `PatchAll()` 才会生效。以后新角色若也要洗牌拖尾染色，需在该补丁中加对应角色分支（或把染色逻辑抽成共享方法）。
 
 ## 开发环境注意
 
@@ -376,7 +376,7 @@ public sealed class {CardName} : ModCardTemplate
 ### 关键词句号补丁（⚠️ 补丁已写但实测无效，用户决定搁置）
 
 - RitsuLib `GetCardText` 会在金色关键词后拼接 `card_keywords.PERIOD`（句号），原版"消耗"等关键词沿用此样式。
-- 已写补丁 `ZhijiangCode/Patches/ModKeywordPeriodRemovalPatch.cs`（`IPatchMethod`，Postfix patch `ModKeywordRegistry.GetCardText`，对 `ZHIJIANG_KEYWORD_YANG/YIN` 去句号），但**实测句号仍然存在**，用户拍板"算了、这个不影响"（2026-08-13）。若以后真要修，应改 patch 注入点 `ModKeywordCardDescriptionInjector` 而不是 `GetCardText`。
+- 已写补丁 `ZhijiangCode/Patches/ModKeywordPeriodRemovalPatch.cs`（`IPatchMethod`，Postfix patch `ModKeywordRegistry.GetCardText`，对 `ZHIJIANG_KEYWORD_YANG/YIN` 去句号），但**实测句号仍然存在**，用户拍板"算了、这个不影响"（2026-08-13）。2026-08-29 复盘确认：该补丁与洗牌拖尾补丁一样从未被应用（只 `RegisterPatch` 未 `PatchAll`），因此"实测无效"并非注入点错误；若以后真要修，只需对它调用 `PatchAll()` 即可先验证，若仍无效再考虑改 `ModKeywordCardDescriptionInjector`。按用户约定仍保持搁置，未应用。
 - 注册方式：`RitsuLibFramework.CreatePatcher(ModId, "KeywordPeriodRemoval").RegisterPatch<ModKeywordPeriodRemovalPatch>()`，需 `using STS2RitsuLib.Patching.Core`。
 
 ### 贝极星馈赠与代价（定稿）
