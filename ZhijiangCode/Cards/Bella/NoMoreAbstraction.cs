@@ -39,6 +39,7 @@ public sealed class NoMoreAbstraction : ModCardTemplate
     // 动态显示：消耗高雅数量换算出的能量/抽牌数。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new EnergyVar(1),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
         new CalculatedVar("CalculatedEnergy")
