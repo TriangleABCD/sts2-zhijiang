@@ -21,7 +21,7 @@ namespace Zhijiang.ZhijiangCode.Relics;
 [RegisterRelic(typeof(BellaRelicPool))]
 [RegisterCharacterStarterRelic(typeof(BellaCharacter))]
 [RegisterTouchOfOrobasRefinement(typeof(KiraBellaris))]
-public sealed class Bellaris : ModStarterRelicTemplate
+public sealed class Bellaris : BellaStarterRelicTemplate
 {
     // 稀有度：初始遗物（Starter）——与原版初始遗物一致，不会进入商店/奖励池，也不会被交易/出售。
     public override RelicRarity Rarity => RelicRarity.Starter;

@@ -18,7 +18,7 @@ namespace Zhijiang.ZhijiangCode.Relics;
 // 闪耀贝极星：贝极星经"先古之民"（奥罗巴斯）事件替换后的升级版。
 // 与贝极星拥有相同的阴阳馈赠（白拉技能格挡 / 黑拉攻击伤害），但没有阴阳代价（不失去力量/敏捷）。
 [RegisterRelic(typeof(BellaRelicPool))]
-public sealed class KiraBellaris : ModStarterRelicTemplate
+public sealed class KiraBellaris : BellaStarterRelicTemplate
 {
     // 升级遗物沿用初始遗物稀有度，保证后续仍被识别为初始遗物。
     public override RelicRarity Rarity => RelicRarity.Starter;

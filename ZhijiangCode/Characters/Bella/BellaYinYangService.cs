@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Runs;
 using STS2RitsuLib;
 using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Powers;
@@ -40,6 +41,12 @@ public static class BellaYinYangService
     private static readonly Dictionary<Player, int> YangPlaysThisTurn = new();
     private static readonly Dictionary<Player, int> YinPlaysThisTurn = new();
 
+    // 战斗外监听卡组变化的牌堆集合（仅贝拉玩家），用于实时刷新贝极星角标。
+    private static readonly HashSet<CardPile> DeckListenerPiles = new();
+
+    // 各贝拉玩家最近一次同步时的状态（true=白拉），用于检测战斗内状态翻转。
+    private static readonly Dictionary<Player, bool> LastBaiLaState = new();
+
     /// <summary>
     /// 注册战斗状态同步，在 Entry.Initialize 中调用：
     /// 1. 战斗开始时为贝拉玩家施加可见状态标记（白拉/黑拉），并同步贝极星的阴阳代价。
@@ -54,18 +61,20 @@ public static class BellaYinYangService
             if (evt.CombatState is not { } combat)
                 return;
 
-            // 新战斗清空各回合计数。
+            // 新战斗清空各回合计数与状态翻转追踪。
             ContrastPlaysThisTurn.Clear();
             SkillPlaysThisTurn.Clear();
             AttackPlaysThisTurn.Clear();
             YangPlaysThisTurn.Clear();
             YinPlaysThisTurn.Clear();
+            LastBaiLaState.Clear();
 
             foreach (var player in combat.Players)
             {
                 if (player.Character is not BellaCharacter)
                     continue;
                 await SyncStateEffects(player);
+                NotifyRelicCountChanged(player);
             }
         });
 
@@ -78,6 +87,7 @@ public static class BellaYinYangService
                 return;
 
             await SyncStateEffects(player);
+            NotifyRelicCountChanged(player);
         });
 
         // 反差牌计数：每张牌的第一段打出瞬间（CardPlayingEvent 早于 OnPlay）按当时状态判定。
@@ -142,15 +152,79 @@ public static class BellaYinYangService
             }
         });
 
-        // 战斗结束释放引用。
-        RitsuLibFramework.SubscribeLifecycle<CombatEndedEvent>(_ =>
+        // 战斗结束释放引用，并让角标回落到战斗外的卡组数量。
+        RitsuLibFramework.SubscribeLifecycle<CombatEndedEvent>(evt =>
         {
             ContrastPlaysThisTurn.Clear();
             SkillPlaysThisTurn.Clear();
             AttackPlaysThisTurn.Clear();
             YangPlaysThisTurn.Clear();
             YinPlaysThisTurn.Clear();
+            LastBaiLaState.Clear();
+
+            foreach (var player in evt.RunState.Players)
+            {
+                if (player.Character is BellaCharacter)
+                    NotifyRelicCountChanged(player);
+            }
         });
+    }
+
+    /// <summary>
+    /// 注册战斗外卡组变动监听，在 Entry.Initialize 中调用：
+    /// 跑局开始/读档后监听贝拉玩家卡组的加入/移除，跑局结束时解除监听，
+    /// 使贝极星角标在战斗外也能随抓牌/删牌/转化等实时刷新。
+    /// </summary>
+    public static void RegisterYinYangCountBadgeSync()
+    {
+        RitsuLibFramework.SubscribeLifecycle<RunStartedEvent>(evt => AttachDeckListeners(evt.RunState));
+        RitsuLibFramework.SubscribeLifecycle<RunLoadedEvent>(evt => AttachDeckListeners(evt.RunState));
+        RitsuLibFramework.SubscribeLifecycle<RunEndedEvent>(_ => DetachDeckListeners());
+    }
+
+    private static void AttachDeckListeners(IRunState runState)
+    {
+        DetachDeckListeners();
+        foreach (var player in runState.Players)
+        {
+            if (player.Character is not BellaCharacter)
+                continue;
+            if (!DeckListenerPiles.Add(player.Deck))
+                continue;
+            player.Deck.CardAdded += OnDeckCardChanged;
+            player.Deck.CardRemoved += OnDeckCardChanged;
+
+            // 若遗物图标可能已创建，主动刷新一次，确保读到最新卡组数量。
+            NotifyRelicCountChanged(player);
+        }
+    }
+
+    private static void DetachDeckListeners()
+    {
+        foreach (var pile in DeckListenerPiles)
+        {
+            pile.CardAdded -= OnDeckCardChanged;
+            pile.CardRemoved -= OnDeckCardChanged;
+        }
+        DeckListenerPiles.Clear();
+    }
+
+    private static void OnDeckCardChanged(CardModel card)
+    {
+        if (card.Owner is { } player && player.Character is BellaCharacter)
+            NotifyRelicCountChanged(player);
+    }
+
+    /// <summary>
+    /// 通知贝拉玩家的贝极星（含闪耀贝极星）刷新阴阳牌数角标。
+    /// </summary>
+    public static void NotifyRelicCountChanged(Player player)
+    {
+        foreach (var relic in player.Relics)
+        {
+            if (relic is BellaStarterRelicTemplate badge)
+                badge.NotifyYinYangCountChanged();
+        }
     }
 
     /// <summary>
@@ -162,6 +236,11 @@ public static class BellaYinYangService
         PlayerChoiceContext ctx = new ThrowingPlayerChoiceContext();
         Creature creature = player.Creature;
         bool isBaiLa = IsBaiLa(player);
+
+        // 检测状态翻转：首次同步（新战斗/新玩家）不视为翻转。
+        bool wasBaiLa = LastBaiLaState.TryGetValue(player, out var last) ? last : isBaiLa;
+        bool flipped = wasBaiLa != isBaiLa;
+        LastBaiLaState[player] = isBaiLa;
 
         // 可见状态标记：状态翻转时替换（白拉 ⇄ 黑拉）。
         bool hasBaiLa = creature.HasPower<BaiLaPower>();
@@ -182,6 +261,13 @@ public static class BellaYinYangService
         // 贝极星阴阳代价：仅当贝极星已施加代价控制器时同步（闪耀贝极星无代价）。
         if (creature.GetPower<BellarisYinYangDebuffPower>() is { } debuff)
             await debuff.Sync(ctx);
+
+        // 状态翻转时通知监听器（如「露西亚痛机」遗物）。
+        if (flipped)
+        {
+            foreach (var listener in player.Relics.OfType<IBellaStateFlipListener>())
+                await listener.OnBellaStateFlipped(player);
+        }
     }
 
     /// <summary>
@@ -199,6 +285,23 @@ public static class BellaYinYangService
                 yin++;
         }
         return yang - yin;
+    }
+
+    /// <summary>
+    /// 当前阳/阴牌数（阳, 阴）。口径与 <see cref="ComputeDiff"/> 完全一致：
+    /// 战斗外为卡组，战斗中为当前牌堆（不含消耗堆、打出堆中的能力牌）。
+    /// </summary>
+    public static (int Yang, int Yin) GetYinYangCounts(Player player)
+    {
+        int yang = 0, yin = 0;
+        foreach (var card in GetOwnedCards(player))
+        {
+            if (card.Keywords.Contains(YangKeywordId.GetModCardKeyword()))
+                yang++;
+            else if (card.Keywords.Contains(YinKeywordId.GetModCardKeyword()))
+                yin++;
+        }
+        return (yang, yin);
     }
 
     /// <summary>是否处于白拉状态（阳 ≥ 阴；被「了转反」翻转时取反）。</summary>
@@ -282,7 +385,9 @@ public static class BellaYinYangService
     /// </summary>
     private static IEnumerable<CardModel> GetOwnedCards(Player player)
     {
-        if (player.PlayerCombatState is { } combat)
+        // PlayerCombatState 在普通战斗结束后不会被置空，因此必须同时判断战斗是否真正进行中；
+        // 否则战斗结束后角标/状态会停留在最后的战斗牌堆，而不是卡组数量。
+        if (player.PlayerCombatState is { } combat && CombatManager.Instance.IsInProgress)
         {
             return combat.AllPiles
                 .Where(p => p.Type != PileType.Exhaust)

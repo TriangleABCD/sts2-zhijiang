@@ -39,6 +39,8 @@ public partial class Entry
         ModTypeDiscoveryHub.RegisterModAssembly(ModId, assembly);
         HeartWall.Register();
         BellaYinYangService.RegisterCombatStateSync();
+        BellaYinYangService.RegisterYinYangCountBadgeSync();
+        BellaHandGlow.Register();
 
         // 去掉贝拉「阳/阴」关键词内联文本末尾的句号。
         // 注意：RitsuLib 的 RegisterPatch 只是登记，未调用 PatchAll 不会真正应用；该补丁按 AGENTS 约定暂缓，保持未应用。
