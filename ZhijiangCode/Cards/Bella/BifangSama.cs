@@ -46,6 +46,7 @@ public sealed class BifangSama : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         int gain = DynamicVars["StrengthGain"].IntValue;
         await PowerCmd.Apply<BifangSamaPower>(choiceContext, base.Owner.Creature, gain, base.Owner.Creature, this);
     }

@@ -44,6 +44,7 @@ public sealed class EmotionalDisorder : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         int heartWallGain = DynamicVars["HeartWallGain"].IntValue;
         EmotionalDisorderPower? power = await PowerCmd.Apply<EmotionalDisorderPower>(
             choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);

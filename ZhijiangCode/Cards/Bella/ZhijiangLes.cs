@@ -53,6 +53,7 @@ public sealed class ZhijiangLes : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         decimal threshold = DynamicVars["ContrastThreshold"].BaseValue;
         ZhijiangLesPower? power = await PowerCmd.Apply<ZhijiangLesPower>(choiceContext, base.Owner.Creature,
             threshold, base.Owner.Creature, this);

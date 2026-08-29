@@ -55,6 +55,7 @@ public sealed class WhiteDragonHorse : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block, cardPlay);
 
         // 多人联动：队伍中有乃琳时，你与乃琳各回复 HealAmount 点生命。

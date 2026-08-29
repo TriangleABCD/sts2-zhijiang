@@ -44,6 +44,7 @@ public sealed class ReliableSisterLa : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         int divisor = DynamicVars["Divisor"].IntValue;
         await PowerCmd.Apply<ReliableSisterLaPower>(choiceContext, base.Owner.Creature, divisor, base.Owner.Creature, this);
     }

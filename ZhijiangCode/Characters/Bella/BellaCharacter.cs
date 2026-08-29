@@ -1,10 +1,12 @@
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Characters;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Scaffolding.Godot;
+using STS2RitsuLib.Scaffolding.Visuals.StateMachine;
 
 namespace Zhijiang.ZhijiangCode.Characters.Bella;
 
@@ -97,6 +99,26 @@ public sealed class BellaCharacter : ModCharacterTemplate<BellaCardPool, BellaRe
     // 攻击和施法动画延迟，以对齐动画。静态占位资源不需要延迟。
     public override float AttackAnimDelay => 0f;
     public override float CastAnimDelay => 0f;
+
+    // 非 Spine 战斗视觉的动画状态机：attack / hurt / cast(含 PowerUp) 播完自动回到 idle_loop，die 保持最后一帧。
+    protected override ModAnimStateMachine? SetupCustomCombatAnimationStateMachine(
+        Node visualsRoot, CharacterModel character)
+    {
+        return ModAnimStateMachineBuilder.Create()
+            .AddState("idle_loop", loop: true).AsInitial().Done()
+            .AddState("die").Done()
+            .AddState("hurt").WithNext("idle_loop").Done()
+            .AddState("attack").WithNext("idle_loop").Done()
+            .AddState("cast").WithNext("idle_loop").Done()
+            // 原版角色把 PowerUp（能力牌）也映射到 cast 动作。
+            .AddAnyState("Idle", "idle_loop")
+            .AddAnyState("Dead", "die")
+            .AddAnyState("Hit", "hurt")
+            .AddAnyState("Attack", "attack")
+            .AddAnyState("Cast", "cast")
+            .AddAnyState("PowerUp", "cast")
+            .BuildForVisualsRoot(visualsRoot, character);
+    }
 
     // 让 RitsuLib 把普通 Godot 场景转换成游戏需要的 NCreatureVisuals。
     // 自动转换人物场景，让你不需要手动挂脚本。复制即可。

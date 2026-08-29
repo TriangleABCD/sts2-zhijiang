@@ -43,6 +43,7 @@ public sealed class CowLover : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         int gain = DynamicVars["HeartWallGain"].IntValue;
         await PowerCmd.Apply<CowLoverPower>(choiceContext, base.Owner.Creature, gain, base.Owner.Creature, this);
     }

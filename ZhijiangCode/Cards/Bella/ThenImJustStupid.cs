@@ -56,6 +56,7 @@ public sealed class ThenImJustStupid : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         int heal = DynamicVars["Heal"].IntValue;
         await PowerCmd.Apply<ThenImJustStupidPower>(choiceContext, base.Owner.Creature, heal, base.Owner.Creature, this);
     }

@@ -47,6 +47,7 @@ public sealed class AllAreMyWings : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         int reward = DynamicVars.Energy.IntValue;
         await PowerCmd.Apply<AllAreMyWingsPower>(choiceContext, base.Owner.Creature, reward, base.Owner.Creature, this);
     }

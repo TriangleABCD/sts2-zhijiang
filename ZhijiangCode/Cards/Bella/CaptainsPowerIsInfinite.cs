@@ -40,6 +40,7 @@ public sealed class CaptainsPowerIsInfinite : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         int draw = DynamicVars["Draw"].IntValue;
         await PowerCmd.Apply<CaptainsPowerIsInfinitePower>(choiceContext, base.Owner.Creature, draw, base.Owner.Creature, this);
     }

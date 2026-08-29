@@ -44,6 +44,7 @@ public sealed class VirtualSense : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         int heartWallGain = DynamicVars["HeartWallGain"].IntValue;
         await PowerCmd.Apply<VirtualSensePower>(choiceContext, base.Owner.Creature,
             heartWallGain, base.Owner.Creature, this);

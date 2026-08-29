@@ -45,6 +45,7 @@ public sealed class SoulGaze : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         await PowerCmd.Apply<SoulGazePower>(choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
     }
 

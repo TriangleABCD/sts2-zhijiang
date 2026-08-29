@@ -1,963 +1,1795 @@
-[gd_scene load_steps=240 format=3 uid="uid://tfu2b4kgf7wj"]
+[gd_scene load_steps=443 format=3 uid="uid://tfu2b4kgf7wj"]
 
-[ext_resource type="Texture2D" uid="uid://o7amerl08re7" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0001.png" id="1_fc78k"]
-[ext_resource type="Texture2D" uid="uid://braosfnos72dd" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0002.png" id="2_7sx7f"]
-[ext_resource type="Texture2D" uid="uid://dfhe70c7vhcg1" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0003.png" id="3_1qklo"]
-[ext_resource type="Texture2D" uid="uid://b64ugvfo6enm" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0004.png" id="4_r77ip"]
-[ext_resource type="Texture2D" uid="uid://bhj1m3lyq38wx" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0005.png" id="5_m2j3s"]
-[ext_resource type="Texture2D" uid="uid://cduoqbragxsba" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0006.png" id="6_ycem0"]
-[ext_resource type="Texture2D" uid="uid://ddlmvisnamxme" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0007.png" id="7_kfbjk"]
-[ext_resource type="Texture2D" uid="uid://bhx5ib0m7jibx" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0008.png" id="8_727gy"]
-[ext_resource type="Texture2D" uid="uid://b4xgxiaj30khg" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0009.png" id="9_48041"]
-[ext_resource type="Texture2D" uid="uid://qs10bevg1fi7" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0010.png" id="10_vywa1"]
-[ext_resource type="Texture2D" uid="uid://cjqpvow2fph3f" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0011.png" id="11_mvqk2"]
-[ext_resource type="Texture2D" uid="uid://bgk0n6wcl0r1l" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0012.png" id="12_ed13j"]
-[ext_resource type="Texture2D" uid="uid://cd24i75kiecu7" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0013.png" id="13_7j4e8"]
-[ext_resource type="Texture2D" uid="uid://37frwuf6nb85" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0014.png" id="14_dhmu6"]
-[ext_resource type="Texture2D" uid="uid://c3hub0p8r1xme" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0015.png" id="15_ag5qb"]
-[ext_resource type="Texture2D" uid="uid://un2kiy5gs5to" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0016.png" id="16_tyvod"]
-[ext_resource type="Texture2D" uid="uid://387djerv8up4" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0017.png" id="17_yltx4"]
-[ext_resource type="Texture2D" uid="uid://cg5xy0bfm4i2u" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0018.png" id="18_4v7pi"]
-[ext_resource type="Texture2D" uid="uid://cvq6m5xevkhqi" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0019.png" id="19_nmqxp"]
-[ext_resource type="Texture2D" uid="uid://vbvv3j5unop0" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0020.png" id="20_dj5fm"]
-[ext_resource type="Texture2D" uid="uid://c0r0in4uhqc1m" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0021.png" id="21_gts5b"]
-[ext_resource type="Texture2D" uid="uid://bvmi0gav3shh1" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0022.png" id="22_u53yw"]
-[ext_resource type="Texture2D" uid="uid://dsdrqi3k0bjlc" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0023.png" id="23_6wdxd"]
-[ext_resource type="Texture2D" uid="uid://bs75bh58atdd1" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0024.png" id="24_e6852"]
-[ext_resource type="Texture2D" uid="uid://cvg02yjv8yk0l" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0025.png" id="25_cej7r"]
-[ext_resource type="Texture2D" uid="uid://dp7xn8gial1ab" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0026.png" id="26_u8cpb"]
-[ext_resource type="Texture2D" uid="uid://csm3r48dqlysk" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0027.png" id="27_ptid4"]
-[ext_resource type="Texture2D" uid="uid://bqcqm8sgluobp" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0028.png" id="28_7wxed"]
-[ext_resource type="Texture2D" uid="uid://bghtilurxe567" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0029.png" id="29_2ql7q"]
-[ext_resource type="Texture2D" uid="uid://cgiwmkypjki2h" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0030.png" id="30_7vvrl"]
-[ext_resource type="Texture2D" uid="uid://dr1hupg8d41ke" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0031.png" id="31_wluhe"]
-[ext_resource type="Texture2D" uid="uid://8iimkj7s4tq8" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0032.png" id="32_7tv0r"]
-[ext_resource type="Texture2D" uid="uid://fjfxnxsffwrm" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0033.png" id="33_cyss7"]
-[ext_resource type="Texture2D" uid="uid://b6x1l5bq4ffkh" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0034.png" id="34_u047l"]
-[ext_resource type="Texture2D" uid="uid://deddjm11ytnty" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0035.png" id="35_lw3db"]
-[ext_resource type="Texture2D" uid="uid://yr0lcneysdbl" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0036.png" id="36_hbvjg"]
-[ext_resource type="Texture2D" uid="uid://div2v6e2pd4ye" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0037.png" id="37_en440"]
-[ext_resource type="Texture2D" uid="uid://drkpilh5rmyj4" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0038.png" id="38_14018"]
-[ext_resource type="Texture2D" uid="uid://cdq1stcrgmu8h" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0039.png" id="39_dturu"]
-[ext_resource type="Texture2D" uid="uid://btbxwqgnh13gp" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0040.png" id="40_7rw3k"]
-[ext_resource type="Texture2D" uid="uid://tc4s5x3447nt" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0041.png" id="41_fr7i5"]
-[ext_resource type="Texture2D" uid="uid://bagrogf3f0qpd" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0042.png" id="42_7emw7"]
-[ext_resource type="Texture2D" uid="uid://minrwus0alcp" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0043.png" id="43_f2eip"]
-[ext_resource type="Texture2D" uid="uid://btvjpmmrlibob" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0044.png" id="44_lfsb8"]
-[ext_resource type="Texture2D" uid="uid://dr6ha3nu7w6g7" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0045.png" id="45_oalcw"]
-[ext_resource type="Texture2D" uid="uid://pf2acha7t6r3" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0046.png" id="46_ye70g"]
-[ext_resource type="Texture2D" uid="uid://c4y5jqb1s3rtv" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0047.png" id="47_320pv"]
-[ext_resource type="Texture2D" uid="uid://cnotfe3mu1pi4" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0048.png" id="48_iavc8"]
-[ext_resource type="Texture2D" uid="uid://dj7xf7uo1afm2" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0049.png" id="49_lgml5"]
-[ext_resource type="Texture2D" uid="uid://5l3oa4ccdw3m" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0050.png" id="50_mn6pb"]
-[ext_resource type="Texture2D" uid="uid://cr0nl6v1ywf3e" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0051.png" id="51_nj5m1"]
-[ext_resource type="Texture2D" uid="uid://bhy34dov5ac1p" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0052.png" id="52_en3gn"]
-[ext_resource type="Texture2D" uid="uid://bvao74njxwlc4" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0053.png" id="53_r5q5b"]
-[ext_resource type="Texture2D" uid="uid://tiv8sxees8v6" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0054.png" id="54_xinit"]
-[ext_resource type="Texture2D" uid="uid://dwr2we2h1ec84" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0055.png" id="55_8usm6"]
-[ext_resource type="Texture2D" uid="uid://dwxlptxchyoqg" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0056.png" id="56_vn8kc"]
-[ext_resource type="Texture2D" uid="uid://c5wg1u3cnsow2" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0057.png" id="57_3vb01"]
-[ext_resource type="Texture2D" uid="uid://cy1ut5bat8w16" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0058.png" id="58_vhypu"]
-[ext_resource type="Texture2D" uid="uid://c5oyniqu4mc4a" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0059.png" id="59_e86s2"]
-[ext_resource type="Texture2D" uid="uid://d1xt6b1li242p" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0060.png" id="60_p5601"]
-[ext_resource type="Texture2D" uid="uid://60vjdsltnsdq" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0061.png" id="61_hj3f8"]
-[ext_resource type="Texture2D" uid="uid://bayahptgna77i" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0062.png" id="62_aopg8"]
-[ext_resource type="Texture2D" uid="uid://ccovvde8hk0f7" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0063.png" id="63_eybiv"]
-[ext_resource type="Texture2D" uid="uid://b6oiqgtig7ec3" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0064.png" id="64_y06s3"]
-[ext_resource type="Texture2D" uid="uid://bdlg5s4df2oxl" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0065.png" id="65_wu6ax"]
-[ext_resource type="Texture2D" uid="uid://cfp1eyb4dfb5k" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0066.png" id="66_xql1v"]
-[ext_resource type="Texture2D" uid="uid://dxo47v3tmxx1v" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0067.png" id="67_kf1ot"]
-[ext_resource type="Texture2D" uid="uid://d0gapi6su0o5g" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0068.png" id="68_gi6rr"]
-[ext_resource type="Texture2D" uid="uid://5tkb0dadhgkf" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0069.png" id="69_e3kin"]
-[ext_resource type="Texture2D" uid="uid://cng7f5tsbrhym" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0070.png" id="70_3kfyk"]
-[ext_resource type="Texture2D" uid="uid://chutinr66t8i0" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0071.png" id="71_ova2q"]
-[ext_resource type="Texture2D" uid="uid://cq0g5wxsshc74" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0072.png" id="72_3hxvj"]
-[ext_resource type="Texture2D" uid="uid://bo3ou88ttmiwx" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0073.png" id="73_0stg4"]
-[ext_resource type="Texture2D" uid="uid://bqa1pgylu21rv" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0074.png" id="74_256ue"]
-[ext_resource type="Texture2D" uid="uid://ccmn1lnx03ylb" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0075.png" id="75_arnyq"]
-[ext_resource type="Texture2D" uid="uid://cy7qfyyxpe1dc" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0076.png" id="76_kqun8"]
-[ext_resource type="Texture2D" uid="uid://r11x0ywmar6k" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0077.png" id="77_unofd"]
-[ext_resource type="Texture2D" uid="uid://dwxuoe8s114mk" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0078.png" id="78_15sin"]
-[ext_resource type="Texture2D" uid="uid://do3215rkot57a" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0079.png" id="79_6w6hd"]
-[ext_resource type="Texture2D" uid="uid://ig1opel472oo" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0080.png" id="80_0bbcx"]
-[ext_resource type="Texture2D" uid="uid://cahc806totnuv" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0081.png" id="81_y1x12"]
-[ext_resource type="Texture2D" uid="uid://hdr6vs8ju7tr" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0082.png" id="82_6as32"]
-[ext_resource type="Texture2D" uid="uid://canhmfw1u7sqr" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0083.png" id="83_718td"]
-[ext_resource type="Texture2D" uid="uid://h271xjp746u0" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0084.png" id="84_f51t0"]
-[ext_resource type="Texture2D" uid="uid://b3g8cvhyrydj0" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0085.png" id="85_tw8o8"]
-[ext_resource type="Texture2D" uid="uid://btl1v5vf6lwol" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0086.png" id="86_ruw36"]
-[ext_resource type="Texture2D" uid="uid://b8c8eqaabpeja" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0087.png" id="87_xfcyc"]
-[ext_resource type="Texture2D" uid="uid://cikxwdfx8fgxq" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0088.png" id="88_tg7q5"]
-[ext_resource type="Texture2D" uid="uid://bfdbm16riqbqk" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0089.png" id="89_sjx58"]
-[ext_resource type="Texture2D" uid="uid://bh0eave6js0pi" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0090.png" id="90_3wwvj"]
-[ext_resource type="Texture2D" uid="uid://bilereqm128sy" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0091.png" id="91_8d1yc"]
-[ext_resource type="Texture2D" uid="uid://bqbd5yfq2dyei" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0092.png" id="92_vwn6x"]
-[ext_resource type="Texture2D" uid="uid://bq87lutvjiys0" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0093.png" id="93_0mbv5"]
-[ext_resource type="Texture2D" uid="uid://cwl32hso8htvu" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0094.png" id="94_e76jj"]
-[ext_resource type="Texture2D" uid="uid://b8qr2kupbsu3w" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0095.png" id="95_eb21f"]
-[ext_resource type="Texture2D" uid="uid://cggsmmvp5cfxa" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0096.png" id="96_q6sy7"]
-[ext_resource type="Texture2D" uid="uid://dg6hpsven202s" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0097.png" id="97_3owpj"]
-[ext_resource type="Texture2D" uid="uid://cgxi08m5yaanf" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0098.png" id="98_kuk4a"]
-[ext_resource type="Texture2D" uid="uid://cd4jqdfppbmpc" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0099.png" id="99_2l287"]
-[ext_resource type="Texture2D" uid="uid://cdjhi4bjkgbcv" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0100.png" id="100_qqo7g"]
-[ext_resource type="Texture2D" uid="uid://kq5kfalcu3a4" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0101.png" id="101_o1gex"]
-[ext_resource type="Texture2D" uid="uid://djnlxtkekfjvc" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0102.png" id="102_7meas"]
-[ext_resource type="Texture2D" uid="uid://cc4huvim6afgf" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0103.png" id="103_6mtts"]
-[ext_resource type="Texture2D" uid="uid://h4vr0452lyqm" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0104.png" id="104_nhodn"]
-[ext_resource type="Texture2D" uid="uid://g4ppgm0laa84" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0105.png" id="105_oby11"]
-[ext_resource type="Texture2D" uid="uid://bowu0qxf62wt8" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0106.png" id="106_38sah"]
-[ext_resource type="Texture2D" uid="uid://b2ic68fuxx5ih" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0107.png" id="107_eoq5o"]
-[ext_resource type="Texture2D" uid="uid://carrb1o676rxj" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0108.png" id="108_db7wf"]
-[ext_resource type="Texture2D" uid="uid://c6wn0waauge2k" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0109.png" id="109_x07n6"]
-[ext_resource type="Texture2D" uid="uid://ckgdbj2mk0jur" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0110.png" id="110_yrlu7"]
-[ext_resource type="Texture2D" uid="uid://ciibxlcctuu1s" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0111.png" id="111_wdnx5"]
-[ext_resource type="Texture2D" uid="uid://ck4mwdjqod4yw" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0112.png" id="112_ii6mx"]
-[ext_resource type="Texture2D" uid="uid://bbjlovgnqrd25" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0113.png" id="113_7axa8"]
-[ext_resource type="Texture2D" uid="uid://co3sbnek7253w" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0114.png" id="114_75mlf"]
-[ext_resource type="Texture2D" uid="uid://cw0m1a10s8eqt" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0115.png" id="115_7ys8o"]
-[ext_resource type="Texture2D" uid="uid://bt6jr6kxlmlrf" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0116.png" id="116_fwplm"]
-[ext_resource type="Texture2D" uid="uid://o7myucfp48lx" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0117.png" id="117_cwsh5"]
-[ext_resource type="Texture2D" uid="uid://db3ny6v2dgc2b" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0118.png" id="118_7rfdd"]
-[ext_resource type="Texture2D" uid="uid://dgb0sd3tr7pyt" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0119.png" id="119_kel2x"]
-[ext_resource type="Texture2D" uid="uid://dh4o7us7blaor" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0120.png" id="120_b4b8o"]
-[ext_resource type="Texture2D" uid="uid://cduisbbtm7755" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0121.png" id="121_7knsq"]
-[ext_resource type="Texture2D" uid="uid://yyo7qx67eg6n" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0122.png" id="122_k3rn2"]
-[ext_resource type="Texture2D" uid="uid://c7daji8b4c7jg" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0123.png" id="123_6v85d"]
-[ext_resource type="Texture2D" uid="uid://4kdunldlgm4a" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0124.png" id="124_bev0b"]
-[ext_resource type="Texture2D" uid="uid://y74qddfcva17" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0125.png" id="125_qwjye"]
-[ext_resource type="Texture2D" uid="uid://bnqnp0ekj2hmv" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0126.png" id="126_nhbk0"]
-[ext_resource type="Texture2D" uid="uid://dta1uxoh4dlqj" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0127.png" id="127_nyv2y"]
-[ext_resource type="Texture2D" uid="uid://cnoch1r1j2aks" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0128.png" id="128_nlnv3"]
-[ext_resource type="Texture2D" uid="uid://jsqupdcpsic0" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0129.png" id="129_hatbn"]
-[ext_resource type="Texture2D" uid="uid://bhqxblawd16vh" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0130.png" id="130_we7tb"]
-[ext_resource type="Texture2D" uid="uid://cf5p60i0ayj6t" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0131.png" id="131_b5a15"]
-[ext_resource type="Texture2D" uid="uid://c62kyw0v6t8fb" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0132.png" id="132_cfpwq"]
-[ext_resource type="Texture2D" uid="uid://daytoddkt1wc3" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0133.png" id="133_5mu6r"]
-[ext_resource type="Texture2D" uid="uid://bmqoiiei7hren" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0134.png" id="134_h54gp"]
-[ext_resource type="Texture2D" uid="uid://dvauoo3f8bgv" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0135.png" id="135_4fshc"]
-[ext_resource type="Texture2D" uid="uid://c6o3c121urxs2" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0136.png" id="136_5aq48"]
-[ext_resource type="Texture2D" uid="uid://dogwb68urrdyn" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0137.png" id="137_mb7u3"]
-[ext_resource type="Texture2D" uid="uid://dfcm312q1kb83" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0138.png" id="138_vg70n"]
-[ext_resource type="Texture2D" uid="uid://dtbtg5ms55gr" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0139.png" id="139_1eexr"]
-[ext_resource type="Texture2D" uid="uid://cta2lew585tgg" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0140.png" id="140_2f6t5"]
-[ext_resource type="Texture2D" uid="uid://dpmepieexxobt" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0141.png" id="141_0n7rx"]
-[ext_resource type="Texture2D" uid="uid://cg6symr32hhhq" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0142.png" id="142_b4enl"]
-[ext_resource type="Texture2D" uid="uid://cmqafwqm8ggm2" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0143.png" id="143_6mktq"]
-[ext_resource type="Texture2D" uid="uid://bw8yjddm35sfi" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0144.png" id="144_1ybox"]
-[ext_resource type="Texture2D" uid="uid://bo12llyl57qk4" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0145.png" id="145_8mw8s"]
-[ext_resource type="Texture2D" uid="uid://88t0huiuqao5" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0146.png" id="146_ntwrj"]
-[ext_resource type="Texture2D" uid="uid://bxsh5imwpbfh7" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0147.png" id="147_xexqj"]
-[ext_resource type="Texture2D" uid="uid://pk1r837rprhe" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0148.png" id="148_ppima"]
-[ext_resource type="Texture2D" uid="uid://gx6v1opek5dc" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0149.png" id="149_j3pjb"]
-[ext_resource type="Texture2D" uid="uid://cq2imenvlhn3u" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0150.png" id="150_68c1h"]
-[ext_resource type="Texture2D" uid="uid://xrp8t7dhya7g" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0151.png" id="151_u8886"]
-[ext_resource type="Texture2D" uid="uid://dc173xf53sdb6" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0152.png" id="152_pb3ew"]
-[ext_resource type="Texture2D" uid="uid://bc1snttimdqj1" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0153.png" id="153_kgasj"]
-[ext_resource type="Texture2D" uid="uid://dkvst106nu68n" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0154.png" id="154_7tdv8"]
-[ext_resource type="Texture2D" uid="uid://bkr6uu7u0ndkk" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0155.png" id="155_hp6g3"]
-[ext_resource type="Texture2D" uid="uid://bg5earrtuk2gt" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0156.png" id="156_rky1a"]
-[ext_resource type="Texture2D" uid="uid://c87mw6a7oyb3a" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0157.png" id="157_n1xlg"]
-[ext_resource type="Texture2D" uid="uid://7xdyv4p67vo6" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0158.png" id="158_jf03b"]
-[ext_resource type="Texture2D" uid="uid://clg7134etdu0w" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0159.png" id="159_j27wy"]
-[ext_resource type="Texture2D" uid="uid://bsuaikk3j4qeq" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0160.png" id="160_fdvxg"]
-[ext_resource type="Texture2D" uid="uid://d27eukuv832hc" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0161.png" id="161_yrf08"]
-[ext_resource type="Texture2D" uid="uid://dhqgwf1qfjxhv" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0162.png" id="162_f66j1"]
-[ext_resource type="Texture2D" uid="uid://cwejvcyxwg265" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0163.png" id="163_vqt57"]
-[ext_resource type="Texture2D" uid="uid://dl2625muexunl" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0164.png" id="164_g1jjh"]
-[ext_resource type="Texture2D" uid="uid://c0wf7c8iqshv0" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0165.png" id="165_2oskl"]
-[ext_resource type="Texture2D" uid="uid://be0esokejkdpe" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0166.png" id="166_w7nkw"]
-[ext_resource type="Texture2D" uid="uid://8dfotk7jficy" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0167.png" id="167_aulf2"]
-[ext_resource type="Texture2D" uid="uid://c412m4lods3qc" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0168.png" id="168_2dqbj"]
-[ext_resource type="Texture2D" uid="uid://cjg2ekq3kepu6" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0169.png" id="169_2vwcp"]
-[ext_resource type="Texture2D" uid="uid://bktpxen4g7tqe" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0170.png" id="170_83ool"]
-[ext_resource type="Texture2D" uid="uid://bg7eic5sduoe8" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0171.png" id="171_5tfbd"]
-[ext_resource type="Texture2D" uid="uid://isa5w27k3n0e" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0172.png" id="172_8udtm"]
-[ext_resource type="Texture2D" uid="uid://bfabkuhhbc8o8" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0173.png" id="173_lmxsj"]
-[ext_resource type="Texture2D" uid="uid://2t5awsecc5ny" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0174.png" id="174_hvyfr"]
-[ext_resource type="Texture2D" uid="uid://cn0n77tg4dfy8" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0175.png" id="175_ddoqw"]
-[ext_resource type="Texture2D" uid="uid://cw2e5qocd3pjn" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0176.png" id="176_d7vek"]
-[ext_resource type="Texture2D" uid="uid://ddft5p3crlbq6" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0177.png" id="177_yj60w"]
-[ext_resource type="Texture2D" uid="uid://dmbf0kn1me2wk" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0178.png" id="178_v5b3o"]
-[ext_resource type="Texture2D" uid="uid://1cml5wus7n8t" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0179.png" id="179_3kjma"]
-[ext_resource type="Texture2D" uid="uid://yjthi1bvoiwo" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0180.png" id="180_54s45"]
-[ext_resource type="Texture2D" uid="uid://d2rvi5ixyu1hy" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0181.png" id="181_jk3vu"]
-[ext_resource type="Texture2D" uid="uid://bqvlr656jms7r" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0182.png" id="182_4r7m2"]
-[ext_resource type="Texture2D" uid="uid://ccfxtby4u3r5u" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0183.png" id="183_kxaod"]
-[ext_resource type="Texture2D" uid="uid://clm2exbdgd3po" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0184.png" id="184_sl1ni"]
-[ext_resource type="Texture2D" uid="uid://ctue7lwsa6k5h" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0185.png" id="185_w2jlm"]
-[ext_resource type="Texture2D" uid="uid://qfb3k2wcrfce" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0186.png" id="186_jllj8"]
-[ext_resource type="Texture2D" uid="uid://bvwb3umr0k5p2" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0187.png" id="187_ipxea"]
-[ext_resource type="Texture2D" uid="uid://der8gdbn5008f" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0188.png" id="188_855nl"]
-[ext_resource type="Texture2D" uid="uid://bsni5fitunfbt" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0189.png" id="189_5ompc"]
-[ext_resource type="Texture2D" uid="uid://bfmgc08uxgi6o" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0190.png" id="190_630rr"]
-[ext_resource type="Texture2D" uid="uid://slqasuxrv2vk" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0191.png" id="191_gx162"]
-[ext_resource type="Texture2D" uid="uid://bijxnwun21h41" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0192.png" id="192_7n6xn"]
-[ext_resource type="Texture2D" uid="uid://mr304mt66uml" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0193.png" id="193_temxh"]
-[ext_resource type="Texture2D" uid="uid://bub4e0iqnfbg2" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0194.png" id="194_831rm"]
-[ext_resource type="Texture2D" uid="uid://dq3r10tot3r2o" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0195.png" id="195_pyg1j"]
-[ext_resource type="Texture2D" uid="uid://cyn8g0wm6xnfg" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0196.png" id="196_gwybn"]
-[ext_resource type="Texture2D" uid="uid://bdc5cdhqyfpaq" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0197.png" id="197_0uieh"]
-[ext_resource type="Texture2D" uid="uid://c8kk8lpn0ex0k" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0198.png" id="198_aupux"]
-[ext_resource type="Texture2D" uid="uid://c7p8vvnheisc2" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0199.png" id="199_cl57k"]
-[ext_resource type="Texture2D" uid="uid://cffn7b80raygc" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0200.png" id="200_scfvq"]
-[ext_resource type="Texture2D" uid="uid://behq3o7we3wmk" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0201.png" id="201_brfu1"]
-[ext_resource type="Texture2D" uid="uid://djaw03d5e35hg" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0202.png" id="202_qv4n3"]
-[ext_resource type="Texture2D" uid="uid://cep2bvk24h1om" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0203.png" id="203_yturr"]
-[ext_resource type="Texture2D" uid="uid://6sa76h7gfvai" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0204.png" id="204_645hg"]
-[ext_resource type="Texture2D" uid="uid://cy03riy250fjq" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0205.png" id="205_5ikhc"]
-[ext_resource type="Texture2D" uid="uid://1b4c217vcon8" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0206.png" id="206_5jcws"]
-[ext_resource type="Texture2D" uid="uid://bpqqco4725nx7" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0207.png" id="207_flnsx"]
-[ext_resource type="Texture2D" uid="uid://c8nrky2lpdt4t" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0208.png" id="208_0wjaq"]
-[ext_resource type="Texture2D" uid="uid://xbgg137pf25e" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0209.png" id="209_h3v5s"]
-[ext_resource type="Texture2D" uid="uid://buvpjyorohpaw" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0210.png" id="210_3fprl"]
-[ext_resource type="Texture2D" uid="uid://ca0vuyfwh1ek2" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0211.png" id="211_17fhu"]
-[ext_resource type="Texture2D" uid="uid://d2uefkh1n7pyj" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0212.png" id="212_git83"]
-[ext_resource type="Texture2D" uid="uid://cg40qkkdrae1x" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0213.png" id="213_h075d"]
-[ext_resource type="Texture2D" uid="uid://c7gfsvam2mrcv" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0214.png" id="214_5oye1"]
-[ext_resource type="Texture2D" uid="uid://d4els230s82yo" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0215.png" id="215_ixlt4"]
-[ext_resource type="Texture2D" uid="uid://deofrsdi8hulr" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0216.png" id="216_asnnj"]
-[ext_resource type="Texture2D" uid="uid://b3enthk6poeec" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0217.png" id="217_4twg3"]
-[ext_resource type="Texture2D" uid="uid://ykwgnpy5ujlt" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0218.png" id="218_dtmal"]
-[ext_resource type="Texture2D" uid="uid://cgbaf4mlh3fx8" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0219.png" id="219_ba0io"]
-[ext_resource type="Texture2D" uid="uid://cspets3ele576" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0220.png" id="220_p522y"]
-[ext_resource type="Texture2D" uid="uid://dv8cxgth3jsps" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0221.png" id="221_aqtbd"]
-[ext_resource type="Texture2D" uid="uid://t4et56cr3d5i" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0222.png" id="222_rxeky"]
-[ext_resource type="Texture2D" uid="uid://d2rj5dhv04xno" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0223.png" id="223_pb1cy"]
-[ext_resource type="Texture2D" uid="uid://78d3y03emabo" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0224.png" id="224_clo6w"]
-[ext_resource type="Texture2D" uid="uid://b3f6su8sv7tqd" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0225.png" id="225_rblyh"]
-[ext_resource type="Texture2D" uid="uid://po57ml0q0wf8" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0226.png" id="226_8kxf0"]
-[ext_resource type="Texture2D" uid="uid://tm51noeqdcdk" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0227.png" id="227_p4jom"]
-[ext_resource type="Texture2D" uid="uid://chcwtodl16lyq" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0228.png" id="228_vmyvu"]
-[ext_resource type="Texture2D" uid="uid://cm74yk1jmjv5e" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0229.png" id="229_hrhmu"]
-[ext_resource type="Texture2D" uid="uid://b3scnln26nfd0" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0230.png" id="230_xel5a"]
-[ext_resource type="Texture2D" uid="uid://b6gxbomswu4dd" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0231.png" id="231_hlno8"]
-[ext_resource type="Texture2D" uid="uid://byykrupmx2kje" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0232.png" id="232_e2sir"]
-[ext_resource type="Texture2D" uid="uid://d3jmpvf5s3g4g" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0233.png" id="233_yvh87"]
-[ext_resource type="Texture2D" uid="uid://0d6s8cdvbwv6" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0234.png" id="234_8pam1"]
-[ext_resource type="Texture2D" uid="uid://c5kgghwewpejt" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0235.png" id="235_e7vkk"]
-[ext_resource type="Texture2D" uid="uid://bx7osa25qknpw" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0236.png" id="236_5vet7"]
-[ext_resource type="Texture2D" uid="uid://smj3n8u6k1ya" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0237.png" id="237_rb3xo"]
-[ext_resource type="Texture2D" uid="uid://br7fpaluk7y8w" path="res://Zhijiang/images/characters/Bella/idle_images/Bella_chracter_idle_0238.png" id="238_yilxw"]
+[ext_resource type="Texture2D" uid="uid://dba2u0ypfhhx8" path="res://Zhijiang/images/characters/Bella/attack_images/frame_001.png" id="1_7ys8o"]
+[ext_resource type="Texture2D" uid="uid://cda4cs84g1h11" path="res://Zhijiang/images/characters/Bella/idle_images/frame_001.png" id="1_gq2be"]
+[ext_resource type="Texture2D" uid="uid://dkt8l7qd0e23q" path="res://Zhijiang/images/characters/Bella/die_images/frame_001.png" id="1_xinit"]
+[ext_resource type="Texture2D" uid="uid://do7kh4k6no41l" path="res://Zhijiang/images/characters/Bella/die_images/frame_002.png" id="2_8usm6"]
+[ext_resource type="Texture2D" uid="uid://by0x77wbhpolm" path="res://Zhijiang/images/characters/Bella/idle_images/frame_002.png" id="2_edk0s"]
+[ext_resource type="Texture2D" uid="uid://dsseugcvd5pym" path="res://Zhijiang/images/characters/Bella/attack_images/frame_002.png" id="2_fwplm"]
+[ext_resource type="Texture2D" uid="uid://do282ixbx5o4s" path="res://Zhijiang/images/characters/Bella/attack_images/frame_003.png" id="3_cwsh5"]
+[ext_resource type="Texture2D" uid="uid://ec3h2cbunsi6" path="res://Zhijiang/images/characters/Bella/idle_images/frame_003.png" id="3_okkhj"]
+[ext_resource type="Texture2D" uid="uid://dfkkdf5kmpwdv" path="res://Zhijiang/images/characters/Bella/die_images/frame_003.png" id="3_vn8kc"]
+[ext_resource type="Texture2D" uid="uid://b6uvlhe665twm" path="res://Zhijiang/images/characters/Bella/die_images/frame_004.png" id="4_3vb01"]
+[ext_resource type="Texture2D" uid="uid://dlt4m7hp8xlwg" path="res://Zhijiang/images/characters/Bella/attack_images/frame_004.png" id="4_7rfdd"]
+[ext_resource type="Texture2D" uid="uid://bgg4vil7yp17s" path="res://Zhijiang/images/characters/Bella/idle_images/frame_004.png" id="4_mxy8w"]
+[ext_resource type="Texture2D" uid="uid://dm5obmwjgvvse" path="res://Zhijiang/images/characters/Bella/attack_images/frame_005.png" id="5_kel2x"]
+[ext_resource type="Texture2D" uid="uid://bolw62sjt5jeg" path="res://Zhijiang/images/characters/Bella/die_images/frame_005.png" id="5_vhypu"]
+[ext_resource type="Texture2D" uid="uid://cc80l60egpfjn" path="res://Zhijiang/images/characters/Bella/idle_images/frame_005.png" id="5_xlmoh"]
+[ext_resource type="Texture2D" uid="uid://bnwwkvadcf3qa" path="res://Zhijiang/images/characters/Bella/attack_images/frame_006.png" id="6_b4b8o"]
+[ext_resource type="Texture2D" uid="uid://bqlp8pudggpav" path="res://Zhijiang/images/characters/Bella/die_images/frame_006.png" id="6_e86s2"]
+[ext_resource type="Texture2D" uid="uid://dxijgncd8ylj3" path="res://Zhijiang/images/characters/Bella/idle_images/frame_006.png" id="6_lhc7m"]
+[ext_resource type="Texture2D" uid="uid://ce3sixsxj3su8" path="res://Zhijiang/images/characters/Bella/attack_images/frame_007.png" id="7_7knsq"]
+[ext_resource type="Texture2D" uid="uid://b25x2fekge80p" path="res://Zhijiang/images/characters/Bella/idle_images/frame_007.png" id="7_ad3x7"]
+[ext_resource type="Texture2D" uid="uid://bwttv80lq4x64" path="res://Zhijiang/images/characters/Bella/die_images/frame_007.png" id="7_p5601"]
+[ext_resource type="Texture2D" uid="uid://w5ajecdncr84" path="res://Zhijiang/images/characters/Bella/die_images/frame_008.png" id="8_hj3f8"]
+[ext_resource type="Texture2D" uid="uid://dy1qlxysr5ovu" path="res://Zhijiang/images/characters/Bella/idle_images/frame_008.png" id="8_j455q"]
+[ext_resource type="Texture2D" uid="uid://bcxa3k0cw7g1q" path="res://Zhijiang/images/characters/Bella/attack_images/frame_008.png" id="8_k3rn2"]
+[ext_resource type="Texture2D" uid="uid://ccgfs6y5t02iy" path="res://Zhijiang/images/characters/Bella/idle_images/frame_009.png" id="9_6js6l"]
+[ext_resource type="Texture2D" uid="uid://c1sil4svrj0ua" path="res://Zhijiang/images/characters/Bella/attack_images/frame_009.png" id="9_6v85d"]
+[ext_resource type="Texture2D" uid="uid://ceokn7acrq8ki" path="res://Zhijiang/images/characters/Bella/die_images/frame_009.png" id="9_aopg8"]
+[ext_resource type="Texture2D" uid="uid://caurx26aujime" path="res://Zhijiang/images/characters/Bella/idle_images/frame_010.png" id="10_624cm"]
+[ext_resource type="Texture2D" uid="uid://brxwigrq22nvj" path="res://Zhijiang/images/characters/Bella/attack_images/frame_010.png" id="10_bev0b"]
+[ext_resource type="Texture2D" uid="uid://df2ttshc6iuyl" path="res://Zhijiang/images/characters/Bella/die_images/frame_010.png" id="10_eybiv"]
+[ext_resource type="Texture2D" uid="uid://da5nyjcxfpxgc" path="res://Zhijiang/images/characters/Bella/attack_images/frame_011.png" id="11_qwjye"]
+[ext_resource type="Texture2D" uid="uid://g8bdbonp84bx" path="res://Zhijiang/images/characters/Bella/idle_images/frame_011.png" id="11_ra586"]
+[ext_resource type="Texture2D" uid="uid://dggi6su3ht7u8" path="res://Zhijiang/images/characters/Bella/die_images/frame_011.png" id="11_y06s3"]
+[ext_resource type="Texture2D" uid="uid://dnqclgec8garp" path="res://Zhijiang/images/characters/Bella/idle_images/frame_012.png" id="12_hdi64"]
+[ext_resource type="Texture2D" uid="uid://66etg675i0he" path="res://Zhijiang/images/characters/Bella/attack_images/frame_012.png" id="12_nhbk0"]
+[ext_resource type="Texture2D" uid="uid://icbek6xvirgp" path="res://Zhijiang/images/characters/Bella/die_images/frame_012.png" id="12_wu6ax"]
+[ext_resource type="Texture2D" uid="uid://d1atuqec6dauq" path="res://Zhijiang/images/characters/Bella/idle_images/frame_013.png" id="13_bf1ku"]
+[ext_resource type="Texture2D" uid="uid://dm6o18u4qvimb" path="res://Zhijiang/images/characters/Bella/attack_images/frame_013.png" id="13_nyv2y"]
+[ext_resource type="Texture2D" uid="uid://c6u5w1lprc87c" path="res://Zhijiang/images/characters/Bella/die_images/frame_013.png" id="13_xql1v"]
+[ext_resource type="Texture2D" uid="uid://cguf0thgy5bb0" path="res://Zhijiang/images/characters/Bella/die_images/frame_014.png" id="14_kf1ot"]
+[ext_resource type="Texture2D" uid="uid://hvqk562kip1i" path="res://Zhijiang/images/characters/Bella/idle_images/frame_014.png" id="14_mhol2"]
+[ext_resource type="Texture2D" uid="uid://bxyeda75n3ai1" path="res://Zhijiang/images/characters/Bella/attack_images/frame_014.png" id="14_nlnv3"]
+[ext_resource type="Texture2D" uid="uid://bp3oobnaec6ub" path="res://Zhijiang/images/characters/Bella/idle_images/frame_015.png" id="15_fngvu"]
+[ext_resource type="Texture2D" uid="uid://fy1n6pf3yj5d" path="res://Zhijiang/images/characters/Bella/die_images/frame_015.png" id="15_gi6rr"]
+[ext_resource type="Texture2D" uid="uid://bwlqk33cduv2c" path="res://Zhijiang/images/characters/Bella/attack_images/frame_015.png" id="15_hatbn"]
+[ext_resource type="Texture2D" uid="uid://c1ymh8mxhtnsv" path="res://Zhijiang/images/characters/Bella/die_images/frame_016.png" id="16_e3kin"]
+[ext_resource type="Texture2D" uid="uid://k6vcpjbbdh7a" path="res://Zhijiang/images/characters/Bella/idle_images/frame_016.png" id="16_qypy5"]
+[ext_resource type="Texture2D" uid="uid://b8hcggdvf8oel" path="res://Zhijiang/images/characters/Bella/attack_images/frame_016.png" id="16_we7tb"]
+[ext_resource type="Texture2D" uid="uid://c0pdxqtf2uwcw" path="res://Zhijiang/images/characters/Bella/die_images/frame_017.png" id="17_3kfyk"]
+[ext_resource type="Texture2D" uid="uid://bcotd2wlcpttj" path="res://Zhijiang/images/characters/Bella/attack_images/frame_017.png" id="17_b5a15"]
+[ext_resource type="Texture2D" uid="uid://dv5ynxi4f5qke" path="res://Zhijiang/images/characters/Bella/idle_images/frame_017.png" id="17_fqwrq"]
+[ext_resource type="Texture2D" uid="uid://4uhjmu7r7im7" path="res://Zhijiang/images/characters/Bella/attack_images/frame_018.png" id="18_cfpwq"]
+[ext_resource type="Texture2D" uid="uid://cbi423iicjulb" path="res://Zhijiang/images/characters/Bella/idle_images/frame_018.png" id="18_n0i1n"]
+[ext_resource type="Texture2D" uid="uid://pq7ppg2agcbo" path="res://Zhijiang/images/characters/Bella/die_images/frame_018.png" id="18_ova2q"]
+[ext_resource type="Texture2D" uid="uid://c76mmnq6uc3d" path="res://Zhijiang/images/characters/Bella/die_images/frame_019.png" id="19_3hxvj"]
+[ext_resource type="Texture2D" uid="uid://b8im44w7h272i" path="res://Zhijiang/images/characters/Bella/attack_images/frame_019.png" id="19_5mu6r"]
+[ext_resource type="Texture2D" uid="uid://btc3qpsdkamdn" path="res://Zhijiang/images/characters/Bella/idle_images/frame_019.png" id="19_unqad"]
+[ext_resource type="Texture2D" uid="uid://da570eag0og1k" path="res://Zhijiang/images/characters/Bella/die_images/frame_020.png" id="20_0stg4"]
+[ext_resource type="Texture2D" uid="uid://d0ndp3a7bquwx" path="res://Zhijiang/images/characters/Bella/attack_images/frame_020.png" id="20_h54gp"]
+[ext_resource type="Texture2D" uid="uid://bc1yemd4rli6a" path="res://Zhijiang/images/characters/Bella/idle_images/frame_020.png" id="20_pnu8d"]
+[ext_resource type="Texture2D" uid="uid://cscl4jyx4h2bs" path="res://Zhijiang/images/characters/Bella/attack_images/frame_021.png" id="21_4fshc"]
+[ext_resource type="Texture2D" uid="uid://brkjdisqox08v" path="res://Zhijiang/images/characters/Bella/die_images/frame_021.png" id="21_256ue"]
+[ext_resource type="Texture2D" uid="uid://xkp2dmhub0yu" path="res://Zhijiang/images/characters/Bella/idle_images/frame_021.png" id="21_trpcc"]
+[ext_resource type="Texture2D" uid="uid://cjuclnwfbecqe" path="res://Zhijiang/images/characters/Bella/attack_images/frame_022.png" id="22_5aq48"]
+[ext_resource type="Texture2D" uid="uid://d321v6yr18pp4" path="res://Zhijiang/images/characters/Bella/die_images/frame_022.png" id="22_arnyq"]
+[ext_resource type="Texture2D" uid="uid://bb02jjhx5uamb" path="res://Zhijiang/images/characters/Bella/idle_images/frame_022.png" id="22_bu20t"]
+[ext_resource type="Texture2D" uid="uid://yj0ucafvsyye" path="res://Zhijiang/images/characters/Bella/idle_images/frame_023.png" id="23_gdmrt"]
+[ext_resource type="Texture2D" uid="uid://hesbcvuhas4w" path="res://Zhijiang/images/characters/Bella/die_images/frame_023.png" id="23_kqun8"]
+[ext_resource type="Texture2D" uid="uid://davqhudaxgl53" path="res://Zhijiang/images/characters/Bella/attack_images/frame_023.png" id="23_mb7u3"]
+[ext_resource type="Texture2D" uid="uid://xlqrecixju04" path="res://Zhijiang/images/characters/Bella/idle_images/frame_024.png" id="24_eldyh"]
+[ext_resource type="Texture2D" uid="uid://ufi21i1fl6x8" path="res://Zhijiang/images/characters/Bella/die_images/frame_024.png" id="24_unofd"]
+[ext_resource type="Texture2D" uid="uid://d1cn83tf8i0l" path="res://Zhijiang/images/characters/Bella/attack_images/frame_024.png" id="24_vg70n"]
+[ext_resource type="Texture2D" uid="uid://ff74lp6qpex8" path="res://Zhijiang/images/characters/Bella/attack_images/frame_025.png" id="25_1eexr"]
+[ext_resource type="Texture2D" uid="uid://dcyymseh2jj65" path="res://Zhijiang/images/characters/Bella/die_images/frame_025.png" id="25_15sin"]
+[ext_resource type="Texture2D" uid="uid://6oav4ek5bkes" path="res://Zhijiang/images/characters/Bella/idle_images/frame_025.png" id="25_cb2hk"]
+[ext_resource type="Texture2D" uid="uid://da7i3vrsm3ljp" path="res://Zhijiang/images/characters/Bella/attack_images/frame_026.png" id="26_2f6t5"]
+[ext_resource type="Texture2D" uid="uid://b5gdeebkdj0r0" path="res://Zhijiang/images/characters/Bella/die_images/frame_026.png" id="26_6w6hd"]
+[ext_resource type="Texture2D" uid="uid://by6jx0isuh1h" path="res://Zhijiang/images/characters/Bella/idle_images/frame_026.png" id="26_up7ye"]
+[ext_resource type="Texture2D" uid="uid://xwjplj0ev8w0" path="res://Zhijiang/images/characters/Bella/die_images/frame_027.png" id="27_0bbcx"]
+[ext_resource type="Texture2D" uid="uid://ba0bi6o6equf6" path="res://Zhijiang/images/characters/Bella/attack_images/frame_027.png" id="27_0n7rx"]
+[ext_resource type="Texture2D" uid="uid://b8teoioxkxnhu" path="res://Zhijiang/images/characters/Bella/idle_images/frame_027.png" id="27_7u3rp"]
+[ext_resource type="Texture2D" uid="uid://duapljta3qvss" path="res://Zhijiang/images/characters/Bella/idle_images/frame_028.png" id="28_1aiya"]
+[ext_resource type="Texture2D" uid="uid://bx6rjpfnawjf2" path="res://Zhijiang/images/characters/Bella/attack_images/frame_028.png" id="28_b4enl"]
+[ext_resource type="Texture2D" uid="uid://c1wj5tbgvf4jt" path="res://Zhijiang/images/characters/Bella/die_images/frame_028.png" id="28_y1x12"]
+[ext_resource type="Texture2D" uid="uid://b0ctcbjdjkrvf" path="res://Zhijiang/images/characters/Bella/die_images/frame_029.png" id="29_6as32"]
+[ext_resource type="Texture2D" uid="uid://d4g32uqpufycq" path="res://Zhijiang/images/characters/Bella/attack_images/frame_029.png" id="29_6mktq"]
+[ext_resource type="Texture2D" uid="uid://bm2mfucuwrilt" path="res://Zhijiang/images/characters/Bella/idle_images/frame_029.png" id="29_smdc6"]
+[ext_resource type="Texture2D" uid="uid://bxbghq8vm2nsh" path="res://Zhijiang/images/characters/Bella/attack_images/frame_030.png" id="30_1ybox"]
+[ext_resource type="Texture2D" uid="uid://btmr00igkx6s2" path="res://Zhijiang/images/characters/Bella/die_images/frame_030.png" id="30_718td"]
+[ext_resource type="Texture2D" uid="uid://bu3cmcqv2f6op" path="res://Zhijiang/images/characters/Bella/idle_images/frame_030.png" id="30_yvipx"]
+[ext_resource type="Texture2D" uid="uid://7d1ugn2gv2ap" path="res://Zhijiang/images/characters/Bella/idle_images/frame_031.png" id="31_1i8mj"]
+[ext_resource type="Texture2D" uid="uid://dg78xwoofhc67" path="res://Zhijiang/images/characters/Bella/attack_images/frame_031.png" id="31_8mw8s"]
+[ext_resource type="Texture2D" uid="uid://d3m0dnjmpmuq" path="res://Zhijiang/images/characters/Bella/die_images/frame_031.png" id="31_f51t0"]
+[ext_resource type="Texture2D" uid="uid://c4ppak6lgrjx7" path="res://Zhijiang/images/characters/Bella/attack_images/frame_032.png" id="32_ntwrj"]
+[ext_resource type="Texture2D" uid="uid://c4xhehugq7lsh" path="res://Zhijiang/images/characters/Bella/idle_images/frame_032.png" id="32_qs814"]
+[ext_resource type="Texture2D" uid="uid://b0e0mlw0o1llh" path="res://Zhijiang/images/characters/Bella/die_images/frame_032.png" id="32_tw8o8"]
+[ext_resource type="Texture2D" uid="uid://dcwr3o8ghm5lx" path="res://Zhijiang/images/characters/Bella/die_images/frame_033.png" id="33_ruw36"]
+[ext_resource type="Texture2D" uid="uid://7kti65g6jgds" path="res://Zhijiang/images/characters/Bella/idle_images/frame_033.png" id="33_vfyv3"]
+[ext_resource type="Texture2D" uid="uid://xy4fyknrrlt" path="res://Zhijiang/images/characters/Bella/attack_images/frame_033.png" id="33_xexqj"]
+[ext_resource type="Texture2D" uid="uid://ci7c8nqb5cl8w" path="res://Zhijiang/images/characters/Bella/idle_images/frame_034.png" id="34_84m0x"]
+[ext_resource type="Texture2D" uid="uid://y74qh0gdpqtt" path="res://Zhijiang/images/characters/Bella/attack_images/frame_034.png" id="34_ppima"]
+[ext_resource type="Texture2D" uid="uid://bbylcqx6hfoya" path="res://Zhijiang/images/characters/Bella/die_images/frame_034.png" id="34_xfcyc"]
+[ext_resource type="Texture2D" uid="uid://dxigrh5nlb330" path="res://Zhijiang/images/characters/Bella/idle_images/frame_035.png" id="35_de177"]
+[ext_resource type="Texture2D" uid="uid://26v88odk82di" path="res://Zhijiang/images/characters/Bella/attack_images/frame_035.png" id="35_j3pjb"]
+[ext_resource type="Texture2D" uid="uid://bpi6gp4e57mea" path="res://Zhijiang/images/characters/Bella/die_images/frame_035.png" id="35_tg7q5"]
+[ext_resource type="Texture2D" uid="uid://6rlrvddovsam" path="res://Zhijiang/images/characters/Bella/attack_images/frame_036.png" id="36_68c1h"]
+[ext_resource type="Texture2D" uid="uid://fnnfes1j3tve" path="res://Zhijiang/images/characters/Bella/idle_images/frame_036.png" id="36_dgq0x"]
+[ext_resource type="Texture2D" uid="uid://vjoq3hi7xc6o" path="res://Zhijiang/images/characters/Bella/die_images/frame_036.png" id="36_sjx58"]
+[ext_resource type="Texture2D" uid="uid://fcg70yscdsxm" path="res://Zhijiang/images/characters/Bella/die_images/frame_037.png" id="37_3wwvj"]
+[ext_resource type="Texture2D" uid="uid://bt1vu21n0epaa" path="res://Zhijiang/images/characters/Bella/idle_images/frame_037.png" id="37_rvf5e"]
+[ext_resource type="Texture2D" uid="uid://f0hdjvlmamkk" path="res://Zhijiang/images/characters/Bella/attack_images/frame_037.png" id="37_u8886"]
+[ext_resource type="Texture2D" uid="uid://cbf2iq2mck5vc" path="res://Zhijiang/images/characters/Bella/die_images/frame_038.png" id="38_8d1yc"]
+[ext_resource type="Texture2D" uid="uid://lsdgb52dqgv4" path="res://Zhijiang/images/characters/Bella/idle_images/frame_038.png" id="38_eq1hq"]
+[ext_resource type="Texture2D" uid="uid://bns0rguru8nff" path="res://Zhijiang/images/characters/Bella/attack_images/frame_038.png" id="38_pb3ew"]
+[ext_resource type="Texture2D" uid="uid://cxyunuwrmlmtl" path="res://Zhijiang/images/characters/Bella/idle_images/frame_039.png" id="39_bumaa"]
+[ext_resource type="Texture2D" uid="uid://ciei6lqiobdkp" path="res://Zhijiang/images/characters/Bella/attack_images/frame_039.png" id="39_kgasj"]
+[ext_resource type="Texture2D" uid="uid://bmcc6bbmtf3qo" path="res://Zhijiang/images/characters/Bella/die_images/frame_039.png" id="39_vwn6x"]
+[ext_resource type="Texture2D" uid="uid://bof3gxl1vktx7" path="res://Zhijiang/images/characters/Bella/die_images/frame_040.png" id="40_0mbv5"]
+[ext_resource type="Texture2D" uid="uid://d0a8vsepkirdn" path="res://Zhijiang/images/characters/Bella/idle_images/frame_040.png" id="40_0xho2"]
+[ext_resource type="Texture2D" uid="uid://dnlvxe7e7bqi6" path="res://Zhijiang/images/characters/Bella/attack_images/frame_040.png" id="40_7tdv8"]
+[ext_resource type="Texture2D" uid="uid://c6wvsdhf63tpp" path="res://Zhijiang/images/characters/Bella/die_images/frame_041.png" id="41_e76jj"]
+[ext_resource type="Texture2D" uid="uid://bmsidrl6filk2" path="res://Zhijiang/images/characters/Bella/attack_images/frame_041.png" id="41_hp6g3"]
+[ext_resource type="Texture2D" uid="uid://cgxgtbp5dwigy" path="res://Zhijiang/images/characters/Bella/idle_images/frame_041.png" id="41_r2ryw"]
+[ext_resource type="Texture2D" uid="uid://dysnnk7uyh2fx" path="res://Zhijiang/images/characters/Bella/idle_images/frame_042.png" id="42_cyx1u"]
+[ext_resource type="Texture2D" uid="uid://ma0hotpejfj4" path="res://Zhijiang/images/characters/Bella/die_images/frame_042.png" id="42_eb21f"]
+[ext_resource type="Texture2D" uid="uid://doncepdyniu8w" path="res://Zhijiang/images/characters/Bella/attack_images/frame_042.png" id="42_rky1a"]
+[ext_resource type="Texture2D" uid="uid://mqpkf4cpkwfv" path="res://Zhijiang/images/characters/Bella/idle_images/frame_043.png" id="43_fc78k"]
+[ext_resource type="Texture2D" uid="uid://cwju78jwjds27" path="res://Zhijiang/images/characters/Bella/attack_images/frame_043.png" id="43_n1xlg"]
+[ext_resource type="Texture2D" uid="uid://g3c77hb10h0y" path="res://Zhijiang/images/characters/Bella/die_images/frame_043.png" id="43_q6sy7"]
+[ext_resource type="Texture2D" uid="uid://cxfw8ekcbakay" path="res://Zhijiang/images/characters/Bella/die_images/frame_044.png" id="44_3owpj"]
+[ext_resource type="Texture2D" uid="uid://ccmqtjrclh4v" path="res://Zhijiang/images/characters/Bella/idle_images/frame_044.png" id="44_7sx7f"]
+[ext_resource type="Texture2D" uid="uid://c8s65pfu6vkd8" path="res://Zhijiang/images/characters/Bella/attack_images/frame_044.png" id="44_jf03b"]
+[ext_resource type="Texture2D" uid="uid://kn1e84wykaiw" path="res://Zhijiang/images/characters/Bella/idle_images/frame_045.png" id="45_1qklo"]
+[ext_resource type="Texture2D" uid="uid://b4s0wpb7jfunx" path="res://Zhijiang/images/characters/Bella/attack_images/frame_045.png" id="45_j27wy"]
+[ext_resource type="Texture2D" uid="uid://3etplou6lkg8" path="res://Zhijiang/images/characters/Bella/die_images/frame_045.png" id="45_kuk4a"]
+[ext_resource type="Texture2D" uid="uid://banirw0bxsrwx" path="res://Zhijiang/images/characters/Bella/die_images/frame_046.png" id="46_2l287"]
+[ext_resource type="Texture2D" uid="uid://bto7hxy3sp53l" path="res://Zhijiang/images/characters/Bella/attack_images/frame_046.png" id="46_fdvxg"]
+[ext_resource type="Texture2D" uid="uid://cgr2bqvd3rp4j" path="res://Zhijiang/images/characters/Bella/idle_images/frame_046.png" id="46_r77ip"]
+[ext_resource type="Texture2D" uid="uid://crdbv8dmmqhgb" path="res://Zhijiang/images/characters/Bella/idle_images/frame_047.png" id="47_m2j3s"]
+[ext_resource type="Texture2D" uid="uid://c6bu0ib1q5qrw" path="res://Zhijiang/images/characters/Bella/die_images/frame_047.png" id="47_qqo7g"]
+[ext_resource type="Texture2D" uid="uid://bkncbthvg784c" path="res://Zhijiang/images/characters/Bella/attack_images/frame_047.png" id="47_yrf08"]
+[ext_resource type="Texture2D" uid="uid://odlufpts2hor" path="res://Zhijiang/images/characters/Bella/attack_images/frame_048.png" id="48_f66j1"]
+[ext_resource type="Texture2D" uid="uid://bl3cyqj5opabv" path="res://Zhijiang/images/characters/Bella/die_images/frame_048.png" id="48_o1gex"]
+[ext_resource type="Texture2D" uid="uid://c8ht4xhq4j2a3" path="res://Zhijiang/images/characters/Bella/idle_images/frame_048.png" id="48_ycem0"]
+[ext_resource type="Texture2D" uid="uid://c8y6doafjga76" path="res://Zhijiang/images/characters/Bella/die_images/frame_049.png" id="49_7meas"]
+[ext_resource type="Texture2D" uid="uid://dd81x0uoeojl6" path="res://Zhijiang/images/characters/Bella/idle_images/frame_049.png" id="49_kfbjk"]
+[ext_resource type="Texture2D" uid="uid://c12b7j7lsnrgw" path="res://Zhijiang/images/characters/Bella/attack_images/frame_049.png" id="49_vqt57"]
+[ext_resource type="Texture2D" uid="uid://bo0iwmrln0yqf" path="res://Zhijiang/images/characters/Bella/die_images/frame_050.png" id="50_6mtts"]
+[ext_resource type="Texture2D" uid="uid://yy82286xxqmt" path="res://Zhijiang/images/characters/Bella/idle_images/frame_050.png" id="50_727gy"]
+[ext_resource type="Texture2D" uid="uid://cnjfmikogbsjw" path="res://Zhijiang/images/characters/Bella/attack_images/frame_050.png" id="50_g1jjh"]
+[ext_resource type="Texture2D" uid="uid://c8k7qnno5njt8" path="res://Zhijiang/images/characters/Bella/attack_images/frame_051.png" id="51_2oskl"]
+[ext_resource type="Texture2D" uid="uid://be15xtqjv0ncw" path="res://Zhijiang/images/characters/Bella/idle_images/frame_051.png" id="51_48041"]
+[ext_resource type="Texture2D" uid="uid://dvjlpcsg2b0al" path="res://Zhijiang/images/characters/Bella/die_images/frame_051.png" id="51_nhodn"]
+[ext_resource type="Texture2D" uid="uid://buasubx87m1x1" path="res://Zhijiang/images/characters/Bella/die_images/frame_052.png" id="52_oby11"]
+[ext_resource type="Texture2D" uid="uid://dvolrydtawsrm" path="res://Zhijiang/images/characters/Bella/idle_images/frame_052.png" id="52_vywa1"]
+[ext_resource type="Texture2D" uid="uid://dopbheykv8ylr" path="res://Zhijiang/images/characters/Bella/attack_images/frame_052.png" id="52_w7nkw"]
+[ext_resource type="Texture2D" uid="uid://r6u0o4hye6kc" path="res://Zhijiang/images/characters/Bella/die_images/frame_053.png" id="53_38sah"]
+[ext_resource type="Texture2D" uid="uid://c7efipj1qgg2f" path="res://Zhijiang/images/characters/Bella/attack_images/frame_053.png" id="53_aulf2"]
+[ext_resource type="Texture2D" uid="uid://eiixpjxv0ecg" path="res://Zhijiang/images/characters/Bella/idle_images/frame_053.png" id="53_mvqk2"]
+[ext_resource type="Texture2D" uid="uid://cm4dt4krpv043" path="res://Zhijiang/images/characters/Bella/attack_images/frame_054.png" id="54_2dqbj"]
+[ext_resource type="Texture2D" uid="uid://da5c8d6tdnbnd" path="res://Zhijiang/images/characters/Bella/idle_images/frame_054.png" id="54_ed13j"]
+[ext_resource type="Texture2D" uid="uid://bjr2p0fogvk10" path="res://Zhijiang/images/characters/Bella/die_images/frame_054.png" id="54_eoq5o"]
+[ext_resource type="Texture2D" uid="uid://diyk2wltu0nuy" path="res://Zhijiang/images/characters/Bella/attack_images/frame_055.png" id="55_2vwcp"]
+[ext_resource type="Texture2D" uid="uid://bwdtv2rnh6lbt" path="res://Zhijiang/images/characters/Bella/idle_images/frame_055.png" id="55_7j4e8"]
+[ext_resource type="Texture2D" uid="uid://cl467yiva5o2d" path="res://Zhijiang/images/characters/Bella/die_images/frame_055.png" id="55_db7wf"]
+[ext_resource type="Texture2D" uid="uid://dfsre1u74e66q" path="res://Zhijiang/images/characters/Bella/attack_images/frame_056.png" id="56_83ool"]
+[ext_resource type="Texture2D" uid="uid://bf8wv5pdalrs0" path="res://Zhijiang/images/characters/Bella/idle_images/frame_056.png" id="56_dhmu6"]
+[ext_resource type="Texture2D" uid="uid://bl1i1eiqyt4at" path="res://Zhijiang/images/characters/Bella/die_images/frame_056.png" id="56_x07n6"]
+[ext_resource type="Texture2D" uid="uid://c8nc62mj4mla7" path="res://Zhijiang/images/characters/Bella/attack_images/frame_057.png" id="57_5tfbd"]
+[ext_resource type="Texture2D" uid="uid://tym7e8pr2nxk" path="res://Zhijiang/images/characters/Bella/idle_images/frame_057.png" id="57_ag5qb"]
+[ext_resource type="Texture2D" uid="uid://dsk1mhb5wc0ty" path="res://Zhijiang/images/characters/Bella/die_images/frame_057.png" id="57_yrlu7"]
+[ext_resource type="Texture2D" uid="uid://ci7esxvau2s0l" path="res://Zhijiang/images/characters/Bella/attack_images/frame_058.png" id="58_8udtm"]
+[ext_resource type="Texture2D" uid="uid://wat05wqkty8u" path="res://Zhijiang/images/characters/Bella/idle_images/frame_058.png" id="58_tyvod"]
+[ext_resource type="Texture2D" uid="uid://bk7k4yqkhwn05" path="res://Zhijiang/images/characters/Bella/die_images/frame_058.png" id="58_wdnx5"]
+[ext_resource type="Texture2D" uid="uid://dmm8rhmtb6taf" path="res://Zhijiang/images/characters/Bella/die_images/frame_059.png" id="59_ii6mx"]
+[ext_resource type="Texture2D" uid="uid://yq31ru6owerh" path="res://Zhijiang/images/characters/Bella/attack_images/frame_059.png" id="59_lmxsj"]
+[ext_resource type="Texture2D" uid="uid://c28oiqhr7axhk" path="res://Zhijiang/images/characters/Bella/idle_images/frame_059.png" id="59_yltx4"]
+[ext_resource type="Texture2D" uid="uid://d18nedgtdx6rd" path="res://Zhijiang/images/characters/Bella/idle_images/frame_060.png" id="60_4v7pi"]
+[ext_resource type="Texture2D" uid="uid://dx65asxauqpd8" path="res://Zhijiang/images/characters/Bella/die_images/frame_060.png" id="60_7axa8"]
+[ext_resource type="Texture2D" uid="uid://c0gnavrq2k18a" path="res://Zhijiang/images/characters/Bella/attack_images/frame_060.png" id="60_hvyfr"]
+[ext_resource type="Texture2D" uid="uid://droyjjb2o61po" path="res://Zhijiang/images/characters/Bella/die_images/frame_061.png" id="61_75mlf"]
+[ext_resource type="Texture2D" uid="uid://dvp0ksobnkdui" path="res://Zhijiang/images/characters/Bella/attack_images/frame_061.png" id="61_ddoqw"]
+[ext_resource type="Texture2D" uid="uid://cmvge58f0cg4h" path="res://Zhijiang/images/characters/Bella/idle_images/frame_061.png" id="61_nmqxp"]
+[ext_resource type="Texture2D" uid="uid://40ambedobeg8" path="res://Zhijiang/images/characters/Bella/die_images/frame_062.png" id="62_7ys8o"]
+[ext_resource type="Texture2D" uid="uid://bgyktg86euik7" path="res://Zhijiang/images/characters/Bella/cast_images/frame_001.png" id="62_645hg"]
+[ext_resource type="Texture2D" uid="uid://d1hc8r1fvtte8" path="res://Zhijiang/images/characters/Bella/idle_images/frame_062.png" id="62_dj5fm"]
+[ext_resource type="Texture2D" uid="uid://bulblm410cntw" path="res://Zhijiang/images/characters/Bella/cast_images/frame_002.png" id="63_5ikhc"]
+[ext_resource type="Texture2D" uid="uid://cw167gmtvr5nb" path="res://Zhijiang/images/characters/Bella/die_images/frame_063.png" id="63_fwplm"]
+[ext_resource type="Texture2D" uid="uid://c6ebe4dru0kgg" path="res://Zhijiang/images/characters/Bella/idle_images/frame_063.png" id="63_gts5b"]
+[ext_resource type="Texture2D" uid="uid://b8qd2p3vt2bq7" path="res://Zhijiang/images/characters/Bella/cast_images/frame_003.png" id="64_5jcws"]
+[ext_resource type="Texture2D" uid="uid://dkp7ncl70vhe3" path="res://Zhijiang/images/characters/Bella/die_images/frame_064.png" id="64_cwsh5"]
+[ext_resource type="Texture2D" uid="uid://dqfp600xsnq16" path="res://Zhijiang/images/characters/Bella/idle_images/frame_064.png" id="64_u53yw"]
+[ext_resource type="Texture2D" uid="uid://bceql7pktd3ct" path="res://Zhijiang/images/characters/Bella/idle_images/frame_065.png" id="65_6wdxd"]
+[ext_resource type="Texture2D" uid="uid://dqljs6eon6ctf" path="res://Zhijiang/images/characters/Bella/die_images/frame_065.png" id="65_7rfdd"]
+[ext_resource type="Texture2D" uid="uid://dtnne6ane8ikd" path="res://Zhijiang/images/characters/Bella/cast_images/frame_004.png" id="65_flnsx"]
+[ext_resource type="Texture2D" uid="uid://cxdmkx2sctv01" path="res://Zhijiang/images/characters/Bella/cast_images/frame_005.png" id="66_0wjaq"]
+[ext_resource type="Texture2D" uid="uid://cwiu82wkm4guu" path="res://Zhijiang/images/characters/Bella/idle_images/frame_066.png" id="66_e6852"]
+[ext_resource type="Texture2D" uid="uid://dik8fqt4gf6vq" path="res://Zhijiang/images/characters/Bella/die_images/frame_066.png" id="66_kel2x"]
+[ext_resource type="Texture2D" uid="uid://pxisgftb0dh6" path="res://Zhijiang/images/characters/Bella/die_images/frame_067.png" id="67_b4b8o"]
+[ext_resource type="Texture2D" uid="uid://dvnb0hty0udc8" path="res://Zhijiang/images/characters/Bella/idle_images/frame_067.png" id="67_cej7r"]
+[ext_resource type="Texture2D" uid="uid://cvcmt6k8om3qh" path="res://Zhijiang/images/characters/Bella/cast_images/frame_006.png" id="67_h3v5s"]
+[ext_resource type="Texture2D" uid="uid://bywqt8x3twkm8" path="res://Zhijiang/images/characters/Bella/cast_images/frame_007.png" id="68_3fprl"]
+[ext_resource type="Texture2D" uid="uid://pwugy2giyire" path="res://Zhijiang/images/characters/Bella/die_images/frame_068.png" id="68_7knsq"]
+[ext_resource type="Texture2D" uid="uid://dix6cy2v14rei" path="res://Zhijiang/images/characters/Bella/idle_images/frame_068.png" id="68_u8cpb"]
+[ext_resource type="Texture2D" uid="uid://dgqxcw7khfqqm" path="res://Zhijiang/images/characters/Bella/cast_images/frame_008.png" id="69_17fhu"]
+[ext_resource type="Texture2D" uid="uid://dm73f8orx01uy" path="res://Zhijiang/images/characters/Bella/die_images/frame_069.png" id="69_k3rn2"]
+[ext_resource type="Texture2D" uid="uid://blkfkxmpwv4xp" path="res://Zhijiang/images/characters/Bella/idle_images/frame_069.png" id="69_ptid4"]
+[ext_resource type="Texture2D" uid="uid://ckbrph5j0ap7m" path="res://Zhijiang/images/characters/Bella/die_images/frame_070.png" id="70_6v85d"]
+[ext_resource type="Texture2D" uid="uid://pmhwjqm62nj0" path="res://Zhijiang/images/characters/Bella/idle_images/frame_070.png" id="70_7wxed"]
+[ext_resource type="Texture2D" uid="uid://w2wbbxosy2ue" path="res://Zhijiang/images/characters/Bella/cast_images/frame_009.png" id="70_git83"]
+[ext_resource type="Texture2D" uid="uid://b7yepyrw0lui6" path="res://Zhijiang/images/characters/Bella/idle_images/frame_071.png" id="71_2ql7q"]
+[ext_resource type="Texture2D" uid="uid://dlsxk0tk2dvwx" path="res://Zhijiang/images/characters/Bella/die_images/frame_071.png" id="71_bev0b"]
+[ext_resource type="Texture2D" uid="uid://bi8830h462tkk" path="res://Zhijiang/images/characters/Bella/cast_images/frame_010.png" id="71_h075d"]
+[ext_resource type="Texture2D" uid="uid://br6mkmq1lm4sm" path="res://Zhijiang/images/characters/Bella/cast_images/frame_011.png" id="72_5oye1"]
+[ext_resource type="Texture2D" uid="uid://du5nfm71u3er0" path="res://Zhijiang/images/characters/Bella/idle_images/frame_072.png" id="72_7vvrl"]
+[ext_resource type="Texture2D" uid="uid://bhiws2toekwby" path="res://Zhijiang/images/characters/Bella/die_images/frame_072.png" id="72_qwjye"]
+[ext_resource type="Texture2D" uid="uid://dx0xyso1x4k3c" path="res://Zhijiang/images/characters/Bella/cast_images/frame_012.png" id="73_ixlt4"]
+[ext_resource type="Texture2D" uid="uid://bd3qnran0xt3l" path="res://Zhijiang/images/characters/Bella/die_images/frame_073.png" id="73_nhbk0"]
+[ext_resource type="Texture2D" uid="uid://cw8cii26xqc7n" path="res://Zhijiang/images/characters/Bella/idle_images/frame_073.png" id="73_wluhe"]
+[ext_resource type="Texture2D" uid="uid://cw5ax4oesmgkp" path="res://Zhijiang/images/characters/Bella/idle_images/frame_074.png" id="74_7tv0r"]
+[ext_resource type="Texture2D" uid="uid://dodwobkp68ugm" path="res://Zhijiang/images/characters/Bella/cast_images/frame_013.png" id="74_asnnj"]
+[ext_resource type="Texture2D" uid="uid://dyqtbfjcme7ka" path="res://Zhijiang/images/characters/Bella/die_images/frame_074.png" id="74_nyv2y"]
+[ext_resource type="Texture2D" uid="uid://uoknev1tfhho" path="res://Zhijiang/images/characters/Bella/cast_images/frame_014.png" id="75_4twg3"]
+[ext_resource type="Texture2D" uid="uid://cq7nqwhveo2r1" path="res://Zhijiang/images/characters/Bella/idle_images/frame_075.png" id="75_cyss7"]
+[ext_resource type="Texture2D" uid="uid://bhdnmcjhn7cbw" path="res://Zhijiang/images/characters/Bella/die_images/frame_075.png" id="75_nlnv3"]
+[ext_resource type="Texture2D" uid="uid://dbbuuvfrte5lc" path="res://Zhijiang/images/characters/Bella/cast_images/frame_015.png" id="76_dtmal"]
+[ext_resource type="Texture2D" uid="uid://ouata2s6ukvc" path="res://Zhijiang/images/characters/Bella/die_images/frame_076.png" id="76_hatbn"]
+[ext_resource type="Texture2D" uid="uid://cv47bfnlr4ox0" path="res://Zhijiang/images/characters/Bella/idle_images/frame_076.png" id="76_u047l"]
+[ext_resource type="Texture2D" uid="uid://ckn4qocnqouwu" path="res://Zhijiang/images/characters/Bella/cast_images/frame_016.png" id="77_ba0io"]
+[ext_resource type="Texture2D" uid="uid://cbaumbw3fguxw" path="res://Zhijiang/images/characters/Bella/idle_images/frame_077.png" id="77_lw3db"]
+[ext_resource type="Texture2D" uid="uid://bfge23vrmvj57" path="res://Zhijiang/images/characters/Bella/die_images/frame_077.png" id="77_we7tb"]
+[ext_resource type="Texture2D" uid="uid://dphu7jl26mqmw" path="res://Zhijiang/images/characters/Bella/die_images/frame_078.png" id="78_b5a15"]
+[ext_resource type="Texture2D" uid="uid://b6ao7mgqcb3au" path="res://Zhijiang/images/characters/Bella/idle_images/frame_078.png" id="78_hbvjg"]
+[ext_resource type="Texture2D" uid="uid://d0xi2qbly8lu3" path="res://Zhijiang/images/characters/Bella/cast_images/frame_017.png" id="78_p522y"]
+[ext_resource type="Texture2D" uid="uid://calbd2shcsvrc" path="res://Zhijiang/images/characters/Bella/cast_images/frame_018.png" id="79_aqtbd"]
+[ext_resource type="Texture2D" uid="uid://6b5y5rvgnv1r" path="res://Zhijiang/images/characters/Bella/die_images/frame_079.png" id="79_cfpwq"]
+[ext_resource type="Texture2D" uid="uid://dwo4u1v3o0bmj" path="res://Zhijiang/images/characters/Bella/idle_images/frame_079.png" id="79_en440"]
+[ext_resource type="Texture2D" uid="uid://dse4v0u4sq0qe" path="res://Zhijiang/images/characters/Bella/die_images/frame_080.png" id="80_5mu6r"]
+[ext_resource type="Texture2D" uid="uid://c2k1nkkk7y4oo" path="res://Zhijiang/images/characters/Bella/idle_images/frame_080.png" id="80_14018"]
+[ext_resource type="Texture2D" uid="uid://d8jknp6blnt6" path="res://Zhijiang/images/characters/Bella/cast_images/frame_019.png" id="80_rxeky"]
+[ext_resource type="Texture2D" uid="uid://4baqub1o842k" path="res://Zhijiang/images/characters/Bella/idle_images/frame_081.png" id="81_dturu"]
+[ext_resource type="Texture2D" uid="uid://d2pm52aoldiiy" path="res://Zhijiang/images/characters/Bella/die_images/frame_081.png" id="81_h54gp"]
+[ext_resource type="Texture2D" uid="uid://bpw6o102sryuu" path="res://Zhijiang/images/characters/Bella/cast_images/frame_020.png" id="81_pb1cy"]
+[ext_resource type="Texture2D" uid="uid://bnqmbgnyt6cob" path="res://Zhijiang/images/characters/Bella/die_images/frame_082.png" id="82_4fshc"]
+[ext_resource type="Texture2D" uid="uid://cbqv3wlyenap3" path="res://Zhijiang/images/characters/Bella/idle_images/frame_082.png" id="82_7rw3k"]
+[ext_resource type="Texture2D" uid="uid://bqwovk50ar5ot" path="res://Zhijiang/images/characters/Bella/cast_images/frame_021.png" id="82_clo6w"]
+[ext_resource type="Texture2D" uid="uid://diuwbx12ute0a" path="res://Zhijiang/images/characters/Bella/die_images/frame_083.png" id="83_5aq48"]
+[ext_resource type="Texture2D" uid="uid://fv455tus5rqu" path="res://Zhijiang/images/characters/Bella/idle_images/frame_083.png" id="83_fr7i5"]
+[ext_resource type="Texture2D" uid="uid://ntgfc01n7gih" path="res://Zhijiang/images/characters/Bella/cast_images/frame_022.png" id="83_rblyh"]
+[ext_resource type="Texture2D" uid="uid://bb886o46ltpk4" path="res://Zhijiang/images/characters/Bella/idle_images/frame_084.png" id="84_7emw7"]
+[ext_resource type="Texture2D" uid="uid://d3dng1vi35x0i" path="res://Zhijiang/images/characters/Bella/cast_images/frame_023.png" id="84_8kxf0"]
+[ext_resource type="Texture2D" uid="uid://cvbxk146w1dpq" path="res://Zhijiang/images/characters/Bella/die_images/frame_084.png" id="84_mb7u3"]
+[ext_resource type="Texture2D" uid="uid://rquumnud5sqj" path="res://Zhijiang/images/characters/Bella/idle_images/frame_085.png" id="85_f2eip"]
+[ext_resource type="Texture2D" uid="uid://bba7sx8h33f6l" path="res://Zhijiang/images/characters/Bella/cast_images/frame_024.png" id="85_p4jom"]
+[ext_resource type="Texture2D" uid="uid://rmf4w7mohwr5" path="res://Zhijiang/images/characters/Bella/die_images/frame_085.png" id="85_vg70n"]
+[ext_resource type="Texture2D" uid="uid://30exx1sw0wn5" path="res://Zhijiang/images/characters/Bella/die_images/frame_086.png" id="86_1eexr"]
+[ext_resource type="Texture2D" uid="uid://g3pxc0b568ql" path="res://Zhijiang/images/characters/Bella/idle_images/frame_086.png" id="86_lfsb8"]
+[ext_resource type="Texture2D" uid="uid://b6lod4c8dactg" path="res://Zhijiang/images/characters/Bella/cast_images/frame_025.png" id="86_vmyvu"]
+[ext_resource type="Texture2D" uid="uid://hh002oem2xaj" path="res://Zhijiang/images/characters/Bella/die_images/frame_087.png" id="87_2f6t5"]
+[ext_resource type="Texture2D" uid="uid://gbnwibyvj4wt" path="res://Zhijiang/images/characters/Bella/cast_images/frame_026.png" id="87_hrhmu"]
+[ext_resource type="Texture2D" uid="uid://cwhxxmve45jvk" path="res://Zhijiang/images/characters/Bella/idle_images/frame_087.png" id="87_oalcw"]
+[ext_resource type="Texture2D" uid="uid://c55ldo13l44is" path="res://Zhijiang/images/characters/Bella/die_images/frame_088.png" id="88_0n7rx"]
+[ext_resource type="Texture2D" uid="uid://c44jhsd3xvd40" path="res://Zhijiang/images/characters/Bella/cast_images/frame_027.png" id="88_xel5a"]
+[ext_resource type="Texture2D" uid="uid://rnccyn3okleg" path="res://Zhijiang/images/characters/Bella/idle_images/frame_088.png" id="88_ye70g"]
+[ext_resource type="Texture2D" uid="uid://cgnch18ncwxdx" path="res://Zhijiang/images/characters/Bella/idle_images/frame_089.png" id="89_320pv"]
+[ext_resource type="Texture2D" uid="uid://bm5jfpg2fyr27" path="res://Zhijiang/images/characters/Bella/die_images/frame_089.png" id="89_b4enl"]
+[ext_resource type="Texture2D" uid="uid://dmdgodso2gwyo" path="res://Zhijiang/images/characters/Bella/cast_images/frame_028.png" id="89_hlno8"]
+[ext_resource type="Texture2D" uid="uid://c0u6tqlnimbh2" path="res://Zhijiang/images/characters/Bella/die_images/frame_090.png" id="90_6mktq"]
+[ext_resource type="Texture2D" uid="uid://by7cbnk7exa78" path="res://Zhijiang/images/characters/Bella/cast_images/frame_029.png" id="90_e2sir"]
+[ext_resource type="Texture2D" uid="uid://bmxut14o38w3v" path="res://Zhijiang/images/characters/Bella/idle_images/frame_090.png" id="90_iavc8"]
+[ext_resource type="Texture2D" uid="uid://db6bkn15paytp" path="res://Zhijiang/images/characters/Bella/die_images/frame_091.png" id="91_1ybox"]
+[ext_resource type="Texture2D" uid="uid://bap6l5afxa44t" path="res://Zhijiang/images/characters/Bella/idle_images/frame_091.png" id="91_lgml5"]
+[ext_resource type="Texture2D" uid="uid://dc1u41j0s6oob" path="res://Zhijiang/images/characters/Bella/cast_images/frame_030.png" id="91_yvh87"]
+[ext_resource type="Texture2D" uid="uid://c4jcqtxm0pp5x" path="res://Zhijiang/images/characters/Bella/die_images/frame_092.png" id="92_8mw8s"]
+[ext_resource type="Texture2D" uid="uid://b1ruxdfuds757" path="res://Zhijiang/images/characters/Bella/cast_images/frame_031.png" id="92_8pam1"]
+[ext_resource type="Texture2D" uid="uid://bhflft4vw4eak" path="res://Zhijiang/images/characters/Bella/idle_images/frame_092.png" id="92_mn6pb"]
+[ext_resource type="Texture2D" uid="uid://5ac0inadnd0a" path="res://Zhijiang/images/characters/Bella/cast_images/frame_032.png" id="93_e7vkk"]
+[ext_resource type="Texture2D" uid="uid://bn0i5gux3m4lp" path="res://Zhijiang/images/characters/Bella/idle_images/frame_093.png" id="93_nj5m1"]
+[ext_resource type="Texture2D" uid="uid://c2gjsoh3lld5y" path="res://Zhijiang/images/characters/Bella/die_images/frame_093.png" id="93_ntwrj"]
+[ext_resource type="Texture2D" uid="uid://wly1yxy5gfqs" path="res://Zhijiang/images/characters/Bella/cast_images/frame_033.png" id="94_5vet7"]
+[ext_resource type="Texture2D" uid="uid://deptcnxylk2ub" path="res://Zhijiang/images/characters/Bella/idle_images/frame_094.png" id="94_en3gn"]
+[ext_resource type="Texture2D" uid="uid://oavub0ohg0aw" path="res://Zhijiang/images/characters/Bella/die_images/frame_094.png" id="94_xexqj"]
+[ext_resource type="Texture2D" uid="uid://vir3pl5ro1bm" path="res://Zhijiang/images/characters/Bella/die_images/frame_095.png" id="95_ppima"]
+[ext_resource type="Texture2D" uid="uid://dxvnxjrnicsa2" path="res://Zhijiang/images/characters/Bella/idle_images/frame_095.png" id="95_r5q5b"]
+[ext_resource type="Texture2D" uid="uid://dg6axx4ndlbvv" path="res://Zhijiang/images/characters/Bella/cast_images/frame_034.png" id="95_rb3xo"]
+[ext_resource type="Texture2D" uid="uid://dvepi7re1nlih" path="res://Zhijiang/images/characters/Bella/idle_images/frame_096.png" id="96_xinit"]
+[ext_resource type="Texture2D" uid="uid://1uhf7gjyojjt" path="res://Zhijiang/images/characters/Bella/cast_images/frame_035.png" id="96_yilxw"]
+[ext_resource type="Texture2D" uid="uid://buwhyl5ou7jsd" path="res://Zhijiang/images/characters/Bella/cast_images/frame_036.png" id="97_6x8rm"]
+[ext_resource type="Texture2D" uid="uid://b64hq752nyf2o" path="res://Zhijiang/images/characters/Bella/idle_images/frame_097.png" id="97_8usm6"]
+[ext_resource type="Texture2D" uid="uid://cpxjs11cnkv6o" path="res://Zhijiang/images/characters/Bella/cast_images/frame_037.png" id="98_ikmu4"]
+[ext_resource type="Texture2D" uid="uid://d3r6kpmvwihel" path="res://Zhijiang/images/characters/Bella/idle_images/frame_098.png" id="98_vn8kc"]
+[ext_resource type="Texture2D" uid="uid://ye3x70304auw" path="res://Zhijiang/images/characters/Bella/idle_images/frame_099.png" id="99_3vb01"]
+[ext_resource type="Texture2D" uid="uid://ie72tcjgqwvq" path="res://Zhijiang/images/characters/Bella/cast_images/frame_038.png" id="99_battr"]
+[ext_resource type="Texture2D" uid="uid://cte2ip6oewjoq" path="res://Zhijiang/images/characters/Bella/cast_images/frame_039.png" id="100_75hx4"]
+[ext_resource type="Texture2D" uid="uid://ch4rrv5r7105t" path="res://Zhijiang/images/characters/Bella/idle_images/frame_100.png" id="100_vhypu"]
+[ext_resource type="Texture2D" uid="uid://cm1lbp8o8fmid" path="res://Zhijiang/images/characters/Bella/cast_images/frame_040.png" id="101_6g85g"]
+[ext_resource type="Texture2D" uid="uid://dywyxwt8hsrxw" path="res://Zhijiang/images/characters/Bella/idle_images/frame_101.png" id="101_e86s2"]
+[ext_resource type="Texture2D" uid="uid://idhrral073km" path="res://Zhijiang/images/characters/Bella/cast_images/frame_041.png" id="102_33738"]
+[ext_resource type="Texture2D" uid="uid://dn4rsobiwv3n1" path="res://Zhijiang/images/characters/Bella/idle_images/frame_102.png" id="102_p5601"]
+[ext_resource type="Texture2D" uid="uid://dojspdyafs316" path="res://Zhijiang/images/characters/Bella/idle_images/frame_103.png" id="103_hj3f8"]
+[ext_resource type="Texture2D" uid="uid://n2xenfp3y2og" path="res://Zhijiang/images/characters/Bella/cast_images/frame_042.png" id="103_po1mv"]
+[ext_resource type="Texture2D" uid="uid://cmbi4tx7wkey1" path="res://Zhijiang/images/characters/Bella/idle_images/frame_104.png" id="104_aopg8"]
+[ext_resource type="Texture2D" uid="uid://bp00cd7pscejd" path="res://Zhijiang/images/characters/Bella/cast_images/frame_043.png" id="104_mratl"]
+[ext_resource type="Texture2D" uid="uid://cf1sd2d812srq" path="res://Zhijiang/images/characters/Bella/idle_images/frame_105.png" id="105_eybiv"]
+[ext_resource type="Texture2D" uid="uid://hj4feg7kjoyb" path="res://Zhijiang/images/characters/Bella/cast_images/frame_044.png" id="105_w0pay"]
+[ext_resource type="Texture2D" uid="uid://c07hkaii7iapa" path="res://Zhijiang/images/characters/Bella/cast_images/frame_045.png" id="106_cdmx3"]
+[ext_resource type="Texture2D" uid="uid://d0qm5qtjc8s10" path="res://Zhijiang/images/characters/Bella/idle_images/frame_106.png" id="106_y06s3"]
+[ext_resource type="Texture2D" uid="uid://cm2opbvsarp7" path="res://Zhijiang/images/characters/Bella/cast_images/frame_046.png" id="107_1usa1"]
+[ext_resource type="Texture2D" uid="uid://y38oy8srbedd" path="res://Zhijiang/images/characters/Bella/idle_images/frame_107.png" id="107_wu6ax"]
+[ext_resource type="Texture2D" uid="uid://kpdddrgjti2u" path="res://Zhijiang/images/characters/Bella/cast_images/frame_047.png" id="108_wciea"]
+[ext_resource type="Texture2D" uid="uid://b3l0ixkn2ld7o" path="res://Zhijiang/images/characters/Bella/idle_images/frame_108.png" id="108_xql1v"]
+[ext_resource type="Texture2D" uid="uid://biqwp8wgcy8g0" path="res://Zhijiang/images/characters/Bella/cast_images/frame_048.png" id="109_j1lhw"]
+[ext_resource type="Texture2D" uid="uid://bc65wgd0bttf2" path="res://Zhijiang/images/characters/Bella/idle_images/frame_109.png" id="109_kf1ot"]
+[ext_resource type="Texture2D" uid="uid://bx21lcurca2g3" path="res://Zhijiang/images/characters/Bella/idle_images/frame_110.png" id="110_gi6rr"]
+[ext_resource type="Texture2D" uid="uid://dlghl56n2fbjp" path="res://Zhijiang/images/characters/Bella/cast_images/frame_049.png" id="110_ki82x"]
+[ext_resource type="Texture2D" uid="uid://bekryqmdwhgxe" path="res://Zhijiang/images/characters/Bella/idle_images/frame_111.png" id="111_e3kin"]
+[ext_resource type="Texture2D" uid="uid://cr0l10jplc0o4" path="res://Zhijiang/images/characters/Bella/cast_images/frame_050.png" id="111_h1twf"]
+[ext_resource type="Texture2D" uid="uid://gba5n7ami73x" path="res://Zhijiang/images/characters/Bella/idle_images/frame_112.png" id="112_3kfyk"]
+[ext_resource type="Texture2D" uid="uid://cgkllihf37es" path="res://Zhijiang/images/characters/Bella/idle_images/frame_113.png" id="113_ova2q"]
+[ext_resource type="Texture2D" uid="uid://cfnme16b1emrp" path="res://Zhijiang/images/characters/Bella/idle_images/frame_114.png" id="114_3hxvj"]
+[ext_resource type="Texture2D" uid="uid://chodfehmvx44r" path="res://Zhijiang/images/characters/Bella/idle_images/frame_115.png" id="115_0stg4"]
+[ext_resource type="Texture2D" uid="uid://bdw2p28qbx6sv" path="res://Zhijiang/images/characters/Bella/idle_images/frame_116.png" id="116_256ue"]
+[ext_resource type="Texture2D" uid="uid://b0j25jjr576v3" path="res://Zhijiang/images/characters/Bella/idle_images/frame_117.png" id="117_arnyq"]
+[ext_resource type="Texture2D" uid="uid://c6xp8tqxg5foh" path="res://Zhijiang/images/characters/Bella/idle_images/frame_118.png" id="118_kqun8"]
+[ext_resource type="Texture2D" uid="uid://cwxv2d2sipxfl" path="res://Zhijiang/images/characters/Bella/idle_images/frame_119.png" id="119_unofd"]
+[ext_resource type="Texture2D" uid="uid://q58f38aohyee" path="res://Zhijiang/images/characters/Bella/idle_images/frame_120.png" id="120_15sin"]
+[ext_resource type="Texture2D" uid="uid://c0dm1p62ypyqf" path="res://Zhijiang/images/characters/Bella/idle_images/frame_121.png" id="121_6w6hd"]
+[ext_resource type="Texture2D" uid="uid://bplkjnlak4o81" path="res://Zhijiang/images/characters/Bella/idle_images/frame_122.png" id="122_0bbcx"]
+[ext_resource type="Texture2D" uid="uid://b6migjmbgrajo" path="res://Zhijiang/images/characters/Bella/idle_images/frame_123.png" id="123_y1x12"]
+[ext_resource type="Texture2D" uid="uid://bcgwy5k7ml3xx" path="res://Zhijiang/images/characters/Bella/idle_images/frame_124.png" id="124_6as32"]
+[ext_resource type="Texture2D" uid="uid://b85ubdute2lx4" path="res://Zhijiang/images/characters/Bella/idle_images/frame_125.png" id="125_718td"]
+[ext_resource type="Texture2D" uid="uid://we7frdy4bkjd" path="res://Zhijiang/images/characters/Bella/idle_images/frame_126.png" id="126_f51t0"]
+[ext_resource type="Texture2D" uid="uid://blqdkywedvpid" path="res://Zhijiang/images/characters/Bella/idle_images/frame_127.png" id="127_tw8o8"]
+[ext_resource type="Texture2D" uid="uid://fvktwgiywdrv" path="res://Zhijiang/images/characters/Bella/idle_images/frame_128.png" id="128_ruw36"]
+[ext_resource type="Texture2D" uid="uid://4yileby61fl" path="res://Zhijiang/images/characters/Bella/idle_images/frame_129.png" id="129_xfcyc"]
+[ext_resource type="Texture2D" uid="uid://da3pa86oj5syw" path="res://Zhijiang/images/characters/Bella/idle_images/frame_130.png" id="130_tg7q5"]
+[ext_resource type="Texture2D" uid="uid://dbb7444xsk68r" path="res://Zhijiang/images/characters/Bella/idle_images/frame_131.png" id="131_sjx58"]
+[ext_resource type="Texture2D" uid="uid://c0w6jwqsrgcp6" path="res://Zhijiang/images/characters/Bella/idle_images/frame_132.png" id="132_3wwvj"]
+[ext_resource type="Texture2D" uid="uid://cxbkh01gix5kw" path="res://Zhijiang/images/characters/Bella/idle_images/frame_133.png" id="133_8d1yc"]
+[ext_resource type="Texture2D" uid="uid://j061ibsi7arc" path="res://Zhijiang/images/characters/Bella/idle_images/frame_134.png" id="134_vwn6x"]
+[ext_resource type="Texture2D" uid="uid://duwaqhkgldvre" path="res://Zhijiang/images/characters/Bella/idle_images/frame_135.png" id="135_0mbv5"]
+[ext_resource type="Texture2D" uid="uid://wkscwdsqrjpa" path="res://Zhijiang/images/characters/Bella/idle_images/frame_136.png" id="136_e76jj"]
+[ext_resource type="Texture2D" uid="uid://bgw0pbnc88ynp" path="res://Zhijiang/images/characters/Bella/idle_images/frame_137.png" id="137_eb21f"]
+[ext_resource type="Texture2D" uid="uid://b4nu5ykrxnnai" path="res://Zhijiang/images/characters/Bella/idle_images/frame_138.png" id="138_q6sy7"]
+[ext_resource type="Texture2D" uid="uid://hsrgg2bfy6ni" path="res://Zhijiang/images/characters/Bella/idle_images/frame_139.png" id="139_3owpj"]
+[ext_resource type="Texture2D" uid="uid://lxxowm2jj4a3" path="res://Zhijiang/images/characters/Bella/idle_images/frame_140.png" id="140_kuk4a"]
+[ext_resource type="Texture2D" uid="uid://dite4145f7edl" path="res://Zhijiang/images/characters/Bella/idle_images/frame_141.png" id="141_2l287"]
+[ext_resource type="Texture2D" uid="uid://lbg1fvgm0bay" path="res://Zhijiang/images/characters/Bella/idle_images/frame_142.png" id="142_qqo7g"]
+[ext_resource type="Texture2D" uid="uid://irfvgx63gtxa" path="res://Zhijiang/images/characters/Bella/idle_images/frame_143.png" id="143_o1gex"]
+[ext_resource type="Texture2D" uid="uid://ddbsgqj8c861j" path="res://Zhijiang/images/characters/Bella/idle_images/frame_144.png" id="144_7meas"]
+[ext_resource type="Texture2D" uid="uid://hppts826osan" path="res://Zhijiang/images/characters/Bella/idle_images/frame_145.png" id="145_6mtts"]
+[ext_resource type="Texture2D" uid="uid://kpu5anqu4bwu" path="res://Zhijiang/images/characters/Bella/idle_images/frame_146.png" id="146_nhodn"]
+[ext_resource type="Texture2D" uid="uid://cnk868f1ncujg" path="res://Zhijiang/images/characters/Bella/idle_images/frame_147.png" id="147_oby11"]
+[ext_resource type="Texture2D" uid="uid://cgmyx5rtdcrui" path="res://Zhijiang/images/characters/Bella/idle_images/frame_148.png" id="148_38sah"]
+[ext_resource type="Texture2D" uid="uid://2gtljxdlyb4o" path="res://Zhijiang/images/characters/Bella/idle_images/frame_149.png" id="149_eoq5o"]
+[ext_resource type="Texture2D" uid="uid://co74l04888mpq" path="res://Zhijiang/images/characters/Bella/idle_images/frame_150.png" id="150_db7wf"]
+[ext_resource type="Texture2D" uid="uid://bnrqjt2qw75jo" path="res://Zhijiang/images/characters/Bella/idle_images/frame_151.png" id="151_x07n6"]
+[ext_resource type="Texture2D" uid="uid://62a7bquvlqlq" path="res://Zhijiang/images/characters/Bella/idle_images/frame_152.png" id="152_yrlu7"]
+[ext_resource type="Texture2D" uid="uid://t2b2amw0vwxl" path="res://Zhijiang/images/characters/Bella/idle_images/frame_153.png" id="153_wdnx5"]
+[ext_resource type="Texture2D" uid="uid://cy5apffg1pld6" path="res://Zhijiang/images/characters/Bella/idle_images/frame_154.png" id="154_ii6mx"]
+[ext_resource type="Texture2D" uid="uid://ln42kpmsyb87" path="res://Zhijiang/images/characters/Bella/idle_images/frame_155.png" id="155_7axa8"]
+[ext_resource type="Texture2D" uid="uid://cmlyqgmvb1q1m" path="res://Zhijiang/images/characters/Bella/idle_images/frame_156.png" id="156_75mlf"]
+[ext_resource type="Texture2D" uid="uid://bsbyyathsntew" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_001.png" id="157_7tdv8"]
+[ext_resource type="Texture2D" uid="uid://c80o4lvrm8ktj" path="res://Zhijiang/images/characters/Bella/idle_images/frame_157.png" id="157_7ys8o"]
+[ext_resource type="Texture2D" uid="uid://d0yosodqk75bv" path="res://Zhijiang/images/characters/Bella/idle_images/frame_158.png" id="158_fwplm"]
+[ext_resource type="Texture2D" uid="uid://17kxoc8phj1g" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_002.png" id="158_hp6g3"]
+[ext_resource type="Texture2D" uid="uid://b8bg0a1km08yy" path="res://Zhijiang/images/characters/Bella/idle_images/frame_159.png" id="159_cwsh5"]
+[ext_resource type="Texture2D" uid="uid://5h71k06k6hwy" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_003.png" id="159_rky1a"]
+[ext_resource type="Texture2D" uid="uid://b4san2pu32n" path="res://Zhijiang/images/characters/Bella/idle_images/frame_160.png" id="160_7rfdd"]
+[ext_resource type="Texture2D" uid="uid://4rf05rx0lnt6" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_004.png" id="160_n1xlg"]
+[ext_resource type="Texture2D" uid="uid://dmceefnhqhyox" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_005.png" id="161_jf03b"]
+[ext_resource type="Texture2D" uid="uid://cpbrlskbwpu5d" path="res://Zhijiang/images/characters/Bella/idle_images/frame_161.png" id="161_kel2x"]
+[ext_resource type="Texture2D" uid="uid://52hiy5a4yvbq" path="res://Zhijiang/images/characters/Bella/idle_images/frame_162.png" id="162_b4b8o"]
+[ext_resource type="Texture2D" uid="uid://bsfks1ohvnrkc" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_006.png" id="162_j27wy"]
+[ext_resource type="Texture2D" uid="uid://cqrt7pi70qh5p" path="res://Zhijiang/images/characters/Bella/idle_images/frame_163.png" id="163_7knsq"]
+[ext_resource type="Texture2D" uid="uid://b6h1oqk4q6i0j" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_007.png" id="163_fdvxg"]
+[ext_resource type="Texture2D" uid="uid://b8yhionvhjhet" path="res://Zhijiang/images/characters/Bella/idle_images/frame_164.png" id="164_k3rn2"]
+[ext_resource type="Texture2D" uid="uid://27q3ufhew67t" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_008.png" id="164_yrf08"]
+[ext_resource type="Texture2D" uid="uid://bhwalw6757cal" path="res://Zhijiang/images/characters/Bella/idle_images/frame_165.png" id="165_6v85d"]
+[ext_resource type="Texture2D" uid="uid://bk2775jvk4v3c" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_009.png" id="165_f66j1"]
+[ext_resource type="Texture2D" uid="uid://cg0hgm5go68ja" path="res://Zhijiang/images/characters/Bella/idle_images/frame_166.png" id="166_bev0b"]
+[ext_resource type="Texture2D" uid="uid://c23obbm8lxnfl" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_010.png" id="166_vqt57"]
+[ext_resource type="Texture2D" uid="uid://lw1rm0tgju8r" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_011.png" id="167_g1jjh"]
+[ext_resource type="Texture2D" uid="uid://c13j1edfawlx8" path="res://Zhijiang/images/characters/Bella/idle_images/frame_167.png" id="167_qwjye"]
+[ext_resource type="Texture2D" uid="uid://gnu2s3edjqap" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_012.png" id="168_2oskl"]
+[ext_resource type="Texture2D" uid="uid://bsw11b4iflshy" path="res://Zhijiang/images/characters/Bella/idle_images/frame_168.png" id="168_nhbk0"]
+[ext_resource type="Texture2D" uid="uid://6g2oiwbyci7o" path="res://Zhijiang/images/characters/Bella/idle_images/frame_169.png" id="169_nyv2y"]
+[ext_resource type="Texture2D" uid="uid://cpk1c8yuabjv6" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_013.png" id="169_w7nkw"]
+[ext_resource type="Texture2D" uid="uid://dar4h5i2b34me" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_014.png" id="170_aulf2"]
+[ext_resource type="Texture2D" uid="uid://cvk00el7oaaay" path="res://Zhijiang/images/characters/Bella/idle_images/frame_170.png" id="170_nlnv3"]
+[ext_resource type="Texture2D" uid="uid://6f5240gvhuev" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_015.png" id="171_2dqbj"]
+[ext_resource type="Texture2D" uid="uid://8ytknac6vbiw" path="res://Zhijiang/images/characters/Bella/idle_images/frame_171.png" id="171_hatbn"]
+[ext_resource type="Texture2D" uid="uid://b73lw2prn7by4" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_016.png" id="172_2vwcp"]
+[ext_resource type="Texture2D" uid="uid://ch46yqbvset43" path="res://Zhijiang/images/characters/Bella/idle_images/frame_172.png" id="172_we7tb"]
+[ext_resource type="Texture2D" uid="uid://cltme30yq3g7k" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_017.png" id="173_83ool"]
+[ext_resource type="Texture2D" uid="uid://djb5cmuwsvkgd" path="res://Zhijiang/images/characters/Bella/idle_images/frame_173.png" id="173_b5a15"]
+[ext_resource type="Texture2D" uid="uid://5fpqlbxadepa" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_018.png" id="174_5tfbd"]
+[ext_resource type="Texture2D" uid="uid://cvv00clro2j1w" path="res://Zhijiang/images/characters/Bella/idle_images/frame_174.png" id="174_cfpwq"]
+[ext_resource type="Texture2D" uid="uid://cevch6e1qkem3" path="res://Zhijiang/images/characters/Bella/idle_images/frame_175.png" id="175_5mu6r"]
+[ext_resource type="Texture2D" uid="uid://huse0bc1ia4d" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_019.png" id="175_8udtm"]
+[ext_resource type="Texture2D" uid="uid://dejy7ls5vfyyq" path="res://Zhijiang/images/characters/Bella/idle_images/frame_176.png" id="176_h54gp"]
+[ext_resource type="Texture2D" uid="uid://dirwjwb2h580t" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_020.png" id="176_lmxsj"]
+[ext_resource type="Texture2D" uid="uid://bapdbjkhx7e36" path="res://Zhijiang/images/characters/Bella/idle_images/frame_177.png" id="177_4fshc"]
+[ext_resource type="Texture2D" uid="uid://b7hc3xsb14ef6" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_021.png" id="177_hvyfr"]
+[ext_resource type="Texture2D" uid="uid://c6k6rbuuusnbs" path="res://Zhijiang/images/characters/Bella/idle_images/frame_178.png" id="178_5aq48"]
+[ext_resource type="Texture2D" uid="uid://i75uaesfpkhh" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_022.png" id="178_ddoqw"]
+[ext_resource type="Texture2D" uid="uid://d0mcxosa4tvj6" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_023.png" id="179_d7vek"]
+[ext_resource type="Texture2D" uid="uid://dtucmxboeay5p" path="res://Zhijiang/images/characters/Bella/idle_images/frame_179.png" id="179_mb7u3"]
+[ext_resource type="Texture2D" uid="uid://b3mo2b8xxh467" path="res://Zhijiang/images/characters/Bella/idle_images/frame_180.png" id="180_vg70n"]
+[ext_resource type="Texture2D" uid="uid://c2vnxswetev12" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_024.png" id="180_yj60w"]
+[ext_resource type="Texture2D" uid="uid://jljww2l86627" path="res://Zhijiang/images/characters/Bella/idle_images/frame_181.png" id="181_1eexr"]
+[ext_resource type="Texture2D" uid="uid://c5hmq1oxmi3ar" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_025.png" id="181_v5b3o"]
+[ext_resource type="Texture2D" uid="uid://d2ns51ppk0qwp" path="res://Zhijiang/images/characters/Bella/idle_images/frame_182.png" id="182_2f6t5"]
+[ext_resource type="Texture2D" uid="uid://dnh7gphwurfvs" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_026.png" id="182_3kjma"]
+[ext_resource type="Texture2D" uid="uid://bwb3dg3xts303" path="res://Zhijiang/images/characters/Bella/idle_images/frame_183.png" id="183_0n7rx"]
+[ext_resource type="Texture2D" uid="uid://cxloh8oe5eyib" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_027.png" id="183_54s45"]
+[ext_resource type="Texture2D" uid="uid://t7iox7x6aiti" path="res://Zhijiang/images/characters/Bella/idle_images/frame_184.png" id="184_b4enl"]
+[ext_resource type="Texture2D" uid="uid://b2hki1bb14yms" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_028.png" id="184_jk3vu"]
+[ext_resource type="Texture2D" uid="uid://oq1l8m2844e6" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_029.png" id="185_4r7m2"]
+[ext_resource type="Texture2D" uid="uid://dc8803c36o2f0" path="res://Zhijiang/images/characters/Bella/idle_images/frame_185.png" id="185_6mktq"]
+[ext_resource type="Texture2D" uid="uid://bq6kbnvvtn1pf" path="res://Zhijiang/images/characters/Bella/idle_images/frame_186.png" id="186_1ybox"]
+[ext_resource type="Texture2D" uid="uid://ddvlf1afskis2" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_030.png" id="186_kxaod"]
+[ext_resource type="Texture2D" uid="uid://be011ub2a6n41" path="res://Zhijiang/images/characters/Bella/idle_images/frame_187.png" id="187_8mw8s"]
+[ext_resource type="Texture2D" uid="uid://58ansfvx1vyd" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_031.png" id="187_sl1ni"]
+[ext_resource type="Texture2D" uid="uid://cjuhm7jy3q6ui" path="res://Zhijiang/images/characters/Bella/idle_images/frame_188.png" id="188_ntwrj"]
+[ext_resource type="Texture2D" uid="uid://ujvaslqwhvdl" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_032.png" id="188_w2jlm"]
+[ext_resource type="Texture2D" uid="uid://5joyx1jw2qnn" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_033.png" id="189_jllj8"]
+[ext_resource type="Texture2D" uid="uid://crp4311a3agu7" path="res://Zhijiang/images/characters/Bella/idle_images/frame_189.png" id="189_xexqj"]
+[ext_resource type="Texture2D" uid="uid://co7xwut24l3ft" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_034.png" id="190_ipxea"]
+[ext_resource type="Texture2D" uid="uid://qv0xmbm7h7m1" path="res://Zhijiang/images/characters/Bella/idle_images/frame_190.png" id="190_ppima"]
+[ext_resource type="Texture2D" uid="uid://dseb8x3mywsg4" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_035.png" id="191_855nl"]
+[ext_resource type="Texture2D" uid="uid://l5w77e6vryxo" path="res://Zhijiang/images/characters/Bella/idle_images/frame_191.png" id="191_j3pjb"]
+[ext_resource type="Texture2D" uid="uid://dq1tgm70ngkgs" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_036.png" id="192_5ompc"]
+[ext_resource type="Texture2D" uid="uid://cmkftmic17j14" path="res://Zhijiang/images/characters/Bella/idle_images/frame_192.png" id="192_68c1h"]
+[ext_resource type="Texture2D" uid="uid://de1ebx74je40u" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_037.png" id="193_630rr"]
+[ext_resource type="Texture2D" uid="uid://dc3grurdvvns4" path="res://Zhijiang/images/characters/Bella/idle_images/frame_193.png" id="193_u8886"]
+[ext_resource type="Texture2D" uid="uid://dvu5dhaur2bwy" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_038.png" id="194_gx162"]
+[ext_resource type="Texture2D" uid="uid://bywvavm44o0sh" path="res://Zhijiang/images/characters/Bella/idle_images/frame_194.png" id="194_pb3ew"]
+[ext_resource type="Texture2D" uid="uid://cu0a3bbhsk7ge" path="res://Zhijiang/images/characters/Bella/hurt_images/frame_039.png" id="195_7n6xn"]
+[ext_resource type="Texture2D" uid="uid://cy24ely06gsgd" path="res://Zhijiang/images/characters/Bella/idle_images/frame_195.png" id="195_kgasj"]
+[ext_resource type="Texture2D" uid="uid://v6bghwdfx77f" path="res://Zhijiang/images/characters/Bella/idle_images/frame_196.png" id="196_7tdv8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bjbdw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_fc78k")
+"texture": ExtResource("1_7ys8o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_7sx7f")
+"texture": ExtResource("2_fwplm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_1qklo")
+"texture": ExtResource("3_cwsh5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_r77ip")
+"texture": ExtResource("4_7rfdd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_m2j3s")
+"texture": ExtResource("5_kel2x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_ycem0")
+"texture": ExtResource("6_b4b8o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_kfbjk")
+"texture": ExtResource("7_7knsq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_727gy")
+"texture": ExtResource("8_k3rn2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_48041")
+"texture": ExtResource("9_6v85d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_vywa1")
+"texture": ExtResource("10_bev0b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_mvqk2")
+"texture": ExtResource("11_qwjye")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_ed13j")
+"texture": ExtResource("12_nhbk0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_7j4e8")
+"texture": ExtResource("13_nyv2y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_dhmu6")
+"texture": ExtResource("14_nlnv3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_ag5qb")
+"texture": ExtResource("15_hatbn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_tyvod")
+"texture": ExtResource("16_we7tb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_yltx4")
+"texture": ExtResource("17_b5a15")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_4v7pi")
+"texture": ExtResource("18_cfpwq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_nmqxp")
+"texture": ExtResource("19_5mu6r")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_dj5fm")
+"texture": ExtResource("20_h54gp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_gts5b")
+"texture": ExtResource("21_4fshc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_u53yw")
+"texture": ExtResource("22_5aq48")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_6wdxd")
+"texture": ExtResource("23_mb7u3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_e6852")
+"texture": ExtResource("24_vg70n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("25_cej7r")
+"texture": ExtResource("25_1eexr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("26_u8cpb")
+"texture": ExtResource("26_2f6t5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("27_ptid4")
+"texture": ExtResource("27_0n7rx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("28_7wxed")
+"texture": ExtResource("28_b4enl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("29_2ql7q")
+"texture": ExtResource("29_6mktq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("30_7vvrl")
+"texture": ExtResource("30_1ybox")
 }, {
 "duration": 1.0,
-"texture": ExtResource("31_wluhe")
+"texture": ExtResource("31_8mw8s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("32_7tv0r")
+"texture": ExtResource("32_ntwrj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("33_cyss7")
+"texture": ExtResource("33_xexqj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("34_u047l")
+"texture": ExtResource("34_ppima")
 }, {
 "duration": 1.0,
-"texture": ExtResource("35_lw3db")
+"texture": ExtResource("35_j3pjb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("36_hbvjg")
+"texture": ExtResource("36_68c1h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("37_en440")
+"texture": ExtResource("37_u8886")
 }, {
 "duration": 1.0,
-"texture": ExtResource("38_14018")
+"texture": ExtResource("38_pb3ew")
 }, {
 "duration": 1.0,
-"texture": ExtResource("39_dturu")
+"texture": ExtResource("39_kgasj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("40_7rw3k")
+"texture": ExtResource("40_7tdv8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("41_fr7i5")
+"texture": ExtResource("41_hp6g3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("42_7emw7")
+"texture": ExtResource("42_rky1a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("43_f2eip")
+"texture": ExtResource("43_n1xlg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("44_lfsb8")
+"texture": ExtResource("44_jf03b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("45_oalcw")
+"texture": ExtResource("45_j27wy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("46_ye70g")
+"texture": ExtResource("46_fdvxg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("47_320pv")
+"texture": ExtResource("47_yrf08")
 }, {
 "duration": 1.0,
-"texture": ExtResource("48_iavc8")
+"texture": ExtResource("48_f66j1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("49_lgml5")
+"texture": ExtResource("49_vqt57")
 }, {
 "duration": 1.0,
-"texture": ExtResource("50_mn6pb")
+"texture": ExtResource("50_g1jjh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("51_nj5m1")
+"texture": ExtResource("51_2oskl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("52_en3gn")
+"texture": ExtResource("52_w7nkw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("53_r5q5b")
+"texture": ExtResource("53_aulf2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("54_xinit")
+"texture": ExtResource("54_2dqbj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("55_8usm6")
+"texture": ExtResource("55_2vwcp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("56_vn8kc")
+"texture": ExtResource("56_83ool")
 }, {
 "duration": 1.0,
-"texture": ExtResource("57_3vb01")
+"texture": ExtResource("57_5tfbd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("58_vhypu")
+"texture": ExtResource("58_8udtm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("59_e86s2")
+"texture": ExtResource("59_lmxsj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("60_p5601")
+"texture": ExtResource("60_hvyfr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("61_hj3f8")
+"texture": ExtResource("61_ddoqw")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 45.0
 }, {
+"frames": [{
 "duration": 1.0,
-"texture": ExtResource("62_aopg8")
+"texture": ExtResource("62_645hg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("63_eybiv")
+"texture": ExtResource("63_5ikhc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("64_y06s3")
+"texture": ExtResource("64_5jcws")
 }, {
 "duration": 1.0,
-"texture": ExtResource("65_wu6ax")
+"texture": ExtResource("65_flnsx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("66_xql1v")
+"texture": ExtResource("66_0wjaq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("67_kf1ot")
+"texture": ExtResource("67_h3v5s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("68_gi6rr")
+"texture": ExtResource("68_3fprl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("69_e3kin")
+"texture": ExtResource("69_17fhu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("70_3kfyk")
+"texture": ExtResource("70_git83")
 }, {
 "duration": 1.0,
-"texture": ExtResource("71_ova2q")
+"texture": ExtResource("71_h075d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("72_3hxvj")
+"texture": ExtResource("72_5oye1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("73_0stg4")
+"texture": ExtResource("73_ixlt4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("74_256ue")
+"texture": ExtResource("74_asnnj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("75_arnyq")
+"texture": ExtResource("75_4twg3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("76_kqun8")
+"texture": ExtResource("76_dtmal")
 }, {
 "duration": 1.0,
-"texture": ExtResource("77_unofd")
+"texture": ExtResource("77_ba0io")
 }, {
 "duration": 1.0,
-"texture": ExtResource("78_15sin")
+"texture": ExtResource("78_p522y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("79_6w6hd")
+"texture": ExtResource("79_aqtbd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("80_0bbcx")
+"texture": ExtResource("80_rxeky")
 }, {
 "duration": 1.0,
-"texture": ExtResource("81_y1x12")
+"texture": ExtResource("81_pb1cy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("82_6as32")
+"texture": ExtResource("82_clo6w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("83_718td")
+"texture": ExtResource("83_rblyh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("84_f51t0")
+"texture": ExtResource("84_8kxf0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("85_tw8o8")
+"texture": ExtResource("85_p4jom")
 }, {
 "duration": 1.0,
-"texture": ExtResource("86_ruw36")
+"texture": ExtResource("86_vmyvu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("87_xfcyc")
+"texture": ExtResource("87_hrhmu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("88_tg7q5")
+"texture": ExtResource("88_xel5a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("89_sjx58")
+"texture": ExtResource("89_hlno8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("90_3wwvj")
+"texture": ExtResource("90_e2sir")
 }, {
 "duration": 1.0,
-"texture": ExtResource("91_8d1yc")
+"texture": ExtResource("91_yvh87")
 }, {
 "duration": 1.0,
-"texture": ExtResource("92_vwn6x")
+"texture": ExtResource("92_8pam1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("93_0mbv5")
+"texture": ExtResource("93_e7vkk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("94_e76jj")
+"texture": ExtResource("94_5vet7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("95_eb21f")
+"texture": ExtResource("95_rb3xo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("96_q6sy7")
+"texture": ExtResource("96_yilxw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("97_3owpj")
+"texture": ExtResource("97_6x8rm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("98_kuk4a")
+"texture": ExtResource("98_ikmu4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("99_2l287")
+"texture": ExtResource("99_battr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("100_qqo7g")
+"texture": ExtResource("100_75hx4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("101_o1gex")
+"texture": ExtResource("101_6g85g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("102_7meas")
+"texture": ExtResource("102_33738")
 }, {
 "duration": 1.0,
-"texture": ExtResource("103_6mtts")
+"texture": ExtResource("103_po1mv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("104_nhodn")
+"texture": ExtResource("104_mratl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("105_oby11")
+"texture": ExtResource("105_w0pay")
 }, {
 "duration": 1.0,
-"texture": ExtResource("106_38sah")
+"texture": ExtResource("106_cdmx3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("107_eoq5o")
+"texture": ExtResource("107_1usa1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("108_db7wf")
+"texture": ExtResource("108_wciea")
 }, {
 "duration": 1.0,
-"texture": ExtResource("109_x07n6")
+"texture": ExtResource("109_j1lhw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("110_yrlu7")
+"texture": ExtResource("110_ki82x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("111_wdnx5")
+"texture": ExtResource("111_h1twf")
+}],
+"loop": false,
+"name": &"cast",
+"speed": 30.0
 }, {
+"frames": [{
 "duration": 1.0,
-"texture": ExtResource("112_ii6mx")
+"texture": ExtResource("1_xinit")
 }, {
 "duration": 1.0,
-"texture": ExtResource("113_7axa8")
+"texture": ExtResource("2_8usm6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("114_75mlf")
+"texture": ExtResource("3_vn8kc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("115_7ys8o")
+"texture": ExtResource("4_3vb01")
 }, {
 "duration": 1.0,
-"texture": ExtResource("116_fwplm")
+"texture": ExtResource("5_vhypu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("117_cwsh5")
+"texture": ExtResource("6_e86s2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("118_7rfdd")
+"texture": ExtResource("7_p5601")
 }, {
 "duration": 1.0,
-"texture": ExtResource("119_kel2x")
+"texture": ExtResource("8_hj3f8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("120_b4b8o")
+"texture": ExtResource("9_aopg8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("121_7knsq")
+"texture": ExtResource("10_eybiv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("122_k3rn2")
+"texture": ExtResource("11_y06s3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("123_6v85d")
+"texture": ExtResource("12_wu6ax")
 }, {
 "duration": 1.0,
-"texture": ExtResource("124_bev0b")
+"texture": ExtResource("13_xql1v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("125_qwjye")
+"texture": ExtResource("14_kf1ot")
 }, {
 "duration": 1.0,
-"texture": ExtResource("126_nhbk0")
+"texture": ExtResource("15_gi6rr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("127_nyv2y")
+"texture": ExtResource("16_e3kin")
 }, {
 "duration": 1.0,
-"texture": ExtResource("128_nlnv3")
+"texture": ExtResource("17_3kfyk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("129_hatbn")
+"texture": ExtResource("18_ova2q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("130_we7tb")
+"texture": ExtResource("19_3hxvj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("131_b5a15")
+"texture": ExtResource("20_0stg4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("132_cfpwq")
+"texture": ExtResource("21_256ue")
 }, {
 "duration": 1.0,
-"texture": ExtResource("133_5mu6r")
+"texture": ExtResource("22_arnyq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("134_h54gp")
+"texture": ExtResource("23_kqun8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("135_4fshc")
+"texture": ExtResource("24_unofd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("136_5aq48")
+"texture": ExtResource("25_15sin")
 }, {
 "duration": 1.0,
-"texture": ExtResource("137_mb7u3")
+"texture": ExtResource("26_6w6hd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("138_vg70n")
+"texture": ExtResource("27_0bbcx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("139_1eexr")
+"texture": ExtResource("28_y1x12")
 }, {
 "duration": 1.0,
-"texture": ExtResource("140_2f6t5")
+"texture": ExtResource("29_6as32")
 }, {
 "duration": 1.0,
-"texture": ExtResource("141_0n7rx")
+"texture": ExtResource("30_718td")
 }, {
 "duration": 1.0,
-"texture": ExtResource("142_b4enl")
+"texture": ExtResource("31_f51t0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("143_6mktq")
+"texture": ExtResource("32_tw8o8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("144_1ybox")
+"texture": ExtResource("33_ruw36")
 }, {
 "duration": 1.0,
-"texture": ExtResource("145_8mw8s")
+"texture": ExtResource("34_xfcyc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("146_ntwrj")
+"texture": ExtResource("35_tg7q5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("147_xexqj")
+"texture": ExtResource("36_sjx58")
 }, {
 "duration": 1.0,
-"texture": ExtResource("148_ppima")
+"texture": ExtResource("37_3wwvj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("149_j3pjb")
+"texture": ExtResource("38_8d1yc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("150_68c1h")
+"texture": ExtResource("39_vwn6x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("151_u8886")
+"texture": ExtResource("40_0mbv5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("152_pb3ew")
+"texture": ExtResource("41_e76jj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("153_kgasj")
+"texture": ExtResource("42_eb21f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("154_7tdv8")
+"texture": ExtResource("43_q6sy7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("155_hp6g3")
+"texture": ExtResource("44_3owpj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("156_rky1a")
+"texture": ExtResource("45_kuk4a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("157_n1xlg")
+"texture": ExtResource("46_2l287")
 }, {
 "duration": 1.0,
-"texture": ExtResource("158_jf03b")
+"texture": ExtResource("47_qqo7g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("159_j27wy")
+"texture": ExtResource("48_o1gex")
 }, {
 "duration": 1.0,
-"texture": ExtResource("160_fdvxg")
+"texture": ExtResource("49_7meas")
 }, {
 "duration": 1.0,
-"texture": ExtResource("161_yrf08")
+"texture": ExtResource("50_6mtts")
 }, {
 "duration": 1.0,
-"texture": ExtResource("162_f66j1")
+"texture": ExtResource("51_nhodn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("163_vqt57")
+"texture": ExtResource("52_oby11")
 }, {
 "duration": 1.0,
-"texture": ExtResource("164_g1jjh")
+"texture": ExtResource("53_38sah")
 }, {
 "duration": 1.0,
-"texture": ExtResource("165_2oskl")
+"texture": ExtResource("54_eoq5o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("166_w7nkw")
+"texture": ExtResource("55_db7wf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("167_aulf2")
+"texture": ExtResource("56_x07n6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("168_2dqbj")
+"texture": ExtResource("57_yrlu7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("169_2vwcp")
+"texture": ExtResource("58_wdnx5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("170_83ool")
+"texture": ExtResource("59_ii6mx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("171_5tfbd")
+"texture": ExtResource("60_7axa8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("172_8udtm")
+"texture": ExtResource("61_75mlf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("173_lmxsj")
+"texture": ExtResource("62_7ys8o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("174_hvyfr")
+"texture": ExtResource("63_fwplm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("175_ddoqw")
+"texture": ExtResource("64_cwsh5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("176_d7vek")
+"texture": ExtResource("65_7rfdd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("177_yj60w")
+"texture": ExtResource("66_kel2x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("178_v5b3o")
+"texture": ExtResource("67_b4b8o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("179_3kjma")
+"texture": ExtResource("68_7knsq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("180_54s45")
+"texture": ExtResource("69_k3rn2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("181_jk3vu")
+"texture": ExtResource("70_6v85d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("182_4r7m2")
+"texture": ExtResource("71_bev0b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("183_kxaod")
+"texture": ExtResource("72_qwjye")
 }, {
 "duration": 1.0,
-"texture": ExtResource("184_sl1ni")
+"texture": ExtResource("73_nhbk0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("185_w2jlm")
+"texture": ExtResource("74_nyv2y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("186_jllj8")
+"texture": ExtResource("75_nlnv3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("187_ipxea")
+"texture": ExtResource("76_hatbn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("188_855nl")
+"texture": ExtResource("77_we7tb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("189_5ompc")
+"texture": ExtResource("78_b5a15")
 }, {
 "duration": 1.0,
-"texture": ExtResource("190_630rr")
+"texture": ExtResource("79_cfpwq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("191_gx162")
+"texture": ExtResource("80_5mu6r")
 }, {
 "duration": 1.0,
-"texture": ExtResource("192_7n6xn")
+"texture": ExtResource("81_h54gp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("193_temxh")
+"texture": ExtResource("82_4fshc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("194_831rm")
+"texture": ExtResource("83_5aq48")
 }, {
 "duration": 1.0,
-"texture": ExtResource("195_pyg1j")
+"texture": ExtResource("84_mb7u3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("196_gwybn")
+"texture": ExtResource("85_vg70n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("197_0uieh")
+"texture": ExtResource("86_1eexr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("198_aupux")
+"texture": ExtResource("87_2f6t5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("199_cl57k")
+"texture": ExtResource("88_0n7rx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("200_scfvq")
+"texture": ExtResource("89_b4enl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("201_brfu1")
+"texture": ExtResource("90_6mktq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("202_qv4n3")
+"texture": ExtResource("91_1ybox")
 }, {
 "duration": 1.0,
-"texture": ExtResource("203_yturr")
+"texture": ExtResource("92_8mw8s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("204_645hg")
+"texture": ExtResource("93_ntwrj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("205_5ikhc")
+"texture": ExtResource("94_xexqj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("206_5jcws")
+"texture": ExtResource("95_ppima")
+}],
+"loop": false,
+"name": &"die",
+"speed": 24.0
 }, {
+"frames": [{
 "duration": 1.0,
-"texture": ExtResource("207_flnsx")
+"texture": ExtResource("157_7tdv8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("208_0wjaq")
+"texture": ExtResource("158_hp6g3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("209_h3v5s")
+"texture": ExtResource("159_rky1a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("210_3fprl")
+"texture": ExtResource("160_n1xlg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("211_17fhu")
+"texture": ExtResource("161_jf03b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("212_git83")
+"texture": ExtResource("162_j27wy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("213_h075d")
+"texture": ExtResource("163_fdvxg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("214_5oye1")
+"texture": ExtResource("164_yrf08")
 }, {
 "duration": 1.0,
-"texture": ExtResource("215_ixlt4")
+"texture": ExtResource("165_f66j1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("216_asnnj")
+"texture": ExtResource("166_vqt57")
 }, {
 "duration": 1.0,
-"texture": ExtResource("217_4twg3")
+"texture": ExtResource("167_g1jjh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("218_dtmal")
+"texture": ExtResource("168_2oskl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("219_ba0io")
+"texture": ExtResource("169_w7nkw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("220_p522y")
+"texture": ExtResource("170_aulf2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("221_aqtbd")
+"texture": ExtResource("171_2dqbj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("222_rxeky")
+"texture": ExtResource("172_2vwcp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("223_pb1cy")
+"texture": ExtResource("173_83ool")
 }, {
 "duration": 1.0,
-"texture": ExtResource("224_clo6w")
+"texture": ExtResource("174_5tfbd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("225_rblyh")
+"texture": ExtResource("175_8udtm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("226_8kxf0")
+"texture": ExtResource("176_lmxsj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("227_p4jom")
+"texture": ExtResource("177_hvyfr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("228_vmyvu")
+"texture": ExtResource("178_ddoqw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("229_hrhmu")
+"texture": ExtResource("179_d7vek")
 }, {
 "duration": 1.0,
-"texture": ExtResource("230_xel5a")
+"texture": ExtResource("180_yj60w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("231_hlno8")
+"texture": ExtResource("181_v5b3o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("232_e2sir")
+"texture": ExtResource("182_3kjma")
 }, {
 "duration": 1.0,
-"texture": ExtResource("233_yvh87")
+"texture": ExtResource("183_54s45")
 }, {
 "duration": 1.0,
-"texture": ExtResource("234_8pam1")
+"texture": ExtResource("184_jk3vu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("235_e7vkk")
+"texture": ExtResource("185_4r7m2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("236_5vet7")
+"texture": ExtResource("186_kxaod")
 }, {
 "duration": 1.0,
-"texture": ExtResource("237_rb3xo")
+"texture": ExtResource("187_sl1ni")
 }, {
 "duration": 1.0,
-"texture": ExtResource("238_yilxw")
+"texture": ExtResource("188_w2jlm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_jllj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("190_ipxea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("191_855nl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("192_5ompc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("193_630rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("194_gx162")
+}, {
+"duration": 1.0,
+"texture": ExtResource("195_7n6xn")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gq2be")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_edk0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_okkhj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mxy8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xlmoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lhc7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ad3x7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j455q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6js6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_624cm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ra586")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hdi64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bf1ku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mhol2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_fngvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qypy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_fqwrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_n0i1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_unqad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_pnu8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_trpcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_bu20t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_gdmrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_eldyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_cb2hk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_up7ye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_7u3rp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_1aiya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_smdc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_yvipx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_1i8mj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_qs814")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_vfyv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_84m0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_de177")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_dgq0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_rvf5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_eq1hq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_bumaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_0xho2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_r2ryw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_cyx1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_fc78k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_7sx7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_1qklo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_r77ip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_m2j3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_ycem0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_kfbjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_727gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_48041")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_vywa1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_mvqk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_ed13j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_7j4e8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_dhmu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_ag5qb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_tyvod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_yltx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_4v7pi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_nmqxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_dj5fm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_gts5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_u53yw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_6wdxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_e6852")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_cej7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_u8cpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_ptid4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_7wxed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_2ql7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_7vvrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_wluhe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7tv0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_cyss7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_u047l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_lw3db")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_hbvjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_en440")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_14018")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_dturu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_7rw3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_fr7i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_7emw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_f2eip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_lfsb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_oalcw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_ye70g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_320pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_iavc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_lgml5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_mn6pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_nj5m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_en3gn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_r5q5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_xinit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_8usm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_vn8kc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_3vb01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_vhypu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_e86s2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_p5601")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_hj3f8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_aopg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_eybiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_y06s3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_wu6ax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_xql1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_kf1ot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_gi6rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_e3kin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_3kfyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_ova2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_3hxvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_0stg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_256ue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_arnyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_kqun8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_unofd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_15sin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_6w6hd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_0bbcx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_y1x12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_6as32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_718td")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_f51t0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_tw8o8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_ruw36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_xfcyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_tg7q5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_sjx58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_3wwvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_8d1yc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_vwn6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_0mbv5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_e76jj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_eb21f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_q6sy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_3owpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_kuk4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_2l287")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_qqo7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_o1gex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_7meas")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_6mtts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_nhodn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_oby11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_38sah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_eoq5o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_db7wf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_x07n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_yrlu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_wdnx5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_ii6mx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_7axa8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_75mlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_7ys8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_fwplm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_cwsh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("160_7rfdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_kel2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_b4b8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_7knsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_k3rn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_6v85d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_bev0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_qwjye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_nhbk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_nyv2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_nlnv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("171_hatbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_we7tb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_b5a15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_cfpwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_5mu6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_h54gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_4fshc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_5aq48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_mb7u3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_vg70n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_1eexr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_2f6t5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("183_0n7rx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("184_b4enl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("185_6mktq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("186_1ybox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("187_8mw8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_ntwrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_xexqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("190_ppima")
+}, {
+"duration": 1.0,
+"texture": ExtResource("191_j3pjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("192_68c1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("193_u8886")
+}, {
+"duration": 1.0,
+"texture": ExtResource("194_pb3ew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("195_kgasj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("196_7tdv8")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"idle_loop",
 "speed": 24.0
 }]
 
@@ -965,30 +1797,30 @@ animations = [{
 
 [node name="Visuals" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-27, -191.00002)
-scale = Vector2(0.38240737, 0.38240737)
+position = Vector2(-8, -190)
+scale = Vector2(0.51203704, 0.51203704)
 sprite_frames = SubResource("SpriteFrames_bjbdw")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.44843444
+animation = &"idle_loop"
+autoplay = "idle_loop"
+frame_progress = 0.37284812
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -165.0
-offset_top = -393.0
-offset_right = 110.0
-offset_bottom = -1.0
+offset_left = -94.0
+offset_top = -367.0
+offset_right = 65.0
+offset_bottom = 1.0
 
 [node name="IntentPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(22, -378)
+position = Vector2(18, -328)
 
 [node name="CenterPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-14, -226)
+position = Vector2(-2, -219)
 
 [node name="TalkPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1, -309)
+position = Vector2(6, -296)
