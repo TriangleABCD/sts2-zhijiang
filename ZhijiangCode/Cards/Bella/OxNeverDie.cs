@@ -16,7 +16,7 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 // 牛不灭（Ox Never Die）：1 费普通攻击牌（阳）。
-// 造成 7→12 点伤害，弃牌堆加入 2 张「牛批」（状态牌，阴）。
+// 造成 13→16 点伤害，弃牌堆加入 1 张「牛批」（状态牌，阴）。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class OxNeverDie : ModCardTemplate
 {
@@ -25,7 +25,7 @@ public sealed class OxNeverDie : ModCardTemplate
     private const CardRarity CardRarityValue = CardRarity.Common;
     private const TargetType CardTarget = TargetType.AnyEnemy;
     private const bool ShowInCardLibrary = true;
-    private const int NpCount = 2;
+    private const int NpCount = 1;
 
     // 卡图占位：指向尚不存在的资源（构建会有 RITSU013 警告，方便日后找出缺卡图的牌）。
     public override CardAssetProfile AssetProfile => new(
@@ -33,7 +33,7 @@ public sealed class OxNeverDie : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, ValueProp.Move)
+        new DamageVar(13, ValueProp.Move)
     ];
 
     // 「牛批」状态牌悬浮提示。
@@ -72,7 +72,7 @@ public sealed class OxNeverDie : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 伤害 7 → 12。
-        DynamicVars.Damage.UpgradeValueBy(5m);
+        // 伤害 13 → 16。
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

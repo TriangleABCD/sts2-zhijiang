@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
@@ -15,7 +16,7 @@ using Zhijiang.ZhijiangCode.SecondResource;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 末路狂花：普通牌（阴 / 攻击）。对目标造成伤害；若打出后你心之壁为 0，则额外造成同等伤害。
+// 末路狂花：普通牌（阴 / 攻击）。对目标造成伤害；若手牌中没有阴牌，则额外造成同等伤害。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class FlowerInDeath : ModCardTemplate
 {
@@ -31,7 +32,7 @@ public sealed class FlowerInDeath : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6, ValueProp.Move)
+        new DamageVar(9, ValueProp.Move)
     ];
 
     // 阴阳属性：末路狂花为阴牌。
@@ -53,9 +54,10 @@ public sealed class FlowerInDeath : ModCardTemplate
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        // 若当前心之壁为 0，再造成一次伤害。
-        int heartWall = SecondaryResourceCmd.Get(base.Owner, HeartWall.HeartWallId);
-        if (heartWall <= 0)
+        // 若手牌中没有阴牌，再造成一次伤害。
+        bool hasYinInHand = PileType.Hand.GetPile(base.Owner).Cards
+            .Any(c => c.Keywords.Contains(BellaYinYangService.YinKeywordId.GetModCardKeyword()));
+        if (!hasYinInHand)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
@@ -66,7 +68,7 @@ public sealed class FlowerInDeath : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 伤害 6 → 9。
+        // 伤害 9 → 12。
         DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
@@ -32,6 +33,7 @@ public sealed class BellaRexIsComing : ModCardTemplate
     // 易伤与虚弱的层数（1 → 升级后 2）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new DamageVar(3, ValueProp.Move),
         new PowerVar<VulnerablePower>(1m),
         new PowerVar<WeakPower>(1m)
     ];
@@ -58,6 +60,10 @@ public sealed class BellaRexIsComing : ModCardTemplate
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this)
+            .Targeting(cardPlay.Target)
+            .Execute(choiceContext);
         await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars.Vulnerable.BaseValue, base.Owner.Creature, this);
         await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, base.Owner.Creature, this);
     }

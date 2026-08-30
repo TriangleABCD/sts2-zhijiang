@@ -29,7 +29,7 @@ public sealed class JumpTogether : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(5, ValueProp.Move),
+        new DamageVar(7, ValueProp.Move),
         new DynamicVar("ExtraHits", 1m)
     ];
 

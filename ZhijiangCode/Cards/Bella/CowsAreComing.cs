@@ -19,7 +19,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class CowsAreComing : ModCardTemplate
 {
-    private const int BaseEnergyCost = 1;
+    private const int BaseEnergyCost = 0;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Uncommon;
     private const TargetType CardTarget = TargetType.Self;
@@ -31,8 +31,8 @@ public sealed class CowsAreComing : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(6, ValueProp.Move),
-        new DynamicVar("NpCount", 2m)
+        new BlockVar(9, ValueProp.Move),
+        new DynamicVar("NpCount", 1m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
@@ -53,10 +53,10 @@ public sealed class CowsAreComing : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 获得 6→9 点格挡。
+        // 获得 9→12 点格挡。
         await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block, cardPlay);
 
-        // 弃牌堆加入 2→3 张牛批（仅自己）。
+        // 弃牌堆加入 1 张牛批（仅自己）。
         IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(
             Np.Create(base.Owner, DynamicVars["NpCount"].IntValue, base.CombatState!),
             PileType.Discard, base.Owner, CardPilePosition.Random);
@@ -66,8 +66,7 @@ public sealed class CowsAreComing : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 格挡 6 → 9，牛批 2 → 3。
+        // 格挡 9 → 12。
         DynamicVars.Block.UpgradeValueBy(3m);
-        DynamicVars["NpCount"].UpgradeValueBy(1m);
     }
 }

@@ -29,7 +29,7 @@ public sealed class BellaPraysForRain : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(4, ValueProp.Move),
+        new DamageVar(6, ValueProp.Move),
         new DynamicVar("BonusPerSkill", 1m)
     ];
 
@@ -55,7 +55,7 @@ public sealed class BellaPraysForRain : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 伤害 4 → 6。
+        // 伤害 6 → 8。
         DynamicVars.Damage.UpgradeValueBy(2m);
     }
 }

@@ -30,7 +30,7 @@ public sealed class DoubleWidow : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(5, ValueProp.Move)
+        new DamageVar(7, ValueProp.Move)
     ];
 
     // 阴阳属性：双倍的寡妇为阴牌。

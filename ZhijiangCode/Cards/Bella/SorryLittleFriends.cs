@@ -28,7 +28,7 @@ public sealed class SorryLittleFriends : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("HeartWallGain", 5m),
+        new DynamicVar("HeartWallGain", 7m),
         new CardsVar(1)
     ];
 

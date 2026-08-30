@@ -34,7 +34,7 @@ public sealed class Unit01 : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(9, ValueProp.Move)
+        new DamageVar(12, ValueProp.Move)
     ];
 
     // 阴阳属性：初号机为阴牌。

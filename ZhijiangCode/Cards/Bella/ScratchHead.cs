@@ -28,8 +28,8 @@ public sealed class ScratchHead : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(8, ValueProp.Move),
-        new DynamicVar("BonusBlock", 4m)
+        new BlockVar(11, ValueProp.Move),
+        new DynamicVar("BonusBlock", 6m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

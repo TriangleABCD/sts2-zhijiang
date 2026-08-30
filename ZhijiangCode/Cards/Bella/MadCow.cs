@@ -31,8 +31,8 @@ public sealed class MadCow : ModCardTemplate
     // 伤害值与力量增益。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, ValueProp.Move),
-        new DynamicVar("StrengthGain", 4)
+        new DamageVar(10, ValueProp.Move),
+        new DynamicVar("StrengthGain", 6)
     ];
 
     // 力量悬浮提示。

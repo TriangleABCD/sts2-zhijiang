@@ -30,8 +30,8 @@ public sealed class DanceBattleChampion : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(4, ValueProp.Move),
-        new DynamicVar("BlockPerHit", 1m)
+        new DamageVar(6, ValueProp.Move),
+        new DynamicVar("BlockPerHit", 3m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

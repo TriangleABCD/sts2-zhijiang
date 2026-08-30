@@ -31,7 +31,7 @@ public sealed class OxTalisman : ModCardTemplate
     // 本回合获得的力量值（5→7）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("StrengthGain", 5m)
+        new DynamicVar("StrengthGain", 7m)
     ];
 
     // 力量悬浮提示。

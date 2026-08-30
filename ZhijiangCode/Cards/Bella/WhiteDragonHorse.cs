@@ -34,8 +34,8 @@ public sealed class WhiteDragonHorse : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(15, ValueProp.Move),
-        new DynamicVar("HealAmount", 5m)
+        new BlockVar(19, ValueProp.Move),
+        new DynamicVar("HealAmount", 7m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

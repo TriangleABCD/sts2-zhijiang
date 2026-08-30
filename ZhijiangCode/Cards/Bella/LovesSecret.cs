@@ -33,7 +33,7 @@ public sealed class LovesSecret : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(3),
-        new DynamicVar("HealAmount", 5m)
+        new DynamicVar("HealAmount", 7m)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

@@ -23,6 +23,10 @@ public sealed class ReliableSisterLaPower : ModPowerTemplate, ISecondaryResource
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+
+    // 每张牌各自持有除数：多张时每张都独立结算伤害，避免除数相加越叠越弱。
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
+
     protected override bool IsVisibleInternal => true;
 
     // 专属能力图标：reliable_sister_la_power_64x64.png / reliable_sister_la_power_256x256.png（待补成品图）。

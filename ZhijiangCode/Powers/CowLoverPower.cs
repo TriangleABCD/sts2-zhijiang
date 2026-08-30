@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
@@ -12,7 +13,7 @@ using Zhijiang.ZhijiangCode.SecondResource;
 namespace Zhijiang.ZhijiangCode.Powers;
 
 /// <summary>
-/// 牛牛民能力：每当你消耗一张牛批，获得 {Amount} 点心之壁。
+/// 牛牛民能力：每当你获得一张牛批，获得 {Amount} 点心之壁。
 /// </summary>
 [RegisterPower]
 public sealed class CowLoverPower : ModPowerTemplate
@@ -26,9 +27,9 @@ public sealed class CowLoverPower : ModPowerTemplate
         IconPath: $"{Entry.ResPath}/images/characters/Bella/cow_lover_power_64x64.png",
         BigIconPath: $"{Entry.ResPath}/images/characters/Bella/cow_lover_power_256x256.png");
 
-    public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)
+    public override async Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
     {
-        // 仅自己消耗「牛批」时触发。
+        // 仅自己获得「牛批」时触发（牛批通过 AddGeneratedCardsToCombat 生成）。
         if (card.Owner?.Creature != base.Owner)
             return;
         if (card is not Np)

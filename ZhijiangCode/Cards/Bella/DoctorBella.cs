@@ -28,8 +28,8 @@ public sealed class DoctorBella : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(5, ValueProp.Move),
-        new DynamicVar("HeiLaBonus", 2m)
+        new DamageVar(7, ValueProp.Move),
+        new DynamicVar("HeiLaBonus", 4m)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

@@ -28,7 +28,7 @@ public sealed class BellaDoMe : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("HeartWallGain", 2m),
+        new DynamicVar("HeartWallGain", 4m),
         new DynamicVar("Draw", 2m)
     ];
 

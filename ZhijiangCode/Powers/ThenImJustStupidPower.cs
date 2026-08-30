@@ -33,8 +33,8 @@ public sealed class ThenImJustStupidPower : ModPowerTemplate
         if (base.Owner is not { } owner)
             return;
 
-        // 失去 1 点敏捷。
-        await PowerCmd.Apply<DexterityPower>(new ThrowingPlayerChoiceContext(), owner, -1m, owner, null);
+        // 数值叠加：每层各失去 1 点敏捷。
+        await PowerCmd.Apply<DexterityPower>(new ThrowingPlayerChoiceContext(), owner, -base.Amount, owner, null);
 
         // 回复 {Amount} 点生命。
         if (Amount > 0)

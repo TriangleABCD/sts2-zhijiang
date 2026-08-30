@@ -25,6 +25,9 @@ public sealed class ZhijiangLesPower : ModPowerTemplate
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
+    // 每张牌各自维护倒计时：多张时各自触发，而不是把剩余阈值相加。
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
+
     protected override bool IsVisibleInternal => true;
 
     // 专属能力图标：zhijiang_les_power_64x64.png / zhijiang_les_power_256x256.png（待替换为成品图）。

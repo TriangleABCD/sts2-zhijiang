@@ -21,6 +21,10 @@ public sealed class SoulGazePower : ModPowerTemplate
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+
+    // 每张牌独立生效：多张时每回合各获得 1 张灵魂。
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
+
     protected override bool IsVisibleInternal => true;
 
     // 专属能力图标：soul_gaze_power_64x64.png / soul_gaze_power_256x256.png（待补成品图）。

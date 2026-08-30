@@ -31,7 +31,7 @@ public sealed class ShinyDancer : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(17, ValueProp.Move)
+        new DamageVar(21, ValueProp.Move)
     ];
 
     // 阴阳属性：闪光弹为阴牌。

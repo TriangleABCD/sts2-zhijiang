@@ -29,8 +29,8 @@ public sealed class PotHammerStrike : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(4, ValueProp.Move),
-        new DynamicVar("BaiLaBonus", 3m)
+        new DamageVar(6, ValueProp.Move),
+        new DynamicVar("BaiLaBonus", 5m)
     ];
 
     // 阴阳属性：锅锤打击为阳牌。

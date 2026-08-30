@@ -12,6 +12,7 @@ using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Cards.Status;
 using Zhijiang.ZhijiangCode.Characters.Bella;
+using Zhijiang.ZhijiangCode.Powers;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
@@ -19,7 +20,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class ShortSkirt : ModCardTemplate
 {
-    private const int BaseEnergyCost = 1;
+    private const int BaseEnergyCost = 0;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Rare;
     private const TargetType CardTarget = TargetType.Self;
@@ -30,8 +31,8 @@ public sealed class ShortSkirt : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(10, ValueProp.Move),
-        new DynamicVar("ElegantCount", 2m)
+        new BlockVar(14, ValueProp.Move),
+        new DynamicVar("ElegantCount", 1m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
@@ -56,11 +57,14 @@ public sealed class ShortSkirt : ModCardTemplate
             PileType.Hand, base.Owner);
         if (LocalContext.IsMe(base.Owner))
             CardCmd.PreviewCardPileAdd(results);
+
+        // 本回合结束时，所有阳牌保留。
+        await PowerCmd.Apply<ShortSkirtPower>(choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
+        // 格挡 14 → 18。
         DynamicVars.Block.UpgradeValueBy(4m);
-        DynamicVars["ElegantCount"].UpgradeValueBy(1m);
     }
 }

@@ -39,7 +39,7 @@ public sealed class Npk48 : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, ValueProp.Move),
+        new DamageVar(10, ValueProp.Move),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
         new CalculatedVar("CalculatedHits").WithMultiplier((CardModel card, Creature? _) => GetNpCount(card.Owner))

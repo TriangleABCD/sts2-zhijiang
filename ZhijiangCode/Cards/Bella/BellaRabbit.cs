@@ -28,7 +28,7 @@ public sealed class BellaRabbit : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(5, ValueProp.Move)
+        new DamageVar(7, ValueProp.Move)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

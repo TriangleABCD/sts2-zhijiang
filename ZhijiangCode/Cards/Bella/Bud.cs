@@ -34,8 +34,8 @@ public sealed class Bud : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(4, ValueProp.Move),
-        new DynamicVar("HealAmount", 5m)
+        new DamageVar(6, ValueProp.Move),
+        new DynamicVar("HealAmount", 7m)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

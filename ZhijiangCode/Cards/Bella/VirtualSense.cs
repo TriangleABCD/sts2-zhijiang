@@ -29,7 +29,7 @@ public sealed class VirtualSense : ModCardTemplate
     // 每张技能牌获得的心之壁（2→3）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("HeartWallGain", 2m)
+        new DynamicVar("HeartWallGain", 4m)
     ];
 
     // 阴阳属性：虚拟感为阳牌。

@@ -19,7 +19,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class Ballerina : ModCardTemplate
 {
-    private const int BaseEnergyCost = 1;
+    private const int BaseEnergyCost = 0;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Uncommon;
     private const TargetType CardTarget = TargetType.Self;
@@ -31,7 +31,7 @@ public sealed class Ballerina : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(6, ValueProp.Move),
+        new BlockVar(9, ValueProp.Move),
         new DynamicVar("ElegantCount", 1m)
     ];
 
@@ -56,7 +56,7 @@ public sealed class Ballerina : ModCardTemplate
         // 获得 6→9 点格挡。
         await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block, cardPlay);
 
-        // 1→2 张高雅加入手牌（仅自己）。
+        // 1 张高雅加入手牌（仅自己）。
         IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(
             Elegant.Create(base.Owner, DynamicVars["ElegantCount"].IntValue, base.CombatState!),
             PileType.Hand, base.Owner);
@@ -66,8 +66,7 @@ public sealed class Ballerina : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 格挡 6 → 9，高雅 1 → 2。
+        // 格挡 9 → 12。
         DynamicVars.Block.UpgradeValueBy(3m);
-        DynamicVars["ElegantCount"].UpgradeValueBy(1m);
     }
 }

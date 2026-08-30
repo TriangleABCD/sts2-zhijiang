@@ -34,7 +34,7 @@ public sealed class LittleLighter : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(1, ValueProp.Move),
+        new DamageVar(3, ValueProp.Move),
         new DynamicVar("PerStatus", 1m),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),

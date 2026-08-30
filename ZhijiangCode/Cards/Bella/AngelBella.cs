@@ -30,8 +30,8 @@ public sealed class AngelBella : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("ElegantCount", 2m),
-        new CardsVar(1)
+        new DynamicVar("ElegantCount", 1m),
+        new CardsVar(2)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
@@ -51,7 +51,7 @@ public sealed class AngelBella : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 抽牌堆加入 2→3 张高雅（仅自己）。
+        // 抽牌堆加入 1 张高雅（仅自己）。
         IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(
             Elegant.Create(base.Owner, DynamicVars["ElegantCount"].IntValue, base.CombatState!),
             PileType.Draw, base.Owner, CardPilePosition.Random);
@@ -64,8 +64,7 @@ public sealed class AngelBella : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 高雅 2 → 3，抽牌 1 → 2。
-        DynamicVars["ElegantCount"].UpgradeValueBy(1m);
+        // 抽牌 2 → 3。
         DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

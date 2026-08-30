@@ -42,7 +42,7 @@ public sealed class TearOfBellaris : ModCardTemplate
     // 伤害与每 10 点心之壁的力量增益。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(17, ValueProp.Move),
+        new DamageVar(21, ValueProp.Move),
         new DynamicVar("StrengthPer10", 1)
     ];
 

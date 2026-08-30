@@ -35,7 +35,7 @@ public sealed class GiantDragonSoars : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(13, ValueProp.Move),
+        new DamageVar(17, ValueProp.Move),
         new DynamicVar("GoldGain", 30m)
     ];
 

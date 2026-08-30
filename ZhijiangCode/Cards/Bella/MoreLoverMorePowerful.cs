@@ -30,7 +30,7 @@ public sealed class MoreLoverMorePowerful : ModCardTemplate
     // 伤害值：7 → 8（升级 +1）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, ValueProp.Move)
+        new DamageVar(10, ValueProp.Move)
     ];
 
     // 阴阳属性：情人越多越气派为阴牌。

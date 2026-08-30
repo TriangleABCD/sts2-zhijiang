@@ -32,8 +32,8 @@ public sealed class PreventionShot : ModCardTemplate
     // {Block:diff()} 显示格挡值，{HeartWallGain} 显示心之壁增益，{StrengthLoss} 显示力量损失。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(8m, ValueProp.Move),
-        new DynamicVar("HeartWallGain", 5m),
+        new BlockVar(11m, ValueProp.Move),
+        new DynamicVar("HeartWallGain", 7m),
         new DynamicVar("StrengthLoss", 1m)
     ];
 

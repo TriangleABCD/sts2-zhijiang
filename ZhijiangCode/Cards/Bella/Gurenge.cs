@@ -31,8 +31,8 @@ public sealed class Gurenge : ModCardTemplate
     // 基础格挡（6→8）与每张反差牌的额外格挡（2→3）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(6, ValueProp.Move),
-        new DynamicVar("PerContrast", 2m)
+        new BlockVar(9, ValueProp.Move),
+        new DynamicVar("PerContrast", 4m)
     ];
 
     // 格挡悬浮提示。

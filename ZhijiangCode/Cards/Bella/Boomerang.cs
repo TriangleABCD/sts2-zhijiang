@@ -29,8 +29,8 @@ public sealed class Boomerang : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8, ValueProp.Move),
-        new DynamicVar("PerContrast", 2m)
+        new DamageVar(11, ValueProp.Move),
+        new DynamicVar("PerContrast", 4m)
     ];
 
     // 阴阳属性：回旋镖为阴牌。

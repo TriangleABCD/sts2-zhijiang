@@ -30,7 +30,7 @@
         <PackageReference Include="Krafs.Publicizer" Version="2.2.1" PrivateAssets="all"/>
         <PackageReference Include="Nothing.STS2RitsuLib.ModAnalyzers" Version="*" PrivateAssets="all"/>
         <!-- STS2 0.107.1 兼容分支。兼容分支和 manifest 版本对齐规则见 README。 -->
-        <PackageReference Include="STS2.RitsuLib.Compat.0.107.1" Version="0.5.11" GeneratePathProperty="true"/>
+        <PackageReference Include="STS2.RitsuLib.Compat.0.107.1" Version="0.5.18" GeneratePathProperty="true"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -97,21 +97,18 @@
         </PropertyGroup>
         <PropertyGroup>
             <_Json>$([System.IO.File]::ReadAllText('$(ManifestFile)'))</_Json>
-            <_VersionSearchPattern>(?s)&quot;id&quot;\s*:\s*&quot;STS2-RitsuLib&quot;.*?&quot;version&quot;\s*:\s*&quot;([^&quot;]+)&quot;</_VersionSearchPattern>
-            <_VersionExtractPattern>(?s).*?&quot;id&quot;\s*:\s*&quot;STS2-RitsuLib&quot;.*?&quot;version&quot;\s*:\s*&quot;([^&quot;]+)&quot;.*</_VersionExtractPattern>
+            <_VersionSearchPattern>(?s)&quot;id&quot;\s*:\s*&quot;STS2-RitsuLib&quot;.*?&quot;min_version&quot;\s*:\s*&quot;([^&quot;]+)&quot;</_VersionSearchPattern>
+            <_VersionExtractPattern>(?s).*?&quot;id&quot;\s*:\s*&quot;STS2-RitsuLib&quot;.*?&quot;min_version&quot;\s*:\s*&quot;([^&quot;]+)&quot;.*</_VersionExtractPattern>
             <_HasRitsuLibVersion>$([System.Text.RegularExpressions.Regex]::IsMatch('$(_Json)', '$(_VersionSearchPattern)'))</_HasRitsuLibVersion>
             <_CurrentRitsuLibVersion Condition="'$(_HasRitsuLibVersion)' == 'True'">$([System.Text.RegularExpressions.Regex]::Replace('$(_Json)', '$(_VersionExtractPattern)', '$1'))</_CurrentRitsuLibVersion>
             <_ManifestNeedsUpdate>false</_ManifestNeedsUpdate>
-            <_ManifestNeedsUpdate Condition="'$(_CurrentRitsuLibVersion)' != '' and '$(_CurrentRitsuLibVersion)' != '$(RitsuLibVersion)'">true</_ManifestNeedsUpdate>
         </PropertyGroup>
         <Error Condition="'$(_HasRitsuLibVersion)' != 'True'"
-               Text="Could not find dependencies[STS2-RitsuLib].version in '$(ManifestFile)'."/>
-        <Message Importance="High" Condition="'$(_ManifestNeedsUpdate)' == 'true'"
-                 Text="Sync STS2-RitsuLib manifest dependency: $(_CurrentRitsuLibVersion) -> $(RitsuLibVersion)"/>
-        <Message Importance="Low" Condition="'$(_ManifestNeedsUpdate)' != 'true'"
-                 Text="STS2-RitsuLib manifest dependency already matches $(RitsuLibVersion)."/>
+               Text="Could not find dependencies[STS2-RitsuLib].min_version in '$(ManifestFile)'."/>
+        <Message Importance="High"
+                 Text="RitsuLib NuGet resolved to $(RitsuLibVersion). Zhijiang.json min_version is managed manually."/>
         <PropertyGroup Condition="'$(_ManifestNeedsUpdate)' == 'true'">
-            <_Pattern>(?s)(&quot;STS2-RitsuLib&quot;.*?&quot;version&quot;\s*:\s*&quot;)[^&quot;]+(&quot;)</_Pattern>
+            <_Pattern>(?s)(&quot;STS2-RitsuLib&quot;.*?&quot;min_version&quot;\s*:\s*&quot;)[^&quot;]+(&quot;)</_Pattern>
             <_Replacement>${1}$(RitsuLibVersion)${2}</_Replacement>
             <_Updated>$([System.Text.RegularExpressions.Regex]::Replace('$(_Json)', '$(_Pattern)', '$(_Replacement)'))</_Updated>
         </PropertyGroup>

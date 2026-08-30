@@ -12,7 +12,7 @@ using Zhijiang.ZhijiangCode.Powers;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 牛牛民：罕见牌（阴 / 能力）。每当你消耗一张牛批，获得心之壁。
+// 牛牛民：罕见牌（阴 / 能力）。每当你获得一张牛批，获得心之壁。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class CowLover : ModCardTemplate
 {
@@ -28,7 +28,7 @@ public sealed class CowLover : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("HeartWallGain", 1m)
+        new DynamicVar("HeartWallGain", 3m)
     ];
 
     // 阴阳属性：牛牛民为阴牌。

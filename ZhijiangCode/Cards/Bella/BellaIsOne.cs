@@ -16,12 +16,12 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 贝1：1 费攻击牌，造成 3→4 点伤害，并将抽牌堆中随机 2→3 张当前耗能为 1 的牌加入手牌。
+// 贝1：0 费攻击牌，造成 3→4 点伤害，并将抽牌堆中随机 2→3 张当前耗能为 1 的牌加入手牌。
 // 检索逻辑参考原版 Anointed（抽牌堆 → 手牌随机选取），耗能过滤参考 AllForOne。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class BellaIsOne : ModCardTemplate
 {
-    private const int BaseEnergyCost = 1;
+    private const int BaseEnergyCost = 0;
     // 检索耗能恰为该值的牌（本卡 = 1）。
     private const int FilterEnergyCost = 1;
     private const CardType CardKind = CardType.Attack;

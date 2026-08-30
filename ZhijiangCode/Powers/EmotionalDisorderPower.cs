@@ -31,11 +31,12 @@ public sealed class EmotionalDisorderPower : ModPowerTemplate
         IconPath: $"{Entry.ResPath}/images/characters/Bella/emotional_disorder_power_64x64.png",
         BigIconPath: $"{Entry.ResPath}/images/characters/Bella/emotional_disorder_power_256x256.png");
 
-    /// <summary>升级后每回合额外获得的心之壁数量（0/1）。</summary>
-    public void SetHeartWallGain(decimal gain)
+    /// <summary>追加一份升级收益：每张升级牌每回合额外 +1 心之壁（基础牌传 0）。
+    /// 改为累加而不是覆盖，保证“基础+升级”混搭时按张数正确叠加。</summary>
+    public void AddHeartWallGain(decimal gain)
     {
         AssertMutable();
-        base.DynamicVars["HeartWallGain"].BaseValue = gain;
+        base.DynamicVars["HeartWallGain"].BaseValue += gain;
     }
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
@@ -47,14 +48,15 @@ public sealed class EmotionalDisorderPower : ModPowerTemplate
         if (!BellaYinYangService.IsBaiLa(player))
             return;
 
-        // 获得（心之壁 ÷ 10）点格挡。
+        // 数值叠加：每层各获得一份（心之壁 ÷ 10）点格挡。
         int heartWall = SecondaryResourceCmd.Get(player, HeartWall.HeartWallId);
         int block = heartWall / 10;
         if (block > 0)
-            await CreatureCmd.GainBlock(base.Owner, block, ValueProp.Move, null);
+            await CreatureCmd.GainBlock(base.Owner, block * Amount, ValueProp.Move, null);
 
-        // 升级后每回合额外获得 1 心之壁。
-        if (DynamicVars["HeartWallGain"].IntValue > 0)
-            await SecondaryResourceCmd.Gain(player, HeartWall.HeartWallId, 1, this);
+        // 数值叠加：每张升级牌每回合各额外获得 1 心之壁。
+        int heartWallGain = DynamicVars["HeartWallGain"].IntValue;
+        if (heartWallGain > 0)
+            await SecondaryResourceCmd.Gain(player, HeartWall.HeartWallId, heartWallGain, this);
     }
 }

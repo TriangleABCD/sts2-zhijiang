@@ -29,7 +29,7 @@ public sealed class CommanderKira : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6, ValueProp.Move)
+        new DamageVar(9, ValueProp.Move)
     ];
 
     // 阴阳属性：指挥官山药姐为阳牌。

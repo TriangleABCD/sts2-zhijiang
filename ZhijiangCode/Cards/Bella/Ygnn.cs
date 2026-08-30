@@ -25,7 +25,7 @@ public sealed class Ygnn : ModCardTemplate
     private const CardRarity CardRarityValue = CardRarity.Basic;
     private const TargetType CardTarget = TargetType.AnyEnemy;
     private const bool ShowInCardLibrary = true;
-    private const int HitCount = 2;
+    private const int HitCount = 3;
 
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/ygnn.png");
@@ -33,8 +33,8 @@ public sealed class Ygnn : ModCardTemplate
     // 伤害值与力量增益。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(3, ValueProp.Move),
-        new DynamicVar("StrengthGain", 1)
+        new DamageVar(4, ValueProp.Move),
+        new DynamicVar("StrengthGain", 2)
     ];
 
     // 力量悬浮提示。
@@ -73,7 +73,7 @@ public sealed class Ygnn : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1);
+        DynamicVars.Damage.UpgradeValueBy(2);
         DynamicVars["StrengthGain"].UpgradeValueBy(1);
     }
 }

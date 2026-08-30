@@ -28,8 +28,8 @@ public sealed class Maria : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(10, ValueProp.Move),
-        new DynamicVar("BalanceBonus", 5m)
+        new DamageVar(14, ValueProp.Move),
+        new DynamicVar("BalanceBonus", 7m)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

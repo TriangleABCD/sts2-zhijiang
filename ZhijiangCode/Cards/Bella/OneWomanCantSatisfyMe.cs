@@ -33,7 +33,7 @@ public sealed class OneWomanCantSatisfyMe : ModCardTemplate
     [
         new CardsVar(3),
         new DynamicVar("ShuffleCount", 3m),
-        new DynamicVar("BlockPerZero", 2m)
+        new DynamicVar("BlockPerZero", 4m)
     ];
 
     // 中立牌：不挂阳/阴关键词。

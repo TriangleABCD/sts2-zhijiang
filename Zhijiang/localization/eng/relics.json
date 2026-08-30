@@ -1,10 +1,10 @@
 {
   "ZHIJIANG_RELIC_BELLARIS.title": "Bellaris",
-  "ZHIJIANG_RELIC_BELLARIS.description": "At turn start, gain 1 [gold]Dexterity[/gold] per 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]. [gold]Bai La[/gold]: playing a Skill gains 1 [gold]Block[/gold], +1 per 3 [gold]Yin-Yang[/gold] card diff; lose equal [gold]Strength[/gold]. [gold]Hei La[/gold]: playing an Attack deals 1 damage to a random enemy, +1 per 3 [gold]Yin-Yang[/gold] card diff; lose equal [gold]Dexterity[/gold].",
+  "ZHIJIANG_RELIC_BELLARIS.description": "At the start of combat: while [gold]Bai La[/gold], lose 1 [gold]Strength[/gold] (+1 per 3 [gold]Yin-Yang[/gold] card diff); while [gold]Hei La[/gold], lose 1 [gold]Dexterity[/gold] (+1 per 3 [gold]Yin-Yang[/gold] card diff). This switches accordingly when your state flips. At turn start, gain 1 [gold]Dexterity[/gold] per 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] (removed at end of turn). [gold]Bai La[/gold]: each Skill played gains 1 (+1 per 3 [gold]Yin-Yang[/gold] card diff) [gold]Block[/gold]. [gold]Hei La[/gold]: each Attack played deals 1 (+1 per 3 [gold]Yin-Yang[/gold] card diff) damage to a random enemy.",
   "ZHIJIANG_RELIC_BELLARIS.flavor": "Bella the Martial Saint.",
 
   "ZHIJIANG_RELIC_KIRA_BELLARIS.title": "Kira Bellaris",
-  "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "At turn start, gain 1 [gold]Dexterity[/gold] per 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]. [gold]Bai La[/gold]: playing a Skill gains 1 [gold]Block[/gold], +1 per 3 [gold]Yin-Yang[/gold] card diff. [gold]Hei La[/gold]: playing an Attack deals 1 damage to a random enemy, +1 per 3 [gold]Yin-Yang[/gold] card diff.",
+  "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "At turn start, gain 1 [gold]Dexterity[/gold] per 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] (removed at end of turn). [gold]Bai La[/gold]: each Skill played gains 1 (+1 per 3 [gold]Yin-Yang[/gold] card diff) [gold]Block[/gold]. [gold]Hei La[/gold]: each Attack played deals 1 (+1 per 3 [gold]Yin-Yang[/gold] card diff) damage to a random enemy. (No Yin-Yang cost.)",
   "ZHIJIANG_RELIC_KIRA_BELLARIS.flavor": "Bella the Radiant Martial Saint.",
 
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.title": "Swaying Hairpin",

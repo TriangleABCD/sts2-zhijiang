@@ -32,7 +32,7 @@ public sealed class BoilingExpectation : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6, ValueProp.Move),
+        new DamageVar(9, ValueProp.Move),
         new DynamicVar("DamagePerHeartWall", 1m)
     ];
 

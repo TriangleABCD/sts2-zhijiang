@@ -14,7 +14,7 @@ using Zhijiang.ZhijiangCode.Powers;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 毕方大人（Bifang Sama）：罕见牌（阳 / 能力）。白拉时每回合开始获得临时力量。
+// 毕方大人（Bifang Sama）：罕见牌（阳 / 能力）。白拉时每回合开始获得临时力量，回合结束时失去同等力量。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class BifangSama : ModCardTemplate
 {
@@ -29,7 +29,7 @@ public sealed class BifangSama : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("StrengthGain", 1m)
+        new DynamicVar("StrengthGain", 3m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

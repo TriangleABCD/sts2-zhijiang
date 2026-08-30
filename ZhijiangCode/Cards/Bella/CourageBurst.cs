@@ -31,8 +31,8 @@ public sealed class CourageBurst : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, ValueProp.Move),
-        new DynamicVar("LowestHpExtra", 10m)
+        new DamageVar(10, ValueProp.Move),
+        new DynamicVar("LowestHpExtra", 14m)
     ];
 
     // 阴阳属性：勇气大爆发为阴牌。

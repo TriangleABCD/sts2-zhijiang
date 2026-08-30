@@ -1,10 +1,10 @@
 {
   "ZHIJIANG_RELIC_BELLARIS.title": "贝极星",
-  "ZHIJIANG_RELIC_BELLARIS.description": "回合开始，每 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] 获得 1 点[gold]敏捷[/gold]。[gold]白拉[/gold]：打出技能牌获得 1+[gold]阴阳牌[/gold]数量差÷3 点[gold]格挡[/gold]，失去等量[gold]力量[/gold]；[gold]黑拉[/gold]：打出攻击牌对随机一名敌人造成 1+[gold]阴阳牌[/gold]数量差÷3 点伤害，失去等量[gold]敏捷[/gold]。",
+  "ZHIJIANG_RELIC_BELLARIS.description": "回合开始时，每 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] 获得 1 点[gold]敏捷[/gold]（本回合结束移除）。战斗开始时：[gold]白拉[/gold]失去 1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]力量[/gold]；[gold]黑拉[/gold]失去 1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]敏捷[/gold]（状态翻转时随之切换）。[gold]白拉[/gold]：每打出 1 张技能牌，获得 1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]格挡[/gold]；[gold]黑拉[/gold]：每打出 1 张攻击牌，对随机一名敌人造成 1+（[gold]阴阳牌[/gold]数量差÷3）点伤害。",
   "ZHIJIANG_RELIC_BELLARIS.flavor": "贝武圣",
 
   "ZHIJIANG_RELIC_KIRA_BELLARIS.title": "闪耀贝极星",
-  "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "回合开始，每 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] 获得 1 点[gold]敏捷[/gold]。[gold]白拉[/gold]：打出技能牌获得 1+[gold]阴阳牌[/gold]数量差÷3 点[gold]格挡[/gold]；[gold]黑拉[/gold]：打出攻击牌对随机一名敌人造成 1+[gold]阴阳牌[/gold]数量差÷3 点伤害。",
+  "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "回合开始时，每 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] 获得 1 点[gold]敏捷[/gold]（本回合结束移除）。[gold]白拉[/gold]：每打出 1 张技能牌，获得 1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]格挡[/gold]；[gold]黑拉[/gold]：每打出 1 张攻击牌，对随机一名敌人造成 1+（[gold]阴阳牌[/gold]数量差÷3）点伤害。（无阴阳代价）",
   "ZHIJIANG_RELIC_KIRA_BELLARIS.flavor": "贝武圣·闪耀",
 
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.title": "晃悠悠",

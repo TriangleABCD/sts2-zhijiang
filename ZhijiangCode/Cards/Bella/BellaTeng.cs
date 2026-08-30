@@ -20,7 +20,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 public sealed class BellaTeng : ModCardTemplate
 {
     private const int BaseEnergyCost = 1;
-    private const int ElegantCount = 3;
+    private const int ElegantCount = 1;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Rare;
     private const TargetType CardTarget = TargetType.Self;
@@ -32,7 +32,7 @@ public sealed class BellaTeng : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(8, ValueProp.Move)
+        new BlockVar(11, ValueProp.Move)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
@@ -53,10 +53,13 @@ public sealed class BellaTeng : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 获得 8→12 点格挡。
+        // 获得 11→15 点格挡。
         await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block, cardPlay);
 
-        // 3 张高雅加入抽牌堆（仅自己）。
+        // 抽 2 张牌。
+        await CardPileCmd.Draw(choiceContext, 2, base.Owner);
+
+        // 1 张高雅加入抽牌堆（仅自己）。
         IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(
             Elegant.Create(base.Owner, ElegantCount, base.CombatState!),
             PileType.Draw, base.Owner, CardPilePosition.Random);
@@ -66,7 +69,7 @@ public sealed class BellaTeng : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 格挡 8 → 12。
+        // 格挡 11 → 15。
         DynamicVars.Block.UpgradeValueBy(4m);
     }
 }

@@ -14,12 +14,12 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 晕3D：罕见牌（阴 / 技能）。抽牌，将 2 张晕眩加入抽牌堆；升级 1→0 费。
+// 晕3D：罕见牌（阴 / 技能）。抽牌，将 1 张晕眩加入抽牌堆；升级 1→0 费。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class Dizzy3D : ModCardTemplate
 {
     private const int BaseEnergyCost = 1;
-    private const int DazedCount = 2;
+    private const int DazedCount = 1;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Uncommon;
     private const TargetType CardTarget = TargetType.Self;
@@ -31,7 +31,7 @@ public sealed class Dizzy3D : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(2)
+        new CardsVar(3)
     ];
 
     // 晕眩悬浮提示。
@@ -52,10 +52,10 @@ public sealed class Dizzy3D : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 抽 2 张牌。
+        // 抽 3 张牌。
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner);
 
-        // 2 张晕眩加入抽牌堆。
+        // 1 张晕眩加入抽牌堆。
         List<Dazed> dazed = new();
         for (int i = 0; i < DazedCount; i++)
             dazed.Add(base.CombatState!.CreateCard<Dazed>(base.Owner));

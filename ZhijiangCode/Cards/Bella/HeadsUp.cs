@@ -34,7 +34,7 @@ public sealed class HeadsUp : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("StrengthAmount", 1m)
+        new DynamicVar("StrengthAmount", 3m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

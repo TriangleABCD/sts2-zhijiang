@@ -34,7 +34,7 @@ public sealed class ThenImJustStupid : ModCardTemplate
     // 回复生命数（1 → 升级后 2）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Heal", 1m)
+        new DynamicVar("Heal", 3m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

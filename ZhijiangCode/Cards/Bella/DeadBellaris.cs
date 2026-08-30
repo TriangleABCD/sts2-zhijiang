@@ -20,7 +20,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class DeadBellaris : ModCardTemplate
 {
-    private const int BaseEnergyCost = 2;
+    private const int BaseEnergyCost = 0;
     private const int NpCount = 1;
     private const CardType CardKind = CardType.Attack;
     private const CardRarity CardRarityValue = CardRarity.Uncommon;
@@ -60,6 +60,6 @@ public sealed class DeadBellaris : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

@@ -31,8 +31,8 @@ public sealed class TmallGenie : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6, ValueProp.Move),
-        new DynamicVar("HeiLaExtra", 4m)
+        new DamageVar(9, ValueProp.Move),
+        new DynamicVar("HeiLaExtra", 6m)
     ];
 
     // 阴阳属性：天猫精灵为阴牌。

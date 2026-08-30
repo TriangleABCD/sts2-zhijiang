@@ -29,9 +29,9 @@ public sealed class BellarisBear : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(8, ValueProp.Move),
+        new BlockVar(11, ValueProp.Move),
         new DynamicVar("SkillThreshold", 3m),
-        new DynamicVar("BonusBlock", 5m)
+        new DynamicVar("BonusBlock", 7m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

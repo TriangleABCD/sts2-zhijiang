@@ -31,7 +31,7 @@ public sealed class Ultraman : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(6, ValueProp.Move),
+        new BlockVar(9, ValueProp.Move),
         new DynamicVar("NpCount", 1m)
     ];
 
@@ -53,10 +53,13 @@ public sealed class Ultraman : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 获得 6→9 点格挡。
+        // 获得 9→12 点格挡。
         await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block, cardPlay);
 
-        // 1→2 张牛批加入手牌（仅自己）。
+        // 抽 1 张牌。
+        await CardPileCmd.Draw(choiceContext, 1, base.Owner);
+
+        // 1 张牛批加入手牌（仅自己）。
         IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(
             Np.Create(base.Owner, DynamicVars["NpCount"].IntValue, base.CombatState!),
             PileType.Hand, base.Owner);
@@ -66,8 +69,7 @@ public sealed class Ultraman : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 格挡 6 → 9，牛批 1 → 2。
+        // 格挡 9 → 12。
         DynamicVars.Block.UpgradeValueBy(3m);
-        DynamicVars["NpCount"].UpgradeValueBy(1m);
     }
 }

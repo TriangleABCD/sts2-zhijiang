@@ -48,7 +48,7 @@ public sealed class EmotionalDisorder : ModCardTemplate
         int heartWallGain = DynamicVars["HeartWallGain"].IntValue;
         EmotionalDisorderPower? power = await PowerCmd.Apply<EmotionalDisorderPower>(
             choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
-        power?.SetHeartWallGain(heartWallGain);
+        power?.AddHeartWallGain(heartWallGain);
     }
 
     protected override void OnUpgrade()

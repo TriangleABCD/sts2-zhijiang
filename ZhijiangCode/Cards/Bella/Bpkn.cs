@@ -21,7 +21,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 [RegisterCharacterStarterCard(typeof(BellaCharacter), 1)]
 public sealed class Bpkn : ModCardTemplate
 {
-    private const int BaseEnergyCost = 3;
+    private const int BaseEnergyCost = 1;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Basic;
     private const TargetType CardTarget = TargetType.AllEnemies;
@@ -34,7 +34,7 @@ public sealed class Bpkn : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(8, ValueProp.Move),
-        new DynamicVar("StrengthLoss", 5)
+        new DynamicVar("StrengthLoss", 6)
     ];
 
     // 格挡与力量悬浮提示。
@@ -57,10 +57,10 @@ public sealed class Bpkn : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 获得 10 点格挡。
+        // 获得 8 点格挡。
         await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block, cardPlay);
 
-        // 所有敌人本回合失去 7 点力量。
+        // 所有敌人本回合失去 6 点力量。
         int strengthLoss = DynamicVars["StrengthLoss"].IntValue;
         foreach (var enemy in base.CombatState?.HittableEnemies ?? Array.Empty<Creature>())
         {
@@ -71,6 +71,8 @@ public sealed class Bpkn : ModCardTemplate
 
     protected override void OnUpgrade()
     {
+        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars["StrengthLoss"].UpgradeValueBy(2m);
         AddKeyword(CardKeyword.Retain);
     }
 }

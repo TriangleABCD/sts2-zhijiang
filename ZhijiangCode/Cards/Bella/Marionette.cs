@@ -9,16 +9,15 @@ using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Characters.Bella;
-using Zhijiang.ZhijiangCode.Powers;
 using Zhijiang.ZhijiangCode.SecondResource;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 提线木偶：普通牌（阴 / 技能）。预支 15→20 点心之壁，下回合同等数量减少。
+// 提线木偶：普通牌（阴 / 技能）。0 费，直接获得 15→20 点心之壁。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class Marionette : ModCardTemplate
 {
-    private const int BaseEnergyCost = 1;
+    private const int BaseEnergyCost = 0;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Common;
     private const TargetType CardTarget = TargetType.Self;
@@ -47,11 +46,8 @@ public sealed class Marionette : ModCardTemplate
     {
         int borrow = DynamicVars["Borrow"].IntValue;
 
-        // 预支心之壁。
+        // 直接获得心之壁。
         await SecondaryResourceCmd.Gain(base.Owner, HeartWall.HeartWallId, borrow, this);
-
-        // 挂上下回合还款能力。
-        await PowerCmd.Apply<MarionettePower>(choiceContext, base.Owner.Creature, borrow, base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

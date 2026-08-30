@@ -29,7 +29,7 @@ public sealed class NeverForgive : ModCardTemplate
     // 每次损失生命值获得的心之壁（3→4）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("HeartWallGain", 3m)
+        new DynamicVar("HeartWallGain", 5m)
     ];
 
     // 阴阳属性：绝无拉我为阴牌。

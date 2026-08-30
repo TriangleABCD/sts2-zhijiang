@@ -28,6 +28,9 @@ public sealed class PotatoMinePower : ModPowerTemplate
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
+    // 每颗雷是独立实例：多张雷各自倒计时，而不是把回合数加到一起（参考原版 TheBombPower）。
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
+
     protected override bool IsVisibleInternal => true;
 
     // 专属炸弹图标：potato_mine_power_64x64.png / potato_mine_power_256x256.png（待替换为成品图）。

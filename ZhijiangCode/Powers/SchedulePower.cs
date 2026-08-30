@@ -19,6 +19,10 @@ public sealed class SchedulePower : PowerModel, ISecondaryResourceHookListener
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+
+    // 每张日程表独立生效：多张时每次消耗心之壁每张各提供 1 格挡。
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
+
     // 技能牌产生的间接效果，不显示图标。
     protected override bool IsVisibleInternal => false;
 

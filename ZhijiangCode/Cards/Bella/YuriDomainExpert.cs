@@ -29,7 +29,7 @@ public sealed class YuriDomainExpert : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(12, ValueProp.Move)
+        new DamageVar(16, ValueProp.Move)
     ];
 
     // 阴阳属性：女女关系领域大神为阳牌。

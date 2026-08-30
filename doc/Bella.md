@@ -90,8 +90,8 @@
 |------|------|------|--------|------|------|
 | 打击 | 4 | 攻击牌 | 基础 | 阴 | 造成 6→9 点伤害 |
 | 防御 | 4 | 技能牌 | 基础 | 阳 | 获得 5→8 点格挡 |
-| 勇敢牛牛 | 1 | 攻击牌 | 基础 | 阴 | 造成 3→4 点伤害 2 次，获得 1→2 点力量 |
-| 不怕困难 | 1 | 技能牌 | 基础 | 阳 | 获得 8 点格挡，所有敌人失去 5 点力量。升级：保留 |
+| 勇敢牛牛 | 1 | 攻击牌 | 基础 | 阴 | 造成 4→6 点伤害 3 次，获得 2→3 点力量 |
+| 不怕困难 | 1 | 技能牌 | 基础 | 阳 | 获得 8→10 点格挡，所有敌人失去 6→8 点力量。升级：保留 |
 
 > 配比：5 阴（打击×4+勇敢牛牛×1）5 阳（防御×4+不怕困难×1），开局白拉。
 
@@ -253,14 +253,14 @@
 | 名称 | 费用 | 效果 | 代码路径 |
 |------|------|------|----------|
 | 打击 | 1 | 造成 6→9 点伤害 | `Cards/Bella/BellaStrike.cs` |
-| 勇敢牛牛 | 2 | 造成 3→4 点伤害 2 次，获得 1→2 点力量 | `Cards/Bella/Ygnn.cs` |
+| 勇敢牛牛 | 2 | 造成 4→6 点伤害 3 次，获得 2→3 点力量 | `Cards/Bella/Ygnn.cs` |
 
 #### 技能牌
 
 | 名称 | 费用 | 效果 | 代码路径 |
 |------|------|------|----------|
 | 防御 | 1 | 获得 5→8 点格挡 | `Cards/Bella/BellaDefend.cs` |
-| 不怕困难 | 3 | 获得 8 点格挡，所有敌人失去 5 点力量。升级：保留 | `Cards/Bella/Bpkn.cs` |
+| 不怕困难 | 1 | 获得 8→10 点格挡，所有敌人失去 6→8 点力量。升级：保留 | `Cards/Bella/Bpkn.cs` |
 
 ### 4.2 普通牌 (Common)
 
@@ -270,13 +270,13 @@
 
 | 名称 | 费用 | 效果 | 代码路径 |
 |------|------|------|----------|
-| 拉龙来袭 | 0 | 给予 1→2 层易伤与 1→2 层虚弱 | `Cards/Bella/BellaRexIsComing.cs` |
+| 拉龙来袭 | 0 | 造成 3 点伤害，给予 1→2 层易伤与 1→2 层虚弱 | `Cards/Bella/BellaRexIsComing.cs` |
 | 小土豆雷 | 1 | 3 回合后对血量最多的敌人造成 17→20 点伤害（固定伤害，爆炸时自动选目标） | `Cards/Bella/PotatoMine.cs` |
-| 贝0 | 1 | 造成 3→4 点伤害，抽牌堆随机 2→3 张 0 费牌加入手牌 | `Cards/Bella/BellaIsZero.cs` |
-| 贝1 | 1 | 造成 3→4 点伤害，抽牌堆随机 2→3 张 1 费牌加入手牌 | `Cards/Bella/BellaIsOne.cs` |
-| 牛不灭 | 1 | 造成 7→12 点伤害，弃牌堆中加入 2 张牛批 | `Cards/Bella/OxNeverDie.cs` |
-| 末路狂花 | 1 | 造成 6→9 点伤害；若打出后心之壁为 0，额外造成 6→9 点伤害 | `Cards/Bella/FlowerInDeath.cs` |
-| 贝拉求雨 | 1 | 造成 4→6 点伤害，本回合每打出一张技能牌，此牌伤害 +1 | `Cards/Bella/BellaPraysForRain.cs` |
+| 贝0 | 0 | 造成 3→4 点伤害，抽牌堆随机 2→3 张 0 费牌加入手牌 | `Cards/Bella/BellaIsZero.cs` |
+| 贝1 | 0 | 造成 3→4 点伤害，抽牌堆随机 2→3 张 1 费牌加入手牌 | `Cards/Bella/BellaIsOne.cs` |
+| 牛不灭 | 1 | 造成 13→16 点伤害，弃牌堆中加入 1 张牛批 | `Cards/Bella/OxNeverDie.cs` |
+| 末路狂花 | 1 | 造成 9→12 点伤害；若手牌中没有阴牌，额外造成 9→12 点伤害 | `Cards/Bella/FlowerInDeath.cs` |
+| 贝拉求雨 | 1 | 造成 6→8 点伤害，本回合每打出一张技能牌，此牌伤害 +1 | `Cards/Bella/BellaPraysForRain.cs` |
 | 锅锤打击 | 1 | 造成 4→6 点伤害；若处于白拉，额外造成 3→4 点伤害 | `Cards/Bella/PotHammerStrike.cs` |
 
 #### 技能牌
@@ -290,9 +290,9 @@
 | A.T. 立场 | 1 | 获得格挡，数值等于当前心之壁除以 5⇢4（向下取整） | `Cards/Bella/AtField.cs` |
 | 日程表 | 1 | 获得 8→10 格挡；本回合每消耗 1 点心之壁，获得 1 点格挡 | `Cards/Bella/Schedule.cs` |
 | 小滑板 | 1 | 抽 1→2 张牌，弃 1 张牌；若弃掉的是阴牌，额外抽 1→2 张牌 | `Cards/Bella/LittleSkateboard.cs` |
-| 提线木偶 | 1 | 预支 15→20 点心之壁，下回合同等数量减少 | `Cards/Bella/Marionette.cs` |
+| 提线木偶 | 0 | 获得 15→20 点心之壁 | `Cards/Bella/Marionette.cs` |
 | 小企鹅 | 1 | 获得 8→11 点格挡；若处于白拉，额外获得等于 |d| 的格挡 | `Cards/Bella/LittlePenguin.cs` |
-| 月兔回旋于空中 | 1 | 获得 13→17 点格挡，将 2 张高雅加入你的抽牌堆 | `Cards/Bella/MoonRabbitSpinningInTheAir.cs` |
+| 月兔回旋于空中 | 1 | 获得 17→21 点格挡，获得 1→2 点敏捷，将 1 张高雅加入你的抽牌堆 | `Cards/Bella/MoonRabbitSpinningInTheAir.cs` |
 | 焦拉 | 1 | 抽 2→3 张牌；若处于黑拉，抽到的阴牌本回合耗能 -1 | `Cards/Bella/ScorchedBella.cs` |
 | 小伙伴对不起 | 1 | 获得 5 点心之壁，抽 1→2 张牌 | `Cards/Bella/SorryLittleFriends.cs` |
 
@@ -321,7 +321,7 @@
 | 贝拉兔 | 1 | 造成 5→7 伤害；若白拉抽 1 张牌 | `Cards/Bella/BellaRabbit.cs` |
 | 舞斗会冠军 | 2 | 造成 4→5 伤害 2 次，每次命中获得 1→2 格挡 | `Cards/Bella/DanceBattleChampion.cs` |
 | 贝拉博士 | 1 | 造成 5→7 伤害；若黑拉额外 2→3 伤害 | `Cards/Bella/DoctorBella.cs` |
-| 杨桃干 | 2 | 造成 6→8 伤害，弃牌堆加入 1 张牛批 | `Cards/Bella/DeadBellaris.cs` |
+| 杨桃干 | 0 | 造成 6→9 点伤害，弃牌堆加入 1 张牛批 | `Cards/Bella/DeadBellaris.cs` |
 
 #### 技能牌
 
@@ -333,12 +333,12 @@
 | 分奴 | 1 | 消耗你手中所有阴牌，每消耗一张抽 1→2 张牌 | `Cards/Bella/Tryhard.cs` |
 | 贝极熊 | 1 | 获得 8→11 点格挡；若本回合已打出 3→2 张技能牌，额外获得 5→6 点格挡 | `Cards/Bella/BellarisBear.cs` |
 | 一个女人满足不了我 | 2 | 抽 3 张牌，将最多 3→5 张手牌洗回抽牌堆，每张 0 费牌获得 2 点格挡 | `Cards/Bella/OneWomanCantSatisfyMe.cs` |
-| 牛来 | 1 | 获得 6→9 点格挡，将 2→3 张牛批加入弃牌堆 | `Cards/Bella/CowsAreComing.cs` |
-| 天使贝拉 | 1 | 将 2→3 张高雅加入抽牌堆，抽 1→2 张牌 | `Cards/Bella/AngelBella.cs` |
-| 奥特大英雄 | 1 | 获得 6→9 点格挡，将 1→2 张牛批加入手牌 | `Cards/Bella/Ultraman.cs` |
-| 芭蕾舞者 | 1 | 获得 6→9 点格挡，将 1→2 张高雅加入手牌 | `Cards/Bella/Ballerina.cs` |
-| 9000同接擤鼻涕 | 0 | 获得 1→2 能量，本回合结束时失去 5 心之壁 | `Cards/Bella/NoseBlowWhen9000Concurrent.cs` |
-| 晕3D | 1⇢0 | 抽 2 张牌，将 2 张晕眩加入抽牌堆 | `Cards/Bella/Dizzy3D.cs` |
+| 牛来 | 0 | 获得 9→12 点格挡，将 1 张牛批加入弃牌堆 | `Cards/Bella/CowsAreComing.cs` |
+| 天使贝拉 | 1 | 将 1 张高雅加入抽牌堆，抽 2→3 张牌 | `Cards/Bella/AngelBella.cs` |
+| 奥特大英雄 | 1 | 获得 9→12 点格挡，抽 1 张牌，将 1 张牛批加入手牌 | `Cards/Bella/Ultraman.cs` |
+| 芭蕾舞者 | 0 | 获得 9→12 点格挡，将 1 张高雅加入手牌 | `Cards/Bella/Ballerina.cs` |
+| 9000同接擤鼻涕 | 0 | 获得 2→3 能量，消耗 5 心之壁 | `Cards/Bella/NoseBlowWhen9000Concurrent.cs` |
+| 晕3D | 1⇢0 | 抽 3 张牌，将 1 张晕眩加入抽牌堆 | `Cards/Bella/Dizzy3D.cs` |
 | 抬头！ | 0 | 所有玩家获得 1→2 点力量。耗 5 心之壁 | `Cards/Bella/HeadsUp.cs` |
 | 挠头 | 1 | 获得 8→11 格挡；若本回合未打出攻击牌，额外 4→5 格挡 | `Cards/Bella/ScratchHead.cs` |
 | 老公x我 | 1 | 获得 2 心之壁；若阴阳平衡抽 2→3 张牌 | `Cards/Bella/BellaDoMe.cs` |
@@ -353,8 +353,8 @@
 | 绝无拉我 | 1 | 每次损失生命值时获得 3⇢4 心之壁 | `Cards/Bella/NeverForgive.cs` |
 | 枝江小百合 | 1 | 每打出 5⇢3 张反差牌获得 1 点敏捷 | `Cards/Bella/ZhijiangLes.cs` |
 | 都是我的翅膀 | 2 | 若本回合打出阳牌数等于阴牌数，下回合获得 1→2 点能量 | `Cards/Bella/AllAreMyWings.cs` |
-| 牛牛民 | 1 | 每当你消耗一张牛批，获得 1→2 点心之壁 | `Cards/Bella/CowLover.cs` |
-| 毕方大人 | 1 | 白拉时每回合开始获得 1→2 点临时力量 | `Cards/Bella/BifangSama.cs` |
+| 牛牛民 | 1 | 每当你获得一张牛批，获得 3→4 点心之壁 | `Cards/Bella/CowLover.cs` |
+| 毕方大人 | 1 | 白拉时每回合开始获得 3→4 点力量，回合结束时失去同等力量 | `Cards/Bella/BifangSama.cs` |
 
 ### 4.4 稀有牌 (Rare)
 
@@ -384,8 +384,8 @@
 | 牛符咒 | 2 | 消耗。本回合获得 5→7 点力量 | `Cards/Bella/OxTalisman.cs` |
 | 你不选...红色 | 2 | 消耗。将抽牌堆、弃牌堆、手牌中所有 0 费牌加入手牌并升级 | `Cards/Bella/YouDontChooseRed.cs` |
 | 我再也不玩抽象了 | 3 | 消耗，耗 25 心之壁。消耗所有高雅，每消耗 3 张获得 1 点能量并抽 1 张牌。升级：移除消耗 | `Cards/Bella/NoMoreAbstraction.cs` |
-| 贝丽君 | 1 | 获得 8→12 点格挡，将 3 张高雅加入抽牌堆 | `Cards/Bella/BellaTeng.cs` |
-| 短裙 | 1 | 获得 10→14 格挡，将 2→3 张高雅加入手牌 | `Cards/Bella/ShortSkirt.cs` |
+| 贝丽君 | 1 | 获得 11→15 点格挡，抽 2 张牌，将 1 张高雅加入抽牌堆 | `Cards/Bella/BellaTeng.cs` |
+| 短裙 | 0 | 获得 14→18 格挡，本回合所有阳牌保留，将 1 张高雅加入手牌 | `Cards/Bella/ShortSkirt.cs` |
 | 恋爱心事 | 0 | 耗 20 心壁。抽 3 张牌；若队伍中有乃琳，你与乃琳各回复 5→7 生命 | `Cards/Bella/LovesSecret.cs` |
 | 长路归航 | 3 | 消耗。将所有 0 费牌加入手牌并升级；手牌中所有 1 费牌本回合减至 0 费。升级：移除消耗 | `Cards/Bella/LongRoadHome.cs` |
 

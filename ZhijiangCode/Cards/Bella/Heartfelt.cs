@@ -32,7 +32,7 @@ public sealed class Heartfelt : ModCardTemplate
     // {StripAmount} 显示去除的格挡值。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("StripAmount", 5m)
+        new DynamicVar("StripAmount", 7m)
     ];
 
     // 格挡悬浮提示。

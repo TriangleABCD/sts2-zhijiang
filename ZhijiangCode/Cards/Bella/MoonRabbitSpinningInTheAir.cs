@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
@@ -20,7 +21,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 public sealed class MoonRabbitSpinningInTheAir : ModCardTemplate
 {
     private const int BaseEnergyCost = 1;
-    private const int ElegantCount = 2;
+    private const int ElegantCount = 1;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Common;
     private const TargetType CardTarget = TargetType.Self;
@@ -32,12 +33,14 @@ public sealed class MoonRabbitSpinningInTheAir : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(13, ValueProp.Move)
+        new BlockVar(17, ValueProp.Move),
+        new DynamicVar("DexterityGain", 1m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
-        HoverTipFactory.Static(StaticHoverTip.Block)
+        HoverTipFactory.Static(StaticHoverTip.Block),
+        HoverTipFactory.FromPower<DexterityPower>()
     ];
 
     // 阴阳属性：月兔回旋于空中为阴牌（与阳牌牛不灭对称）。
@@ -52,10 +55,13 @@ public sealed class MoonRabbitSpinningInTheAir : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 获得 13→17 点格挡。
+        // 获得 17→21 点格挡。
         await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block, cardPlay);
 
-        // 将 2 张「高雅」加入抽牌堆（仅自己，联机不广播）。
+        // 获得 1→2 点敏捷。
+        await PowerCmd.Apply<DexterityPower>(choiceContext, base.Owner.Creature, DynamicVars["DexterityGain"].IntValue, base.Owner.Creature, this);
+
+        // 将 1 张「高雅」加入抽牌堆（仅自己，联机不广播）。
         IReadOnlyList<CardPileAddResult> drawResults = await CardPileCmd.AddGeneratedCardsToCombat(
             Elegant.Create(base.Owner, ElegantCount, base.CombatState!),
             PileType.Draw, base.Owner, CardPilePosition.Random);
@@ -67,7 +73,8 @@ public sealed class MoonRabbitSpinningInTheAir : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 格挡 13 → 17。
+        // 格挡 17 → 21，敏捷 1 → 2。
         DynamicVars.Block.UpgradeValueBy(4m);
+        DynamicVars["DexterityGain"].UpgradeValueBy(1m);
     }
 }

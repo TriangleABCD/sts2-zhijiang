@@ -32,7 +32,7 @@ public sealed class PotatoMine : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar("Turns", 3m),
-        new DynamicVar("BombDamage", 17m)
+        new DynamicVar("BombDamage", 21m)
     ];
 
     // 阴阳属性：小土豆雷为阴牌。
