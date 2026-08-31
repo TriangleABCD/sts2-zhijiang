@@ -64,7 +64,7 @@ public sealed class LongRoadHome : ModCardTemplate
             if (card.EnergyCost.CostsX)
                 continue;
             if (card.EnergyCost.GetWithModifiers(CostModifiers.All) == 1)
-                card.EnergyCost.SetThisTurnOrUntilPlayed(0);
+                card.EnergyCost.SetThisTurn(0);
         }
     }
 

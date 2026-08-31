@@ -12,7 +12,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 // 防御牌和打击一样注册到角色卡池，并作为 4 张初始卡加入角色卡组。
 [RegisterCard(typeof(BellaCardPool))]
-[RegisterCharacterStarterCard(typeof(BellaCharacter), 4)]
+[RegisterCharacterStarterCard(typeof(BellaCharacter), 4, Order = 1)]
 public sealed class BellaDefend : ModCardTemplate
 {
     // 基础耗能。

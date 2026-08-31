@@ -1,8 +1,8 @@
 {
   "ZHIJIANG_POTION_BELLARIS_JUICY.title": "鲜榨杨桃汁",
-  "ZHIJIANG_POTION_BELLARIS_JUICY.description": "获得 {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_POTION_BELLARIS_JUICY.description": "获得{HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
   "ZHIJIANG_POTION_BELLA_FOOT_WASH_WATER.title": "贝拉洗脚水",
-  "ZHIJIANG_POTION_BELLA_FOOT_WASH_WATER.description": "你的下一张[gold]阴[/gold]攻击牌造成 3 倍伤害。",
+  "ZHIJIANG_POTION_BELLA_FOOT_WASH_WATER.description": "你的下一张[gold]阴[/gold]攻击牌造成3倍伤害。",
   "ZHIJIANG_POTION_BELLARIS_BUBBLE_WATER.title": "贝极星气泡水",
-  "ZHIJIANG_POTION_BELLARIS_BUBBLE_WATER.description": "获得 {RegenPower} 层[gold]再生[/gold]。"
+  "ZHIJIANG_POTION_BELLARIS_BUBBLE_WATER.description": "获得{RegenPower}层[gold]再生[/gold]。"
 }

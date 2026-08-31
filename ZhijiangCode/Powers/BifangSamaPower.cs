@@ -1,28 +1,30 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Models;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
-using Zhijiang.ZhijiangCode.Cards.Bella;
-using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Powers;
 
 /// <summary>
-/// 毕方大人能力：白拉时每回合开始，获得 {Amount} 点临时力量（本回合）。
+/// 毕方大人能力：每回合开始时，将 {Amount} 张随机攻击牌加入手牌，
+/// 这些牌在本回合可以免费打出。
 /// </summary>
 [RegisterPower]
 public sealed class BifangSamaPower : ModPowerTemplate
 {
     public override PowerType Type => PowerType.Buff;
+
     public override PowerStackType StackType => PowerStackType.Counter;
+
     protected override bool IsVisibleInternal => true;
 
     // 专属能力图标：bifang_sama_power_64x64.png / bifang_sama_power_256x256.png（待补成品图）。
@@ -36,21 +38,17 @@ public sealed class BifangSamaPower : ModPowerTemplate
             return;
         if (base.Owner.Player is not { } player)
             return;
-        if (!BellaYinYangService.IsBaiLa(player))
-            return;
 
-        await PowerCmd.Apply<BifangSamaTemporaryStrengthPower>(new ThrowingPlayerChoiceContext(), base.Owner, Amount, base.Owner, null);
+        List<CardModel> cards = CardFactory.GetDistinctForCombat(player,
+                from c in player.Character.CardPool.GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint)
+                where c.Type == CardType.Attack
+                select c, Amount, player.RunState.Rng.CombatCardGeneration)
+            .ToList();
+
+        foreach (var card in cards)
+        {
+            card.SetToFreeThisTurn();
+            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, player);
+        }
     }
-}
-
-/// <summary>
-/// 毕方大人施加的临时力量（本回合），作为 TemporaryStrengthPower 的具体实现。
-/// </summary>
-public sealed class BifangSamaTemporaryStrengthPower : TemporaryStrengthPower
-{
-    public override MegaCrit.Sts2.Core.Models.AbstractModel OriginModel => ModelDb.Card<BifangSama>();
-
-    protected override bool IsPositive => true;
-
-    protected override bool IsVisibleInternal => true;
 }

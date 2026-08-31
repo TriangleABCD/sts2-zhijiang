@@ -10,5 +10,7 @@ public class BpknPower : MegaCrit.Sts2.Core.Models.Powers.TemporaryStrengthPower
 
     protected override bool IsPositive => false;
 
-    protected override bool IsVisibleInternal => false;
+    // 保持可见：与玩家侧牛符咒的隐藏临时力量不同，这是对敌人施加的负面状态，
+    // 需要被原版「不安油灯」等识别（参考原版 PiercingWailPower）。
+    protected override bool IsVisibleInternal => true;
 }

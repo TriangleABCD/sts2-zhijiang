@@ -49,8 +49,8 @@
   "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.description": "At the start of your turn, lose {Amount} [gold]Dexterity[/gold] and heal {Amount} HP.",
   "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.smartDescription": "At the start of your turn, lose {Amount} [gold]Dexterity[/gold] and heal {Amount} HP.",
 "ZHIJIANG_POWER_BIFANG_SAMA_POWER.title": "Bifang Sama",
-  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.description": "At the start of your turn, if you are [gold]Bai La[/gold], gain {Amount} [gold]Strength[/gold]; lose {Amount} [gold]Strength[/gold] at the end of the turn.",
-  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.smartDescription": "At the start of your turn, if you are [gold]Bai La[/gold], gain {Amount} [gold]Strength[/gold]; lose {Amount} [gold]Strength[/gold] at the end of the turn.",
+  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.description": "At the start of your turn, add {Amount} random [gold]Attack[/gold] cards to your [gold]hand[/gold]. They cost 0 this turn.",
+  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.smartDescription": "At the start of your turn, add {Amount} random [gold]Attack[/gold] cards to your [gold]hand[/gold]. They cost 0 this turn.",
 
   "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.title": "Triple Yin Blade",
   "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.description": "Your next [gold]Yin[/gold] Attack deals triple damage.",

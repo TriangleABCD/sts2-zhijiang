@@ -16,7 +16,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 // RegisterCard 会把这张牌交给 RitsuLib 自动注册。
 // RegisterCharacterStarterCard 会把它追加进 BellaCharacter 的初始卡组。
 [RegisterCard(typeof(BellaCardPool))]
-[RegisterCharacterStarterCard(typeof(BellaCharacter), 4)]
+[RegisterCharacterStarterCard(typeof(BellaCharacter), 4, Order = 0)]
 public sealed class BellaStrike : ModCardTemplate
 {
     // 基础耗能。

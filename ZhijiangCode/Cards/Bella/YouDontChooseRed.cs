@@ -69,6 +69,7 @@ public sealed class YouDontChooseRed : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 升级后无附加数值变化（只移除消耗 + 提升检索效率）。
+        // 升级：移除「消耗」。
+        RemoveKeyword(CardKeyword.Exhaust);
     }
 }

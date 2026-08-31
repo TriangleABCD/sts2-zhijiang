@@ -260,7 +260,7 @@
 | 名称 | 费用 | 效果 | 代码路径 |
 |------|------|------|----------|
 | 防御 | 1 | 获得 5→8 点格挡 | `Cards/Bella/BellaDefend.cs` |
-| 不怕困难 | 1 | 获得 8→10 点格挡，所有敌人失去 6→8 点力量。升级：保留 | `Cards/Bella/Bpkn.cs` |
+| 不怕困难 | 2 | 获得 8→10 点格挡，所有敌人失去 6→8 点力量。升级：保留 | `Cards/Bella/Bpkn.cs` |
 
 ### 4.2 普通牌 (Common)
 
@@ -354,7 +354,7 @@
 | 枝江小百合 | 1 | 每打出 5⇢3 张反差牌获得 1 点敏捷 | `Cards/Bella/ZhijiangLes.cs` |
 | 都是我的翅膀 | 2 | 若本回合打出阳牌数等于阴牌数，下回合获得 1→2 点能量 | `Cards/Bella/AllAreMyWings.cs` |
 | 牛牛民 | 1 | 每当你获得一张牛批，获得 3→4 点心之壁 | `Cards/Bella/CowLover.cs` |
-| 毕方大人 | 1 | 白拉时每回合开始获得 3→4 点力量，回合结束时失去同等力量 | `Cards/Bella/BifangSama.cs` |
+| 毕方大人 | 1 | 每回合开始将 1→2 张随机攻击牌加入手牌，本回合免费打出 | `Cards/Bella/BifangSama.cs` |
 
 ### 4.4 稀有牌 (Rare)
 
@@ -382,7 +382,7 @@
 | 20号循环 | 3⇢2 | 消耗。你打出的下一张攻击牌会额外打出 20 次。消耗 150⇢120 心之壁 | `Cards/Bella/LoopIn20.cs` |
 | 了转反 | 1 | 消耗。本场战斗内黑白拉判定翻转。升级：移除消耗 | `Cards/Bella/TurnOver.cs` |
 | 牛符咒 | 2 | 消耗。本回合获得 5→7 点力量 | `Cards/Bella/OxTalisman.cs` |
-| 你不选...红色 | 2 | 消耗。将抽牌堆、弃牌堆、手牌中所有 0 费牌加入手牌并升级 | `Cards/Bella/YouDontChooseRed.cs` |
+| 你不选...红色 | 2 | 消耗。将抽牌堆、弃牌堆、手牌中所有 0 费牌加入手牌并升级。升级：移除消耗 | `Cards/Bella/YouDontChooseRed.cs` |
 | 我再也不玩抽象了 | 3 | 消耗，耗 25 心之壁。消耗所有高雅，每消耗 3 张获得 1 点能量并抽 1 张牌。升级：移除消耗 | `Cards/Bella/NoMoreAbstraction.cs` |
 | 贝丽君 | 1 | 获得 11→15 点格挡，抽 2 张牌，将 1 张高雅加入抽牌堆 | `Cards/Bella/BellaTeng.cs` |
 | 短裙 | 0 | 获得 14→18 格挡，本回合所有阳牌保留，将 1 张高雅加入手牌 | `Cards/Bella/ShortSkirt.cs` |

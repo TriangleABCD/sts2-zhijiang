@@ -1,36 +1,36 @@
 {
   "ZHIJIANG_RELIC_BELLARIS.title": "贝极星",
-  "ZHIJIANG_RELIC_BELLARIS.description": "回合开始时，每 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] 获得 1 点[gold]敏捷[/gold]（本回合结束移除）。战斗开始时：[gold]白拉[/gold]失去 1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]力量[/gold]；[gold]黑拉[/gold]失去 1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]敏捷[/gold]（状态翻转时随之切换）。[gold]白拉[/gold]：每打出 1 张技能牌，获得 1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]格挡[/gold]；[gold]黑拉[/gold]：每打出 1 张攻击牌，对随机一名敌人造成 1+（[gold]阴阳牌[/gold]数量差÷3）点伤害。",
+  "ZHIJIANG_RELIC_BELLARIS.description": "回合开始时，每15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]获得1点[gold]敏捷[/gold]（本回合结束移除）。战斗开始时：[gold]白拉[/gold]失去1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]力量[/gold]；[gold]黑拉[/gold]失去1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]敏捷[/gold]（状态翻转时随之切换）。[gold]白拉[/gold]：每打出1张技能牌，获得1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]格挡[/gold]；[gold]黑拉[/gold]：每打出1张攻击牌，对随机一名敌人造成1+（[gold]阴阳牌[/gold]数量差÷3）点伤害。",
   "ZHIJIANG_RELIC_BELLARIS.flavor": "贝武圣",
 
   "ZHIJIANG_RELIC_KIRA_BELLARIS.title": "闪耀贝极星",
-  "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "回合开始时，每 15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] 获得 1 点[gold]敏捷[/gold]（本回合结束移除）。[gold]白拉[/gold]：每打出 1 张技能牌，获得 1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]格挡[/gold]；[gold]黑拉[/gold]：每打出 1 张攻击牌，对随机一名敌人造成 1+（[gold]阴阳牌[/gold]数量差÷3）点伤害。（无阴阳代价）",
+  "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "回合开始时，每15 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]获得1点[gold]敏捷[/gold]（本回合结束移除）。[gold]白拉[/gold]：每打出1张技能牌，获得1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]格挡[/gold]；[gold]黑拉[/gold]：每打出1张攻击牌，对随机一名敌人造成1+（[gold]阴阳牌[/gold]数量差÷3）点伤害。（无阴阳代价）",
   "ZHIJIANG_RELIC_KIRA_BELLARIS.flavor": "贝武圣·闪耀",
 
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.title": "晃悠悠",
-  "ZHIJIANG_RELIC_SWAYING_HAIRPIN.description": "每回合[gold]第一次[/gold]打出[gold]反差牌[/gold]时，获得 {HeartWallGain} 点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_RELIC_SWAYING_HAIRPIN.description": "每回合[gold]第一次[/gold]打出[gold]反差牌[/gold]时，获得{HeartWallGain}点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.flavor": "发卡轻轻晃动。",
 
   "ZHIJIANG_RELIC_HAMMER.title": "锤子",
-  "ZHIJIANG_RELIC_HAMMER.description": "拾起时，牌组中所有[gold]打击[/gold]获得[gold]重放[/gold] 1 并[gold]消耗[/gold]。",
+  "ZHIJIANG_RELIC_HAMMER.description": "拾起时，牌组中所有[gold]打击[/gold]获得[gold]重放[/gold] 1并[gold]消耗[/gold]。",
   "ZHIJIANG_RELIC_HAMMER.flavor": "一锤，两锤。",
 
   "ZHIJIANG_RELIC_FRYING_PAN.title": "平底锅",
-  "ZHIJIANG_RELIC_FRYING_PAN.description": "拾起时，牌组中所有[gold]防御[/gold]获得[gold]重放[/gold] 1 并[gold]虚无[/gold]。",
+  "ZHIJIANG_RELIC_FRYING_PAN.description": "拾起时，牌组中所有[gold]防御[/gold]获得[gold]重放[/gold] 1并[gold]虚无[/gold]。",
   "ZHIJIANG_RELIC_FRYING_PAN.flavor": "热锅上的舞步。",
 
   "ZHIJIANG_RELIC_LUCIA_PC.title": "露西亚痛机",
-  "ZHIJIANG_RELIC_LUCIA_PC.description": "每当你的[gold]白拉[/gold]/[gold]黑拉[/gold]状态翻转时，抽 {Cards} 张牌，获得 {Block} 点[gold]格挡[/gold]。",
+  "ZHIJIANG_RELIC_LUCIA_PC.description": "每当你的[gold]白拉[/gold]/[gold]黑拉[/gold]状态翻转时，抽{Cards}张牌，获得{Block}点[gold]格挡[/gold]。",
   "ZHIJIANG_RELIC_LUCIA_PC.flavor": "痛机运转不停。",
 
   "ZHIJIANG_RELIC_SHAOMAI.title": "烧麦",
-  "ZHIJIANG_RELIC_SHAOMAI.description": "拾起时，获得 {MaxHp} 点[gold]最大生命[/gold]。",
+  "ZHIJIANG_RELIC_SHAOMAI.description": "拾起时，获得{MaxHp}点[gold]最大生命[/gold]。",
   "ZHIJIANG_RELIC_SHAOMAI.flavor": "皮薄馅大，一口一个。",
 
   "ZHIJIANG_RELIC_SPARK_LENCE.title": "神光棒",
-  "ZHIJIANG_RELIC_SPARK_LENCE.description": "拾起时，选择牌组中最多 {MaxSelect} 张[gold]非中立[/gold]卡牌，[gold]反转[/gold]其[gold]阴阳属性[/gold]。",
+  "ZHIJIANG_RELIC_SPARK_LENCE.description": "拾起时，选择牌组中最多{MaxSelect}张[gold]非中立[/gold]卡牌，[gold]反转[/gold]其[gold]阴阳属性[/gold]。",
   "ZHIJIANG_RELIC_SPARK_LENCE.flavor": "神光所指，阴阳逆转。",
-  "ZHIJIANG_RELIC_SPARK_LENCE.selectionScreenPrompt": "选择最多 {MaxSelect} 张卡牌以反转其阴阳属性",
+  "ZHIJIANG_RELIC_SPARK_LENCE.selectionScreenPrompt": "选择最多{MaxSelect}张卡牌以反转其阴阳属性",
 
   "ZHIJIANG_RELIC_BEEF_JERKY.title": "牛肉干",
   "ZHIJIANG_RELIC_BEEF_JERKY.description": "你可以在[gold]卡牌奖励[/gold]中多选一张牌。",

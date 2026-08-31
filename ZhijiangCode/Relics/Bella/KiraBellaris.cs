@@ -44,7 +44,9 @@ public sealed class KiraBellaris : BellaStarterRelicTemplate
             };
 
             // 动态追加当前阴阳状态（白拉/黑拉）。
-            if (base.Owner is { } player)
+            // 仅可变的遗物实例才读取 Owner；规范（canonical）实例会被
+            // TouchOfOrobas 等流程查询 HoverTips，此时没有所属玩家。
+            if (IsMutable && base.Owner is { } player)
             {
                 tips.Add(BellaYinYangService.IsBaiLa(player)
                     ? HoverTipFactory.FromPower<BaiLaPower>()

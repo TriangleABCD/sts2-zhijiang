@@ -15,7 +15,7 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 [RegisterCard(typeof(BellaCardPool))]
-[RegisterCharacterStarterCard(typeof(BellaCharacter), 1)]
+[RegisterCharacterStarterCard(typeof(BellaCharacter), 1, Order = 2)]
 // RegisterArchaicToothTranscendence 让"先古之民"（奥罗巴斯）事件的远古之牙把勇敢牛牛转化为疯牛。
 [RegisterArchaicToothTranscendence(typeof(MadCow))]
 public sealed class Ygnn : ModCardTemplate

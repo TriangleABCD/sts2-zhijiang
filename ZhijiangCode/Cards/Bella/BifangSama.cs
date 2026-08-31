@@ -14,7 +14,7 @@ using Zhijiang.ZhijiangCode.Powers;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 毕方大人（Bifang Sama）：罕见牌（阳 / 能力）。白拉时每回合开始获得临时力量，回合结束时失去同等力量。
+// 毕方大人（Bifang Sama）：罕见牌（阳 / 能力）。每回合开始将 1→2 张随机攻击牌加入手牌，本回合免费打出。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class BifangSama : ModCardTemplate
 {
@@ -29,12 +29,7 @@ public sealed class BifangSama : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("StrengthGain", 3m)
-    ];
-
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
-    [
-        HoverTipFactory.FromPower<StrengthPower>()
+        new DynamicVar("AttackCount", 1m)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -47,12 +42,13 @@ public sealed class BifangSama : ModCardTemplate
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
-        int gain = DynamicVars["StrengthGain"].IntValue;
-        await PowerCmd.Apply<BifangSamaPower>(choiceContext, base.Owner.Creature, gain, base.Owner.Creature, this);
+        int count = DynamicVars["AttackCount"].IntValue;
+        await PowerCmd.Apply<BifangSamaPower>(choiceContext, base.Owner.Creature, count, base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["StrengthGain"].UpgradeValueBy(1m);
+        // 攻击牌数量 1 → 2。
+        DynamicVars["AttackCount"].UpgradeValueBy(1m);
     }
 }

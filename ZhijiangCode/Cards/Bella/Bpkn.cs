@@ -18,10 +18,10 @@ using Zhijiang.ZhijiangCode.Powers;
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
 [RegisterCard(typeof(BellaCardPool))]
-[RegisterCharacterStarterCard(typeof(BellaCharacter), 1)]
+[RegisterCharacterStarterCard(typeof(BellaCharacter), 1, Order = 3)]
 public sealed class Bpkn : ModCardTemplate
 {
-    private const int BaseEnergyCost = 1;
+    private const int BaseEnergyCost = 2;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Basic;
     private const TargetType CardTarget = TargetType.AllEnemies;

@@ -57,7 +57,7 @@ public sealed class ScorchedBella : ModCardTemplate
                     continue;
 
                 int current = card.EnergyCost.GetWithModifiers(CostModifiers.All);
-                card.EnergyCost.SetThisTurnOrUntilPlayed(Math.Max(0, current - 1), reduceOnly: true);
+                card.EnergyCost.SetThisTurn(Math.Max(0, current - 1), reduceOnly: true);
             }
         }
     }
