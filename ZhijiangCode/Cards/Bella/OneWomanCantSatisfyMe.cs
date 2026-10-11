@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -45,21 +45,31 @@ public sealed class OneWomanCantSatisfyMe : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 抽 3 张牌。
-        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner);
+        // 抽 3 张牌（记录本张牌抽到的卡，洗回时不可选这些新抽的牌）。
+        List<CardModel> drawnCards = (await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner)).ToList();
+        HashSet<CardModel> drawnSet = drawnCards.ToHashSet();
 
-        // 随机挑最多 ShuffleCount 张手牌洗回抽牌堆。
-        List<CardModel> hand = PileType.Hand.GetPile(base.Owner).Cards.ToList();
-        int shuffleCount = Math.Min(DynamicVars["ShuffleCount"].IntValue, hand.Count);
-        if (shuffleCount > 0)
+        // 让玩家自己选择 0~ShuffleCount 张原有手牌洗回抽牌堆（最多不能超过原有手牌数）。
+        int handCount = PileType.Hand.GetPile(base.Owner).Cards.Count;
+        int selectableCount = handCount - drawnCards.Count;
+        int maxShuffle = Math.Min(DynamicVars["ShuffleCount"].IntValue, selectableCount);
+        if (maxShuffle > 0)
         {
-            List<CardModel> toShuffle = hand.TakeRandom(shuffleCount, base.Owner.RunState.Rng.CombatCardSelection).ToList();
-            await CardPileCmd.Add(toShuffle, PileType.Draw, CardPilePosition.Random);
+            List<CardModel> toShuffle = (await CardSelectCmd.FromHand(
+                prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 0, maxShuffle),
+                context: choiceContext,
+                player: base.Owner,
+                filter: card => !drawnSet.Contains(card),
+                source: this)).ToList();
+            if (toShuffle.Count > 0)
+            {
+                await CardPileCmd.Add(toShuffle, PileType.Draw, CardPilePosition.Random);
 
-            // 每张 0 费牌获得 2 点格挡。
-            int block = toShuffle.Count(IsZeroCost) * DynamicVars["BlockPerZero"].IntValue;
-            if (block > 0)
-                await CreatureCmd.GainBlock(base.Owner.Creature, block, ValueProp.Move, cardPlay);
+                // 每张 0 费牌获得 BlockPerZero 点格挡。
+                int block = toShuffle.Count(IsZeroCost) * DynamicVars["BlockPerZero"].IntValue;
+                if (block > 0)
+                    await CreatureCmd.GainBlock(base.Owner.Creature, block, ValueProp.Move, cardPlay);
+            }
         }
     }
 

@@ -13,11 +13,11 @@ using Zhijiang.ZhijiangCode.SecondResource;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 嘿嘿！：将你的能量翻倍（升级耗能 1→0），消耗 10 心之壁。
+// 嘿嘿！：0 费，将你的能量翻倍，消耗 10 心之壁；升级移除「消耗」（心之壁消耗不变）。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class Hihi : ModCardTemplate
 {
-    private const int BaseEnergyCost = 1;
+    private const int BaseEnergyCost = 0;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Common;
     private const TargetType CardTarget = TargetType.Self;
@@ -43,7 +43,7 @@ public sealed class Hihi : ModCardTemplate
 
     public Hihi() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {
-        // 第二费用：消耗 10 心之壁（显示在能量图标下方，不写进描述文本）。
+        // 第二费用：消耗 10 心之壁（显示在能量图标下方，不写进描述文本）。基础与升级相同，不随升级变化。
         this.SecondaryCosts().Set(HeartWall.HeartWallId, HeartWallCost);
     }
 
@@ -55,7 +55,7 @@ public sealed class Hihi : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 耗能 1 → 0。
-        base.EnergyCost.UpgradeBy(-1);
+        // 升级收益：移除「消耗」（基础耗能已是 0）。
+        RemoveKeyword(CardKeyword.Exhaust);
     }
 }

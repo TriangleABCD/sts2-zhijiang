@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -17,7 +15,7 @@ using Zhijiang.ZhijiangCode.SecondResource;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 抬头！：罕见牌（阳 / 技能）。所有玩家获得 1→2 点力量。耗 5 心之壁。
+// 抬头！：罕见牌（阳 / 技能）。自己获得 3→4 点力量（不再影响队友）。耗 5 心之壁。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class HeadsUp : ModCardTemplate
 {
@@ -25,7 +23,7 @@ public sealed class HeadsUp : ModCardTemplate
     private const int HeartWallCost = 5;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Uncommon;
-    private const TargetType CardTarget = TargetType.AllAllies;
+    private const TargetType CardTarget = TargetType.Self;
     private const bool ShowInCardLibrary = true;
 
     // 卡图占位：指向尚不存在的资源（构建会有 RITSU013 警告，方便日后找出缺卡图的牌）。
@@ -56,14 +54,14 @@ public sealed class HeadsUp : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int amount = DynamicVars["StrengthAmount"].IntValue;
-        foreach (Player player in base.CombatState?.Players ?? Array.Empty<Player>())
-            await PowerCmd.Apply<StrengthPower>(choiceContext, player.Creature, amount, base.Owner.Creature, this);
+        // 只给自己加力量（原为所有队友）。
+        await PowerCmd.Apply<StrengthPower>(choiceContext, base.Owner.Creature,
+            DynamicVars["StrengthAmount"].IntValue, base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        // 力量 1 → 2。
+        // 力量 3 → 4。
         DynamicVars["StrengthAmount"].UpgradeValueBy(1m);
     }
 }

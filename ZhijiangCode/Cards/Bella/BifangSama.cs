@@ -14,7 +14,7 @@ using Zhijiang.ZhijiangCode.Powers;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 毕方大人（Bifang Sama）：罕见牌（阳 / 能力）。每回合开始将 1→2 张随机攻击牌加入手牌，本回合免费打出。
+// 毕方（原「毕方大人」/ Bifang Sama）：罕见牌（阳 / 能力）。每回合开始将 1→2 张随机攻击牌加入手牌（不免费）。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class BifangSama : ModCardTemplate
 {

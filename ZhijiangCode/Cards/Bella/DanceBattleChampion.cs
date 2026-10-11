@@ -14,7 +14,7 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 舞斗会冠军：罕见牌（阳 / 攻击）。造成伤害 2 次，每次命中获得格挡。
+// 舞斗会冠军：罕见牌（阳 / 攻击）。造成伤害 2 次，随后获得格挡（一次性，非每次命中）。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class DanceBattleChampion : ModCardTemplate
 {
@@ -31,7 +31,7 @@ public sealed class DanceBattleChampion : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(6, ValueProp.Move),
-        new DynamicVar("BlockPerHit", 3m)
+        new BlockVar(5, ValueProp.Move)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
@@ -49,16 +49,20 @@ public sealed class DanceBattleChampion : ModCardTemplate
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Target == null) return;
+
         for (int i = 0; i < HitCount; i++)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
-            await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars["BlockPerHit"].IntValue, ValueProp.Move, cardPlay);
         }
+
+        // 格挡一次性获得（打出后结算一次，不是每次命中各给一次）。
+        await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block.IntValue, ValueProp.Move, cardPlay);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
-        DynamicVars["BlockPerHit"].UpgradeValueBy(1m);
+        // 伤害 6 → 8，格挡 5 → 8。
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Block.UpgradeValueBy(3m);
     }
 }

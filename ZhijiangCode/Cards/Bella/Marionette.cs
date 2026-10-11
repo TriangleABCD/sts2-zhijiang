@@ -3,7 +3,9 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
@@ -13,7 +15,7 @@ using Zhijiang.ZhijiangCode.SecondResource;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 提线木偶：普通牌（阴 / 技能）。0 费，直接获得 15→20 点心之壁。
+// 提线木偶：普通牌（阴 / 技能）。0 费，获得 30→50 点心之壁与 6→9 点格挡。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class Marionette : ModCardTemplate
 {
@@ -29,7 +31,13 @@ public sealed class Marionette : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Borrow", 15m)
+        new DynamicVar("Borrow", 30m),
+        new BlockVar(6, ValueProp.Move)
+    ];
+
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
+    [
+        HoverTipFactory.Static(StaticHoverTip.Block)
     ];
 
     // 阴阳属性：提线木偶为阴牌（应要求，非中立）。
@@ -44,15 +52,15 @@ public sealed class Marionette : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int borrow = DynamicVars["Borrow"].IntValue;
-
-        // 直接获得心之壁。
-        await SecondaryResourceCmd.Gain(base.Owner, HeartWall.HeartWallId, borrow, this);
+        // 直接获得心之壁，再获得格挡。
+        await SecondaryResourceCmd.Gain(base.Owner, HeartWall.HeartWallId, DynamicVars["Borrow"].IntValue, this);
+        await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block.IntValue, ValueProp.Move, cardPlay);
     }
 
     protected override void OnUpgrade()
     {
-        // 预支 15 → 20。
-        DynamicVars["Borrow"].UpgradeValueBy(5m);
+        // 心之壁 30 → 50，格挡 6 → 9。
+        DynamicVars["Borrow"].UpgradeValueBy(20m);
+        DynamicVars.Block.UpgradeValueBy(3m);
     }
 }

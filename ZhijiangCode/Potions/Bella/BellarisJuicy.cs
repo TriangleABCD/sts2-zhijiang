@@ -14,7 +14,7 @@ using Zhijiang.ZhijiangCode.SecondResource;
 namespace Zhijiang.ZhijiangCode.Potions.Bella;
 
 /// <summary>
-/// 鲜榨杨桃汁（Bellaris Juicy）：普通专属药水。获得 30 点心之壁。
+/// 鲜榨杨桃汁（Bellaris Juicy）：普通专属药水。获得 100 点心之壁。
 /// </summary>
 [RegisterPotion(typeof(BellaPotionPool))]
 public sealed class BellarisJuicy : ModPotionTemplate
@@ -30,7 +30,7 @@ public sealed class BellarisJuicy : ModPotionTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("HeartWallGain", 30m)
+        new DynamicVar("HeartWallGain", 100m)
     ];
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)

@@ -24,8 +24,8 @@
   "ZHIJIANG_POWER_POTATO_MINE_POWER.smartDescription": "倒计时：{Amount}回合。结束后对血量最多的敌人造成 [blue]{Damage}[/blue]点伤害。",
 
   "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.title": "枝江小百合",
-  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.description": "每当你打出5张[gold]阴阳性[/gold]与当前[gold]黑白拉[/gold]状态相反的牌时，获得1点[gold]敏捷[/gold]。",
-  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.smartDescription": "每当你打出{ContrastThreshold}张[gold]阴阳性[/gold]与当前[gold]黑白拉[/gold]状态相反的牌时，获得1点[gold]敏捷[/gold]。",
+  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.description": "每当你打出5张[gold]反差牌[/gold]时，获得1点[gold]敏捷[/gold]。",
+  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.smartDescription": "每当你打出{ContrastThreshold}张[gold]反差牌[/gold]时，获得1点[gold]敏捷[/gold]。",
 "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.title": "都是我的翅膀",
   "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.description": "若你的回合打出的[gold]阳牌[/gold]数等于[gold]阴牌[/gold]数，下回合获得[blue]1[/blue]{energyPrefix:energyIcons(1)}。",
   "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.smartDescription": "若你的回合打出的[gold]阳牌[/gold]数等于[gold]阴牌[/gold]数，下回合获得{Amount:energyIcons()}。",
@@ -47,9 +47,9 @@
   "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.title": "那我就是笨嘛",
   "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.description": "每回合开始时，失去{Amount}点[gold]敏捷[/gold]，回复{Amount}点生命。",
   "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.smartDescription": "每回合开始时，失去{Amount}点[gold]敏捷[/gold]，回复{Amount}点生命。",
-"ZHIJIANG_POWER_BIFANG_SAMA_POWER.title": "毕方大人",
-  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.description": "每回合开始时，将{Amount}张随机[gold]攻击牌[/gold]加入[gold]手牌[/gold]，本回合可免费打出。",
-  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.smartDescription": "每回合开始时，将{Amount}张随机[gold]攻击牌[/gold]加入[gold]手牌[/gold]，本回合可免费打出。",
+"ZHIJIANG_POWER_BIFANG_SAMA_POWER.title": "毕方",
+  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.description": "每回合开始时，将{Amount}张随机[gold]攻击牌[/gold]加入[gold]手牌[/gold]。",
+  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.smartDescription": "每回合开始时，将{Amount}张随机[gold]攻击牌[/gold]加入[gold]手牌[/gold]。",
 
   "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.title": "三倍阴刃",
   "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.description": "你的下一张[gold]阴[/gold]攻击牌造成3倍伤害。",

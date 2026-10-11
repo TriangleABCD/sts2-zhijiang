@@ -14,7 +14,7 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 扁拉：罕见牌（阴 / 技能）。消耗。将 1→2 张原版无色攻击牌「压扁」加入弃牌堆，本场战斗内免费打出。
+// 扁拉：罕见牌（阴 / 技能）。消耗。将 3→4 张原版无色攻击牌「压扁」加入弃牌堆，本场战斗内免费打出。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class FlattenedBella : ModCardTemplate
 {
@@ -30,7 +30,7 @@ public sealed class FlattenedBella : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("SquashCount", 1m)
+        new DynamicVar("SquashCount", 3m)
     ];
 
     // 「压扁」悬浮提示。
@@ -52,7 +52,7 @@ public sealed class FlattenedBella : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 生成 1→2 张「压扁」，设为本场免费打出，加入弃牌堆。
+        // 生成 3→4 张「压扁」，设为本场免费打出，加入弃牌堆。
         List<Squash> squashes = new();
         for (int i = 0; i < DynamicVars["SquashCount"].IntValue; i++)
         {
@@ -69,7 +69,7 @@ public sealed class FlattenedBella : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 压扁 1 → 2。
+        // 压扁 3 → 4。
         DynamicVars["SquashCount"].UpgradeValueBy(1m);
     }
 }

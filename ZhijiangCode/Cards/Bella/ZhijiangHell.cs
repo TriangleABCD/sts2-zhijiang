@@ -14,7 +14,7 @@ using Zhijiang.ZhijiangCode.SecondResource;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 枝江地狱：0 费获得 1 能量，代价是消耗 12→8 心之壁。
+// 枝江地狱：0 费获得 2→3 能量，代价是消耗 12→8 心之壁。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class ZhijiangHell : ModCardTemplate
 {
@@ -30,10 +30,10 @@ public sealed class ZhijiangHell : ModCardTemplate
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/zhijiang_hell.png");
 
-    // 能量增益（恒为 1，升级只降心之壁费用）。
+    // 能量增益 2 → 3（升级同时降低心之壁费用）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new EnergyVar(1)
+        new EnergyVar(2)
     ];
 
     // 能量图标悬浮提示（同原版能量牌）。
@@ -56,13 +56,14 @@ public sealed class ZhijiangHell : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 获得 1 点能量。
+        // 获得 2 点能量。
         await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, base.Owner);
     }
 
     protected override void OnUpgrade()
     {
-        // 心之壁费用 12 → 8。
+        // 能量 2 → 3；心之壁费用 12 → 8。
+        DynamicVars.Energy.UpgradeValueBy(1m);
         this.SecondaryCosts().Set(HeartWall.HeartWallId, UpgradedHeartWallCost);
     }
 }

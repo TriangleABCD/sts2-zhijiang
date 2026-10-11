@@ -28,6 +28,9 @@ public sealed class ASoulIsComing : ModCardTemplate
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/a_soul_is_coming.png");
 
+    // 多人模式专属：单人局不进入奖励池/商店（同原版 GangUp、Rally 等 17 张卡）。
+    public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
+
     // 灵魂卡悬浮提示。
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [

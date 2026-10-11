@@ -30,6 +30,9 @@ public sealed class LovesSecret : ModCardTemplate
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/loves_secret.png");
 
+    // 多人模式专属：单人局不进入奖励池/商店（同原版 GangUp、Rally 等 17 张卡）。
+    public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(3),

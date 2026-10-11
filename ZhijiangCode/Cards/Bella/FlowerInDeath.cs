@@ -6,17 +6,16 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
-using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
 using Zhijiang.ZhijiangCode.Characters.Bella;
-using Zhijiang.ZhijiangCode.SecondResource;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 末路狂花：普通牌（阴 / 攻击）。对目标造成伤害；若手牌中没有阴牌，则额外造成同等伤害。
+// 末路狂花：普通牌（阴 / 攻击）。造成伤害；若手牌中没有阳牌，则在本场战斗中升级手牌中的所有牌。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class FlowerInDeath : ModCardTemplate
 {
@@ -54,21 +53,24 @@ public sealed class FlowerInDeath : ModCardTemplate
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        // 若手牌中没有阴牌，再造成一次伤害。
-        bool hasYinInHand = PileType.Hand.GetPile(base.Owner).Cards
-            .Any(c => c.Keywords.Contains(BellaYinYangService.YinKeywordId.GetModCardKeyword()));
-        if (!hasYinInHand)
+        // 若手牌中没有阳牌，则升级手牌中的所有牌。
+        // 战斗中打出的牌是牌组卡牌的克隆体（Player.PopulateCombatState 里 state.CloneCard），
+        // 因此升级只持续到本场战斗结束、战斗结束自动还原，无需手动回滚——同原版药水「锻造祝福」。
+        bool hasYangInHand = PileType.Hand.GetPile(base.Owner).Cards
+            .Any(c => c.Keywords.Contains(BellaYinYangService.YangKeywordId.GetModCardKeyword()));
+        if (hasYangInHand)
+            return;
+
+        foreach (CardModel card in PileType.Hand.GetPile(base.Owner).Cards.ToList())
         {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
-                .Targeting(cardPlay.Target)
-                .Execute(choiceContext);
+            if (card.IsUpgradable)
+                CardCmd.Upgrade(card);
         }
     }
 
     protected override void OnUpgrade()
     {
-        // 伤害 9 → 12。
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        // 伤害 9 → 13。
+        DynamicVars.Damage.UpgradeValueBy(4m);
     }
 }

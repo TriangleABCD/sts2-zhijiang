@@ -119,7 +119,7 @@
 
 | 图标 | 名称 | 稀有度 | 效果 | 代码路径 |
 |------|------|--------|------|----------|
-| <!-- TODO --> | 晃悠悠 (Swaying Hairpin) | 普通 | 每回合第一次打出反差牌时，获得 4 心之壁 | `Relics/Bella/SwayingHairpin.cs` |
+| <!-- TODO --> | 晃悠悠 (Swaying Hairpin) | 普通 | 每打出一张反差牌时，获得 5 心之壁 | `Relics/Bella/SwayingHairpin.cs` |
 | <!-- TODO --> | 锤子 (Hammer) | 罕见 | 拾起时，牌组中所有打击获得重放 1 并消耗 | `Relics/Bella/Hammer.cs` |
 | <!-- TODO --> | 平底锅 (Frying Pan) | 罕见 | 拾起时，牌组中所有防御获得重放 1 并虚无 | `Relics/Bella/FryingPan.cs` |
 | <!-- TODO --> | 露西亚痛机 (LuciaPC) | 稀有 | 每当白拉/黑拉状态翻转时，抽 1 张牌并获得 2 格挡 | `Relics/Bella/LuciaPC.cs` |
@@ -137,7 +137,7 @@
 
 | 图标 | 名称 | 稀有度 | 效果 | 代码路径 |
 |------|------|--------|------|----------|
-| <!-- TODO 占位图 --> | 鲜榨杨桃汁 (Bellaris Juicy) | 普通 | 获得 30 点心之壁 | `Potions/Bella/BellarisJuicy.cs` |
+| <!-- TODO 占位图 --> | 鲜榨杨桃汁 (Bellaris Juicy) | 普通 | 获得 100 点心之壁 | `Potions/Bella/BellarisJuicy.cs` |
 | <!-- TODO 占位图 --> | 贝拉洗脚水 (Bella's Foot Wash Water) | 罕见 | 你的下一张阴攻击牌造成 3 倍伤害 | `Potions/Bella/BellaFootWashWater.cs` / `Powers/BellaYinTriplePower.cs` |
 | <!-- TODO 占位图 --> | 贝极星气泡水 (Bellaris Bubble Water) | 稀有 | 获得 7 层再生 | `Potions/Bella/BellarisBubbleWater.cs` |
 
@@ -166,7 +166,7 @@
 | 小土豆雷 | 普通 | 攻击 | 阴 | |
 | 贝0 | 普通 | 攻击 | 阴 | |
 | 贝1 | 普通 | 攻击 | 阳 | |
-| 一个魂来咯 | 罕见 | 技能 | 阳 | |
+| 一个魂来咯 | 罕见 | 技能 | 阳 | 多人模式专属 |
 | 20号循环 | 稀有 | 技能 | 阴 | |
 | 黑贝拉sama | 稀有 | 能力 | 阴 | |
 | 了转反 | 稀有 | 技能 | 中立 | 判定翻转 |
@@ -221,7 +221,7 @@
 | 队长的权力是无限的 | 稀有 | 能力 | 中立 | |
 | 长路归航 | 稀有 | 技能 | 中立 | |
 | 扁拉 | 罕见 | 技能 | 阴 | |
-| 巨龙腾飞 | 稀有 | 攻击 | 阳 | 耗 10 心之壁 |
+| 巨龙腾飞 | 稀有 | 攻击 | 阳 | 耗 10 心之壁；多人模式专属 |
 | 我以灵魂注视你的心 | 稀有 | 能力 | 阳 | |
 | 妹宝 | 罕见 | 技能 | 阴 | |
 | 那我就是笨嘛 | 稀有 | 能力 | 阴 | 耗 10 心之壁 |
@@ -234,15 +234,15 @@
 | 舞斗会冠军 | 罕见 | 攻击 | 阳 | |
 | 挠头 | 罕见 | 技能 | 阳 | |
 | 老公x我 | 罕见 | 技能 | 阳 | |
-| 毕方大人 | 罕见 | 能力 | 阳 | |
+| 毕方 | 罕见 | 能力 | 阳 | |
 | 贝拉博士 | 罕见 | 攻击 | 阴 | |
 | 大咪 | 罕见 | 技能 | 阴 | |
 | 杨桃干 | 罕见 | 攻击 | 阴 | |
 | Maria | 稀有 | 攻击 | 阳 | |
 | 短裙 | 稀有 | 技能 | 阳 | |
-| 蓓蕾 | 稀有 | 攻击 | 阳 | 耗 20 心之壁；多人联动 |
-| 恋爱心事 | 稀有 | 技能 | 阴 | 耗 20 心之壁；多人联动 |
-| 白龙马 | 稀有 | 能力 | 阴 | 耗 20 心之壁；多人联动 |
+| 蓓蕾 | 稀有 | 攻击 | 阳 | 耗 20 心之壁；多人模式专属 |
+| 恋爱心事 | 稀有 | 技能 | 阴 | 耗 20 心之壁；多人模式专属 |
+| 白龙马 | 稀有 | 能力 | 阴 | 耗 20 心之壁；多人模式专属 |
 
 > 已有卡牌阴阳属性已按此表在代码中实现（`CanonicalKeywords` 挂载阳/阴关键词）。后续新增卡牌必须先在 4.0 表中登记阴阳属性。
 
@@ -275,7 +275,7 @@
 | 贝0 | 0 | 造成 3→4 点伤害，抽牌堆随机 2→3 张 0 费牌加入手牌 | `Cards/Bella/BellaIsZero.cs` |
 | 贝1 | 0 | 造成 3→4 点伤害，抽牌堆随机 2→3 张 1 费牌加入手牌 | `Cards/Bella/BellaIsOne.cs` |
 | 牛不灭 | 1 | 造成 13→16 点伤害，弃牌堆中加入 1 张牛批 | `Cards/Bella/OxNeverDie.cs` |
-| 末路狂花 | 1 | 造成 9→12 点伤害；若手牌中没有阴牌，额外造成 9→12 点伤害 | `Cards/Bella/FlowerInDeath.cs` |
+| 末路狂花 | 1 | 造成 9→13 点伤害；若手牌中没有阳牌，在本场战斗中升级手牌中的所有牌 | `Cards/Bella/FlowerInDeath.cs` |
 | 贝拉求雨 | 1 | 造成 6→8 点伤害，本回合每打出一张技能牌，此牌伤害 +1 | `Cards/Bella/BellaPraysForRain.cs` |
 | 锅锤打击 | 1 | 造成 4→6 点伤害；若处于白拉，额外造成 3→4 点伤害 | `Cards/Bella/PotHammerStrike.cs` |
 
@@ -286,12 +286,12 @@
 | 预防针了 | 1 | 获得 5⇢10 心之壁 + 8⇢11 格挡，失去 1 力量 | `Cards/Bella/PreventionShot.cs` |
 | 真情实感 | 1 | 去除所有敌人 5⇢8 点格挡（不足全去），消耗 10 心之壁 | `Cards/Bella/Heartfelt.cs` |
 | 冰山美人 | 1⇢0 | 生成 1 个冰霜充能球 | `Cards/Bella/IceBeauty.cs` |
-| 嘿嘿！ | 1⇢0 | 消耗。将你的能量翻倍，耗 10 心之壁 | `Cards/Bella/Hihi.cs` |
+| 嘿嘿！ | 0 | 消耗。将你的能量翻倍，耗 10 心之壁；升级移除消耗 | `Cards/Bella/Hihi.cs` |
 | A.T. 立场 | 1 | 获得格挡，数值等于当前心之壁除以 5⇢4（向下取整） | `Cards/Bella/AtField.cs` |
 | 日程表 | 1 | 获得 8→10 格挡；本回合每消耗 1 点心之壁，获得 1 点格挡 | `Cards/Bella/Schedule.cs` |
-| 小滑板 | 1 | 抽 1→2 张牌，弃 1 张牌；若弃掉的是阴牌，额外抽 1→2 张牌 | `Cards/Bella/LittleSkateboard.cs` |
-| 提线木偶 | 0 | 获得 15→20 点心之壁 | `Cards/Bella/Marionette.cs` |
-| 小企鹅 | 1 | 获得 8→11 点格挡；若处于白拉，额外获得等于 |d| 的格挡 | `Cards/Bella/LittlePenguin.cs` |
+| 小滑板 | 1 | 抽 1 张牌；若抽到的是阴牌，额外抽 1→2 张牌 | `Cards/Bella/LittleSkateboard.cs` |
+| 提线木偶 | 0 | 获得 30→50 点心之壁，获得 6→9 点格挡 | `Cards/Bella/Marionette.cs` |
+| 小企鹅 | 1 | 获得 11→14 点格挡；若处于白拉，额外获得等于阴阳数量差的格挡 | `Cards/Bella/LittlePenguin.cs` |
 | 月兔回旋于空中 | 1 | 获得 17→21 点格挡，获得 1→2 点敏捷，将 1 张高雅加入你的抽牌堆 | `Cards/Bella/MoonRabbitSpinningInTheAir.cs` |
 | 焦拉 | 1 | 抽 2→3 张牌；若处于黑拉，抽到的阴牌本回合耗能 -1 | `Cards/Bella/ScorchedBella.cs` |
 | 小伙伴对不起 | 1 | 获得 5 点心之壁，抽 1→2 张牌 | `Cards/Bella/SorryLittleFriends.cs` |
@@ -310,7 +310,7 @@
 
 | 名称 | 费用 | 效果 | 代码路径 |
 |------|------|------|----------|
-| 情人越多越气派 | 1 | 造成 7→8 点伤害。本回合你每打出过 1 张阴阳性与当前状态相反的牌，此牌额外造成 1 次伤害 | `Cards/Bella/MoreLoverMorePowerful.cs` |
+| 情人越多越气派 | 1 | 造成 10→11 点伤害。本回合中你每打出过 1 张反差牌，额外造成 1 次伤害（卡面用 `{InCombat:（攻击N次）|}` 实时显示攻击次数） | `Cards/Bella/MoreLoverMorePowerful.cs` |
 | 回旋镖 | 2 | 造成 8→12 点伤害，本回合每打出过 1 张反差牌，伤害 +2 | `Cards/Bella/Boomerang.cs` |
 | 天猫精灵 | 2 | 对所有敌人造成 6→9 点伤害；若处于黑拉，对随机敌人再造成 4→6 点伤害 | `Cards/Bella/TmallGenie.cs` |
 | 双倍的寡妇 | 1 | 造成 5→8 点伤害；若目标带虚弱/易伤/中毒等状态，额外造成 1 次伤害 | `Cards/Bella/DoubleWidow.cs` |
@@ -319,19 +319,19 @@
 | 一起跳起来 | 1 | 造成 5→7 点伤害；若本回合打出过反差牌，额外攻击 1→2 次 | `Cards/Bella/JumpTogether.cs` |
 | 烧烤贝极星 | 0 | 造成等于手牌数的伤害，弃牌堆加入 1 张灼伤。耗 5 心之壁；升级加「固有」 | `Cards/Bella/BbqBellaris.cs` |
 | 贝拉兔 | 1 | 造成 5→7 伤害；若白拉抽 1 张牌 | `Cards/Bella/BellaRabbit.cs` |
-| 舞斗会冠军 | 2 | 造成 4→5 伤害 2 次，每次命中获得 1→2 格挡 | `Cards/Bella/DanceBattleChampion.cs` |
-| 贝拉博士 | 1 | 造成 5→7 伤害；若黑拉额外 2→3 伤害 | `Cards/Bella/DoctorBella.cs` |
+| 舞斗会冠军 | 2 | 造成 6→8 伤害 2 次，获得 5→8 点格挡（一次性） | `Cards/Bella/DanceBattleChampion.cs` |
+| 贝拉博士 | 1 | 造成 7→10 伤害；若处于白拉则变为黑拉（本场战斗判定翻转） | `Cards/Bella/DoctorBella.cs` |
 | 杨桃干 | 0 | 造成 6→9 点伤害，弃牌堆加入 1 张牛批 | `Cards/Bella/DeadBellaris.cs` |
 
 #### 技能牌
 
 | 名称 | 费用 | 效果 | 代码路径 |
 |------|------|------|----------|
-| 一个魂来咯 | 1 | 消耗。所有玩家的抽牌堆、手牌、弃牌堆各加入 1 张灵魂（共 3 张），支持联机。升级：移除消耗 | `Cards/Bella/ASoulIsComing.cs` |
+| 一个魂来咯 | 1 | 消耗。所有玩家的抽牌堆、手牌、弃牌堆各加入 1 张灵魂（共 3 张）。升级：移除消耗。多人模式专属 | `Cards/Bella/ASoulIsComing.cs` |
 | 红莲华 | 1 | 获得 6⇢8 格挡，本回合每打出过 1 张阴阳相反的牌额外获得 2⇢3 格挡 | `Cards/Bella/Gurenge.cs` |
-| 枝江地狱 | 0 | 获得 1 能量，耗 12⇢8 心之壁 | `Cards/Bella/ZhijiangHell.cs` |
+| 枝江地狱 | 0 | 获得 2→3 能量，耗 12⇢8 心之壁 | `Cards/Bella/ZhijiangHell.cs` |
 | 分奴 | 1 | 消耗你手中所有阴牌，每消耗一张抽 1→2 张牌 | `Cards/Bella/Tryhard.cs` |
-| 贝极熊 | 1 | 获得 8→11 点格挡；若本回合已打出 3→2 张技能牌，额外获得 5→6 点格挡 | `Cards/Bella/BellarisBear.cs` |
+| 贝极熊 | 1 | 获得 11→16 点格挡；若本回合没有打出过攻击牌，额外获得 5→7 点格挡 | `Cards/Bella/BellarisBear.cs` |
 | 一个女人满足不了我 | 2 | 抽 3 张牌，将最多 3→5 张手牌洗回抽牌堆，每张 0 费牌获得 2 点格挡 | `Cards/Bella/OneWomanCantSatisfyMe.cs` |
 | 牛来 | 0 | 获得 9→12 点格挡，将 1 张牛批加入弃牌堆 | `Cards/Bella/CowsAreComing.cs` |
 | 天使贝拉 | 1 | 将 1 张高雅加入抽牌堆，抽 2→3 张牌 | `Cards/Bella/AngelBella.cs` |
@@ -339,11 +339,11 @@
 | 芭蕾舞者 | 0 | 获得 9→12 点格挡，将 1 张高雅加入手牌 | `Cards/Bella/Ballerina.cs` |
 | 9000同接擤鼻涕 | 0 | 获得 2→3 能量，消耗 5 心之壁 | `Cards/Bella/NoseBlowWhen9000Concurrent.cs` |
 | 晕3D | 1⇢0 | 抽 3 张牌，将 1 张晕眩加入抽牌堆 | `Cards/Bella/Dizzy3D.cs` |
-| 抬头！ | 0 | 所有玩家获得 1→2 点力量。耗 5 心之壁 | `Cards/Bella/HeadsUp.cs` |
-| 挠头 | 1 | 获得 8→11 格挡；若本回合未打出攻击牌，额外 4→5 格挡 | `Cards/Bella/ScratchHead.cs` |
+| 抬头！ | 0 | 自己获得 3→4 点力量。耗 5 心之壁 | `Cards/Bella/HeadsUp.cs` |
+| 挠头 | 1 | 获得 7→10 格挡；若本回合打出过反差牌，随机免费打出抽牌堆中的一张技能牌 | `Cards/Bella/ScratchHead.cs` |
 | 老公x我 | 1 | 获得 2 心之壁；若阴阳平衡抽 2→3 张牌 | `Cards/Bella/BellaDoMe.cs` |
-| 大咪 | 1 | 抽 2→3 张牌，弃 1 张；若弃的是阴牌再抽 1 张 | `Cards/Bella/GreatKitty.cs` |
-| 扁拉 | 1 | 消耗。将 1→2 张压扁加入弃牌堆，本场战斗中免费打出 | `Cards/Bella/FlattenedBella.cs` |
+| 大咪 | 1 | 抽 2→3 张牌；若抽到的牌中有阳牌，回复 1→2 点生命 | `Cards/Bella/GreatKitty.cs` |
+| 扁拉 | 1 | 消耗。将 3→4 张压扁加入弃牌堆，本场战斗中免费打出 | `Cards/Bella/FlattenedBella.cs` |
 
 #### 能力牌
 
@@ -354,7 +354,7 @@
 | 枝江小百合 | 1 | 每打出 5⇢3 张反差牌获得 1 点敏捷 | `Cards/Bella/ZhijiangLes.cs` |
 | 都是我的翅膀 | 2 | 若本回合打出阳牌数等于阴牌数，下回合获得 1→2 点能量 | `Cards/Bella/AllAreMyWings.cs` |
 | 牛牛民 | 1 | 每当你获得一张牛批，获得 3→4 点心之壁 | `Cards/Bella/CowLover.cs` |
-| 毕方大人 | 1 | 每回合开始将 1→2 张随机攻击牌加入手牌，本回合免费打出 | `Cards/Bella/BifangSama.cs` |
+| 毕方 | 1 | 每回合开始将 1→2 张随机攻击牌加入手牌 | `Cards/Bella/BifangSama.cs` |
 
 ### 4.4 稀有牌 (Rare)
 
@@ -369,11 +369,11 @@
 | 女女关系领域大神 | 1 | 造成 12→16 点伤害；若处于白拉，本场战斗每有一张技能牌，伤害 +1 | `Cards/Bella/YuriDomainExpert.cs` |
 | 勇气大爆发 | 3 | 对所有敌人造成 7→10 点伤害；若处于黑拉，对血量最少的敌人再造成 10→15 点伤害 | `Cards/Bella/CourageBurst.cs` |
 | 指挥官山药姐 | 2 | 造成 6→8 点伤害；若阴阳平衡，再造成一次伤害 | `Cards/Bella/CommanderKira.cs` |
-| 巨龙腾飞 | 2 | 消耗，耗 10 心之壁。造成 13→15 伤害；击杀敌人则所有玩家获得 30→40 金币 | `Cards/Bella/GiantDragonSoars.cs` |
+| 巨龙腾飞 | 2 | 消耗，耗 10 心之壁。造成 13→15 伤害；击杀敌人则所有玩家获得 30→40 金币。多人模式专属 | `Cards/Bella/GiantDragonSoars.cs` |
 | 小打火机 | 2 | 造成 1+累计加成伤害；消耗所有状态牌，每张使本场后续伤害 +1→+2 | `Cards/Bella/LittleLighter.cs` |
 | 闪光弹 | 3 | 造成 17→20 伤害；若击杀敌人，击晕其他所有敌人 | `Cards/Bella/ShinyDancer.cs` |
 | Maria | 2 | 造成 10→13 伤害；若阴阳平衡再造成 5→7 伤害 | `Cards/Bella/Maria.cs` |
-| 蓓蕾 | 0 | 耗 20 心壁。对所有敌人造成 4 点伤害 3 次；若队伍中有嘉然，你与嘉然各回复 5→7 生命 | `Cards/Bella/Bud.cs` |
+| 蓓蕾 | 0 | 耗 20 心壁。对所有敌人造成 4 点伤害 3 次；若队伍中有嘉然，你与嘉然各回复 5→7 生命。多人模式专属 | `Cards/Bella/Bud.cs` |
 
 #### 技能牌
 
@@ -386,7 +386,7 @@
 | 我再也不玩抽象了 | 3 | 消耗，耗 25 心之壁。消耗所有高雅，每消耗 3 张获得 1 点能量并抽 1 张牌。升级：移除消耗 | `Cards/Bella/NoMoreAbstraction.cs` |
 | 贝丽君 | 1 | 获得 11→15 点格挡，抽 2 张牌，将 1 张高雅加入抽牌堆 | `Cards/Bella/BellaTeng.cs` |
 | 短裙 | 0 | 获得 14→18 格挡，本回合所有阳牌保留，将 1 张高雅加入手牌 | `Cards/Bella/ShortSkirt.cs` |
-| 恋爱心事 | 0 | 耗 20 心壁。抽 3 张牌；若队伍中有乃琳，你与乃琳各回复 5→7 生命 | `Cards/Bella/LovesSecret.cs` |
+| 恋爱心事 | 0 | 耗 20 心壁。抽 3 张牌；若队伍中有乃琳，你与乃琳各回复 5→7 生命。多人模式专属 | `Cards/Bella/LovesSecret.cs` |
 | 长路归航 | 3 | 消耗。将所有 0 费牌加入手牌并升级；手牌中所有 1 费牌本回合减至 0 费。升级：移除消耗 | `Cards/Bella/LongRoadHome.cs` |
 
 #### 能力牌
@@ -399,7 +399,7 @@
 | 队长的权力是无限的 | 2 | 每回合开始时你可以丢弃一张牌；若弃的是技能牌，抽 1→2 张牌 | `Cards/Bella/CaptainsPowerIsInfinite.cs` |
 | 我以灵魂注视你的心 | 3⇢2 | 每回合开始时获得 1 张灵魂 | `Cards/Bella/SoulGaze.cs` |
 | 那我就是笨嘛 | 3 | 耗 10 心之壁。每回合开始时失去 1 点敏捷，回复 1→2 生命 | `Cards/Bella/ThenImJustStupid.cs` |
-| 白龙马 | 0 | 耗 20 心壁。获得 15 点格挡；若队伍中有乃琳，你与乃琳各回复 5→7 生命 | `Cards/Bella/WhiteDragonHorse.cs` |
+| 白龙马 | 0 | 耗 20 心壁。获得 15 点格挡；若队伍中有乃琳，你与乃琳各回复 5→7 生命。多人模式专属 | `Cards/Bella/WhiteDragonHorse.cs` |
 
 ### 4.5 远古牌 (Ancient)
 

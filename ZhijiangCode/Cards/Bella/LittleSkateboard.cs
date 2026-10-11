@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -14,7 +13,7 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 小滑板：普通牌（阴 / 技能）。抽 1→2 张牌；弃 1 张牌；若弃掉的是阴牌，额外抽 1→2 张牌。
+// 小滑板：普通牌（阴 / 技能）。抽 1 张牌；若抽到的是阴牌，再抽 1→2 张牌（升级只提升额外抽牌数）。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class LittleSkateboard : ModCardTemplate
 {
@@ -46,29 +45,17 @@ public sealed class LittleSkateboard : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 抽 1→2 张牌。
-        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner);
+        // 抽 1 张牌。
+        List<CardModel> drawn = (await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner)).ToList();
 
-        // 弃 1 张牌（玩家选择）。
-        CardModel? discarded = (await CardSelectCmd.FromHandForDiscard(
-            choiceContext, base.Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1), null, this))
-            .FirstOrDefault();
-        if (discarded == null)
-            return;
-
-        await CardCmd.Discard(choiceContext, discarded);
-
-        // 若弃掉的是阴牌，额外抽 1→2 张。
-        if (discarded.Keywords.Contains(BellaYinYangService.YinKeywordId.GetModCardKeyword()))
-        {
+        // 若抽到的是阴牌，再抽 1→2 张。
+        if (drawn.Any(c => c.Keywords.Contains(BellaYinYangService.YinKeywordId.GetModCardKeyword())))
             await CardPileCmd.Draw(choiceContext, DynamicVars["ExtraDraw"].BaseValue, base.Owner);
-        }
     }
 
     protected override void OnUpgrade()
     {
-        // 抽牌 1 → 2，额外抽 1 → 2。
-        DynamicVars.Cards.UpgradeValueBy(1m);
+        // 额外抽牌 1 → 2（基础抽牌数不变）。
         DynamicVars["ExtraDraw"].UpgradeValueBy(1m);
     }
 }

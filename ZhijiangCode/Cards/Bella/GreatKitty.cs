@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -14,12 +13,11 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 大咪（Great Kitty）：罕见牌（阴 / 技能）。抽牌，弃 1 张；若弃的是阴牌，再抽 1 张。
+// 大咪（Great Kitty）：罕见牌（阴 / 技能）。抽 2→3 张牌；若抽到的牌中有阳牌，回复 1→2 点生命。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class GreatKitty : ModCardTemplate
 {
     private const int BaseEnergyCost = 1;
-    private const int ExtraDraw = 1;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Uncommon;
     private const TargetType CardTarget = TargetType.Self;
@@ -30,7 +28,8 @@ public sealed class GreatKitty : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(2)
+        new CardsVar(2),
+        new DynamicVar("HealAmount", 1m)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -42,20 +41,18 @@ public sealed class GreatKitty : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner);
+        // 抽 2→3 张牌。
+        List<CardModel> drawn = (await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner)).ToList();
 
-        CardModel? discarded = (await CardSelectCmd.FromHandForDiscard(
-            choiceContext, base.Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1), null, this))
-            .FirstOrDefault();
-        if (discarded == null) return;
-
-        await CardCmd.Discard(choiceContext, discarded);
-        if (discarded.Keywords.Contains(BellaYinYangService.YinKeywordId.GetModCardKeyword()))
-            await CardPileCmd.Draw(choiceContext, ExtraDraw, base.Owner);
+        // 若抽到的牌中有阳牌，回复 1→2 点生命。
+        if (drawn.Any(c => c.Keywords.Contains(BellaYinYangService.YangKeywordId.GetModCardKeyword())))
+            await CreatureCmd.Heal(base.Owner.Creature, DynamicVars["HealAmount"].IntValue);
     }
 
     protected override void OnUpgrade()
     {
+        // 抽牌 2 → 3，回复 1 → 2。
         DynamicVars.Cards.UpgradeValueBy(1m);
+        DynamicVars["HealAmount"].UpgradeValueBy(1m);
     }
 }

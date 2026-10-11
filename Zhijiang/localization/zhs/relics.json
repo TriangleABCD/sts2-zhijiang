@@ -8,7 +8,7 @@
   "ZHIJIANG_RELIC_KIRA_BELLARIS.flavor": "贝武圣·闪耀",
 
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.title": "晃悠悠",
-  "ZHIJIANG_RELIC_SWAYING_HAIRPIN.description": "每回合[gold]第一次[/gold]打出[gold]反差牌[/gold]时，获得{HeartWallGain}点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_RELIC_SWAYING_HAIRPIN.description": "每打出一张[gold]反差牌[/gold]时，获得{HeartWallGain}点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.flavor": "发卡轻轻晃动。",
 
   "ZHIJIANG_RELIC_HAMMER.title": "锤子",

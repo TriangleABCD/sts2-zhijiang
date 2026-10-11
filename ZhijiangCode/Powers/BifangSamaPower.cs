@@ -15,8 +15,7 @@ using STS2RitsuLib.Scaffolding.Content;
 namespace Zhijiang.ZhijiangCode.Powers;
 
 /// <summary>
-/// 毕方大人能力：每回合开始时，将 {Amount} 张随机攻击牌加入手牌，
-/// 这些牌在本回合可以免费打出。
+/// 毕方能力：每回合开始时，将 {Amount} 张随机攻击牌加入手牌（不再免费打出）。
 /// </summary>
 [RegisterPower]
 public sealed class BifangSamaPower : ModPowerTemplate
@@ -46,9 +45,6 @@ public sealed class BifangSamaPower : ModPowerTemplate
             .ToList();
 
         foreach (var card in cards)
-        {
-            card.SetToFreeThisTurn();
             await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, player);
-        }
     }
 }

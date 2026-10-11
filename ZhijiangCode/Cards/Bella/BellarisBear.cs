@@ -13,7 +13,7 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 贝极熊：罕见牌（阳 / 技能）。获得格挡；若本回合已有足够多技能牌，额外获得格挡。
+// 贝极熊：罕见牌（阳 / 技能）。获得格挡；若本回合没打出过攻击牌，额外获得格挡。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class BellarisBear : ModCardTemplate
 {
@@ -30,8 +30,7 @@ public sealed class BellarisBear : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(11, ValueProp.Move),
-        new DynamicVar("SkillThreshold", 3m),
-        new DynamicVar("BonusBlock", 7m)
+        new DynamicVar("BonusBlock", 5m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
@@ -52,7 +51,7 @@ public sealed class BellarisBear : ModCardTemplate
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         int block = DynamicVars.Block.IntValue;
-        if (BellaYinYangService.GetSkillPlaysThisTurn(base.Owner) >= DynamicVars["SkillThreshold"].IntValue)
+        if (BellaYinYangService.GetAttackPlaysThisTurn(base.Owner) == 0)
             block += DynamicVars["BonusBlock"].IntValue;
 
         await CreatureCmd.GainBlock(base.Owner.Creature, block, ValueProp.Move, cardPlay);
@@ -60,9 +59,8 @@ public sealed class BellarisBear : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 格挡 8 → 11，阈值 3 → 2，额外格挡 5 → 6。
-        DynamicVars.Block.UpgradeValueBy(3m);
-        DynamicVars["SkillThreshold"].UpgradeValueBy(-1m);
-        DynamicVars["BonusBlock"].UpgradeValueBy(1m);
+        // 格挡 11 → 16，额外格挡 5 → 7（触发条件不随升级变化）。
+        DynamicVars.Block.UpgradeValueBy(5m);
+        DynamicVars["BonusBlock"].UpgradeValueBy(2m);
     }
 }

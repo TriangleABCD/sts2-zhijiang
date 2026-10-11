@@ -60,7 +60,7 @@ public sealed class LittlePenguin : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 格挡 8 → 11。
+        // 格挡 11 → 14。
         DynamicVars.Block.UpgradeValueBy(3m);
     }
 }

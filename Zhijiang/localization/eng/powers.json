@@ -24,8 +24,8 @@
   "ZHIJIANG_POWER_POTATO_MINE_POWER.smartDescription": "Countdown: {Amount} turns. When it ends, deal [blue]{Damage}[/blue] damage to the enemy with the most HP.",
 
   "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.title": "Zhijiang Les",
-  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.description": "Every time you play 5 cards whose [gold]Yin-Yang[/gold] opposes your current [gold]Bai La / Hei La[/gold] state, gain 1 [gold]Dexterity[/gold].",
-  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.smartDescription": "Every time you play {ContrastThreshold} cards whose [gold]Yin-Yang[/gold] opposes your current [gold]Bai La / Hei La[/gold] state, gain 1 [gold]Dexterity[/gold].",
+  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.description": "Every time you play 5 [gold]Contrast cards[/gold], gain 1 [gold]Dexterity[/gold].",
+  "ZHIJIANG_POWER_ZHIJIANG_LES_POWER.smartDescription": "Every time you play {ContrastThreshold} [gold]Contrast cards[/gold], gain 1 [gold]Dexterity[/gold].",
 "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.title": "All Are My Wings",
   "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.description": "If you played equal numbers of [gold]Yang[/gold] and [gold]Yin[/gold] cards this turn, gain [blue]1[/blue]{energyPrefix:energyIcons(1)} at the start of your next turn.",
   "ZHIJIANG_POWER_ALL_ARE_MY_WINGS_POWER.smartDescription": "If you played equal numbers of [gold]Yang[/gold] and [gold]Yin[/gold] cards this turn, gain {Amount:energyIcons()} at the start of your next turn.",
@@ -48,9 +48,9 @@
   "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.title": "Then I'm Just Stupid",
   "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.description": "At the start of your turn, lose {Amount} [gold]Dexterity[/gold] and heal {Amount} HP.",
   "ZHIJIANG_POWER_THEN_IM_JUST_STUPID_POWER.smartDescription": "At the start of your turn, lose {Amount} [gold]Dexterity[/gold] and heal {Amount} HP.",
-"ZHIJIANG_POWER_BIFANG_SAMA_POWER.title": "Bifang Sama",
-  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.description": "At the start of your turn, add {Amount} random [gold]Attack[/gold] cards to your [gold]hand[/gold]. They cost 0 this turn.",
-  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.smartDescription": "At the start of your turn, add {Amount} random [gold]Attack[/gold] cards to your [gold]hand[/gold]. They cost 0 this turn.",
+"ZHIJIANG_POWER_BIFANG_SAMA_POWER.title": "Bifang",
+  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.description": "At the start of your turn, add {Amount} random [gold]Attack[/gold] cards to your [gold]hand[/gold].",
+  "ZHIJIANG_POWER_BIFANG_SAMA_POWER.smartDescription": "At the start of your turn, add {Amount} random [gold]Attack[/gold] cards to your [gold]hand[/gold].",
 
   "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.title": "Triple Yin Blade",
   "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.description": "Your next [gold]Yin[/gold] Attack deals triple damage.",

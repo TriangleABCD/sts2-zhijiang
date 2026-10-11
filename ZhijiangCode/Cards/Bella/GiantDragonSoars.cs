@@ -33,6 +33,9 @@ public sealed class GiantDragonSoars : ModCardTemplate
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/giant_dragon_soars.png");
 
+    // 多人模式专属：单人局不进入奖励池/商店（同原版 GangUp、Rally 等 17 张卡）。
+    public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(17, ValueProp.Move),

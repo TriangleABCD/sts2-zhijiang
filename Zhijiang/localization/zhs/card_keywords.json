@@ -1,6 +1,6 @@
 {
   "ZHIJIANG_KEYWORD_YANG.title": "阳",
-  "ZHIJIANG_KEYWORD_YANG.description": "[gold]阳牌[/gold]。[gold]阳牌[/gold]多于[gold]阴牌[/gold]时，贝拉处于[gold]白拉[/gold]状态。[gold]阴阳差[/gold]为[gold]阳牌[/gold]与[gold]阴牌[/gold]的数量差。",
+  "ZHIJIANG_KEYWORD_YANG.description": "[gold]阳牌[/gold]。[gold]阳牌[/gold]多于[gold]阴牌[/gold]时，贝拉处于[gold]白拉[/gold]状态。[gold]阴阳差[/gold]为[gold]阳牌[/gold]与[gold]阴牌[/gold]的数量差。阴阳性与当前[gold]黑白拉[/gold]状态相反的牌称为[gold]反差牌[/gold]。",
   "ZHIJIANG_KEYWORD_YIN.title": "阴",
-  "ZHIJIANG_KEYWORD_YIN.description": "[gold]阴牌[/gold]。[gold]阴牌[/gold]多于[gold]阳牌[/gold]时，贝拉处于[gold]黑拉[/gold]状态。[gold]阴阳差[/gold]为[gold]阳牌[/gold]与[gold]阴牌[/gold]的数量差。"
+  "ZHIJIANG_KEYWORD_YIN.description": "[gold]阴牌[/gold]。[gold]阴牌[/gold]多于[gold]阳牌[/gold]时，贝拉处于[gold]黑拉[/gold]状态。[gold]阴阳差[/gold]为[gold]阳牌[/gold]与[gold]阴牌[/gold]的数量差。阴阳性与当前[gold]黑白拉[/gold]状态相反的牌称为[gold]反差牌[/gold]。"
 }

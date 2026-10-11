@@ -32,6 +32,9 @@ public sealed class WhiteDragonHorse : ModCardTemplate
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/white_dragon_horse.png");
 
+    // 多人模式专属：单人局不进入奖励池/商店（同原版 GangUp、Rally 等 17 张卡）。
+    public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(19, ValueProp.Move),

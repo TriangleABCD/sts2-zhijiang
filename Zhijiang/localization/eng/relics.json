@@ -8,7 +8,7 @@
   "ZHIJIANG_RELIC_KIRA_BELLARIS.flavor": "Bella the Radiant Martial Saint.",
 
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.title": "Swaying Hairpin",
-  "ZHIJIANG_RELIC_SWAYING_HAIRPIN.description": "The first [gold]contrast card[/gold] you play each turn grants {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_RELIC_SWAYING_HAIRPIN.description": "Whenever you play a [gold]Contrast card[/gold], gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.flavor": "The hairpin sways gently.",
 
   "ZHIJIANG_RELIC_HAMMER.title": "Hammer",

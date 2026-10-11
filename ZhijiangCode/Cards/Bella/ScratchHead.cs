@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
@@ -13,7 +16,7 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 挠头：罕见牌（阳 / 技能）。获得格挡；若本回合未打出过攻击牌，额外获得格挡。
+// 挠头：罕见牌（阳 / 技能）。获得格挡；若本回合打出过反差牌，随机打出抽牌堆中的一张技能牌。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class ScratchHead : ModCardTemplate
 {
@@ -28,8 +31,7 @@ public sealed class ScratchHead : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(11, ValueProp.Move),
-        new DynamicVar("BonusBlock", 6m)
+        new BlockVar(7, ValueProp.Move)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
@@ -46,15 +48,30 @@ public sealed class ScratchHead : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int block = DynamicVars.Block.IntValue;
-        if (BellaYinYangService.GetAttackPlaysThisTurn(base.Owner) == 0)
-            block += DynamicVars["BonusBlock"].IntValue;
-        await CreatureCmd.GainBlock(base.Owner.Creature, block, ValueProp.Move, cardPlay);
+        await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block.IntValue, ValueProp.Move, cardPlay);
+
+        // 本卡打出瞬间已被反差牌计数计入，若自身是反差牌需扣除自身。
+        int contrastPlays = BellaYinYangService.GetContrastPlaysThisTurn(base.Owner);
+        if (BellaYinYangService.IsContrastCard(base.Owner, this))
+            contrastPlays--;
+
+        if (contrastPlays <= 0)
+            return;
+
+        // 随机打出抽牌堆中的一张技能牌（免费，同原版「横祸」Catastrophe；没有可打出的技能牌则无事发生）。
+        CardModel? skill = PileType.Draw.GetPile(base.Owner).Cards
+            .Where(c => c.Type == CardType.Skill && !c.Keywords.Contains(CardKeyword.Unplayable))
+            .ToList()
+            .StableShuffle(base.Owner.RunState.Rng.Shuffle)
+            .FirstOrDefault();
+
+        if (skill != null)
+            await CardCmd.AutoPlay(choiceContext, skill, null);
     }
 
     protected override void OnUpgrade()
     {
+        // 格挡 7 → 10。
         DynamicVars.Block.UpgradeValueBy(3m);
-        DynamicVars["BonusBlock"].UpgradeValueBy(1m);
     }
 }
