@@ -1,0 +1,7 @@
+{
+  "ZHIJIANG_SETTINGS_MOD_NAME.title": "Zhijiang",
+  "ZHIJIANG_SETTINGS_PAGE.title": "Settings",
+  "ZHIJIANG_SETTINGS_SECTION_AUDIO.title": "Audio",
+  "ZHIJIANG_SETTINGS_CARD_SFX.title": "Custom card sound effects",
+  "ZHIJIANG_SETTINGS_CARD_SFX.description": "When off, Bella's cards no longer play Zhijiang's custom sound clips. Vanilla card sounds are unaffected, and volume is still controlled by the Sound settings tab."
+}

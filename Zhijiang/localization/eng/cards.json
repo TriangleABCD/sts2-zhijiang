@@ -296,5 +296,16 @@
   "ZHIJIANG_CARD_LOVES_SECRET.smartDescription": "Draw {Cards:diff()} cards.\nIf Nailin is in your party, both of you heal {HealAmount} HP.",
   "ZHIJIANG_CARD_WHITE_DRAGON_HORSE.title": "White Dragon Horse",
   "ZHIJIANG_CARD_WHITE_DRAGON_HORSE.description": "Gain {Block:diff()} [gold]Block[/gold].\nIf Nailin is in your party, both of you heal {HealAmount} HP.",
-  "ZHIJIANG_CARD_WHITE_DRAGON_HORSE.smartDescription": "Gain {Block:diff()} [gold]Block[/gold].\nIf Nailin is in your party, both of you heal {HealAmount} HP."
+  "ZHIJIANG_CARD_WHITE_DRAGON_HORSE.smartDescription": "Gain {Block:diff()} [gold]Block[/gold].\nIf Nailin is in your party, both of you heal {HealAmount} HP.",
+
+  "ZHIJIANG_CARD_COUPLE_ON_THE_CLASH_LANE.title": "Couple on the Clash Lane",
+  "ZHIJIANG_CARD_COUPLE_ON_THE_CLASH_LANE.description": "At the start of each turn, gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_CARD_IRON_STICK.title": "Iron Stick",
+  "ZHIJIANG_CARD_IRON_STICK.description": "Deal damage equal to your [gold]Block[/gold].{InCombat:\n(Deals {CalculatedDamage:diff()} damage)|}",
+  "ZHIJIANG_CARD_TRACTOR_DESCENDS_THE_MOUNTAIN.title": "Tractor Descends the Mountain",
+  "ZHIJIANG_CARD_TRACTOR_DESCENDS_THE_MOUNTAIN.description": "Deal {Damage:diff()} damage to ALL enemies.\n[gold]Stun[/gold] a random enemy.",
+  "ZHIJIANG_CARD_ASCEND_THE_MOUNTAIN.title": "Ascend the Mountain",
+  "ZHIJIANG_CARD_ASCEND_THE_MOUNTAIN.description": "[gold]Exhaust[/gold] up to {ExhaustCount} cards from your [gold]Draw Pile[/gold].\nHeal {HealPerCard} HP for each card [gold]Exhausted[/gold].",
+  "ZHIJIANG_CARD_FAINTED_BY_BELLA.title": "Fainted by Bella",
+  "ZHIJIANG_CARD_FAINTED_BY_BELLA.description": "Whenever an enemy's attack fails to break through your [gold]Block[/gold], [gold]Stun[/gold] that enemy."
 }

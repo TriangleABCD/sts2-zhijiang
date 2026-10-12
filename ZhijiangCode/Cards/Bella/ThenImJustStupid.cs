@@ -10,6 +10,7 @@ using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
+using Zhijiang.ZhijiangCode.Audio;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.Powers;
 using Zhijiang.ZhijiangCode.SecondResource;
@@ -56,6 +57,9 @@ public sealed class ThenImJustStupid : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 打出音效：Zhijiang/audios/then_im_just_stupid.ogg。
+        BellaAudio.PlayCardSfx("then_im_just_stupid.ogg");
+
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         int heal = DynamicVars["Heal"].IntValue;
         await PowerCmd.Apply<ThenImJustStupidPower>(choiceContext, base.Owner.Creature, heal, base.Owner.Creature, this);

@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
+using Zhijiang.ZhijiangCode.Audio;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
@@ -56,6 +57,9 @@ public sealed class Ygnn : ModCardTemplate
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
+
+        // 打出音效：Zhijiang/audios/ygnn.ogg。
+        BellaAudio.PlayCardSfx("ygnn.ogg");
 
         // 多段攻击：造成 {Damage} 点伤害 {HitCount} 次。
         for (int i = 0; i < HitCount; i++)

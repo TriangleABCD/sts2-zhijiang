@@ -54,5 +54,12 @@
 
   "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.title": "Triple Yin Blade",
   "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.description": "Your next [gold]Yin[/gold] Attack deals triple damage.",
-  "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.smartDescription": "Your next [gold]Yin[/gold] Attack deals triple damage."
+  "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.smartDescription": "Your next [gold]Yin[/gold] Attack deals triple damage.",
+
+  "ZHIJIANG_POWER_COUPLE_ON_THE_CLASH_LANE_POWER.title": "Couple on the Clash Lane",
+  "ZHIJIANG_POWER_COUPLE_ON_THE_CLASH_LANE_POWER.description": "At the start of each turn, gain 10 [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_POWER_COUPLE_ON_THE_CLASH_LANE_POWER.smartDescription": "At the start of each turn, gain {Amount} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_POWER_FAINTED_BY_BELLA_POWER.title": "Fainted by Bella",
+  "ZHIJIANG_POWER_FAINTED_BY_BELLA_POWER.description": "Whenever an enemy's attack fails to break through your [gold]Block[/gold], [gold]Stun[/gold] that enemy.",
+  "ZHIJIANG_POWER_FAINTED_BY_BELLA_POWER.smartDescription": "Whenever an enemy's attack fails to break through your [gold]Block[/gold], [gold]Stun[/gold] that enemy."
 }

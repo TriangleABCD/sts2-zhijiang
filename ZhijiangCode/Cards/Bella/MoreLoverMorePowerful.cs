@@ -30,13 +30,15 @@ public sealed class MoreLoverMorePowerful : ModCardTemplate
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/more_lover_more_powerful.png");
 
     // 伤害值：10 → 11（升级 +1）。
-    // CalculatedHits：本卡将攻击的次数 = 1 + 本回合此前的反差牌数；卡面用 {InCombat:（攻击N次）|} 实时显示（同散射炮）。
+    // CalculatedHits：命中次数 = 基础 1 次 + 本回合此前的反差牌数（每张 1 次）。
+    // ⚠️ CalculatedVar 的公式是 CalculationBase + CalculationExtra × multiplier，
+    // 所以 multiplier 只能返回「额外次数」，基础那 1 次由 CalculationBase 提供，否则会重复计数。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(10, ValueProp.Move),
         new CalculationBaseVar(1m),
         new CalculationExtraVar(1m),
-        new CalculatedVar("CalculatedHits").WithMultiplier((CardModel card, Creature? _) => CountHits(card))
+        new CalculatedVar("CalculatedHits").WithMultiplier((CardModel card, Creature? _) => CountExtraHits(card))
     ];
 
     // 阴阳属性：情人越多越气派为阴牌。
@@ -69,13 +71,14 @@ public sealed class MoreLoverMorePowerful : ModCardTemplate
         DynamicVars.Damage.UpgradeValueBy(1);
     }
 
-    /// <summary>攻击次数 = 1 + 本回合此前打出的反差牌数；本卡在打出瞬间已被计入，需扣除自身。</summary>
-    private static decimal CountHits(CardModel card)
+    /// <summary>额外攻击次数 = 本回合此前打出的反差牌数（基础 1 次由 CalculationBaseVar 提供）；
+    /// 本卡在打出瞬间已被计入反差牌数，需扣除自身。</summary>
+    private static decimal CountExtraHits(CardModel card)
     {
         int contrastPlays = BellaYinYangService.GetContrastPlaysThisTurn(card.Owner);
         if (BellaYinYangService.IsContrastCard(card.Owner, card))
             contrastPlays--;
 
-        return 1 + Math.Max(contrastPlays, 0);
+        return Math.Max(contrastPlays, 0);
     }
 }

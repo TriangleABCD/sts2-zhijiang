@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Models;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
+using Zhijiang.ZhijiangCode.Audio;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
@@ -41,6 +42,9 @@ public sealed class GreatKitty : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 打出音效：Zhijiang/audios/great_kitty.ogg。
+        BellaAudio.PlayCardSfx("great_kitty.ogg", 1f);
+
         // 抽 2→3 张牌。
         List<CardModel> drawn = (await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, base.Owner)).ToList();
 

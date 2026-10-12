@@ -53,5 +53,12 @@
 
   "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.title": "三倍阴刃",
   "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.description": "你的下一张[gold]阴[/gold]攻击牌造成3倍伤害。",
-  "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.smartDescription": "你的下一张[gold]阴[/gold]攻击牌造成3倍伤害。"
+  "ZHIJIANG_POWER_BELLA_YIN_TRIPLE_POWER.smartDescription": "你的下一张[gold]阴[/gold]攻击牌造成3倍伤害。",
+
+  "ZHIJIANG_POWER_COUPLE_ON_THE_CLASH_LANE_POWER.title": "对抗路情侣",
+  "ZHIJIANG_POWER_COUPLE_ON_THE_CLASH_LANE_POWER.description": "每回合开始时，获得10点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_POWER_COUPLE_ON_THE_CLASH_LANE_POWER.smartDescription": "每回合开始时，获得{Amount}点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_POWER_FAINTED_BY_BELLA_POWER.title": "贝拉气晕",
+  "ZHIJIANG_POWER_FAINTED_BY_BELLA_POWER.description": "每当敌人的攻击未能突破你的[gold]格挡[/gold]时，[gold]击晕[/gold]该敌人。",
+  "ZHIJIANG_POWER_FAINTED_BY_BELLA_POWER.smartDescription": "每当敌人的攻击未能突破你的[gold]格挡[/gold]时，[gold]击晕[/gold]该敌人。"
 }

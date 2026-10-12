@@ -9,6 +9,7 @@ using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.Patches;
 using Zhijiang.ZhijiangCode.SecondResource;
+using Zhijiang.ZhijiangCode.Settings;
 
 namespace Zhijiang.ZhijiangCode;
 
@@ -41,6 +42,7 @@ public partial class Entry
         BellaYinYangService.RegisterCombatStateSync();
         BellaYinYangService.RegisterYinYangCountBadgeSync();
         BellaHandGlow.Register();
+        ZhijiangSettingsPage.Register();
 
         // 去掉贝拉「阳/阴」关键词内联文本末尾的句号。
         // 注意：RitsuLib 的 RegisterPatch 只是登记，未调用 PatchAll 不会真正应用；该补丁按 AGENTS 约定暂缓，保持未应用。

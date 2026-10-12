@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
+using Zhijiang.ZhijiangCode.Audio;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
@@ -46,6 +47,9 @@ public sealed class ShinyDancer : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 打出音效：Zhijiang/audios/shiny_dancer.ogg。
+        BellaAudio.PlayCardSfx("shiny_dancer.ogg");
+
         if (cardPlay.Target == null) return;
 
         AttackCommand? attack = await DamageCmd.Attack(DynamicVars.Damage.BaseValue)

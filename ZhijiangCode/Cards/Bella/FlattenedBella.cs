@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Models.Cards;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
+using Zhijiang.ZhijiangCode.Audio;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
@@ -52,6 +53,9 @@ public sealed class FlattenedBella : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 打出音效：Zhijiang/audios/flattened_bella.ogg。
+        BellaAudio.PlayCardSfx("flattened_bella.ogg");
+
         // 生成 3→4 张「压扁」，设为本场免费打出，加入弃牌堆。
         List<Squash> squashes = new();
         for (int i = 0; i < DynamicVars["SquashCount"].IntValue; i++)

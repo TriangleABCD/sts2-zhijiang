@@ -296,5 +296,16 @@
   "ZHIJIANG_CARD_LOVES_SECRET.smartDescription": "抽{Cards:diff()}张牌。\n若队伍中有乃琳，你与乃琳各回复{HealAmount}点生命。",
   "ZHIJIANG_CARD_WHITE_DRAGON_HORSE.title": "白龙马",
   "ZHIJIANG_CARD_WHITE_DRAGON_HORSE.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n若队伍中有乃琳，你与乃琳各回复{HealAmount}点生命。",
-  "ZHIJIANG_CARD_WHITE_DRAGON_HORSE.smartDescription": "获得{Block:diff()}点[gold]格挡[/gold]。\n若队伍中有乃琳，你与乃琳各回复{HealAmount}点生命。"
+  "ZHIJIANG_CARD_WHITE_DRAGON_HORSE.smartDescription": "获得{Block:diff()}点[gold]格挡[/gold]。\n若队伍中有乃琳，你与乃琳各回复{HealAmount}点生命。",
+
+  "ZHIJIANG_CARD_COUPLE_ON_THE_CLASH_LANE.title": "对抗路情侣",
+  "ZHIJIANG_CARD_COUPLE_ON_THE_CLASH_LANE.description": "每回合开始时，获得{HeartWallGain}点[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
+  "ZHIJIANG_CARD_IRON_STICK.title": "铁棍",
+  "ZHIJIANG_CARD_IRON_STICK.description": "造成你当前[gold]格挡[/gold]值的伤害。{InCombat:\n（造成{CalculatedDamage:diff()}点伤害）|}",
+  "ZHIJIANG_CARD_TRACTOR_DESCENDS_THE_MOUNTAIN.title": "拖拉机下山",
+  "ZHIJIANG_CARD_TRACTOR_DESCENDS_THE_MOUNTAIN.description": "对所有敌人造成{Damage:diff()}点伤害。\n[gold]击晕[/gold]一名随机敌人。",
+  "ZHIJIANG_CARD_ASCEND_THE_MOUNTAIN.title": "上山",
+  "ZHIJIANG_CARD_ASCEND_THE_MOUNTAIN.description": "[gold]消耗[/gold]你[gold]抽牌堆[/gold]中最多{ExhaustCount}张牌。\n每[gold]消耗[/gold]一张牌，回复{HealPerCard}点生命。",
+  "ZHIJIANG_CARD_FAINTED_BY_BELLA.title": "贝拉气晕",
+  "ZHIJIANG_CARD_FAINTED_BY_BELLA.description": "每当敌人的攻击未能突破你的[gold]格挡[/gold]时，[gold]击晕[/gold]该敌人。"
 }

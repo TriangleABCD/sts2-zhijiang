@@ -8,6 +8,7 @@ using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
+using Zhijiang.ZhijiangCode.Audio;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.SecondResource;
 
@@ -41,6 +42,9 @@ public sealed class BellaDoMe : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 打出音效：Zhijiang/audios/bella_do_me.ogg。
+        BellaAudio.PlayCardSfx("bella_do_me.ogg");
+
         await SecondaryResourceCmd.Gain(base.Owner, HeartWall.HeartWallId, DynamicVars["HeartWallGain"].IntValue, this);
         if (BellaYinYangService.ComputeDiff(base.Owner) == 0)
             await CardPileCmd.Draw(choiceContext, DynamicVars["Draw"].BaseValue, base.Owner);

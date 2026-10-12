@@ -56,7 +56,9 @@
   - 清点"已发生的出牌"用「本回合中每打出过一张…」（LUNAR_BLAST）；原版「本回合中」7 例、阿拉伯数字（`1张`）与原版混用可接受
   - **术语统一**：卡面一律写 `[gold]反差牌[/gold]`（= 与当前白拉/黑拉状态阴阳相反的牌），长句写法「阴阳性与当前黑白拉状态相反的牌」已废弃；定义只写在「阳/阴」两个关键词的 hover 说明里（`card_keywords.json` 中英同步），卡面不再展开解释
   - **会变化的次数用 `{InCombat:（攻击N次）|}` 实时显示**：加 `CalculatedVar("CalculatedHits")`（配 `CalculationBaseVar`/`CalculationExtraVar`）+ 静态 multiplier 函数，`OnPlay` 里用 `((CalculatedVar)DynamicVars["CalculatedHits"]).Calculate(cardPlay.Target)` 取同一数值，保证卡面预览与实战一致（参考原版 `FlakCannon` 散射炮 / 本项目 `MoreLoverMorePowerful`）
+    - ⚠️ **计算公式是 `CalculationBase + CalculationExtra × multiplier`**：multiplier 只能返回「额外次数」，固定的基础次数交给 `CalculationBaseVar`，否则重复计数（踩过：`MoreLoverMorePowerful` 的 multiplier 返回 `1 + 反差牌数` 且 base 又是 1，开局 0 张反差牌就显示/打出 2 次）。对照：`Npk48` 是 base 0 + 牛批数；`LittleLighter` 是 base 0 + `1 + 累计加成`——两种写法都对，但 base 与 multiplier 的职责不能重叠
   - 倒计时/回合数类描述用「{Turns}回合后，…」（原版「在{Turns}回合结束后」是病句，不要照抄）；临时改耗能写「…本回合的耗能减少1」（原版「这张牌的耗能减少1」）
+    - ⚠️ **伤害型计算变量必须配 `ExtraDamageVar`**：`CalculatedDamageVar`（参考原版 `BodySlam` 全身撞击）的 `GetExtraVar()` 取的是 `DynamicVars.ExtraDamage`，所以 CanonicalVars 里要写 `new CalculationBaseVar(0m)` + **`new ExtraDamageVar(1m)`** + `new CalculatedDamageVar(ValueProp.Move).WithMultiplier(...)`；配成 `CalculationExtraVar`（那是**普通** `CalculatedVar` 用的键 `CalculationExtra`）会在卡牌预览时抛 `KeyNotFoundException: 'ExtraDamage'`。**症状**：控制台 `card ZHIJIANG_CARD_XXX` 加牌不成功、没有任何报错，**一张卡卡在屏幕左上角**（异常发生在 `CardPileCmd.Add → CreateCardNodeAndUpdateVisuals → NCard.UpdateVisuals` 里，节点没被摆位；异常被 `TaskHelper.LogTaskExceptions` 吞进日志）。踩过：`IronStick`（2026-10 已修）
 - **描述中的占位符必须对应 CanonicalVars 中定义的 DynamicVar 名称**，C# 常量（如 `private const int HitCount`）不是 DynamicVar，需在描述中直接写死数值，否则卡面会显示原始占位符文本
 - `CardPlay` 在 `MegaCrit.Sts2.Core.Entities.Cards`、`CardModel` 在 `MegaCrit.Sts2.Core.Models`；卡牌/遗物里 `base.Owner` 已是 Player，取生物用 `base.Owner.Creature`（不要写 `.Player`）。⚠️ 遗物回调参数里的 player 引用跨回合会变，施加能力一律用 `base.Owner.Creature`，否则第二回合起加成失效（历史 bug）
 - DynamicVar 的 `BaseValue` 是 decimal，传给 int 参数要 cast 或取 `.IntValue`（如 `(int)DynamicVars["HeartWallGain"].BaseValue`，参考 `PreventionShot`）
@@ -118,6 +120,7 @@ public sealed class {CardName} : ModCardTemplate
 > ⚠️ 卡表**不在本文件维护**（避免与文档两处数据打架）。查这些内容一律去 `doc/Bella.md`：
 > - 卡牌阴阳属性表（含稀有度 / 类型 / 备注，如「多人模式专属」）→ **4.0 节**
 > - 逐卡数值与升级效果 → **4.1～4.5 节**（按 Basic / Common / Uncommon / Rare / Ancient 分表）
+> - 卡牌打出音效（哪些卡有声音、音频文件名与音量、Ogg Vorbis 格式要求、设置里的音效总开关）→ **4.7 节**
 > - 卡池目标数量与完成进度 → 上述各节标题下的「目标数量」说明
 > - 初始卡组、初始遗物 → **1.4 / 1.5 节**；专属遗物、专属药水 → **2.x / 3.x 节**
 > - 与原版对齐的统计基线 → `doc/原版角色卡牌统计.md`、`doc/原版角色遗物统计.md`、`doc/原版角色专属药水统计.md`
@@ -167,9 +170,20 @@ public sealed class {CardName} : ModCardTemplate
 - 贝拉已配置：全部染成 `SupportColor`（0.8588, 0.4902, 0.4549 = #DB7D74，应援色，与 `MapDrawingColor` 同值），底为 ironclad 拖尾（红橙系，与粉色同暖色系），实测观感好。
 - ⚠️ **洗牌拖尾例外（2026-08-17 首次尝试；2026-08-29 确认根因并修复）**：弃牌堆→抽牌堆的洗牌飞行特效（`NCardFlyShuffleVfx`）调用 `NCardTrailVfx.Create` 时跟随节点是洗牌特效本身、不是 `NCard`，RitsuLib 的 `CharacterTrailStyleOverridePatch`（靠 `card is NCard` 反查角色）不会给它染 TrailStyle，会显示占位角色的原色（贝拉显示战士红）。本项目补丁 `ZhijiangCode/Patches/BellaShuffleTrailStylePatch.cs`（注册于 `Entry.cs`）在 `NCardTrailVfx.Create` 后拦截洗牌特效，读私有字段 `_targetPile` 与当前战斗各玩家牌堆实例做引用相等反查贝拉玩家，染成与 TrailStyle 完全相同的 `SupportColor`。⚠️ 根因：此前 `Entry.cs` 只调用了 `RegisterPatch` 而漏掉 `PatchAll()`，补丁实际从未应用到游戏；修复后需在 `Entry.cs` 对洗牌拖尾补丁调用 `PatchAll()` 才会生效。以后新角色若也要洗牌拖尾染色，需在该补丁中加对应角色分支（或把染色逻辑抽成共享方法）。
 
+## Mod 设置页（2026-10 引入）
+
+首个设置项是「卡牌自定义音效」开关（玩法说明见 `doc/Bella.md` 4.7）。框架与约定：
+
+- 代码全在 `ZhijiangCode/Settings/`：`ZhijiangSettings.cs`（数据模型 + `ModSettingsValueBinding` 读取入口 `ZhijiangSettingsAccess`）、`ZhijiangSettingsPage.cs`（`Register()`：`ModDataStore.Register<T>` 注册持久化 + `RitsuLibFramework.RegisterModSettings` 注册 UI）；`Entry.Initialize()` 里调用 `ZhijiangSettingsPage.Register()`。
+- 持久化：RitsuLib `ModDataStore`，`SaveScope.Global` → mod_data 下的 `settings.json`（本机所有存档共用）；UI 侧自动 AutoSave，点一下即存盘。
+- **文案必须走原版已有文本表，mod 不能新建表名**：`LocManager` 按原版 `res://localization/{lang}/*.json` 的文件名枚举，再把各 mod 的 `res://{ModId}/localization/{lang}/{同名文件}` 合并进去。设置页统一用 `settings_ui` 表 → `Zhijiang/localization/{zhs,eng}/settings_ui.json`，key 前缀 `ZHIJIANG_SETTINGS_`，中英同步（`ModSettingsText.LocString("settings_ui", key, fallback)`）。
+- 页面入口：主菜单更新日志下方的 RitsuLib 设置入口 / 暂停菜单的模组设置 → 模组「枝江」→「设置」→ 分组「音频」。页面默认在主菜单、跑局暂停、战斗暂停都可见。
+- 开关值在**使用点实时读取**（如 `BellaAudio.PlayCardSfx` 开头），所以改完立即生效、不用重启；加音效的卡牌照旧只写 `BellaAudio.PlayCardSfx(...)`，不用自己判设置。
+
 ## 开发环境注意
 
 - 本机用 PowerShell 提交 git：中文提交信息用 `git commit -F <UTF-8文件>`（或 `--amend -F`）避免 PS 传参 GBK 乱码；验证仓库实际存储内容用 `git log --output=<文件>` 绕过终端编码
+- **游戏日志在 `%APPDATA%\SlayTheSpire2\logs\godot.log`**（同目录还有按启动时间命名的历史日志；`console_history.log` 记录控制台命令）。⚠️ **DevConsole 里不报的异常全在这里**——卡牌/遗物的 UI 初始化异常会被 `TaskHelper.LogTaskExceptions` 吞成一条 `[ERROR]`，游戏内表现为「卡加不进手牌 / 一张卡卡在屏幕左上角」这类怪现象。排查用：`Select-String -Path $log -Pattern '\[ERROR\]|Exception' | Select-Object -Last 30`；`[WARN] [RitsuLib] [Assets] Missing resource path ... Falling back to the base asset` 只是缺图回退，无害
 - `.trae/` 与 `.agents/` 已在 .gitignore，不提交；根目录 `AGENTS.md` 会随仓库提交、供所有协作者/工具共享
 
 ## 阴阳机制（核心玩法）设计定稿

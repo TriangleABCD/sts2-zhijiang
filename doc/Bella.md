@@ -148,6 +148,12 @@
 ## 四、卡牌
 
 > 参考：原版角色标准配置为 88 张卡牌（20 普通 + 36 罕见 + 26 稀有 + 2 远古 + 4 基础）。详见 [原版角色卡牌统计](./原版角色卡牌统计.md)。
+>
+> ⚠️ 贝拉卡池有**两个口径**，看数字前先认口径：
+> - **总池 93 张** = 卡池文件总数（4 基础 + 20 普通 + 37 罕见 + 30 稀有 + 2 远古），即 `ZhijiangCode/Cards/Bella/` 里的卡数。
+> - **单机可用 88 张** = 扣除 5 张多人模式专属牌（一个魂来咯、巨龙腾飞、蓓蕾、恋爱心事、白龙马）后的数量，与原版骨架完全一致（4 + 20 + 36 + 26 + 2）。
+>
+> 多人专属牌用 `MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly` 标记，单人局不进入奖励池/商店；奖励与商店按稀有度抽取，因此**单机口径的稀有牌数量（26）才是与原版对齐的指标**。4.2 / 4.5 没有多人专属牌，两个口径相同。
 
 ### 4.0 已实现卡牌的阴阳属性
 
@@ -243,6 +249,11 @@
 | 蓓蕾 | 稀有 | 攻击 | 阳 | 耗 20 心之壁；多人模式专属 |
 | 恋爱心事 | 稀有 | 技能 | 阴 | 耗 20 心之壁；多人模式专属 |
 | 白龙马 | 稀有 | 能力 | 阴 | 耗 20 心之壁；多人模式专属 |
+| 对抗路情侣 | 罕见 | 能力 | 阳 | 每回合心之壁收入 |
+| 铁棍 | 稀有 | 攻击 | 阳 | 格挡转伤害 |
+| 拖拉机下山 | 稀有 | 攻击 | 阳 | AoE + 随机击晕 |
+| 上山 | 稀有 | 技能 | 阴 | 耗 20 心之壁；抽牌堆消耗 |
+| 贝拉气晕 | 稀有 | 能力 | 阴 | 格挡完全挡下攻击即击晕 |
 
 > 已有卡牌阴阳属性已按此表在代码中实现（`CanonicalKeywords` 挂载阳/阴关键词）。后续新增卡牌必须先在 4.0 表中登记阴阳属性。
 
@@ -304,7 +315,7 @@
 
 ### 4.3 罕见牌 (Uncommon)
 
-> 目标数量：36 张
+> 目标数量：总池 37 张（单机可用 36 张，扣掉多人专属的「一个魂来咯」）
 
 #### 攻击牌
 
@@ -355,10 +366,11 @@
 | 都是我的翅膀 | 2 | 若本回合打出阳牌数等于阴牌数，下回合获得 1→2 点能量 | `Cards/Bella/AllAreMyWings.cs` |
 | 牛牛民 | 1 | 每当你获得一张牛批，获得 3→4 点心之壁 | `Cards/Bella/CowLover.cs` |
 | 毕方 | 1 | 每回合开始将 1→2 张随机攻击牌加入手牌 | `Cards/Bella/BifangSama.cs` |
+| 对抗路情侣 | 1 | 每回合开始时获得 10→20 心之壁 | `Cards/Bella/CoupleOnTheClashLane.cs` |
 
 ### 4.4 稀有牌 (Rare)
 
-> 目标数量：26 张
+> 目标数量：总池 30 张（单机可用 26 张，扣掉 4 张多人专属牌：巨龙腾飞、蓓蕾、恋爱心事、白龙马）
 
 #### 攻击牌
 
@@ -369,11 +381,13 @@
 | 女女关系领域大神 | 1 | 造成 12→16 点伤害；若处于白拉，本场战斗每有一张技能牌，伤害 +1 | `Cards/Bella/YuriDomainExpert.cs` |
 | 勇气大爆发 | 3 | 对所有敌人造成 7→10 点伤害；若处于黑拉，对血量最少的敌人再造成 10→15 点伤害 | `Cards/Bella/CourageBurst.cs` |
 | 指挥官山药姐 | 2 | 造成 6→8 点伤害；若阴阳平衡，再造成一次伤害 | `Cards/Bella/CommanderKira.cs` |
-| 巨龙腾飞 | 2 | 消耗，耗 10 心之壁。造成 13→15 伤害；击杀敌人则所有玩家获得 30→40 金币。多人模式专属 | `Cards/Bella/GiantDragonSoars.cs` |
+| 巨龙腾飞 | 2 | 消耗，耗 10 心之壁。造成 17→19 伤害；击杀敌人则所有玩家获得 30→40 金币。多人模式专属 | `Cards/Bella/GiantDragonSoars.cs` |
 | 小打火机 | 2 | 造成 1+累计加成伤害；消耗所有状态牌，每张使本场后续伤害 +1→+2 | `Cards/Bella/LittleLighter.cs` |
 | 闪光弹 | 3 | 造成 17→20 伤害；若击杀敌人，击晕其他所有敌人 | `Cards/Bella/ShinyDancer.cs` |
 | Maria | 2 | 造成 10→13 伤害；若阴阳平衡再造成 5→7 伤害 | `Cards/Bella/Maria.cs` |
-| 蓓蕾 | 0 | 耗 20 心壁。对所有敌人造成 4 点伤害 3 次；若队伍中有嘉然，你与嘉然各回复 5→7 生命。多人模式专属 | `Cards/Bella/Bud.cs` |
+| 蓓蕾 | 0 | 耗 20 心壁。对所有敌人造成 6 点伤害 3 次；若队伍中有嘉然，你与嘉然各回复 7→9 生命。多人模式专属 | `Cards/Bella/Bud.cs` |
+| 铁棍 | 1⇢0 | 造成等同于你当前格挡的伤害（升级只降费） | `Cards/Bella/IronStick.cs` |
+| 拖拉机下山 | 1 | 对所有敌人造成 13→15 点伤害，随机击晕一名敌人 | `Cards/Bella/TractorDescendsTheMountain.cs` |
 
 #### 技能牌
 
@@ -386,8 +400,9 @@
 | 我再也不玩抽象了 | 3 | 消耗，耗 25 心之壁。消耗所有高雅，每消耗 3 张获得 1 点能量并抽 1 张牌。升级：移除消耗 | `Cards/Bella/NoMoreAbstraction.cs` |
 | 贝丽君 | 1 | 获得 11→15 点格挡，抽 2 张牌，将 1 张高雅加入抽牌堆 | `Cards/Bella/BellaTeng.cs` |
 | 短裙 | 0 | 获得 14→18 格挡，本回合所有阳牌保留，将 1 张高雅加入手牌 | `Cards/Bella/ShortSkirt.cs` |
-| 恋爱心事 | 0 | 耗 20 心壁。抽 3 张牌；若队伍中有乃琳，你与乃琳各回复 5→7 生命。多人模式专属 | `Cards/Bella/LovesSecret.cs` |
+| 恋爱心事 | 0 | 耗 20 心壁。抽 3 张牌；若队伍中有乃琳，你与乃琳各回复 7→9 生命。多人模式专属 | `Cards/Bella/LovesSecret.cs` |
 | 长路归航 | 3 | 消耗。将所有 0 费牌加入手牌并升级；手牌中所有 1 费牌本回合减至 0 费。升级：移除消耗 | `Cards/Bella/LongRoadHome.cs` |
+| 上山 | 0 | 耗 20 心壁。从抽牌堆中自选最多 3→5 张牌消耗，每消耗一张回复 2→3 点生命 | `Cards/Bella/AscendTheMountain.cs` |
 
 #### 能力牌
 
@@ -399,7 +414,8 @@
 | 队长的权力是无限的 | 2 | 每回合开始时你可以丢弃一张牌；若弃的是技能牌，抽 1→2 张牌 | `Cards/Bella/CaptainsPowerIsInfinite.cs` |
 | 我以灵魂注视你的心 | 3⇢2 | 每回合开始时获得 1 张灵魂 | `Cards/Bella/SoulGaze.cs` |
 | 那我就是笨嘛 | 3 | 耗 10 心之壁。每回合开始时失去 1 点敏捷，回复 1→2 生命 | `Cards/Bella/ThenImJustStupid.cs` |
-| 白龙马 | 0 | 耗 20 心壁。获得 15 点格挡；若队伍中有乃琳，你与乃琳各回复 5→7 生命。多人模式专属 | `Cards/Bella/WhiteDragonHorse.cs` |
+| 白龙马 | 0 | 耗 20 心壁。获得 19 点格挡；若队伍中有乃琳，你与乃琳各回复 7→9 生命。多人模式专属 | `Cards/Bella/WhiteDragonHorse.cs` |
+| 贝拉气晕 | 3⇢2 | 每当敌人的攻击未能突破你的格挡时，击晕该敌人（升级只降费） | `Cards/Bella/FaintedByBella.cs` |
 
 ### 4.5 远古牌 (Ancient)
 
@@ -437,6 +453,69 @@
 | 海玻璃（按人物卡池生效） | `relics.json` 写 `SEA_GLASS.ZHIJIANG_CHARACTER_BELLA_CHARACTER.title`（“贝拉之璃”） |
 | 色彩哲学家（人物卡池成奖励色） | `BellaCardPool` 实现 `IModColorfulPhilosophersCardPool` + `events.json` 写 `COLORFUL_PHILOSOPHERS.pages.INITIAL.options.BELLA.*`（“应援珊瑚粉”） |
 | 先古对话 | `ancients.json`（zhs/eng）补齐贝拉与 DARV/NEOW/NONUPEIPE/OROBAS/PAEL/TANX/TEZCATARA/VAKUU/THE_ARCHITECT 的专属台词 |
+
+---
+
+### 4.7 卡牌打出音效
+
+> 2026-10 新增。音频文件放在 `Zhijiang/audios/`（随 PCK 打包，运行时路径为 `res://Zhijiang/audios/{文件名}`），统一播放入口是 `ZhijiangCode/Audio/BellaAudio.cs`。
+
+**播放方式**：在卡牌 `OnPlay` 开头调用 `BellaAudio.PlayCardSfx("xxx.ogg")`，第二个参数可选（音量，省略则用默认值）。
+底层走 RitsuLib 的 `GameAudioService.Shared.PlayOneShot(AudioSource.ResourceFile(...))`，直接播放我们自己打包的 ogg；原版引擎自带的卡牌嗖声/命中音效仍在播放，两者是**叠加**关系。
+
+**命名约定**：音频文件名 = 该卡卡图文件名换后缀（如 `hihi.png` → `hihi.ogg`）。
+
+**音量**：默认 `BellaAudio.DefaultVolume = 0.6f`；下面标 ⭐ 的 4 张单独传 `1f`（在调用点写死）。
+
+| 稀有度 | 卡牌 | 音频文件 | 音量 | 代码 |
+|--------|------|----------|------|------|
+| 基础 | 勇敢牛牛 | `ygnn.ogg` | 0.6 | `Cards/Bella/Ygnn.cs` |
+| 基础 | 不怕困难 | `bpkn.ogg` | 0.6 | `Cards/Bella/Bpkn.cs` |
+| 普通 | 嘿嘿！ | `hihi.ogg` | ⭐ 1.0 | `Cards/Bella/Hihi.cs` |
+| 罕见 | 一起跳起来 | `jump_together.ogg` | 0.6 | `Cards/Bella/JumpTogether.cs` |
+| 罕见 | 牛来 | `cows_are_coming.ogg` | 0.6 | `Cards/Bella/CowsAreComing.cs` |
+| 罕见 | 抬头！ | `heads_up.ogg` | 0.6 | `Cards/Bella/HeadsUp.cs` |
+| 罕见 | 奥特大英雄 | `ultraman.ogg` | 0.6 | `Cards/Bella/Ultraman.cs` |
+| 罕见 | 扁拉 | `flattened_bella.ogg` | 0.6 | `Cards/Bella/FlattenedBella.cs` |
+| 罕见 | 大咪 | `great_kitty.ogg` | ⭐ 1.0 | `Cards/Bella/GreatKitty.cs` |
+| 罕见 | 老公x我 | `bella_do_me.ogg` | 0.6 | `Cards/Bella/BellaDoMe.cs` |
+| 罕见 | 枝江小百合 | `zhijiang_les.ogg` | 0.6 | `Cards/Bella/ZhijiangLes.cs` |
+| 罕见 | 对抗路情侣 | `couple_on_the_clash_lane.ogg` | 0.6 | `Cards/Bella/CoupleOnTheClashLane.cs` |
+| 稀有 | 蓓蕾 | `bud.ogg` | ⭐ 1.0 | `Cards/Bella/Bud.cs` |
+| 稀有 | 闪光弹 | `shiny_dancer.ogg` | 0.6 | `Cards/Bella/ShinyDancer.cs` |
+| 稀有 | 你不选...红色 | `you_dont_choose_red.ogg` | ⭐ 1.0 | `Cards/Bella/YouDontChooseRed.cs` |
+| 稀有 | 白龙马 | `white_dragon_horse.ogg` | 0.6 | `Cards/Bella/WhiteDragonHorse.cs` |
+| 稀有 | 那我就是笨嘛 | `then_im_just_stupid.ogg` | 0.6 | `Cards/Bella/ThenImJustStupid.cs` |
+| 稀有 | 我以灵魂注视你的心 | `soul_gaze.ogg` | 0.6 | `Cards/Bella/SoulGaze.cs` |
+| 稀有 | 拖拉机下山 | `tractor_descends_the_mountain.ogg` | 0.6 | `Cards/Bella/TractorDescendsTheMountain.cs` |
+| 远古 | 疯牛！ | `ygnnbpkn.ogg` | 0.6 | `Cards/Bella/MadCow.cs` |
+
+> 共 **20 张**（基础 2 + 普通 1 + 罕见 9 + 稀有 7 + 远古 1），音频合计约 787 KB（`Zhijiang/audios/` 下共 20 个 ogg）。
+
+⚠️ **格式硬要求：必须是 Ogg Vorbis**。Godot 的 ogg 导入器**不支持 Ogg FLAC / Ogg Opus**——放进去会直接导致构建失败（`Error importing 'res://Zhijiang/audios/xxx.ogg'`，`.import` 里 `valid=false`）。本项目已踩过**三次**（最近一次 2026-10：对抗路情侣、拖拉机下山两个文件都是 Ogg FLAC，已用下面命令转好），批量转换命令：
+
+```powershell
+ffmpeg -y -i in.ogg -c:a libvorbis -q:a 5 -ar 44100 -ac 2 out.ogg
+```
+
+**给新卡加音效（两步）**：
+1. 把 `<卡图名>.ogg`（Ogg Vorbis）放进 `Zhijiang/audios/`；
+2. 在该卡 `OnPlay` 开头加一行 `BellaAudio.PlayCardSfx("<卡图名>.ogg");`，需要不同音量就传第二个参数（如 `, 1f`）。
+
+**总开关（2026-10 新增，设置里可关）**：游戏设置 →（主菜单更新日志下方的设置入口 / 暂停菜单的模组设置）→ 模组 **枝江** → **设置** → **音频** → **卡牌自定义音效**。默认**开**（保持加开关前的行为），关掉后所有贝拉卡牌的自定义音效都不播；原版卡牌自带音效、以及原版「音效音量」滑条不受影响（我们的音效走 `UseVanillaRouting = true`）。
+
+| 关注点 | 位置 |
+|--------|------|
+| 开关读取入口 | `ZhijiangCode/Settings/ZhijiangSettings.cs`（`ZhijiangSettingsAccess.CardSfxEnabled`） |
+| 闸门（唯一判定点） | `ZhijiangCode/Audio/BellaAudio.cs` 的 `PlayCardSfx` 开头 |
+| 设置页注册 | `ZhijiangCode/Settings/ZhijiangSettingsPage.cs`（`Entry.Initialize()` 里调用） |
+| 文案 | `Zhijiang/localization/{zhs,eng}/settings_ui.json`（key 前缀 `ZHIJIANG_SETTINGS_`） |
+| 持久化 | RitsuLib `ModDataStore` → `mod_data` 下的 `settings.json`，`SaveScope.Global`（本机所有存档共用，联机时各自本地生效） |
+
+- **新增带音效的卡牌照旧只写 `BellaAudio.PlayCardSfx(...)`**，不需要自己判设置——判定只在 `BellaAudio` 里做一次。
+- 开关是**出牌那一刻实时读取**的，游戏中改完立即生效，不用重启。
+- 文案走原版 `settings_ui` 文本表：游戏按原版已有的表文件名扫描各 mod 的 `res://{ModId}/localization/{语言}/{同名表}` 并合并，所以 mod 不能新建表名，**中英两个文件必须同步新增 key**（缺 eng 会出构建警告）。
+- 以后再加设置项：往 `ZhijiangSettings` 加字段 → 在 `ZhijiangSettingsAccess` 加一个 `ModSettingsValueBinding` → 在设置页加控件（分区分组用 `AddSection("<id>", ...)`）。
 
 ---
 

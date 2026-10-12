@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
+using Zhijiang.ZhijiangCode.Audio;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.Powers;
 
@@ -53,6 +54,9 @@ public sealed class ZhijiangLes : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 打出音效：Zhijiang/audios/zhijiang_les.ogg。
+        BellaAudio.PlayCardSfx("zhijiang_les.ogg");
+
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         decimal threshold = DynamicVars["ContrastThreshold"].BaseValue;
         ZhijiangLesPower? power = await PowerCmd.Apply<ZhijiangLesPower>(choiceContext, base.Owner.Creature,

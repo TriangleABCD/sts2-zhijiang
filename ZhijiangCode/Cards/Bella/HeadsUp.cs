@@ -10,6 +10,7 @@ using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
+using Zhijiang.ZhijiangCode.Audio;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.SecondResource;
 
@@ -54,6 +55,9 @@ public sealed class HeadsUp : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 打出音效：Zhijiang/audios/heads_up.ogg。
+        BellaAudio.PlayCardSfx("heads_up.ogg");
+
         // 只给自己加力量（原为所有队友）。
         await PowerCmd.Apply<StrengthPower>(choiceContext, base.Owner.Creature,
             DynamicVars["StrengthAmount"].IntValue, base.Owner.Creature, this);

@@ -12,6 +12,7 @@ using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
+using Zhijiang.ZhijiangCode.Audio;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.SecondResource;
 
@@ -53,6 +54,9 @@ public sealed class Bud : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 打出音效：Zhijiang/audios/bud.ogg。
+        BellaAudio.PlayCardSfx("bud.ogg", 1f);
+
         foreach (Creature enemy in base.CombatState?.HittableEnemies ?? Array.Empty<Creature>())
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)

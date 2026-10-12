@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models.Cards;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
+using Zhijiang.ZhijiangCode.Audio;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.Powers;
 
@@ -45,6 +46,9 @@ public sealed class SoulGaze : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 打出音效：Zhijiang/audios/soul_gaze.ogg。
+        BellaAudio.PlayCardSfx("soul_gaze.ogg");
+
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
         await PowerCmd.Apply<SoulGazePower>(choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
     }

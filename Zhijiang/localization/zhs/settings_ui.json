@@ -1,0 +1,7 @@
+{
+  "ZHIJIANG_SETTINGS_MOD_NAME.title": "枝江",
+  "ZHIJIANG_SETTINGS_PAGE.title": "设置",
+  "ZHIJIANG_SETTINGS_SECTION_AUDIO.title": "音频",
+  "ZHIJIANG_SETTINGS_CARD_SFX.title": "卡牌自定义音效",
+  "ZHIJIANG_SETTINGS_CARD_SFX.description": "关闭后，贝拉卡牌打出时不再播放枝江的自定义音效（原版卡牌音效不受影响，音效音量仍可在「音频设置」里调整）。"
+}

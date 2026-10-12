@@ -8,6 +8,7 @@ using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
+using Zhijiang.ZhijiangCode.Audio;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.SecondResource;
 
@@ -49,6 +50,9 @@ public sealed class Hihi : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 打出音效：Zhijiang/audios/hihi.ogg。
+        BellaAudio.PlayCardSfx("hihi.ogg", 1f);
+
         // 将能量翻倍：获得与当前能量相等的能量（同原版 DoubleEnergy）。
         await PlayerCmd.GainEnergy(base.Owner.PlayerCombatState.Energy, base.Owner);
     }

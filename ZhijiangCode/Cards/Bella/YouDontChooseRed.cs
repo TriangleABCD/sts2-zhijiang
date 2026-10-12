@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Models;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
 using STS2RitsuLib.Keywords;
+using Zhijiang.ZhijiangCode.Audio;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
@@ -40,6 +41,9 @@ public sealed class YouDontChooseRed : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 打出音效：Zhijiang/audios/you_dont_choose_red.ogg。
+        BellaAudio.PlayCardSfx("you_dont_choose_red.ogg", 1f);
+
         // 收集抽牌堆 + 弃牌堆中的 0 费牌，加入手牌。
         List<CardModel> draw = PileType.Draw.GetPile(base.Owner).Cards.Where(IsZeroCost).ToList();
         List<CardModel> discard = PileType.Discard.GetPile(base.Owner).Cards.Where(IsZeroCost).ToList();
