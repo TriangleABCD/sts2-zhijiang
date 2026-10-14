@@ -38,6 +38,8 @@ public static class HeartWall
 					CounterSize = new Vector2(90, 90),
 					IconSize = new Vector2(90, 90),
 					FontSize = 28,
+					// 数字（数量标签）相对居中图标矩形的偏移：新图标构图偏满，数字往右下挪一点，避免压在图案正中央。
+					AmountLabelOffset = new Vector2(5, 15),
 					PositiveColor = Colors.White,
 					FormatAmount = (amount, max) => amount.ToString(),
 					IconStyle = SecondaryResourceIconStyle.Default with
@@ -63,6 +65,8 @@ public static class HeartWall
         		{
             		IconSize = new Vector2(48, 48),
             		FontSize = 24,
+            		// 数字（费用标签）相对居中图标矩形的偏移：按战斗计数器 (5,15)/90px 的比例换算到 48px 角标。
+            		LabelOffset = new Vector2(3, 8),
         		});
         		// 自由指定位置。例如这里我们找到能量图标的位置，放在它旁边
         		var energyIcon = parent.GetNode<TextureRect>("%EnergyIcon");

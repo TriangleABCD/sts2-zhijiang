@@ -133,10 +133,10 @@ public sealed class {CardName} : ModCardTemplate
 - 注册位置：`ZhijiangCode/SecondResource/HeartWall.cs`（`HeartWall.Register()` 由 Entry 初始化时调用），RitsuLib `SecondaryResource`，仅贝拉角色显示（`AlwaysShowInCombatUiForCharacter<BellaCharacter>`）。
 - **定稿行为**（曾设计为"每回合回满 10 / 整局 Run 持久"，后改为）：`defaultAmount: 10`、`baseMaxAmount: null`（**无上限**）、`turnStartPolicy: None`（回合开始不自动变化）、`persistencePolicy: Combat`（**每场战斗重置为 10**）、下限 0。增减完全由卡牌/遗物驱动。
 - RitsuLib `SecondaryResourceDefinition` 共 11 个构造参数（后 5 个为图标/本地化）；`baseMaxAmount: null` = 无上限概念，另有 `hardMaxAmount` 硬上限与 `minAmount` 硬下限。枚举语义（v0.4.57）：`turnStartPolicy` = None/ResetToMax/AddMaxToCurrent/Clear（注意 ResetToMax 与 AddMaxToCurrent 不同）；`persistencePolicy` = None/Combat/Run（Combat = 每场战斗重置）。
-- 战斗 UI 计数器：能量计数器旁 `(+60, -100)`，90×90，字号 28，白色正数，格式为纯数字（不带 /max）；图标 `Zhijiang/images/characters/Bella/HeartWall_text.png` / `HeartWall_big.png`（已有专属图标，不再复用能量图标）。
+- 战斗 UI 计数器：能量计数器旁 `(+60, -100)`，90×90，字号 28，白色正数，格式为纯数字（不带 /max）；图标 `Zhijiang/images/characters/Bella/HeartWall_text.png`（**48×48**）/ `HeartWall_big.png`（**256×256**）（已有专属图标，不再复用能量图标）。
 - 卡牌消耗显示：能量图标下方 `(0, +80)`，48×48 图标 + 字号 24（`NSecondaryResourceCardCostUi`）。
 - 卡牌侧 API：完整资源 ID 是 `Zhijiang.HeartWall`，代码里用 `HeartWall.HeartWallId` 静态属性；增减 `SecondaryResourceCmd.Get/Gain(base.Owner, HeartWall.HeartWallId, n, this)`；卡牌费用在构造函数里 `this.SecondaryCosts().Set(HeartWall.HeartWallId, N)`（升级用 Set 覆盖，支付/CanPlay 校验/卡面费用显示由 RitsuLib 自动处理）；耗空全部心之壁：`Get` 读当前值 → `SecondaryResourceCmd.Lose` 全扣（参考 `TearOfBellaris`）
-- 本地化里心之壁图标用 Godot BBCode 直接渲染：`[img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]`；⚠️ RitsuLib 的 `{secondaryResource:secondaryResourceIcons(...)}` formatter 在本地化管线里不生效（原样显示占位符），统一用 `[img]`
+- 本地化里心之壁图标用 Godot BBCode 直接渲染，**必须带尺寸**：`[img=24x24]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]`。⚠️ 源图是 48×48 的，而 `[img]` 不带尺寸时按**原始像素**渲染（实测 4.5.1：`[img]`→48px、`[img=24x24]`→24px、`[img=top]`→只是垂直对齐不改尺寸），不带尺寸会把卡面/遗物/药水描述的行高撑坏（共 67 处引用）。⚠️ RitsuLib 的 `{secondaryResource:secondaryResourceIcons(...)}` formatter 在本地化管线里不生效（原样显示占位符），统一用 `[img=…]`。
 - 本地化（`static_hover_tips.json`）：key `ZHIJIANG_SECONDARY_RESOURCE_HEART_WALL.title/.description`（第二资源 key 格式 `ZHIJIANG_SECONDARY_RESOURCE_{LocalId大写}`）；zhs「心之壁 / 唉，有心之壁了」，eng「A.T. Field / An impenetrable barrier of the heart.」（A.T. Field = EVA 绝对恐怖领域梗）。
 
 ## 卡牌拖尾特效（Trail VFX）配置（新角色复用指南）

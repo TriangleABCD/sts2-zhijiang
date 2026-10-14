@@ -16,12 +16,15 @@ using Zhijiang.ZhijiangCode.SecondResource;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 抬头！：罕见牌（阳 / 技能）。自己获得 3→4 点力量（不再影响队友）。耗 5 心之壁。
+// 抬头！：罕见牌（阳 / 技能）。自己获得 3→4 点力量（不再影响队友）。耗 25 心之壁。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class HeadsUp : ModCardTemplate
 {
     private const int BaseEnergyCost = 0;
-    private const int HeartWallCost = 5;
+    private const int HeartWallCost = 25;
+
+    // 每打出一次，本场战斗内这张牌的心之壁费用增加的量（同原版「模组改造」的 EnergyCost.AddThisCombat(1)）。
+    private const int HeartWallCostIncreasePerPlay = 10;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Uncommon;
     private const TargetType CardTarget = TargetType.Self;
@@ -49,7 +52,7 @@ public sealed class HeadsUp : ModCardTemplate
 
     public HeadsUp() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {
-        // 第二费用：消耗 5 心之壁。
+        // 第二费用：消耗 25 心之壁。
         this.SecondaryCosts().Set(HeartWall.HeartWallId, HeartWallCost);
     }
 
@@ -61,6 +64,11 @@ public sealed class HeadsUp : ModCardTemplate
         // 只给自己加力量（原为所有队友）。
         await PowerCmd.Apply<StrengthPower>(choiceContext, base.Owner.Creature,
             DynamicVars["StrengthAmount"].IntValue, base.Owner.Creature, this);
+
+        // 每打出一次，这张牌的心之壁费用 +10；用 ThisCombat 层，战斗结束随卡牌对象一起清除。
+        int nextCost = this.SecondaryCosts().Get(HeartWall.HeartWallId).Amount + HeartWallCostIncreasePerPlay;
+        this.SecondaryCosts().Set(HeartWall.HeartWallId, new SecondaryResourceCost(nextCost),
+            SecondaryResourceCostDuration.ThisCombat);
     }
 
     protected override void OnUpgrade()

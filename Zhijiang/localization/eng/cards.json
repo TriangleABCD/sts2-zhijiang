@@ -7,8 +7,8 @@
   "ZHIJIANG_CARD_BELLA_DEFEND.smartDescription": "Gain {Block:diff()} [gold]Block[/gold].",
 
   "ZHIJIANG_CARD_PREVENTION_SHOT.title": "Prevention Shot",
-  "ZHIJIANG_CARD_PREVENTION_SHOT.description": "Gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].\nGain {Block:diff()} [gold]Block[/gold].\nLose {StrengthLoss} [gold]Strength[/gold].",
-  "ZHIJIANG_CARD_PREVENTION_SHOT.smartDescription": "Gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].\nGain {Block:diff()} [gold]Block[/gold].\nLose {StrengthLoss} [gold]Strength[/gold].",
+  "ZHIJIANG_CARD_PREVENTION_SHOT.description": "Gain {HeartWallGain} [img=24x24]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].\nGain {Block:diff()} [gold]Block[/gold].\nLose {StrengthLoss} [gold]Strength[/gold].",
+  "ZHIJIANG_CARD_PREVENTION_SHOT.smartDescription": "Gain {HeartWallGain} [img=24x24]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].\nGain {Block:diff()} [gold]Block[/gold].\nLose {StrengthLoss} [gold]Strength[/gold].",
 
   "ZHIJIANG_CARD_HEARTFELT.title": "Heartfelt",
   "ZHIJIANG_CARD_HEARTFELT.description": "Remove up to {StripAmount} [gold]Block[/gold] from ALL enemies.",
@@ -43,24 +43,24 @@
   "ZHIJIANG_CARD_HIHI.smartDescription": "Double your Energy.",
 
   "ZHIJIANG_CARD_AT_FIELD.title": "A.T. Field",
-  "ZHIJIANG_CARD_AT_FIELD.description": "Gain [gold]Block[/gold] equal to your current [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] divided by {Divisor}.",
-  "ZHIJIANG_CARD_AT_FIELD.smartDescription": "Gain [gold]Block[/gold] equal to your current [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] divided by {Divisor}.",
+  "ZHIJIANG_CARD_AT_FIELD.description": "Gain [gold]Block[/gold] equal to your current [img=24x24]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] divided by {Divisor}.",
+  "ZHIJIANG_CARD_AT_FIELD.smartDescription": "Gain [gold]Block[/gold] equal to your current [img=24x24]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img] divided by {Divisor}.",
 
   "ZHIJIANG_CARD_GURENGE.title": "Gurenge",
   "ZHIJIANG_CARD_GURENGE.description": "Gain {Block:diff()} [gold]Block[/gold].\nGain {PerContrast} additional [gold]Block[/gold] for each [gold]Contrast card[/gold] already played this turn.",
   "ZHIJIANG_CARD_GURENGE.smartDescription": "Gain {Block:diff()} [gold]Block[/gold].\nGain {PerContrast} additional [gold]Block[/gold] for each [gold]Contrast card[/gold] already played this turn.",
 
   "ZHIJIANG_CARD_NEVER_FORGIVE.title": "Never Forgive",
-  "ZHIJIANG_CARD_NEVER_FORGIVE.description": "Whenever you lose HP, gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
-  "ZHIJIANG_CARD_NEVER_FORGIVE.smartDescription": "Whenever you lose HP, gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_CARD_NEVER_FORGIVE.description": "Whenever you lose HP, gain {HeartWallGain} [img=24x24]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_CARD_NEVER_FORGIVE.smartDescription": "Whenever you lose HP, gain {HeartWallGain} [img=24x24]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
 
   "ZHIJIANG_CARD_TURN_OVER.title": "Turn Over",
   "ZHIJIANG_CARD_TURN_OVER.description": "For the rest of this combat, your [gold]Bai La / Hei La[/gold] state is inverted.",
   "ZHIJIANG_CARD_TURN_OVER.smartDescription": "For the rest of this combat, your [gold]Bai La / Hei La[/gold] state is inverted.",
 
   "ZHIJIANG_CARD_VIRTUAL_SENSE.title": "Virtual Sense",
-  "ZHIJIANG_CARD_VIRTUAL_SENSE.description": "Whenever you play a Skill, gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
-  "ZHIJIANG_CARD_VIRTUAL_SENSE.smartDescription": "Whenever you play a Skill, gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_CARD_VIRTUAL_SENSE.description": "Whenever you play a Skill, gain {HeartWallGain} [img=24x24]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_CARD_VIRTUAL_SENSE.smartDescription": "Whenever you play a Skill, gain {HeartWallGain} [img=24x24]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
 
   "ZHIJIANG_CARD_ZHIJIANG_HELL.title": "Zhijiang Hell",
   "ZHIJIANG_CARD_ZHIJIANG_HELL.description": "Gain {Energy:energyIcons()}.",
@@ -253,8 +253,8 @@
   "ZHIJIANG_CARD_LITTLE_LIGHTER.description": "Deal {Damage:diff()} damage.\n[gold]Exhaust[/gold] all Status cards.\nDeals {PerStatus} additional damage for each card Exhausted this way, for the rest of combat.{InCombat: (Current damage: {CurrentDamage})|}",
   "ZHIJIANG_CARD_LITTLE_LIGHTER.smartDescription": "Deal {Damage:diff()} damage.\n[gold]Exhaust[/gold] all Status cards.\nDeals {PerStatus} additional damage for each card Exhausted this way, for the rest of combat.{InCombat: (Current damage: {CurrentDamage})|}",
   "ZHIJIANG_CARD_HEADS_UP.title": "Heads Up",
-  "ZHIJIANG_CARD_HEADS_UP.description": "Gain {StrengthAmount} [gold]Strength[/gold].",
-  "ZHIJIANG_CARD_HEADS_UP.smartDescription": "Gain {StrengthAmount} [gold]Strength[/gold].",
+  "ZHIJIANG_CARD_HEADS_UP.description": "Gain {StrengthAmount} [gold]Strength[/gold].\nEach time this card is played, increase its [gold]A.T. Field[/gold] cost by 10.",
+  "ZHIJIANG_CARD_HEADS_UP.smartDescription": "Gain {StrengthAmount} [gold]Strength[/gold].\nEach time this card is played, increase its [gold]A.T. Field[/gold] cost by 10.",
   "ZHIJIANG_CARD_SHINY_DANCER.title": "Shiny Dancer",
   "ZHIJIANG_CARD_SHINY_DANCER.description": "Deal {Damage:diff()} damage.\nIf this kills an enemy, Stun all other enemies.",
   "ZHIJIANG_CARD_SHINY_DANCER.smartDescription": "Deal {Damage:diff()} damage.\nIf this kills an enemy, Stun all other enemies.",
@@ -299,7 +299,7 @@
   "ZHIJIANG_CARD_WHITE_DRAGON_HORSE.smartDescription": "Gain {Block:diff()} [gold]Block[/gold].\nIf Nailin is in your party, both of you heal {HealAmount} HP.",
 
   "ZHIJIANG_CARD_COUPLE_ON_THE_CLASH_LANE.title": "Couple on the Clash Lane",
-  "ZHIJIANG_CARD_COUPLE_ON_THE_CLASH_LANE.description": "At the start of each turn, gain {HeartWallGain} [img]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
+  "ZHIJIANG_CARD_COUPLE_ON_THE_CLASH_LANE.description": "At the start of each turn, gain {HeartWallGain} [img=24x24]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
   "ZHIJIANG_CARD_IRON_STICK.title": "Iron Stick",
   "ZHIJIANG_CARD_IRON_STICK.description": "Deal damage equal to your [gold]Block[/gold].{InCombat:\n(Deals {CalculatedDamage:diff()} damage)|}",
   "ZHIJIANG_CARD_TRACTOR_DESCENDS_THE_MOUNTAIN.title": "Tractor Descends the Mountain",
