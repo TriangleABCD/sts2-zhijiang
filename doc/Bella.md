@@ -399,12 +399,12 @@
 | 20号循环 | 3⇢2 | 消耗。你打出的下一张攻击牌会额外打出 20 次。消耗 150⇢120 心之壁 | `Cards/Bella/LoopIn20.cs` |
 | 了转反 | 1 | 消耗。本场战斗内黑白拉判定翻转。升级：移除消耗 | `Cards/Bella/TurnOver.cs` |
 | 牛符咒 | 2 | 消耗。本回合获得 4→6 点力量 | `Cards/Bella/OxTalisman.cs` |
-| 你不选...红色 | 2 | 消耗。将抽牌堆、弃牌堆、手牌中所有 0 费牌加入手牌并升级。升级：移除消耗 | `Cards/Bella/YouDontChooseRed.cs` |
+| 你不选...红色 | 2 | 消耗。从抽牌堆和弃牌堆随机取 3→5 张反差牌加入手牌并升级 | `Cards/Bella/YouDontChooseRed.cs` |
 | 我再也不玩抽象了 | 3 | 消耗，耗 25 心之壁。消耗所有高雅，每消耗 3 张获得 1 点能量并抽 1 张牌。升级：移除消耗 | `Cards/Bella/NoMoreAbstraction.cs` |
 | 贝丽君 | 1 | 获得 11→15 点格挡，抽 2 张牌，将 1 张高雅加入抽牌堆 | `Cards/Bella/BellaTeng.cs` |
 | 短裙 | 0 | 获得 14→18 格挡，本回合所有阳牌保留，将 1 张高雅加入手牌 | `Cards/Bella/ShortSkirt.cs` |
 | 恋爱心事 | 0 | 耗 20 心壁。抽 3 张牌；若队伍中有乃琳，你与乃琳各回复 7→9 生命。多人模式专属 | `Cards/Bella/LovesSecret.cs` |
-| 长路归航 | 3 | 消耗。将所有 0 费牌加入手牌并升级；手牌中所有 1 费牌本回合减至 0 费。升级：移除消耗 | `Cards/Bella/LongRoadHome.cs` |
+| 长路归航 | 3 | 消耗。将抽牌堆、弃牌堆、手牌中所有 0 费牌加入手牌并升级。升级：移除消耗 | `Cards/Bella/LongRoadHome.cs` |
 | 上山 | 0 | 耗 20 心壁。从抽牌堆中自选最多 3→5 张牌消耗，每消耗一张回复 2→3 点生命 | `Cards/Bella/AscendTheMountain.cs` |
 
 #### 能力牌

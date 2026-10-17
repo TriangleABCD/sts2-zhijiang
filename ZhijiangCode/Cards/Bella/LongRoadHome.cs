@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -13,7 +14,7 @@ using STS2RitsuLib.Keywords;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 长路归航：稀有牌（中立 / 技能）。消耗。将所有 0 费牌加入手牌并升级；将手牌中所有 1 费牌费用减至 0（本回合）。
+// 长路归航：稀有牌（中立 / 技能）。消耗。将所有 0 费牌加入手牌并升级。升级：移除消耗。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class LongRoadHome : ModCardTemplate
 {
@@ -48,24 +49,15 @@ public sealed class LongRoadHome : ModCardTemplate
         }
         if (toHandle.Count > 0)
         {
-            await CardPileCmd.Add(toHandle, PileType.Hand);
+            IReadOnlyList<CardPileAddResult> results = await CardPileCmd.Add(toHandle, PileType.Hand);
+            if (LocalContext.IsMe(base.Owner))
+                CardCmd.PreviewCardPileAdd(results);
         }
 
         // 手牌中所有 0 费牌升级。
         List<CardModel> zeroCostInHand = PileType.Hand.GetPile(base.Owner).Cards.Where(IsZeroCost).ToList();
         if (zeroCostInHand.Count > 0)
             CardCmd.Upgrade(zeroCostInHand, CardPreviewStyle.HorizontalLayout);
-
-        // 手牌中所有 1 费牌本回合费用减至 0。
-        foreach (CardModel card in PileType.Hand.GetPile(base.Owner).Cards)
-        {
-            if (card.Type is not (CardType.Attack or CardType.Skill or CardType.Power))
-                continue;
-            if (card.EnergyCost.CostsX)
-                continue;
-            if (card.EnergyCost.GetWithModifiers(CostModifiers.All) == 1)
-                card.EnergyCost.SetThisTurn(0);
-        }
     }
 
     private static bool IsZeroCost(CardModel card)
