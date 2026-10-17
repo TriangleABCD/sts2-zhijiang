@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
@@ -32,7 +33,11 @@ public sealed class Gurenge : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(9, ValueProp.Move),
-        new DynamicVar("PerContrast", 4m)
+        new DynamicVar("PerContrast", 4m),
+        // 战斗内实时显示当前实际格挡（基础 + 反差牌加成）。
+        new CalculationBaseVar(0m),
+        new CalculationExtraVar(1m),
+        new CalculatedVar("CurrentBlock").WithMultiplier((card, _) => CurrentBlock(card))
     ];
 
     // 格挡悬浮提示。
@@ -53,13 +58,19 @@ public sealed class Gurenge : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 本回合此前打出的反差牌数量（本卡打出瞬间已被计数，若本卡也是反差牌需扣 1）。
-        int contrast = BellaYinYangService.GetContrastPlaysThisTurn(base.Owner);
-        if (BellaYinYangService.IsContrastCard(base.Owner, this))
+        // 与卡面 {CurrentBlock} 同源，保证预览与实际一致。
+        int block = (int)((CalculatedVar)DynamicVars["CurrentBlock"]).Calculate(cardPlay.Target);
+        await CreatureCmd.GainBlock(base.Owner.Creature, block, ValueProp.Move, cardPlay);
+    }
+
+    private static decimal CurrentBlock(CardModel card)
+    {
+        // 本卡打出瞬间已被反差牌计数计入，若自身是反差牌需扣 1。
+        int contrast = BellaYinYangService.GetContrastPlaysThisTurn(card.Owner);
+        if (BellaYinYangService.IsContrastCard(card.Owner, card))
             contrast--;
 
-        int block = DynamicVars.Block.IntValue + Math.Max(contrast, 0) * DynamicVars["PerContrast"].IntValue;
-        await CreatureCmd.GainBlock(base.Owner.Creature, block, ValueProp.Move, cardPlay);
+        return card.DynamicVars.Block.IntValue + Math.Max(contrast, 0) * card.DynamicVars["PerContrast"].IntValue;
     }
 
     protected override void OnUpgrade()

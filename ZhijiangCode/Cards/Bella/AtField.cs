@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
@@ -32,7 +34,11 @@ public sealed class AtField : ModCardTemplate
     // 除数（5 → 升级后 4）：格挡 = 当前心之壁 ÷ 除数（向下取整）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Divisor", 5m)
+        new DynamicVar("Divisor", 5m),
+        // 战斗内实时显示当前实际能获得的格挡。
+        new CalculationBaseVar(0m),
+        new CalculationExtraVar(1m),
+        new CalculatedVar("CurrentBlock").WithMultiplier((card, _) => CurrentBlock(card))
     ];
 
     // 阴阳属性：A.T. 立场为阳牌。
@@ -47,12 +53,19 @@ public sealed class AtField : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int heartWall = SecondaryResourceCmd.Get(base.Owner, HeartWall.HeartWallId);
-        int block = heartWall / DynamicVars["Divisor"].IntValue;
+        // 与卡面 {CurrentBlock} 同源，保证预览与实际一致。
+        int block = (int)((CalculatedVar)DynamicVars["CurrentBlock"]).Calculate(cardPlay.Target);
         if (block > 0)
         {
             await CreatureCmd.GainBlock(base.Owner.Creature, block, ValueProp.Move, cardPlay);
         }
+    }
+
+    private static decimal CurrentBlock(CardModel card)
+    {
+        int heartWall = SecondaryResourceCmd.Get(card.Owner, HeartWall.HeartWallId);
+        int divisor = Math.Max(1, card.DynamicVars["Divisor"].IntValue);
+        return heartWall / divisor;
     }
 
     protected override void OnUpgrade()

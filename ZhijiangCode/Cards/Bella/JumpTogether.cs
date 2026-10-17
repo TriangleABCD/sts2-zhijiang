@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
@@ -31,7 +32,11 @@ public sealed class JumpTogether : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(7, ValueProp.Move),
-        new DynamicVar("ExtraHits", 1m)
+        new DynamicVar("ExtraHits", 1m),
+        // 战斗内实时显示当前实际攻击段数（基础 1 段；本回合打过反差牌则 +ExtraHits）。
+        new CalculationBaseVar(1m),
+        new CalculationExtraVar(1m),
+        new CalculatedVar("CalculatedHits").WithMultiplier((card, _) => ExtraHits(card))
     ];
 
     // 阴阳属性：一起跳起来为阳牌。
@@ -51,12 +56,8 @@ public sealed class JumpTogether : ModCardTemplate
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
-        int contrastPlays = BellaYinYangService.GetContrastPlaysThisTurn(base.Owner);
-        if (BellaYinYangService.IsContrastCard(base.Owner, this))
-            contrastPlays--;
-
-        int extraHits = contrastPlays > 0 ? DynamicVars["ExtraHits"].IntValue : 0;
-        int hitCount = 1 + extraHits;
+        // 与卡面 {CalculatedHits} 同源，保证预览与实际一致。
+        int hitCount = Math.Max(1, (int)((CalculatedVar)DynamicVars["CalculatedHits"]).Calculate(cardPlay.Target));
 
         for (int i = 0; i < hitCount; i++)
         {
@@ -65,6 +66,16 @@ public sealed class JumpTogether : ModCardTemplate
                 .Targeting(cardPlay.Target)
                 .Execute(choiceContext);
         }
+    }
+
+    /// <summary>额外攻击段数：本回合此前打出过反差牌时为 ExtraHits，否则为 0。</summary>
+    private static decimal ExtraHits(CardModel card)
+    {
+        int contrastPlays = BellaYinYangService.GetContrastPlaysThisTurn(card.Owner);
+        if (BellaYinYangService.IsContrastCard(card.Owner, card))
+            contrastPlays--;
+
+        return contrastPlays > 0 ? card.DynamicVars["ExtraHits"].IntValue : 0;
     }
 
     protected override void OnUpgrade()

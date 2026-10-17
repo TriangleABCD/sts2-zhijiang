@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
@@ -34,7 +35,13 @@ public sealed class Unit01 : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(12, ValueProp.Move)
+        new DamageVar(12, ValueProp.Move),
+        // 战斗内实时显示攻击段数：基础 1 次 + 每 10 点心之壁 1 次。
+        // ⚠️ 本牌有自己的心之壁费用（15），费用在 OnPlay 之前就已被扣除（RitsuLib 在 CardModel.SpendResources 里结算），
+        // 所以这里要按「扣费后的心之壁」算，否则卡面预览会比实际多出 1~2 段。
+        new CalculationBaseVar(1m),
+        new CalculationExtraVar(1m),
+        new CalculatedVar("CalculatedHits").WithMultiplier((card, _) => ExtraHits(card))
     ];
 
     // 阴阳属性：初号机为阴牌。
@@ -51,9 +58,8 @@ public sealed class Unit01 : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int heartWall = SecondaryResourceCmd.Get(base.Owner, HeartWall.HeartWallId);
-        int extraHits = Math.Max(0, heartWall / HeartWallPerExtraHit);
-        int hitCount = 1 + extraHits;
+        // 与卡面 {CalculatedHits} 同源，保证预览与实际一致。
+        int hitCount = Math.Max(1, (int)((CalculatedVar)DynamicVars["CalculatedHits"]).Calculate(cardPlay.Target));
 
         foreach (Creature enemy in base.CombatState?.HittableEnemies ?? Array.Empty<Creature>())
         {
@@ -63,6 +69,13 @@ public sealed class Unit01 : ModCardTemplate
                 .Targeting(enemy)
                 .Execute(choiceContext);
         }
+    }
+
+    /// <summary>额外攻击段数 = 扣掉本牌心之壁费用后的心之壁 ÷ 10。</summary>
+    private static decimal ExtraHits(CardModel card)
+    {
+        int heartWall = SecondaryResourceCmd.Get(card.Owner, HeartWall.HeartWallId);
+        return Math.Max(0, (heartWall - HeartWallCost) / HeartWallPerExtraHit);
     }
 
     protected override void OnUpgrade()

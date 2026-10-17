@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
@@ -33,7 +34,11 @@ public sealed class BoilingExpectation : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(9, ValueProp.Move),
-        new DynamicVar("DamagePerHeartWall", 1m)
+        new DynamicVar("DamagePerHeartWall", 1m),
+        // 战斗内实时显示当前实际伤害（基础 + 心之壁加成）。
+        new CalculationBaseVar(0m),
+        new CalculationExtraVar(1m),
+        new CalculatedVar("CurrentDamage").WithMultiplier((card, _) => CurrentDamage(card))
     ];
 
     // 阴阳属性：沸腾期待为阴牌。
@@ -50,13 +55,20 @@ public sealed class BoilingExpectation : ModCardTemplate
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
-        int heartWall = SecondaryResourceCmd.Get(base.Owner, HeartWall.HeartWallId);
-        int bonus = (heartWall / HeartWallPerBonus) * DynamicVars["DamagePerHeartWall"].IntValue;
+        // 与卡面 {CurrentDamage} 同源，保证预览与实际一致。
+        int damage = (int)((CalculatedVar)DynamicVars["CurrentDamage"]).Calculate(cardPlay.Target);
 
-        await DamageCmd.Attack(DynamicVars.Damage.IntValue + bonus)
+        await DamageCmd.Attack(damage)
             .FromCard(this)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
+    }
+
+    private static decimal CurrentDamage(CardModel card)
+    {
+        int heartWall = SecondaryResourceCmd.Get(card.Owner, HeartWall.HeartWallId);
+        int bonus = heartWall / HeartWallPerBonus * card.DynamicVars["DamagePerHeartWall"].IntValue;
+        return card.DynamicVars.Damage.IntValue + bonus;
     }
 
     protected override void OnUpgrade()

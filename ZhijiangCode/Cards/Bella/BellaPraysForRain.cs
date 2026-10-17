@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Content;
@@ -30,7 +31,11 @@ public sealed class BellaPraysForRain : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(6, ValueProp.Move),
-        new DynamicVar("BonusPerSkill", 1m)
+        new DynamicVar("BonusPerSkill", 1m),
+        // 战斗内实时显示当前实际伤害（基础 + 已打出技能牌数 × 加成）。
+        new CalculationBaseVar(0m),
+        new CalculationExtraVar(1m),
+        new CalculatedVar("CurrentDamage").WithMultiplier((card, _) => CurrentDamage(card))
     ];
 
     // 阴阳属性：贝拉求雨为阳牌。
@@ -47,10 +52,16 @@ public sealed class BellaPraysForRain : ModCardTemplate
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
-        int damage = DynamicVars.Damage.IntValue
-                     + BellaYinYangService.GetSkillPlaysThisTurn(base.Owner) * DynamicVars["BonusPerSkill"].IntValue;
+        // 与卡面 {CurrentDamage} 同源，保证预览与实际一致。
+        int damage = (int)((CalculatedVar)DynamicVars["CurrentDamage"]).Calculate(cardPlay.Target);
 
         await DamageCmd.Attack(damage).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
+    }
+
+    private static decimal CurrentDamage(CardModel card)
+    {
+        int skills = BellaYinYangService.GetSkillPlaysThisTurn(card.Owner);
+        return card.DynamicVars.Damage.IntValue + skills * card.DynamicVars["BonusPerSkill"].IntValue;
     }
 
     protected override void OnUpgrade()

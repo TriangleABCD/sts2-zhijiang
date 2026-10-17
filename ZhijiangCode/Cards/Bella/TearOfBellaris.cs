@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using STS2RitsuLib.Combat.SecondaryResources;
@@ -43,7 +44,11 @@ public sealed class TearOfBellaris : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(21, ValueProp.Move),
-        new DynamicVar("StrengthPer10", 1)
+        new DynamicVar("StrengthPer10", 1),
+        // 战斗内实时显示当前实际能获得的力量。
+        new CalculationBaseVar(0m),
+        new CalculationExtraVar(1m),
+        new CalculatedVar("CalculatedStrength").WithMultiplier((card, _) => StrengthGain(card))
     ];
 
     // 力量悬浮提示。
@@ -67,6 +72,10 @@ public sealed class TearOfBellaris : ModCardTemplate
                 .Execute(choiceContext);
         }
 
+        // 每消耗 10 点心之壁，获得力量（与卡面 {CalculatedStrength} 同源）。
+        // ⚠️ 必须在真正扣除心之壁之前算，否则会读到扣完后的 0。
+        int strengthGain = (int)((CalculatedVar)DynamicVars["CalculatedStrength"]).Calculate(cardPlay.Target);
+
         // 消耗所有心之壁。
         int heartWall = SecondaryResourceCmd.Get(base.Owner, HeartWall.HeartWallId);
         if (heartWall > 0)
@@ -74,13 +83,17 @@ public sealed class TearOfBellaris : ModCardTemplate
             await SecondaryResourceCmd.Lose(base.Owner, HeartWall.HeartWallId, heartWall, this);
         }
 
-        // 每消耗 10 点心之壁，获得力量。
-        int strengthGain = heartWall / 10 * DynamicVars["StrengthPer10"].IntValue;
         if (strengthGain > 0)
         {
             await PowerCmd.Apply<StrengthPower>(choiceContext, base.Owner.Creature,
                 strengthGain, base.Owner.Creature, this);
         }
+    }
+
+    private static decimal StrengthGain(CardModel card)
+    {
+        int heartWall = SecondaryResourceCmd.Get(card.Owner, HeartWall.HeartWallId);
+        return heartWall / 10 * card.DynamicVars["StrengthPer10"].IntValue;
     }
 
     protected override void OnUpgrade()
