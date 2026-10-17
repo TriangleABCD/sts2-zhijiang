@@ -28,7 +28,9 @@ public sealed class BellaRabbit : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, ValueProp.Move)
+        new DamageVar(7, ValueProp.Move),
+        // 白拉时的抽牌数（升级 1 → 2）。
+        new DynamicVar("Draw", 1m)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -43,11 +45,13 @@ public sealed class BellaRabbit : ModCardTemplate
         if (cardPlay.Target == null) return;
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
         if (BellaYinYangService.IsBaiLa(base.Owner))
-            await CardPileCmd.Draw(choiceContext, 1, base.Owner);
+            await CardPileCmd.Draw(choiceContext, DynamicVars["Draw"].IntValue, base.Owner);
     }
 
     protected override void OnUpgrade()
     {
+        // 伤害 7 → 9；白拉抽牌 1 → 2。
         DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars["Draw"].UpgradeValueBy(1m);
     }
 }

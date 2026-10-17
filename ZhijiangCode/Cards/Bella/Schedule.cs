@@ -14,7 +14,7 @@ using Zhijiang.ZhijiangCode.Powers;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 日程表：普通牌（阳 / 技能）。获得格挡；本回合每消耗 1 点心之壁，获得 1 点格挡。
+// 日程表：普通牌（阳 / 技能）。获得格挡；本回合每消耗 1 点心之壁，获得 1→2 点格挡（升级后翻倍）。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class Schedule : ModCardTemplate
 {
@@ -30,7 +30,9 @@ public sealed class Schedule : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(11, ValueProp.Move)
+        new BlockVar(11, ValueProp.Move),
+        // 本回合每消耗 1 点心之壁换到的格挡数（升级 1 → 2）。
+        new DynamicVar("WallToBlock", 1m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
@@ -50,16 +52,18 @@ public sealed class Schedule : ModCardTemplate
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 获得 8→10 点格挡。
+        // 获得 11→13 点格挡。
         await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block, cardPlay);
 
-        // 挂上「日程表」临时能力：本回合内每消耗心之壁获得格挡。
-        await PowerCmd.Apply<SchedulePower>(choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
+        // 挂上「日程表」临时能力：本回合内每消耗 1 点心之壁，获得 {WallToBlock} 点格挡（层数即每次消耗的格挡数）。
+        await PowerCmd.Apply<SchedulePower>(choiceContext, base.Owner.Creature,
+            DynamicVars["WallToBlock"].IntValue, base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        // 格挡 8 → 10。
+        // 格挡 11 → 13；每点心之壁换到的格挡 1 → 2。
         DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars["WallToBlock"].UpgradeValueBy(1m);
     }
 }

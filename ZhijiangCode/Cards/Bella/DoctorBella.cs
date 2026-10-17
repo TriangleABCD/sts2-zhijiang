@@ -18,7 +18,7 @@ namespace Zhijiang.ZhijiangCode.Cards.Bella;
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class DoctorBella : ModCardTemplate
 {
-    private const int BaseEnergyCost = 1;
+    private const int BaseEnergyCost = 0;
     private const CardType CardKind = CardType.Attack;
     private const CardRarity CardRarityValue = CardRarity.Uncommon;
     private const TargetType CardTarget = TargetType.AnyEnemy;

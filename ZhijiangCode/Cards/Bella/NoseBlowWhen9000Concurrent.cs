@@ -13,12 +13,13 @@ using Zhijiang.ZhijiangCode.SecondResource;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 9000同接擤鼻涕：罕见牌（中立 / 技能）。0 费，获得 2→3 能量；消耗 5 心之壁。
+// 9000同接擤鼻涕：罕见牌（中立 / 技能）。0 费，获得 2→3 能量；消耗心之壁 10⇢5，本牌被消耗。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class NoseBlowWhen9000Concurrent : ModCardTemplate
 {
     private const int BaseEnergyCost = 0;
-    private const int HeartWallCost = 5;
+    private const int BaseHeartWallCost = 10;
+    private const int UpgradedHeartWallCost = 5;
     private const CardType CardKind = CardType.Skill;
     private const CardRarity CardRarityValue = CardRarity.Uncommon;
     private const TargetType CardTarget = TargetType.Self;
@@ -38,13 +39,13 @@ public sealed class NoseBlowWhen9000Concurrent : ModCardTemplate
         base.EnergyHoverTip
     ];
 
-    // 中立牌：不挂阳/阴关键词。
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [];
+    // 中立牌：不挂阳/阴关键词；本牌被消耗。
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     public NoseBlowWhen9000Concurrent() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)
     {
-        // 第二费用：消耗 5 心之壁。
-        this.SecondaryCosts().Set(HeartWall.HeartWallId, HeartWallCost);
+        // 第二费用：消耗 10 心之壁（升级后 5）。
+        this.SecondaryCosts().Set(HeartWall.HeartWallId, BaseHeartWallCost);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -55,7 +56,8 @@ public sealed class NoseBlowWhen9000Concurrent : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 升级：能量 2 → 3（心之壁消耗保持 5）。
+        // 能量 2 → 3；心之壁消耗 10 → 5（消耗关键词不变）。
         DynamicVars.Energy.UpgradeValueBy(1m);
+        this.SecondaryCosts().Set(HeartWall.HeartWallId, UpgradedHeartWallCost);
     }
 }

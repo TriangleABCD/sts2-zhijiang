@@ -68,7 +68,8 @@ public sealed class MoreLoverMorePowerful : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1);
+        // 伤害 10 → 14（命中公式不变）。
+        DynamicVars.Damage.UpgradeValueBy(4m);
     }
 
     /// <summary>额外攻击次数 = 本回合此前打出的反差牌数（基础 1 次由 CalculationBaseVar 提供）；

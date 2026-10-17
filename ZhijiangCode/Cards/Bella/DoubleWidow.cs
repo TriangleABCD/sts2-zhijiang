@@ -14,11 +14,12 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 双倍的寡妇：罕见牌（阴 / 攻击）。造成伤害；若目标带有虚弱/易伤/中毒等任一层状态，额外造成 1 次伤害。
+// 双倍的寡妇：罕见牌（阴 / 攻击）。造成伤害；若目标带有虚弱/易伤/中毒等任一层状态，额外造成 2 次伤害。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class DoubleWidow : ModCardTemplate
 {
     private const int BaseEnergyCost = 1;
+    private const int ExtraHitCount = 2;
     private const CardType CardKind = CardType.Attack;
     private const CardRarity CardRarityValue = CardRarity.Uncommon;
     private const TargetType CardTarget = TargetType.AnyEnemy;
@@ -52,15 +53,18 @@ public sealed class DoubleWidow : ModCardTemplate
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        // 目标带有虚弱/易伤/中毒等任一层状态时，额外造成 1 次伤害。
+        // 目标带有虚弱/易伤/中毒等任一层状态时，额外造成 {ExtraHitCount} 次伤害。
         if (cardPlay.Target.HasPower<WeakPower>()
             || cardPlay.Target.HasPower<VulnerablePower>()
             || cardPlay.Target.HasPower<PoisonPower>())
         {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
-                .Targeting(cardPlay.Target)
-                .Execute(choiceContext);
+            for (int i = 0; i < ExtraHitCount; i++)
+            {
+                await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                    .FromCard(this)
+                    .Targeting(cardPlay.Target)
+                    .Execute(choiceContext);
+            }
         }
     }
 
