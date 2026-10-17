@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -62,12 +61,6 @@ public sealed class KiraBellaris : BellaStarterRelicTemplate
         IconPath: $"{Entry.ResPath}/images/relics/KiraBellaris_85x85.png",
         IconOutlinePath: $"{Entry.ResPath}/images/relics/KiraBellaris_85x85.png",
         BigIconPath: $"{Entry.ResPath}/images/relics/KiraBellaris_256x256.png");
-
-    // ---- 心之壁 → 敏捷（共用逻辑，来自 ModStarterRelicTemplate） ----
-    protected override Task ApplyHeartWallDexterity(PlayerChoiceContext choiceContext, Creature creature, int amount)
-    {
-        return PowerCmd.Apply<BellarisHeartWallPower>(choiceContext, creature, amount, creature, null);
-    }
 
     // ---- 闪耀贝极星独有效果：阴阳姿态的馈赠（无代价） ----
     // 白拉时每打出 1 张技能牌获得 1+|d|÷3 格挡；黑拉时每打出 1 张攻击牌对随机敌人造成 1+|d|÷3 伤害。

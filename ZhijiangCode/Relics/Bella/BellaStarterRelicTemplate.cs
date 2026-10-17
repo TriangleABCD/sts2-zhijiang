@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using STS2RitsuLib.Combat.Ui.ExtraCornerAmountLabels;
+using STS2RitsuLib.Scaffolding.Content;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Relics;
@@ -8,7 +9,7 @@ namespace Zhijiang.ZhijiangCode.Relics;
 /// 贝拉初始遗物系共用基类：在贝极星/闪耀贝极星图标上显示当前阳/阴牌数双角标。
 /// 左下角=阳（白），右下角=阴（暗红）。
 /// </summary>
-public abstract class BellaStarterRelicTemplate : ModStarterRelicTemplate,
+public abstract class BellaStarterRelicTemplate : ModRelicTemplate,
     IRelicExtraIconAmountLabelSpecsProvider
 {
     /// <summary>

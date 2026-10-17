@@ -17,8 +17,11 @@ public static class HeartWall
 		var registry = RitsuLibFramework.GetSecondaryResourceRegistry(Entry.ModId);
 
 		// 注册次级资源
+		// 每场战斗开局 5、战斗中只增不减（回合开始不自动变化），无上限，战斗结束清零。
+		// 注：曾试过 turnStartPolicy: ResetToMax（每回合重置），但 RitsuLib 的重置跑在 Hook.AfterSideTurnStart 的 Postfix
+		// （能力/遗物的 AfterSideTurnStart 之后），会把回合开始获得的量当场抹掉，且跨回合攒不到高价卡的费用，已回退。
 		HeartWallDefinition = registry.Register("HeartWall", new SecondaryResourceDefinition(
-			defaultAmount: 10,
+			defaultAmount: 5,
 			baseMaxAmount: null,
 			turnStartPolicy: SecondaryResourceTurnStartPolicy.None,
 			persistencePolicy: SecondaryResourcePersistencePolicy.Combat,

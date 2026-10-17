@@ -131,8 +131,9 @@ public sealed class {CardName} : ModCardTemplate
 ## 心之壁（第二费用）机制定稿
 
 - 注册位置：`ZhijiangCode/SecondResource/HeartWall.cs`（`HeartWall.Register()` 由 Entry 初始化时调用），RitsuLib `SecondaryResource`，仅贝拉角色显示（`AlwaysShowInCombatUiForCharacter<BellaCharacter>`）。
-- **定稿行为**（曾设计为"每回合回满 10 / 整局 Run 持久"，后改为）：`defaultAmount: 10`、`baseMaxAmount: null`（**无上限**）、`turnStartPolicy: None`（回合开始不自动变化）、`persistencePolicy: Combat`（**每场战斗重置为 10**）、下限 0。增减完全由卡牌/遗物驱动。
+- **定稿行为**（2026-10 改版：**心之壁→敏捷已删除**，只作纯第二费用）：`defaultAmount: 5`（**每场战斗开局 5**）、`baseMaxAmount: null`（**无上限**）、`turnStartPolicy: None`（**回合开始不自动变化**，战斗中只增不减）、`persistencePolicy: Combat`（**每场战斗重置为 5**、战斗结束清零）、下限 0。
 - RitsuLib `SecondaryResourceDefinition` 共 11 个构造参数（后 5 个为图标/本地化）；`baseMaxAmount: null` = 无上限概念，另有 `hardMaxAmount` 硬上限与 `minAmount` 硬下限。枚举语义（v0.4.57）：`turnStartPolicy` = None/ResetToMax/AddMaxToCurrent/Clear（注意 ResetToMax 与 AddMaxToCurrent 不同）；`persistencePolicy` = None/Combat/Run（Combat = 每场战斗重置）。
+- ⚠️ **别用 `turnStartPolicy: ResetToMax` 做每回合重置**（2026-10 试过又回退）：① `ResetToMax` 走 `SecondaryResourceCmd.Reset(toMax: true)`，目标 = `GetMax()`，无上限时 `GetMax()` 返回 `null`、回退到 `DefaultAmount`，所以它只能把资源重置成默认值、同时又把上限卡死在该值；② 重置时机在 `Hook.AfterSideTurnStart` 的 Postfix（`await original` 之后），**能力/遗物 `AfterSideTurnStart` 里加的量会被同一次重置抹掉**（「对抗路情侣」「情感障碍」升级收益直接失效），③ 重置产生的负 `Delta` 还会被「喔拉姐」当成"失去心之壁"结算伤害 ④ 跨回合攒不到 150 费「20号循环」的钱。
 - 战斗 UI 计数器：能量计数器旁 `(+60, -100)`，90×90，字号 28，白色正数，格式为纯数字（不带 /max）；图标 `Zhijiang/images/characters/Bella/HeartWall_text.png`（**48×48**）/ `HeartWall_big.png`（**256×256**）（已有专属图标，不再复用能量图标）。
 - 卡牌消耗显示：能量图标下方 `(0, +80)`，48×48 图标 + 字号 24（`NSecondaryResourceCardCostUi`）。
 - 卡牌侧 API：完整资源 ID 是 `Zhijiang.HeartWall`，代码里用 `HeartWall.HeartWallId` 静态属性；增减 `SecondaryResourceCmd.Get/Gain(base.Owner, HeartWall.HeartWallId, n, this)`；卡牌费用在构造函数里 `this.SecondaryCosts().Set(HeartWall.HeartWallId, N)`（升级用 Set 覆盖，支付/CanPlay 校验/卡面费用显示由 RitsuLib 自动处理）；耗空全部心之壁：`Get` 读当前值 → `SecondaryResourceCmd.Lose` 全扣（参考 `TearOfBellaris`）
@@ -205,9 +206,8 @@ public sealed class {CardName} : ModCardTemplate
   - `d = |阳牌数 − 阴牌数|`，无上限（鼓励极限偏科）；d=0 时白拉、馈赠/代价均为基数 1。
   - **闪耀贝极星**：馈赠与贝极星数值完全一致，**只有馈赠、没有代价**。
   - 实现：馈赠 `BellarisBlockPower` / `BellarisHeiLaAttackPower`（`AfterCardPlayed` 实时判状态与数值，两遗物共用）；代价控制器 `BellarisYinYangDebuffPower`（仅贝极星施加，内部施加原版 `StrengthPower`/`DexterityPower` 负层数、带图标可见）。
-- **初始遗物 = 通用能力① + 角色专属能力②**：
-  - ① 心之壁→敏捷（**本 mod 所有角色初始遗物共有的能力**）：每回合开始敏捷 = 心之壁 ÷ 15（整除），临时敏捷仅本回合有效、回合结束移除。通用逻辑在共享基类 `ModStarterRelicTemplate.AfterPlayerTurnStart`，子类覆写 `ApplyHeartWallDexterity` 施加各角色专属的 TemporaryDexterityPower（贝拉为 `BellarisHeartWallPower`）。**以后每新增一个角色，其初始遗物都要继承 `ModStarterRelicTemplate` 带上这条。**
-  - ② 角色专属阴阳馈赠与代价（见上）。⚠️ 方向是**白拉防御、黑拉进攻**（不是进攻/防守的常规直觉），文档 1.2.2/1.5/2.1 已同步。
+- **初始遗物 = 角色专属阴阳馈赠与代价**（2026-10：原「心之壁 ÷ 15 → 临时敏捷」的通用能力已删除，心之壁不再自动转敏捷，`ModStarterRelicTemplate` 与 `BellarisHeartWallPower` 一并移除；初始遗物直接继承 `BellaStarterRelicTemplate : ModRelicTemplate`）：
+  - 阴阳馈赠与代价（见上）。⚠️ 方向是**白拉防御、黑拉进攻**（不是进攻/防守的常规直觉），文档 1.2.2/1.5/2.1 已同步。
   - 实现模式：进入战斗（`AfterRoomEntered` 判 `CombatRoom`）时施加 Power——`BellarisBlockPower`（内部判白拉才生效）与 `BellarisHeiLaAttackPower`（内部判黑拉才生效），各自按状态判断、天然互斥；贝极星额外施加 `BellarisYinYangDebuffPower`（代价控制器）。"每打出卡牌"没有 PowerModel 钩子，用 `AbstractModel.AfterCardPlayed`（参考 `BellarisBlockPower`）
 - **反差牌**：与当前状态阴阳相反的牌（白拉时的阴牌、黑拉时的阳牌），无标签牌恒不是。计数机制（供后续卡牌复用）：`BellaYinYangService` 订阅 `CardPlayingEvent` 在每张牌**第一段**打出瞬间按当时状态累加每玩家计数（`IsFirstInSeries` 判定，Replay 多段只算一张），`SideTurnStartedEvent`（玩家侧）清零，`CombatStartingEvent`/`CombatEndedEvent` 清理；卡牌 OnPlay 读 `GetContrastPlaysThisTurn` 时注意自身已在打出瞬间被计入，若自身是反差牌需扣 1（参考 `MoreLoverMorePowerful`）。
 - **判定翻转（了转反）**：`IsBaiLa/IsHeiLa` 结果与 `IsInverted`（检测隐藏 Power `TurnOverPower`，由「了转反」施加、战斗结束自动清除）取异或；状态图标与贝极星代价经牌堆变动事件实时同步翻转，反差牌判定也随之取反。了转反本身是无标签中立牌、不参与计数。
@@ -248,7 +248,7 @@ public sealed class {CardName} : ModCardTemplate
 - 战斗外：贝极星/闪耀贝极星的 `AdditionalHoverTips` 动态追加当前状态 Power 的 hover tip（`base.Owner` 即 Player，每次悬停重算）。
 - 本地化：`powers.json`（zhs/eng）的 `ZHIJIANG_POWER_BAI_LA_POWER` / `ZHIJIANG_POWER_HEI_LA_POWER`（文案已按新机制更新）。
 - ⚠️ 状态标记图标暂用贝拉能量图标占位，后续替换专属图标。
-- 阴阳机制源文件清单：`Keywords/BellaYinYangKeywords.cs`；`Characters/Bella/BellaYinYangService.cs`；`Relics/Bella/{Bellaris.cs, KiraBellaris.cs, BellarisBlockPower.cs, BellarisHeiLaAttackPower.cs, BellarisYinYangDebuffPower.cs, BellarisHeartWallPower.cs}`；`Powers/{BaiLaPower.cs, HeiLaPower.cs}`；`Patches/ModKeywordPeriodRemovalPatch.cs`
+- 阴阳机制源文件清单：`Keywords/BellaYinYangKeywords.cs`；`Characters/Bella/BellaYinYangService.cs`；`Relics/Bella/{Bellaris.cs, KiraBellaris.cs, BellaStarterRelicTemplate.cs, BellarisBlockPower.cs, BellarisHeiLaAttackPower.cs, BellarisYinYangDebuffPower.cs}`；`Powers/{BaiLaPower.cs, HeiLaPower.cs}`；`Patches/ModKeywordPeriodRemovalPatch.cs`
 
 ### 本轮开发范围（静态框架）
 
