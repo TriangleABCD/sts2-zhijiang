@@ -35,7 +35,7 @@ public sealed class Ygnn : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(4, ValueProp.Move),
-        new DynamicVar("StrengthGain", 2)
+        new DynamicVar("StrengthGain", 1)
     ];
 
     // 力量悬浮提示。

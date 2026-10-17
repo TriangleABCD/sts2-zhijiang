@@ -35,7 +35,7 @@ public sealed class Bpkn : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(8, ValueProp.Move),
-        new DynamicVar("StrengthLoss", 6)
+        new DynamicVar("StrengthLoss", 3)
     ];
 
     // 格挡与力量悬浮提示。
