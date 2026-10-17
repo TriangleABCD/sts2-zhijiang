@@ -33,7 +33,7 @@ public sealed class MadCow : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(10, ValueProp.Move),
-        new DynamicVar("StrengthGain", 6)
+        new DynamicVar("StrengthGain", 3)
     ];
 
     // 力量悬浮提示。
@@ -77,6 +77,6 @@ public sealed class MadCow : ModCardTemplate
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3);
-        DynamicVars["StrengthGain"].UpgradeValueBy(2);
+        DynamicVars["StrengthGain"].UpgradeValueBy(1);
     }
 }

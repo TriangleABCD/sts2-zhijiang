@@ -67,8 +67,8 @@
   "ZHIJIANG_CARD_ZHIJIANG_HELL.smartDescription": "获得{Energy:energyIcons()}。",
 
   "ZHIJIANG_CARD_MAD_COW.title": "疯牛！",
-  "ZHIJIANG_CARD_MAD_COW.description": "造成{Damage:diff()}点伤害2次。\n获得{StrengthGain}点[gold]力量[/gold]。",
-  "ZHIJIANG_CARD_MAD_COW.smartDescription": "造成{Damage:diff()}点伤害2次。\n获得{StrengthGain}点[gold]力量[/gold]。",
+  "ZHIJIANG_CARD_MAD_COW.description": "造成{Damage:diff()}点伤害3次。\n获得{StrengthGain}点[gold]力量[/gold]。",
+  "ZHIJIANG_CARD_MAD_COW.smartDescription": "造成{Damage:diff()}点伤害3次。\n获得{StrengthGain}点[gold]力量[/gold]。",
 
   "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.title": "情人越多越气派",
   "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.description": "造成{Damage:diff()}点伤害。\n本回合中你每打出过一张[gold]反差牌[/gold]，额外造成{Damage:diff()}点伤害一次。{InCombat:\n（攻击{CalculatedHits:diff()}次）|}",

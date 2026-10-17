@@ -67,8 +67,8 @@
   "ZHIJIANG_CARD_ZHIJIANG_HELL.smartDescription": "Gain {Energy:energyIcons()}.",
 
   "ZHIJIANG_CARD_MAD_COW.title": "Mad Cow",
-  "ZHIJIANG_CARD_MAD_COW.description": "Deal {Damage:diff()} damage 2 times.\nGain {StrengthGain} [gold]Strength[/gold].",
-  "ZHIJIANG_CARD_MAD_COW.smartDescription": "Deal {Damage:diff()} damage 2 times.\nGain {StrengthGain} [gold]Strength[/gold].",
+  "ZHIJIANG_CARD_MAD_COW.description": "Deal {Damage:diff()} damage 3 times.\nGain {StrengthGain} [gold]Strength[/gold].",
+  "ZHIJIANG_CARD_MAD_COW.smartDescription": "Deal {Damage:diff()} damage 3 times.\nGain {StrengthGain} [gold]Strength[/gold].",
 
   "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.title": "More Lover More Powerful",
   "ZHIJIANG_CARD_MORE_LOVER_MORE_POWERFUL.description": "Deal {Damage:diff()} damage.\nDeals {Damage:diff()} additional damage for each [gold]Contrast card[/gold] already played this turn.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
