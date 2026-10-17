@@ -4,7 +4,7 @@
   "pck_name": "Zhijiang",
   "author": "wyy",
   "description": "包含枝江 5 位角色 - ⌈贝拉Bella、嘉然Diana、乃琳Eileen、心宜Fiona、思诺Gladys⌋",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "has_pck": true,
   "has_dll": true,
   "affects_gameplay": true,
