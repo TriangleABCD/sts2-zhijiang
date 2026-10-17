@@ -185,6 +185,7 @@ public sealed class {CardName} : ModCardTemplate
 
 - 本机用 PowerShell 提交 git：中文提交信息用 `git commit -F <UTF-8文件>`（或 `--amend -F`）避免 PS 传参 GBK 乱码；验证仓库实际存储内容用 `git log --output=<文件>` 绕过终端编码
 - **游戏日志在 `%APPDATA%\SlayTheSpire2\logs\godot.log`**（同目录还有按启动时间命名的历史日志；`console_history.log` 记录控制台命令）。⚠️ **DevConsole 里不报的异常全在这里**——卡牌/遗物的 UI 初始化异常会被 `TaskHelper.LogTaskExceptions` 吞成一条 `[ERROR]`，游戏内表现为「卡加不进手牌 / 一张卡卡在屏幕左上角」这类怪现象。排查用：`Select-String -Path $log -Pattern '\[ERROR\]|Exception' | Select-Object -Last 30`；`[WARN] [RitsuLib] [Assets] Missing resource path ... Falling back to the base asset` 只是缺图回退，无害
+- **构建保持 0 警告**（2026-10 清理完成，基线 `0 警告 0 错误`）：项目开了 `Nullable=enable`，游戏程序集把 `Player.PlayerCombatState`、`CardModel.Pile`、`CardModel.CombatState`、`Creature.CombatState` 标成可空，直接解引用会出 CS8602/CS8604（都是注解噪声，战斗内不会真为空）。正确写法有二：① 清点「本场战斗中仍在循环里的牌」一律用扩展方法 `owner.CardsInCycle()`（`ZhijiangCode/Cards/CombatCardQuery.cs`，已内置判空 + 排除消耗堆），**不要**再手写 `PlayerCombatState!.AllCards.Where(c => c.Pile.Type != PileType.Exhaust)`；② 单点判空用 `is not { } x` 模式或 `!` 断言 + 一行注释说明为何必非空。另：基类 `Task` 虚方法若方法体全同步**不要加 `async`**（CS1998），直接 `return Task.CompletedTask;`。切勿用 `<NoWarn>` 全局屏蔽 CS8602/CS8604（等于关掉整个可空性检查）；现有 `NoWarn` 里的 `MSB3270;CS0436` 是 publicizer 必需的，保留
 - `.trae/` 与 `.agents/` 已在 .gitignore，不提交；根目录 `AGENTS.md` 会随仓库提交、供所有协作者/工具共享
 
 ## 阴阳机制（核心玩法）设计定稿

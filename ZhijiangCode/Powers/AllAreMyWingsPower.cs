@@ -59,12 +59,12 @@ public sealed class AllAreMyWingsPower : ModPowerTemplate, IPowerExtraIconAmount
     /// 每次自己打出卡牌后更新本回合阳/阴计数并刷新图标角标。
     /// Replay 类多段重复打出只算第一段，与 BellaYinYangService 的口径一致。
     /// </summary>
-    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner?.Creature != base.Owner)
-            return;
+            return Task.CompletedTask;
         if (!cardPlay.IsFirstInSeries)
-            return;
+            return Task.CompletedTask;
 
         var keywords = cardPlay.Card.Keywords;
         if (keywords.Contains(BellaYinYangService.YangKeywordId.GetModCardKeyword()))
@@ -77,6 +77,8 @@ public sealed class AllAreMyWingsPower : ModPowerTemplate, IPowerExtraIconAmount
             _yinThisTurn++;
             InvokeDisplayAmountChanged();
         }
+
+        return Task.CompletedTask;
     }
 
     public override Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)

@@ -90,7 +90,7 @@ public sealed class NoMoreAbstraction : ModCardTemplate
     private static int GetRewardCount(Player owner) => GetRewardCount(GetElegantCards(owner).Count());
 
     private static IEnumerable<CardModel> GetElegantCards(Player owner)
-        => owner.PlayerCombatState!.AllCards.Where(c => c is Elegant && c.Pile.Type != PileType.Exhaust);
+        => owner.CardsInCycle().Where(c => c is Elegant);
 
     protected override void OnUpgrade()
     {

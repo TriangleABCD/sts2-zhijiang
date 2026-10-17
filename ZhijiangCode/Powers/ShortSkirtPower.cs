@@ -29,12 +29,13 @@ public sealed class ShortSkirtPower : PowerModel
     // 技能牌产生的间接效果，不显示图标。
     protected override bool IsVisibleInternal => false;
 
-    public override async Task BeforeFlushLate(PlayerChoiceContext choiceContext, Player player)
+    public override Task BeforeFlushLate(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != base.Owner.Player)
-            return;
-        if (!Hook.ShouldFlush(player.Creature.CombatState, player))
-            return;
+            return Task.CompletedTask;
+        // 本回调只在战斗内触发，CombatState 必非空；判空仅满足游戏的可空注解。
+        if (player.Creature.CombatState is not { } combatState || !Hook.ShouldFlush(combatState, player))
+            return Task.CompletedTask;
 
         var yangCards = PileType.Hand.GetPile(player).Cards
             .Where(c => c.Keywords.Contains(BellaYinYangService.YangKeywordId.GetModCardKeyword()))
@@ -44,6 +45,8 @@ public sealed class ShortSkirtPower : PowerModel
             if (!card.ShouldRetainThisTurn)
                 card.GiveSingleTurnRetain();
         }
+
+        return Task.CompletedTask;
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)

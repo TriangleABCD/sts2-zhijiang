@@ -63,8 +63,8 @@ public sealed class LittleLighter : ModCardTemplate
             .Execute(choiceContext);
 
         // 消耗所有状态牌（不含已消耗堆）。
-        List<CardModel> statuses = base.Owner.PlayerCombatState!.AllCards
-            .Where(c => c.Type == CardType.Status && c.Pile.Type != PileType.Exhaust)
+        List<CardModel> statuses = base.Owner.CardsInCycle()
+            .Where(c => c.Type == CardType.Status)
             .ToList();
         foreach (CardModel status in statuses)
             await CardCmd.Exhaust(choiceContext, status);

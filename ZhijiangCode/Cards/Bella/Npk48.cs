@@ -86,7 +86,7 @@ public sealed class Npk48 : ModCardTemplate
     private static int GetNpCount(Player owner) => GetNpCards(owner).Count();
 
     private static IEnumerable<CardModel> GetNpCards(Player owner)
-        => owner.PlayerCombatState!.AllCards.Where(c => c is Np && c.Pile.Type != PileType.Exhaust);
+        => owner.CardsInCycle().Where(c => c is Np);
 
     protected override void OnUpgrade()
     {

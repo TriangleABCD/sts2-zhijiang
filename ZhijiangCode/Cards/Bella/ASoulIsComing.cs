@@ -52,9 +52,10 @@ public sealed class ASoulIsComing : ModCardTemplate
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         // 收集所有玩家（自己 + 联机队友），排除重复。
+        // OnPlay 只在战斗内执行，CombatState 必非空；! 仅满足游戏的可空注解。
         List<Player> players = [base.Owner];
         players.AddRange(
-            from c in base.CombatState.GetTeammatesOf(base.Owner.Creature)
+            from c in base.CombatState!.GetTeammatesOf(base.Owner.Creature)
             where c != null && c.IsAlive && c.IsPlayer && c.Player != base.Owner
             select c.Player);
 

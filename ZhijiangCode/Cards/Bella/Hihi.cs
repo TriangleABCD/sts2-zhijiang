@@ -54,7 +54,8 @@ public sealed class Hihi : ModCardTemplate
         BellaAudio.PlayCardSfx("hihi.ogg", 1f);
 
         // 将能量翻倍：获得与当前能量相等的能量（同原版 DoubleEnergy）。
-        await PlayerCmd.GainEnergy(base.Owner.PlayerCombatState.Energy, base.Owner);
+        // OnPlay 只在战斗内执行，PlayerCombatState 必非空；! 仅满足游戏的可空注解。
+        await PlayerCmd.GainEnergy(base.Owner.PlayerCombatState!.Energy, base.Owner);
     }
 
     protected override void OnUpgrade()
