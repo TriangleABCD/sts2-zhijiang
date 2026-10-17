@@ -55,7 +55,8 @@ public sealed class BellaPraysForRain : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 伤害 6 → 8。
+        // 伤害 6 → 8；每张技能牌的额外伤害 +1 → +2。
         DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars["BonusPerSkill"].UpgradeValueBy(1m);
     }
 }

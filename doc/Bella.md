@@ -290,7 +290,7 @@
 | 贝1 | 0 | 造成 3→4 点伤害，抽牌堆随机 2→3 张 1 费牌加入手牌 | `Cards/Bella/BellaIsOne.cs` |
 | 牛不灭 | 1 | 造成 13→16 点伤害，弃牌堆中加入 1 张牛批 | `Cards/Bella/OxNeverDie.cs` |
 | 末路狂花 | 1 | 造成 9→13 点伤害；若手牌中没有阳牌，在本场战斗中升级手牌中的所有牌 | `Cards/Bella/FlowerInDeath.cs` |
-| 贝拉求雨 | 1 | 造成 6→8 点伤害，本回合每打出一张技能牌，此牌伤害 +1 | `Cards/Bella/BellaPraysForRain.cs` |
+| 贝拉求雨 | 1 | 造成 6→8 点伤害，本回合每打出过一张技能牌，此牌伤害 +1（升级后 +2） | `Cards/Bella/BellaPraysForRain.cs` |
 | 锅锤打击 | 1 | 造成 4→6 点伤害；若处于白拉，额外造成 3→4 点伤害 | `Cards/Bella/PotHammerStrike.cs` |
 
 #### 技能牌
