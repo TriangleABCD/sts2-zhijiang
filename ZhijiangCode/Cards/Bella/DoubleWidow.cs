@@ -14,12 +14,11 @@ using Zhijiang.ZhijiangCode.Characters.Bella;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 双倍的寡妇：罕见牌（阴 / 攻击）。造成伤害；若目标带有虚弱/易伤/中毒等任一层状态，额外造成 2 次伤害。
+// 双倍的寡妇：罕见牌（阴 / 攻击）。造成伤害；若目标带有虚弱/易伤/中毒等任一层状态，额外造成 1→2 次伤害。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class DoubleWidow : ModCardTemplate
 {
     private const int BaseEnergyCost = 1;
-    private const int ExtraHitCount = 2;
     private const CardType CardKind = CardType.Attack;
     private const CardRarity CardRarityValue = CardRarity.Uncommon;
     private const TargetType CardTarget = TargetType.AnyEnemy;
@@ -31,7 +30,9 @@ public sealed class DoubleWidow : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, ValueProp.Move)
+        new DamageVar(7, ValueProp.Move),
+        // 目标带负面状态时的额外伤害次数（1 → 升级后 2）。
+        new DynamicVar("ExtraHits", 1m)
     ];
 
     // 阴阳属性：双倍的寡妇为阴牌。
@@ -53,12 +54,12 @@ public sealed class DoubleWidow : ModCardTemplate
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        // 目标带有虚弱/易伤/中毒等任一层状态时，额外造成 {ExtraHitCount} 次伤害。
+        // 目标带有虚弱/易伤/中毒等任一层状态时，额外造成 {ExtraHits} 次伤害。
         if (cardPlay.Target.HasPower<WeakPower>()
             || cardPlay.Target.HasPower<VulnerablePower>()
             || cardPlay.Target.HasPower<PoisonPower>())
         {
-            for (int i = 0; i < ExtraHitCount; i++)
+            for (int i = 0; i < DynamicVars["ExtraHits"].IntValue; i++)
             {
                 await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                     .FromCard(this)
@@ -70,7 +71,8 @@ public sealed class DoubleWidow : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 伤害 5 → 8。
+        // 伤害 7 → 10；额外伤害次数 1 → 2。
         DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars["ExtraHits"].UpgradeValueBy(1m);
     }
 }

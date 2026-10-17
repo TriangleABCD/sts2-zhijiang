@@ -327,7 +327,7 @@
 | 情人越多越气派 | 1 | 造成 10→14 点伤害。本回合中你每打出过 1 张反差牌，额外造成 1 次伤害（卡面用 `{InCombat:（攻击N次）|}` 实时显示攻击次数） | `Cards/Bella/MoreLoverMorePowerful.cs` |
 | 回旋镖 | 2 | 造成 8→12 点伤害，本回合每打出过 1 张反差牌，伤害 +2 | `Cards/Bella/Boomerang.cs` |
 | 天猫精灵 | 2 | 对所有敌人造成 6→9 点伤害；若处于黑拉，对随机敌人再造成 4→6 点伤害 | `Cards/Bella/TmallGenie.cs` |
-| 双倍的寡妇 | 1 | 造成 7→10 点伤害；若目标带虚弱/易伤/中毒等状态，额外造成 2 次伤害 | `Cards/Bella/DoubleWidow.cs` |
+| 双倍的寡妇 | 1 | 造成 7→10 点伤害；若目标带虚弱/易伤/中毒等状态，额外造成 1→2 次伤害 | `Cards/Bella/DoubleWidow.cs` |
 | 贝拉飞踢 | 1 | 造成 6→9 点伤害；若本回合打出过技能牌，抽 1 张牌 | `Cards/Bella/BellaFlyingKick.cs` |
 | 沸腾期待 | 2 | 造成 6→9 点伤害；每有 5 点心之壁，伤害 +1→+2 | `Cards/Bella/BoilingExpectation.cs` |
 | 一起跳起来 | 1 | 造成 5→7 点伤害；若本回合打出过反差牌，额外攻击 1→2 次 | `Cards/Bella/JumpTogether.cs` |
