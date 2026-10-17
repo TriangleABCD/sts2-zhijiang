@@ -33,7 +33,9 @@ public sealed class Ultraman : ModCardTemplate
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(9, ValueProp.Move),
-        new DynamicVar("NpCount", 1m)
+        new DynamicVar("NpCount", 1m),
+        // 抽牌数（升级 1 → 2）。
+        new DynamicVar("DrawCount", 1m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
@@ -60,8 +62,8 @@ public sealed class Ultraman : ModCardTemplate
         // 获得 9→12 点格挡。
         await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block, cardPlay);
 
-        // 抽 1 张牌。
-        await CardPileCmd.Draw(choiceContext, 1, base.Owner);
+        // 抽 {DrawCount} 张牌。
+        await CardPileCmd.Draw(choiceContext, DynamicVars["DrawCount"].IntValue, base.Owner);
 
         // 1 张牛批加入手牌（仅自己）。
         IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(
@@ -73,7 +75,8 @@ public sealed class Ultraman : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 格挡 9 → 12。
+        // 格挡 9 → 12；抽牌 1 → 2 张。
         DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars["DrawCount"].UpgradeValueBy(1m);
     }
 }

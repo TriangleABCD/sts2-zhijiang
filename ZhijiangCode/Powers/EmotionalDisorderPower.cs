@@ -31,14 +31,6 @@ public sealed class EmotionalDisorderPower : ModPowerTemplate
         IconPath: $"{Entry.ResPath}/images/characters/Bella/emotional_disorder_power_64x64.png",
         BigIconPath: $"{Entry.ResPath}/images/characters/Bella/emotional_disorder_power_256x256.png");
 
-    /// <summary>追加一份升级收益：每张升级牌每回合额外 +1 心之壁（基础牌传 0）。
-    /// 改为累加而不是覆盖，保证“基础+升级”混搭时按张数正确叠加。</summary>
-    public void AddHeartWallGain(decimal gain)
-    {
-        AssertMutable();
-        base.DynamicVars["HeartWallGain"].BaseValue += gain;
-    }
-
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         if (side != Owner.Side)
@@ -53,10 +45,5 @@ public sealed class EmotionalDisorderPower : ModPowerTemplate
         int block = heartWall / 10;
         if (block > 0)
             await CreatureCmd.GainBlock(base.Owner, block * Amount, ValueProp.Move, null);
-
-        // 数值叠加：每张升级牌每回合各额外获得 1 心之壁。
-        int heartWallGain = DynamicVars["HeartWallGain"].IntValue;
-        if (heartWallGain > 0)
-            await SecondaryResourceCmd.Gain(player, HeartWall.HeartWallId, heartWallGain, this);
     }
 }

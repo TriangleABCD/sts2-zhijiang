@@ -31,7 +31,9 @@ public sealed class ScratchHead : ModCardTemplate
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(7, ValueProp.Move)
+        new BlockVar(7, ValueProp.Move),
+        // 免费打出的技能牌张数（升级 1 → 2）。
+        new DynamicVar("AutoPlayCount", 1m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
@@ -58,20 +60,27 @@ public sealed class ScratchHead : ModCardTemplate
         if (contrastPlays <= 0)
             return;
 
-        // 随机打出抽牌堆中的一张技能牌（免费，同原版「横祸」Catastrophe；没有可打出的技能牌则无事发生）。
-        CardModel? skill = PileType.Draw.GetPile(base.Owner).Cards
-            .Where(c => c.Type == CardType.Skill && !c.Keywords.Contains(CardKeyword.Unplayable))
-            .ToList()
-            .StableShuffle(base.Owner.RunState.Rng.Shuffle)
-            .FirstOrDefault();
+        // 随机打出抽牌堆中的 {AutoPlayCount} 张技能牌（免费，同原版「横祸」Catastrophe；没有可打出的技能牌则无事发生）。
+        // 每次重新取牌堆，避免重复打出同一张（上一张已在 AutoPlay 中离开抽牌堆）。
+        for (int i = 0; i < DynamicVars["AutoPlayCount"].IntValue; i++)
+        {
+            CardModel? skill = PileType.Draw.GetPile(base.Owner).Cards
+                .Where(c => c.Type == CardType.Skill && !c.Keywords.Contains(CardKeyword.Unplayable))
+                .ToList()
+                .StableShuffle(base.Owner.RunState.Rng.Shuffle)
+                .FirstOrDefault();
 
-        if (skill != null)
+            if (skill == null)
+                return;
+
             await CardCmd.AutoPlay(choiceContext, skill, null);
+        }
     }
 
     protected override void OnUpgrade()
     {
-        // 格挡 7 → 10。
+        // 格挡 7 → 10；免费打出的技能牌 1 → 2 张。
         DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars["AutoPlayCount"].UpgradeValueBy(1m);
     }
 }

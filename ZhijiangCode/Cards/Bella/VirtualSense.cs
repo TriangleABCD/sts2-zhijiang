@@ -52,6 +52,8 @@ public sealed class VirtualSense : ModCardTemplate
 
     protected override void OnUpgrade()
     {
+        // 费用 2 → 1；每张技能牌获得的心之壁 4 → 5。
+        base.EnergyCost.UpgradeBy(-1);
         DynamicVars["HeartWallGain"].UpgradeValueBy(1m);
     }
 }

@@ -14,7 +14,7 @@ using Zhijiang.ZhijiangCode.Powers;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 牛符咒：2 费消耗，本回合获得 5→7 点力量（回合结束时移除，参考原版 Flex 类临时力量实现）。
+// 牛符咒：2 费消耗，本回合获得 4→6 点力量（回合结束时移除，参考原版 Flex 类临时力量实现）。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class OxTalisman : ModCardTemplate
 {
@@ -28,10 +28,10 @@ public sealed class OxTalisman : ModCardTemplate
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/ox_talisman.png");
 
-    // 本回合获得的力量值（5→7）。
+    // 本回合获得的力量值（4→6）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("StrengthGain", 7m)
+        new DynamicVar("StrengthGain", 4m)
     ];
 
     // 力量悬浮提示。

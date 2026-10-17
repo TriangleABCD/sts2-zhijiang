@@ -26,10 +26,10 @@ public sealed class NeverForgive : ModCardTemplate
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/never_forgive.png");
 
-    // 每次损失生命值获得的心之壁（3→4）。
+    // 每次损失生命值获得的心之壁（7→9）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("HeartWallGain", 5m)
+        new DynamicVar("HeartWallGain", 7m)
     ];
 
     // 阴阳属性：绝无拉我为阴牌。
@@ -52,6 +52,7 @@ public sealed class NeverForgive : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        DynamicVars["HeartWallGain"].UpgradeValueBy(1m);
+        // 每次损失生命值的心之壁 7 → 9。
+        DynamicVars["HeartWallGain"].UpgradeValueBy(2m);
     }
 }

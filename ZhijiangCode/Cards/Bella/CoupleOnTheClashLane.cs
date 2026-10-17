@@ -27,10 +27,10 @@ public sealed class CoupleOnTheClashLane : ModCardTemplate
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/couple_on_the_clash_lane.png");
 
-    // 每回合开始时获得的心之壁（10 → 20）。
+    // 每回合开始时获得的心之壁（5 → 10）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("HeartWallGain", 10m)
+        new DynamicVar("HeartWallGain", 5m)
     ];
 
     // 阴阳属性：对抗路情侣为阳牌。
@@ -56,7 +56,7 @@ public sealed class CoupleOnTheClashLane : ModCardTemplate
 
     protected override void OnUpgrade()
     {
-        // 每回合心之壁 10 → 20。
-        DynamicVars["HeartWallGain"].UpgradeValueBy(10m);
+        // 每回合心之壁 5 → 10。
+        DynamicVars["HeartWallGain"].UpgradeValueBy(5m);
     }
 }

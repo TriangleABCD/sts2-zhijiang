@@ -42,9 +42,10 @@ public sealed class ZhijiangHell : ModCardTemplate
         base.EnergyHoverTip
     ];
 
-    // 阴阳属性：枝江地狱为阳牌。
+    // 消耗 + 阴阳属性：枝江地狱为阳牌。
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
+        CardKeyword.Exhaust,
         BellaYinYangService.YangKeywordId.GetModCardKeyword()
     ];
 

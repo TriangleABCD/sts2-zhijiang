@@ -12,7 +12,7 @@ using Zhijiang.ZhijiangCode.Powers;
 
 namespace Zhijiang.ZhijiangCode.Cards.Bella;
 
-// 情感障碍：稀有牌（阳 / 能力）。白拉时每回合开始获得（心之壁 ÷ 10）格挡；升级后每回合额外获得 1 心之壁。
+// 情感障碍：稀有牌（阳 / 能力）。白拉时每回合开始获得（心之壁 ÷ 10）格挡；升级降费 2 → 1。
 [RegisterCard(typeof(BellaCardPool))]
 public sealed class EmotionalDisorder : ModCardTemplate
 {
@@ -25,12 +25,6 @@ public sealed class EmotionalDisorder : ModCardTemplate
     // 卡图占位：指向尚不存在的资源（构建会有 RITSU013 警告，方便日后找出缺卡图的牌）。
     public override CardAssetProfile AssetProfile => new(
         PortraitPath: $"{Entry.ResPath}/images/cards/Bella/emotional_disorder.png");
-
-    // 升级后每回合额外获得 1 心之壁（0 → 1）。
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new DynamicVar("HeartWallGain", 0m)
-    ];
 
     // 阴阳属性：情感障碍为阳牌。
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -45,15 +39,13 @@ public sealed class EmotionalDisorder : ModCardTemplate
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "PowerUp", base.Owner.Character.PowerUpAnimDelay);
-        int heartWallGain = DynamicVars["HeartWallGain"].IntValue;
-        EmotionalDisorderPower? power = await PowerCmd.Apply<EmotionalDisorderPower>(
+        await PowerCmd.Apply<EmotionalDisorderPower>(
             choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
-        power?.AddHeartWallGain(heartWallGain);
     }
 
     protected override void OnUpgrade()
     {
-        // 升级：每回合额外 1 心之壁。
-        DynamicVars["HeartWallGain"].UpgradeValueBy(1m);
+        // 费用 2 → 1。
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

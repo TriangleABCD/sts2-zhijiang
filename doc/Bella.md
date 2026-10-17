@@ -82,10 +82,10 @@
 - **初始值**：每场战斗开局 **5**（`defaultAmount: 5`）
 - **上限**：无（`baseMaxAmount: null`）
 - **生命周期**：战斗内资源，**回合开始不自动变化**（`turnStartPolicy: None`，战斗中只增不减）、战斗结束后清零（`persistencePolicy: Combat`），下场重新 5。
-- **收入**：药水·鲜榨杨桃汁 +100；提线木偶 +30⇢50；对抗路情侣（能力）每回合 +10⇢20；晃悠悠（遗物，每打出 1 张反差牌）+5；情感障碍（升级后）每回合 +1/张；预防针了 +5⇢10；小伙伴对不起 +5；虚拟感 每打出技能牌 +2⇢3；绝无拉我 每次失去生命 +3⇢4；牛牛民 每获得牛批 +3⇢4；老公x我 +2。
+- **收入**：药水·鲜榨杨桃汁 +100；提线木偶 +30⇢50；对抗路情侣（能力）每回合 +5⇢10；晃悠悠（遗物，每打出 1 张反差牌）+5；预防针了 +5⇢10；小伙伴对不起 +5；虚拟感 每打出技能牌 +4⇢5；绝无拉我 每次失去生命 +7⇢9；牛牛民 每获得牛批 +3⇢4；老公x我 +2。
 - **支出（卡牌费用）**：20号循环 150⇢120；抬头！/ NPK48 / 我再也不玩抽象了 25；上山 / 蓓蕾 / 恋爱心事 / 白龙马 20；初号机 15；枝江地狱 12⇢8；真情实感 / 巨龙腾飞 / 嘿嘿！ / 那我就是笨嘛 10；9000同接擤鼻涕 10⇢5；烧烤贝极星 5。
 - **换算**：A.T. 立场 格挡 = 心之壁 ÷ 5⇢4；情感障碍（白拉）每回合格挡 = 心之壁 ÷ 10 × 层数；沸腾期待 每 5 点心之壁伤害 +1⇢2；初号机 每 10 点心之壁额外 9⇢12 伤害；贝极星的眼泪 每 10 点心之壁换 1⇢2 力量；日程表 本回合每消耗 1 点转 1⇢2 格挡；喔拉姐 每失去 1 点造成 损失 ÷ 5⇢3 伤害。
-- ⚠️ **别做成每回合重置**（2026-10 试过 `turnStartPolicy: ResetToMax` + 每回合 15，已回退）：RitsuLib 的重置跑在 `Hook.AfterSideTurnStart` 的 Postfix（能力/遗物 `AfterSideTurnStart` **之后**），会把「对抗路情侣」「情感障碍（升级收益）」这种回合开始才加的心之壁当场抹掉，重置的负 `Delta` 还会给「喔拉姐」白送一次"失去心之壁"伤害，且跨回合攒不到 150 费「20号循环」的费用。
+- ⚠️ **别做成每回合重置**（2026-10 试过 `turnStartPolicy: ResetToMax` + 每回合 15，已回退）：RitsuLib 的重置跑在 `Hook.AfterSideTurnStart` 的 Postfix（能力/遗物 `AfterSideTurnStart` **之后**），会把「对抗路情侣」这种回合开始才加的心之壁当场抹掉，重置的负 `Delta` 还会给「喔拉姐」白送一次"失去心之壁"伤害，且跨回合攒不到 150 费「20号循环」的费用。
 
 ### 1.4 初始卡组
 
@@ -343,18 +343,18 @@
 |------|------|------|----------|
 | 一个魂来咯 | 1 | 消耗。所有玩家的抽牌堆、手牌、弃牌堆各加入 1 张灵魂（共 3 张）。升级：移除消耗。多人模式专属 | `Cards/Bella/ASoulIsComing.cs` |
 | 红莲华 | 1 | 获得 6⇢8 格挡，本回合每打出过 1 张阴阳相反的牌额外获得 2⇢3 格挡 | `Cards/Bella/Gurenge.cs` |
-| 枝江地狱 | 0 | 获得 2→3 能量，耗 12⇢8 心之壁 | `Cards/Bella/ZhijiangHell.cs` |
-| 分奴 | 1 | 消耗你手中所有阴牌，每消耗一张抽 1→2 张牌 | `Cards/Bella/Tryhard.cs` |
+| 枝江地狱 | 0 | 消耗。获得 2→3 能量，耗 12⇢8 心之壁 | `Cards/Bella/ZhijiangHell.cs` |
+| 分奴 | 1 | 消耗你手牌中所有阴牌，每消耗一张抽 1→2 张牌 | `Cards/Bella/Tryhard.cs` |
 | 贝极熊 | 1 | 获得 11→16 点格挡；若本回合没有打出过攻击牌，额外获得 5→7 点格挡 | `Cards/Bella/BellarisBear.cs` |
 | 一个女人满足不了我 | 2 | 抽 3 张牌，将最多 3→5 张手牌洗回抽牌堆，每张 0 费牌获得 2 点格挡 | `Cards/Bella/OneWomanCantSatisfyMe.cs` |
 | 牛来 | 0 | 获得 9→12 点格挡，将 1 张牛批加入弃牌堆 | `Cards/Bella/CowsAreComing.cs` |
 | 天使贝拉 | 1 | 将 1 张高雅加入抽牌堆，抽 2→3 张牌 | `Cards/Bella/AngelBella.cs` |
-| 奥特大英雄 | 1 | 获得 9→12 点格挡，抽 1 张牌，将 1 张牛批加入手牌 | `Cards/Bella/Ultraman.cs` |
+| 奥特大英雄 | 1 | 获得 9→12 点格挡，抽 1→2 张牌，将 1 张牛批加入手牌 | `Cards/Bella/Ultraman.cs` |
 | 芭蕾舞者 | 0 | 获得 9→12 点格挡，将 1 张高雅加入手牌 | `Cards/Bella/Ballerina.cs` |
 | 9000同接擤鼻涕 | 0 | 消耗。获得 2→3 能量，耗 10⇢5 心之壁 | `Cards/Bella/NoseBlowWhen9000Concurrent.cs` |
 | 晕3D | 1⇢0 | 抽 3 张牌，将 1 张晕眩加入抽牌堆 | `Cards/Bella/Dizzy3D.cs` |
 | 抬头！ | 0 | 自己获得 3→4 点力量。耗 25 心之壁；每打出一次，这张牌的心之壁费用 +10（本场战斗内） | `Cards/Bella/HeadsUp.cs` |
-| 挠头 | 1 | 获得 7→10 格挡；若本回合打出过反差牌，随机免费打出抽牌堆中的一张技能牌 | `Cards/Bella/ScratchHead.cs` |
+| 挠头 | 1 | 获得 7→10 格挡；若本回合打出过反差牌，随机免费打出抽牌堆中的 1→2 张技能牌 | `Cards/Bella/ScratchHead.cs` |
 | 老公x我 | 1 | 获得 2 心之壁；若阴阳平衡抽 2→3 张牌 | `Cards/Bella/BellaDoMe.cs` |
 | 大咪 | 1 | 抽 2→3 张牌；若抽到的牌中有阳牌，回复 1→2 点生命 | `Cards/Bella/GreatKitty.cs` |
 | 扁拉 | 1 | 消耗。将 3→4 张压扁加入弃牌堆，本场战斗中免费打出 | `Cards/Bella/FlattenedBella.cs` |
@@ -363,13 +363,13 @@
 
 | 名称 | 费用 | 效果 | 代码路径 |
 |------|------|------|----------|
-| 虚拟感 | 2 | 每打出一张技能牌时获得 2⇢3 心之壁 | `Cards/Bella/VirtualSense.cs` |
-| 绝无拉我 | 1 | 每次损失生命值时获得 3⇢4 心之壁 | `Cards/Bella/NeverForgive.cs` |
+| 虚拟感 | 2⇢1 | 每打出一张技能牌时获得 4⇢5 心之壁 | `Cards/Bella/VirtualSense.cs` |
+| 绝无拉我 | 1 | 每次损失生命值时获得 7⇢9 心之壁 | `Cards/Bella/NeverForgive.cs` |
 | 枝江小百合 | 1 | 每打出 5⇢3 张反差牌获得 1 点敏捷 | `Cards/Bella/ZhijiangLes.cs` |
 | 都是我的翅膀 | 2 | 若本回合打出阳牌数等于阴牌数，下回合获得 1→2 点能量 | `Cards/Bella/AllAreMyWings.cs` |
 | 牛牛民 | 1 | 每当你获得一张牛批，获得 3→4 点心之壁 | `Cards/Bella/CowLover.cs` |
 | 毕方 | 1 | 每回合开始将 1→2 张随机攻击牌加入手牌 | `Cards/Bella/BifangSama.cs` |
-| 对抗路情侣 | 1 | 每回合开始时获得 10→20 心之壁 | `Cards/Bella/CoupleOnTheClashLane.cs` |
+| 对抗路情侣 | 1 | 每回合开始时获得 5→10 心之壁 | `Cards/Bella/CoupleOnTheClashLane.cs` |
 
 ### 4.4 稀有牌 (Rare)
 
@@ -398,7 +398,7 @@
 |------|------|------|----------|
 | 20号循环 | 3⇢2 | 消耗。你打出的下一张攻击牌会额外打出 20 次。消耗 150⇢120 心之壁 | `Cards/Bella/LoopIn20.cs` |
 | 了转反 | 1 | 消耗。本场战斗内黑白拉判定翻转。升级：移除消耗 | `Cards/Bella/TurnOver.cs` |
-| 牛符咒 | 2 | 消耗。本回合获得 5→7 点力量 | `Cards/Bella/OxTalisman.cs` |
+| 牛符咒 | 2 | 消耗。本回合获得 4→6 点力量 | `Cards/Bella/OxTalisman.cs` |
 | 你不选...红色 | 2 | 消耗。将抽牌堆、弃牌堆、手牌中所有 0 费牌加入手牌并升级。升级：移除消耗 | `Cards/Bella/YouDontChooseRed.cs` |
 | 我再也不玩抽象了 | 3 | 消耗，耗 25 心之壁。消耗所有高雅，每消耗 3 张获得 1 点能量并抽 1 张牌。升级：移除消耗 | `Cards/Bella/NoMoreAbstraction.cs` |
 | 贝丽君 | 1 | 获得 11→15 点格挡，抽 2 张牌，将 1 张高雅加入抽牌堆 | `Cards/Bella/BellaTeng.cs` |
@@ -413,7 +413,7 @@
 |------|------|------|----------|
 | 黑贝拉sama | 2 | 每当你损失生命值时，生成 1⇢2 个黑暗充能球 | `Cards/Bella/EvilBella.cs` |
 | 喔拉姐，可靠的拉姐 | 3 | 每当你失去心之壁，对随机敌人造成损失量 ÷ 5（升级后 ÷3）伤害 | `Cards/Bella/ReliableSisterLa.cs` |
-| 情感障碍 | 2 | 每回合开始若处于白拉，获得（心之壁 ÷ 10）格挡；升级后每回合额外获得 1 心之壁 | `Cards/Bella/EmotionalDisorder.cs` |
+| 情感障碍 | 2⇢1 | 每回合开始若处于白拉，获得（心之壁 ÷ 10）格挡 | `Cards/Bella/EmotionalDisorder.cs` |
 | 队长的权力是无限的 | 2 | 每回合开始时你可以丢弃一张牌；若弃的是技能牌，抽 1→2 张牌 | `Cards/Bella/CaptainsPowerIsInfinite.cs` |
 | 我以灵魂注视你的心 | 3⇢2 | 每回合开始时获得 1 张灵魂 | `Cards/Bella/SoulGaze.cs` |
 | 那我就是笨嘛 | 3 | 耗 10 心之壁。每回合开始时失去 1 点敏捷，回复 1→2 生命 | `Cards/Bella/ThenImJustStupid.cs` |
