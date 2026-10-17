@@ -25,20 +25,13 @@ public sealed class KiraBellaris : BellaStarterRelicTemplate
     // 初始遗物不可在商店出现（防御性限制；Starter 稀有度本就不会被商店抽取）。
     public override bool IsAllowedInShops => false;
 
-    // 遗物的数值。DexterityPower 用于在本地化悬浮提示中展示能力图标。
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new PowerVar<DexterityPower>(1m)
-    ];
-
-    // 敏捷与格挡悬浮提示，以及动态的当前阴阳状态提示。
+    // 格挡悬浮提示，以及动态的当前阴阳状态提示。（心之壁→敏捷已移除，不再展示敏捷提示）
     protected override IEnumerable<IHoverTip> AdditionalHoverTips
     {
         get
         {
             var tips = new List<IHoverTip>
             {
-                HoverTipFactory.FromPower<DexterityPower>(),
                 HoverTipFactory.Static(StaticHoverTip.Block)
             };
 
