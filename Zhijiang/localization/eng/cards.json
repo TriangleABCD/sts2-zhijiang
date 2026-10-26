@@ -307,5 +307,9 @@
   "ZHIJIANG_CARD_ASCEND_THE_MOUNTAIN.title": "Ascend the Mountain",
   "ZHIJIANG_CARD_ASCEND_THE_MOUNTAIN.description": "[gold]Exhaust[/gold] up to {ExhaustCount} cards from your [gold]Draw Pile[/gold].\nHeal {HealPerCard} HP for each card [gold]Exhausted[/gold].",
   "ZHIJIANG_CARD_FAINTED_BY_BELLA.title": "Fainted by Bella",
-  "ZHIJIANG_CARD_FAINTED_BY_BELLA.description": "Whenever an enemy's attack fails to break through your [gold]Block[/gold], [gold]Stun[/gold] that enemy."
+  "ZHIJIANG_CARD_FAINTED_BY_BELLA.description": "Whenever an enemy's attack fails to break through your [gold]Block[/gold], [gold]Stun[/gold] that enemy.",
+  "ZHIJIANG_CARD_DIANA_STRIKE.title": "Strike",
+  "ZHIJIANG_CARD_DIANA_STRIKE.description": "Deal {Damage:diff()} damage.",
+  "ZHIJIANG_CARD_DIANA_DEFEND.title": "Defend",
+  "ZHIJIANG_CARD_DIANA_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold]."
 }

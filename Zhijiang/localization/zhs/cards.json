@@ -307,5 +307,9 @@
   "ZHIJIANG_CARD_ASCEND_THE_MOUNTAIN.title": "上山",
   "ZHIJIANG_CARD_ASCEND_THE_MOUNTAIN.description": "[gold]消耗[/gold]你[gold]抽牌堆[/gold]中最多{ExhaustCount}张牌。\n每[gold]消耗[/gold]一张牌，回复{HealPerCard}点生命。",
   "ZHIJIANG_CARD_FAINTED_BY_BELLA.title": "贝拉气晕",
-  "ZHIJIANG_CARD_FAINTED_BY_BELLA.description": "每当敌人的攻击未能突破你的[gold]格挡[/gold]时，[gold]击晕[/gold]该敌人。"
+  "ZHIJIANG_CARD_FAINTED_BY_BELLA.description": "每当敌人的攻击未能突破你的[gold]格挡[/gold]时，[gold]击晕[/gold]该敌人。",
+  "ZHIJIANG_CARD_DIANA_STRIKE.title": "打击",
+  "ZHIJIANG_CARD_DIANA_STRIKE.description": "造成{Damage:diff()}点伤害。",
+  "ZHIJIANG_CARD_DIANA_DEFEND.title": "防御",
+  "ZHIJIANG_CARD_DIANA_DEFEND.description": "获得{Block:diff()}点[gold]格挡[/gold]。"
 }

@@ -39,6 +39,8 @@ public partial class Entry
         // 新增内容类后，只要 attribute 写对，通常不需要在入口里手动逐个注册。
         ModTypeDiscoveryHub.RegisterModAssembly(ModId, assembly);
         HeartWall.Register();
+        // 嘉然的心之壁：规则与贝拉相同，图标是嘉然自己的资源，因此注册成独立次级资源。
+        DianaHeartWall.Register();
         BellaYinYangService.RegisterCombatStateSync();
         BellaYinYangService.RegisterYinYangCountBadgeSync();
         BellaHandGlow.Register();
@@ -49,14 +51,21 @@ public partial class Entry
         RitsuLibFramework.CreatePatcher(ModId, "KeywordPeriodRemoval")
             .RegisterPatch<ModKeywordPeriodRemovalPatch>();
 
-        // 洗牌拖尾（弃牌堆 → 抽牌堆）染成贝拉应援色：
+        // 洗牌拖尾（弃牌堆 → 抽牌堆）染成角色应援色（贝拉 / 嘉然共用，按玩家角色分支取色）：
         // RitsuLib 的 TrailStyle 染色只覆盖"跟随节点是 NCard"的普通拖尾，
         // 洗牌特效（NCardFlyShuffleVfx）需要此补丁补上，否则仍是占位角色（战士）的颜色。
         // 之前只 RegisterPatch 而漏了 PatchAll，补丁实际从未生效，本次补上应用调用。
-        var shuffleTrailPatcher = RitsuLibFramework.CreatePatcher(ModId, "BellaShuffleTrailStyle");
-        shuffleTrailPatcher.RegisterPatch<BellaShuffleTrailStylePatch>();
+        var shuffleTrailPatcher = RitsuLibFramework.CreatePatcher(ModId, "CharacterShuffleTrailStyle");
+        shuffleTrailPatcher.RegisterPatch<CharacterShuffleTrailStylePatch>();
         if (!shuffleTrailPatcher.PatchAll())
-            throw new InvalidOperationException("Critical patches failed: BellaShuffleTrailStyle.");
+            throw new InvalidOperationException("Critical patches failed: CharacterShuffleTrailStyle.");
+
+        // 嘉然扑克牌面（花色 + 点数）合成一行显示在卡牌描述上方。
+        // 非 critical：万一下游方法签名变化，只是不显示牌面，不影响玩法。
+        var pokerTextPatcher = RitsuLibFramework.CreatePatcher(ModId, "DianaPokerCardText");
+        pokerTextPatcher.RegisterPatch<DianaPokerCardTextPatch>();
+        if (!pokerTextPatcher.PatchAll())
+            Logger.Warn("DianaPokerCardText patch failed to apply; poker face text will be hidden.");
 
         Logger.Info("Zhijiang initialized.");
     }

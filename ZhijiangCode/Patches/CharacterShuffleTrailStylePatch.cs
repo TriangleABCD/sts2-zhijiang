@@ -6,27 +6,29 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using STS2RitsuLib.Patching.Models;
 using Zhijiang.ZhijiangCode.Characters.Bella;
+using Zhijiang.ZhijiangCode.Characters.Diana;
 
 namespace Zhijiang.ZhijiangCode.Patches;
 
 /// <summary>
-/// 贝拉洗牌拖尾染色补丁。
+/// 角色洗牌拖尾染色补丁（贝拉 / 嘉然共用）。
 /// 抽牌堆耗尽时弃牌堆洗回抽牌堆的飞行特效（NCardFlyShuffleVfx）内部调用
 /// NCardTrailVfx.Create(this, trailPath) 时，跟随节点是洗牌特效本身而不是 NCard，
 /// 因此 RitsuLib 的 CharacterTrailStyleOverridePatch（只处理 NCard，从卡片反查角色）
-/// 不会给它染色，贝拉的洗牌拖尾一直显示占位角色（ironclad 战士）的原始红色。
+/// 不会给它染色，洗牌拖尾一直显示占位角色（ironclad 战士）的原始红色。
 /// 本补丁在 NCardTrailVfx.Create 之后拦截：若跟随节点是洗牌特效，通过其目标牌堆
-/// （_targetPile，即洗牌玩家的牌堆实例）在当前战斗中反查贝拉玩家，
-/// 按贝拉应援色（SupportColor #DB7D74）染色，与"手牌进弃牌堆"的拖尾完全一致。
+/// （_targetPile，即洗牌玩家的牌堆实例）在当前战斗中反查该玩家的角色，
+/// 按角色的应援色染色，与"手牌进弃牌堆"的拖尾完全一致。
+/// 新增 mod 角色时在这里补一个 switch 分支即可。
 /// </summary>
-public sealed class BellaShuffleTrailStylePatch : IPatchMethod
+public sealed class CharacterShuffleTrailStylePatch : IPatchMethod
 {
     private static readonly AccessTools.FieldRef<NCardFlyShuffleVfx, CardPile> TargetPileRef =
         AccessTools.FieldRefAccess<NCardFlyShuffleVfx, CardPile>("_targetPile");
 
-    public static string PatchId => "zhijiang_bella_shuffle_trail_style";
+    public static string PatchId => "zhijiang_character_shuffle_trail_style";
 
-    public static string Description => "Color Bella's discard-to-draw shuffle trail like her card trail";
+    public static string Description => "Color mod characters' discard-to-draw shuffle trail like their card trail";
 
     public static bool IsCritical => false;
 
@@ -47,29 +49,36 @@ public sealed class BellaShuffleTrailStylePatch : IPatchMethod
             return;
 
         // 洗牌特效的目标牌堆是洗牌玩家拥有的牌堆实例（正常洗牌即抽牌堆），
-        // 用引用相等反查出这个牌堆属于哪个贝拉玩家。
+        // 用引用相等反查出这个牌堆属于哪个玩家，再按角色取应援色。
         foreach (var player in state.Players)
         {
-            if (player.Character is not BellaCharacter)
-                continue;
-            if (player.PlayerCombatState is not { } combatState)
+            if (player.Character is null || player.PlayerCombatState is not { } combatState)
                 continue;
             if (!combatState.AllPiles.Any(pile => ReferenceEquals(pile, targetPile)))
                 continue;
 
-            ApplyBellaStyle(__result);
-            Entry.Logger.Info("[BellaShuffleTrailStyle] Applied Bella SupportColor (#DB7D74) to discard->draw shuffle trail.");
+            Color? supportColor = player.Character switch
+            {
+                BellaCharacter => BellaCharacter.SupportColor,
+                DianaCharacter => DianaCharacter.SupportColor,
+                _ => null,
+            };
+            if (supportColor is not { } color)
+                return;
+
+            ApplyStyle(__result, color);
+            Entry.Logger.Info(
+                $"[ShuffleTrailStyle] Applied {player.Character.GetType().Name} support color ({color.ToHtml()}) to discard->draw shuffle trail.");
             return;
         }
     }
 
     /// <summary>
-    /// 与 BellaCharacter.TrailStyle 完全一致的染色方案：
-    /// 缎带/剪影精灵/大小火花全部染成 SupportColor（#DB7D74），不覆盖宽度与缩放。
+    /// 与对应角色的 CharacterTrailStyle 完全一致的染色方案：
+    /// 缎带/剪影精灵/大小火花全部染成应援色，不覆盖宽度与缩放。
     /// </summary>
-    private static void ApplyBellaStyle(NCardTrailVfx trail)
+    private static void ApplyStyle(NCardTrailVfx trail, Color color)
     {
-        Color color = BellaCharacter.SupportColor;
         ApplyLineStyle(trail, "Trails/OuterTrail", color, null);
         ApplyLineStyle(trail, "Trails/InnerTrail", color, null);
         ApplyParticleColor(trail, "Sprites/BigSparks", color);

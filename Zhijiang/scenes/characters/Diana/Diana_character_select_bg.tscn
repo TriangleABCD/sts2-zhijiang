@@ -1,0 +1,503 @@
+[gd_scene load_steps=122 format=3 uid="uid://dp2xfbjcs43fx"]
+
+[ext_resource type="Texture2D" uid="uid://c0co4wfc07lp1" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_001.png" id="1_40hsv"]
+[ext_resource type="Texture2D" uid="uid://dgaf0qwhcptyw" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_002.png" id="2_nhslk"]
+[ext_resource type="Texture2D" uid="uid://wyco8ngr7vo0" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_003.png" id="3_2fmmx"]
+[ext_resource type="Texture2D" uid="uid://bawvjexm4fuhs" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_004.png" id="4_0p2k5"]
+[ext_resource type="Texture2D" uid="uid://dtqcu2gy5kall" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_005.png" id="5_2wrry"]
+[ext_resource type="Texture2D" uid="uid://c3p8374qwtp1r" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_006.png" id="6_c6dt4"]
+[ext_resource type="Texture2D" uid="uid://bdis64w07r1wh" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_007.png" id="7_4lepi"]
+[ext_resource type="Texture2D" uid="uid://d8b2fjnn4b40" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_008.png" id="8_6vcqi"]
+[ext_resource type="Texture2D" uid="uid://dlhbvh5rggldu" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_009.png" id="9_14hhn"]
+[ext_resource type="Texture2D" uid="uid://d32buvh3vfmhu" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_010.png" id="10_s6x77"]
+[ext_resource type="Texture2D" uid="uid://b05p1hwafchgg" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_011.png" id="11_q0hy6"]
+[ext_resource type="Texture2D" uid="uid://dxg6k265jmc7p" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_012.png" id="12_sljwj"]
+[ext_resource type="Texture2D" uid="uid://dqijw8ry5ihtl" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_013.png" id="13_p0mtq"]
+[ext_resource type="Texture2D" uid="uid://bhc5bqhixuk7v" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_014.png" id="14_ol0mr"]
+[ext_resource type="Texture2D" uid="uid://cobvuxpuiklph" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_015.png" id="15_6rbyw"]
+[ext_resource type="Texture2D" uid="uid://ce2mtjwscyfgs" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_016.png" id="16_brnw1"]
+[ext_resource type="Texture2D" uid="uid://b75bk3s78prwa" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_017.png" id="17_l2dlv"]
+[ext_resource type="Texture2D" uid="uid://clegvgmpfkov8" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_018.png" id="18_un327"]
+[ext_resource type="Texture2D" uid="uid://o1uq45x2drwv" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_019.png" id="19_oerq7"]
+[ext_resource type="Texture2D" uid="uid://c6mqrqcneo4mm" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_020.png" id="20_rpmup"]
+[ext_resource type="Texture2D" uid="uid://bofkmqm7yjrou" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_021.png" id="21_hlyi8"]
+[ext_resource type="Texture2D" uid="uid://rfl8ba7g2li" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_022.png" id="22_hj3l3"]
+[ext_resource type="Texture2D" uid="uid://cy05uw6kcmw4e" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_023.png" id="23_y2wdc"]
+[ext_resource type="Texture2D" uid="uid://eedr7bms32es" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_024.png" id="24_26ysy"]
+[ext_resource type="Texture2D" uid="uid://b014kqrmjshrq" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_025.png" id="25_bt2en"]
+[ext_resource type="Texture2D" uid="uid://di7jyxvqsiy4k" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_026.png" id="26_11m1q"]
+[ext_resource type="Texture2D" uid="uid://bbs7p7map3wpi" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_027.png" id="27_uyxq4"]
+[ext_resource type="Texture2D" uid="uid://b4i6aucfpcnh3" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_028.png" id="28_02dhi"]
+[ext_resource type="Texture2D" uid="uid://bdl2i0mlx6htc" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_029.png" id="29_pybgl"]
+[ext_resource type="Texture2D" uid="uid://bb4wcokdhr5wk" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_030.png" id="30_7ymdp"]
+[ext_resource type="Texture2D" uid="uid://2aawlqu2iqep" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_031.png" id="31_7gnxo"]
+[ext_resource type="Texture2D" uid="uid://dopdubatf6va4" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_032.png" id="32_6pyrg"]
+[ext_resource type="Texture2D" uid="uid://cc73kfy6x86j2" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_033.png" id="33_2b35m"]
+[ext_resource type="Texture2D" uid="uid://dur25f2yuucwn" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_034.png" id="34_tqxhn"]
+[ext_resource type="Texture2D" uid="uid://3eqshy166664" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_035.png" id="35_b82p4"]
+[ext_resource type="Texture2D" uid="uid://b7fvedoyafhx5" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_036.png" id="36_cx3lf"]
+[ext_resource type="Texture2D" uid="uid://cia385qnicmv0" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_037.png" id="37_oc28e"]
+[ext_resource type="Texture2D" uid="uid://q1atjj3dwxmi" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_038.png" id="38_61oy2"]
+[ext_resource type="Texture2D" uid="uid://b15yp0pqswwyx" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_039.png" id="39_ciq24"]
+[ext_resource type="Texture2D" uid="uid://c5mwqxf7tkjbg" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_040.png" id="40_7h2mp"]
+[ext_resource type="Texture2D" uid="uid://bjgdl3vv11ruq" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_041.png" id="41_swxek"]
+[ext_resource type="Texture2D" uid="uid://bc15h10vuh1a" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_042.png" id="42_k753y"]
+[ext_resource type="Texture2D" uid="uid://c3xmp5dbandou" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_043.png" id="43_0ciem"]
+[ext_resource type="Texture2D" uid="uid://cr74qpti6spma" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_044.png" id="44_fht7m"]
+[ext_resource type="Texture2D" uid="uid://cvga8651763x" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_045.png" id="45_2t0xx"]
+[ext_resource type="Texture2D" uid="uid://rmlpqpri3s1s" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_046.png" id="46_6s6mw"]
+[ext_resource type="Texture2D" uid="uid://jb08sgpuo7mv" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_047.png" id="47_ihfyi"]
+[ext_resource type="Texture2D" uid="uid://s0tv8d0flv7h" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_048.png" id="48_nspa3"]
+[ext_resource type="Texture2D" uid="uid://2s1new75ajhv" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_049.png" id="49_h23wh"]
+[ext_resource type="Texture2D" uid="uid://c8q6lxh7vuwec" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_050.png" id="50_kwjq3"]
+[ext_resource type="Texture2D" uid="uid://pg73s6t3i5xv" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_051.png" id="51_136gd"]
+[ext_resource type="Texture2D" uid="uid://ckxqww4q2v0gx" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_052.png" id="52_64v86"]
+[ext_resource type="Texture2D" uid="uid://1eiuccgm660d" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_053.png" id="53_j2dmy"]
+[ext_resource type="Texture2D" uid="uid://bm0at26rvhs08" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_054.png" id="54_sd8o6"]
+[ext_resource type="Texture2D" uid="uid://cacmuwu0r8hu6" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_055.png" id="55_wnoxr"]
+[ext_resource type="Texture2D" uid="uid://cmpajbscs2spb" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_056.png" id="56_4mbtf"]
+[ext_resource type="Texture2D" uid="uid://cxd6iwqm1dssy" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_057.png" id="57_hf5gy"]
+[ext_resource type="Texture2D" uid="uid://bq8d3xhnjoep1" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_058.png" id="58_0qjxm"]
+[ext_resource type="Texture2D" uid="uid://d1sup4qfc8bxe" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_059.png" id="59_2gj0e"]
+[ext_resource type="Texture2D" uid="uid://craj33dey3sr2" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_060.png" id="60_2381k"]
+[ext_resource type="Texture2D" uid="uid://3rxxr7gd6glc" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_061.png" id="61_btqrt"]
+[ext_resource type="Texture2D" uid="uid://cfnxl6hceon1b" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_062.png" id="62_n4o1h"]
+[ext_resource type="Texture2D" uid="uid://deos76f88njww" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_063.png" id="63_7jndj"]
+[ext_resource type="Texture2D" uid="uid://lukcvak202l2" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_064.png" id="64_l56lx"]
+[ext_resource type="Texture2D" uid="uid://3bwxwpe4mfbe" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_065.png" id="65_4i4pb"]
+[ext_resource type="Texture2D" uid="uid://dowptcm8hu05g" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_066.png" id="66_av5kr"]
+[ext_resource type="Texture2D" uid="uid://bb5hqlpqud8b0" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_067.png" id="67_2nj2t"]
+[ext_resource type="Texture2D" uid="uid://cc08ixc4wrp32" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_068.png" id="68_gf2r4"]
+[ext_resource type="Texture2D" uid="uid://duuiaendwcj5j" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_069.png" id="69_7cojy"]
+[ext_resource type="Texture2D" uid="uid://c0lcjqpugjgia" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_070.png" id="70_64om5"]
+[ext_resource type="Texture2D" uid="uid://brxgjsw82kk0v" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_071.png" id="71_sw6g3"]
+[ext_resource type="Texture2D" uid="uid://b5xjti4xab3jq" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_072.png" id="72_ecgfw"]
+[ext_resource type="Texture2D" uid="uid://cogn8x66b2san" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_073.png" id="73_si2f7"]
+[ext_resource type="Texture2D" uid="uid://coretyv6147ky" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_074.png" id="74_khfn4"]
+[ext_resource type="Texture2D" uid="uid://bppqeron7jcg4" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_075.png" id="75_0as7o"]
+[ext_resource type="Texture2D" uid="uid://cgp3qejjw1mi6" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_076.png" id="76_asysx"]
+[ext_resource type="Texture2D" uid="uid://c2pxyppane5n0" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_077.png" id="77_u2pbe"]
+[ext_resource type="Texture2D" uid="uid://ftemgwocmlsm" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_078.png" id="78_mys1w"]
+[ext_resource type="Texture2D" uid="uid://dp5qlbkvdrheg" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_079.png" id="79_rk1se"]
+[ext_resource type="Texture2D" uid="uid://crvg2h6oents7" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_080.png" id="80_87ebv"]
+[ext_resource type="Texture2D" uid="uid://qjq4wbveeu8n" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_081.png" id="81_qu2vd"]
+[ext_resource type="Texture2D" uid="uid://tqljj8gun0m7" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_082.png" id="82_v3lxe"]
+[ext_resource type="Texture2D" uid="uid://dn7eb00je3bcf" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_083.png" id="83_j1pwr"]
+[ext_resource type="Texture2D" uid="uid://7ssrtmxii8rq" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_084.png" id="84_4dhfx"]
+[ext_resource type="Texture2D" uid="uid://dxfdt0a8nal2f" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_085.png" id="85_qpl3r"]
+[ext_resource type="Texture2D" uid="uid://dulq2qs3xblu" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_086.png" id="86_rxw5m"]
+[ext_resource type="Texture2D" uid="uid://bucrlt11c6yk6" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_087.png" id="87_y6knf"]
+[ext_resource type="Texture2D" uid="uid://ddxhe7balwgmw" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_088.png" id="88_fbktu"]
+[ext_resource type="Texture2D" uid="uid://bbuh7x3at5jg" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_089.png" id="89_vtfnv"]
+[ext_resource type="Texture2D" uid="uid://m47fu51u8w5t" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_090.png" id="90_jedua"]
+[ext_resource type="Texture2D" uid="uid://cj0imqbddp3i5" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_091.png" id="91_j0sst"]
+[ext_resource type="Texture2D" uid="uid://03lxqvfk7adn" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_092.png" id="92_myqvj"]
+[ext_resource type="Texture2D" uid="uid://c4ejr2ndy4uma" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_093.png" id="93_175vr"]
+[ext_resource type="Texture2D" uid="uid://dyroaaxy6djbt" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_094.png" id="94_bjmkn"]
+[ext_resource type="Texture2D" uid="uid://de4xuf1dox1ee" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_095.png" id="95_t4nkg"]
+[ext_resource type="Texture2D" uid="uid://c35cfc6xciau6" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_096.png" id="96_ofgi8"]
+[ext_resource type="Texture2D" uid="uid://6n6ibtvvlpym" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_097.png" id="97_0tivc"]
+[ext_resource type="Texture2D" uid="uid://cex527lwbyhon" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_098.png" id="98_swi04"]
+[ext_resource type="Texture2D" uid="uid://cpt6kdvtvfsjs" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_099.png" id="99_mt2bl"]
+[ext_resource type="Texture2D" uid="uid://8y3s6j0jnwi4" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_100.png" id="100_24pqg"]
+[ext_resource type="Texture2D" uid="uid://bjvtf6m24cdfm" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_101.png" id="101_gihi3"]
+[ext_resource type="Texture2D" uid="uid://bylsxevgjm85t" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_102.png" id="102_kvpqp"]
+[ext_resource type="Texture2D" uid="uid://bdybibethl5g0" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_103.png" id="103_ybdqu"]
+[ext_resource type="Texture2D" uid="uid://duuw4vqicxc8o" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_104.png" id="104_rkb6e"]
+[ext_resource type="Texture2D" uid="uid://2t2lde4bp03g" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_105.png" id="105_pbnib"]
+[ext_resource type="Texture2D" uid="uid://crivmyv28duma" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_106.png" id="106_fwwri"]
+[ext_resource type="Texture2D" uid="uid://ctuwq2rkvgeoi" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_107.png" id="107_bergg"]
+[ext_resource type="Texture2D" uid="uid://c6uvrxos47kbk" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_108.png" id="108_g2fa4"]
+[ext_resource type="Texture2D" uid="uid://blu4sh7hksxos" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_109.png" id="109_s5gla"]
+[ext_resource type="Texture2D" uid="uid://cs7dh4ipyfifp" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_110.png" id="110_tey20"]
+[ext_resource type="Texture2D" uid="uid://bmm2hpmkpru46" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_111.png" id="111_mac4o"]
+[ext_resource type="Texture2D" uid="uid://djuhfg5loio48" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_112.png" id="112_f6i2x"]
+[ext_resource type="Texture2D" uid="uid://kiq52d55ew7a" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_113.png" id="113_q8crw"]
+[ext_resource type="Texture2D" uid="uid://fi20eablu3c6" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_114.png" id="114_3fu5e"]
+[ext_resource type="Texture2D" uid="uid://dcl6l37y1jewa" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_115.png" id="115_7uwxq"]
+[ext_resource type="Texture2D" uid="uid://dfn2c1txq07p0" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_116.png" id="116_2fl3v"]
+[ext_resource type="Texture2D" uid="uid://cfa68tx4n8a3e" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_117.png" id="117_cbt25"]
+[ext_resource type="Texture2D" uid="uid://csknrck5pl7nx" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_118.png" id="118_2gnal"]
+[ext_resource type="Texture2D" uid="uid://daqadosddweqg" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_119.png" id="119_nrtqs"]
+[ext_resource type="Texture2D" uid="uid://cwu2ywbreauqg" path="res://Zhijiang/images/characters/Diana/select_bg_images/frame_120.png" id="120_busv4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1h7un"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_40hsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nhslk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2fmmx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0p2k5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2wrry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c6dt4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4lepi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6vcqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_14hhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_s6x77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_q0hy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_sljwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_p0mtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ol0mr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6rbyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_brnw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_l2dlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_un327")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_oerq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_rpmup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_hlyi8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_hj3l3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_y2wdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_26ysy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_bt2en")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_11m1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_uyxq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_02dhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_pybgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_7ymdp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_7gnxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_6pyrg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_2b35m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_tqxhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_b82p4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_cx3lf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_oc28e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_61oy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ciq24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_7h2mp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_swxek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_k753y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_0ciem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_fht7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_2t0xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_6s6mw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_ihfyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_nspa3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_h23wh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_kwjq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_136gd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_64v86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_j2dmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_sd8o6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_wnoxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_4mbtf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_hf5gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_0qjxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_2gj0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_2381k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_btqrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_n4o1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_7jndj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_l56lx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_4i4pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_av5kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_2nj2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_gf2r4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_7cojy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_64om5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_sw6g3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_ecgfw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_si2f7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_khfn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_0as7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_asysx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_u2pbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_mys1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_rk1se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_87ebv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_qu2vd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_v3lxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_j1pwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_4dhfx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_qpl3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_rxw5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_y6knf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_fbktu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_vtfnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_jedua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_j0sst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_myqvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_175vr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_bjmkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_t4nkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_ofgi8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_0tivc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_swi04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_mt2bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_24pqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_gihi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_kvpqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_ybdqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_rkb6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_pbnib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_fwwri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_bergg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_g2fa4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_s5gla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_tey20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_mac4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_f6i2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_q8crw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_3fu5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_7uwxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_2fl3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_cbt25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_2gnal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_nrtqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_busv4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="BellaCharacterSelectBg" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2560.0
+offset_bottom = 1200.0
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1336, 619)
+sprite_frames = SubResource("SpriteFrames_1h7un")
+autoplay = "default"
+frame_progress = 0.98109436

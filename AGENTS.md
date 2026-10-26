@@ -117,6 +117,9 @@ public sealed class {CardName} : ModCardTemplate
 
 ### 卡牌清单 / 数值 / 进度（指针）
 
+> 其他角色：**嘉然（Diana）** 的目录/代码/进度见 `doc/Diana.md`（当前只有打击/防御 + 初始遗物「嘉心糖」骨架）。
+> 嘉然主题色/应援色 = **#E799B0**（卡面色与名字色、卡池卡框 HSV、遗物/药水实验室描边、地图画线、卡牌拖尾、洗牌拖尾、能量数字描边 #3D1726）。
+
 > ⚠️ 卡表**不在本文件维护**（避免与文档两处数据打架）。查这些内容一律去 `doc/Bella.md`：
 > - 卡牌阴阳属性表（含稀有度 / 类型 / 备注，如「多人模式专属」）→ **4.0 节**
 > - 逐卡数值与升级效果 → **4.1～4.5 节**（按 Basic / Common / Uncommon / Rare / Ancient 分表）
@@ -169,7 +172,7 @@ public sealed class {CardName} : ModCardTemplate
   | necrobinder | 粉红 (1, 0.126, 0.288) | 粉红→紫红 |
 - **查看原版场景内容的方法**：用本机 Godot headless 加载游戏 pck 直接读 `res://` 文本（无需反编译）：临时工程放一个 `SceneTree` 脚本，`ProjectSettings.load_resource_pack("<游戏目录>/SlayTheSpire2.pck", true)` 后 `FileAccess.open("res://scenes/vfx/card_trail_xxx.tscn", FileAccess.READ)` 导出文本即可。
 - 贝拉已配置：全部染成 `SupportColor`（0.8588, 0.4902, 0.4549 = #DB7D74，应援色，与 `MapDrawingColor` 同值），底为 ironclad 拖尾（红橙系，与粉色同暖色系），实测观感好。
-- ⚠️ **洗牌拖尾例外（2026-08-17 首次尝试；2026-08-29 确认根因并修复）**：弃牌堆→抽牌堆的洗牌飞行特效（`NCardFlyShuffleVfx`）调用 `NCardTrailVfx.Create` 时跟随节点是洗牌特效本身、不是 `NCard`，RitsuLib 的 `CharacterTrailStyleOverridePatch`（靠 `card is NCard` 反查角色）不会给它染 TrailStyle，会显示占位角色的原色（贝拉显示战士红）。本项目补丁 `ZhijiangCode/Patches/BellaShuffleTrailStylePatch.cs`（注册于 `Entry.cs`）在 `NCardTrailVfx.Create` 后拦截洗牌特效，读私有字段 `_targetPile` 与当前战斗各玩家牌堆实例做引用相等反查贝拉玩家，染成与 TrailStyle 完全相同的 `SupportColor`。⚠️ 根因：此前 `Entry.cs` 只调用了 `RegisterPatch` 而漏掉 `PatchAll()`，补丁实际从未应用到游戏；修复后需在 `Entry.cs` 对洗牌拖尾补丁调用 `PatchAll()` 才会生效。以后新角色若也要洗牌拖尾染色，需在该补丁中加对应角色分支（或把染色逻辑抽成共享方法）。
+- ⚠️ **洗牌拖尾例外（2026-08-17 首次尝试；2026-08-29 确认根因并修复）**：弃牌堆→抽牌堆的洗牌飞行特效（`NCardFlyShuffleVfx`）调用 `NCardTrailVfx.Create` 时跟随节点是洗牌特效本身、不是 `NCard`，RitsuLib 的 `CharacterTrailStyleOverridePatch`（靠 `card is NCard` 反查角色）不会给它染 TrailStyle，会显示占位角色的原色（贝拉显示战士红）。本项目补丁 `ZhijiangCode/Patches/CharacterShuffleTrailStylePatch.cs`（2026-10 由 `BellaShuffleTrailStylePatch` 泛化，贝拉/嘉然共用；注册于 `Entry.cs`）在 `NCardTrailVfx.Create` 后拦截洗牌特效，读私有字段 `_targetPile` 与当前战斗各玩家牌堆实例做引用相等反查该玩家的角色（`BellaCharacter` / `DianaCharacter`），按其 `SupportColor` 染成与 TrailStyle 完全相同的 `SupportColor`。⚠️ 根因：此前 `Entry.cs` 只调用了 `RegisterPatch` 而漏掉 `PatchAll()`，补丁实际从未应用到游戏；修复后需在 `Entry.cs` 对洗牌拖尾补丁调用 `PatchAll()` 才会生效。现已按角色分支取色（贝拉 `#DB7D74`、嘉然 `#E799B0`）；以后新角色只需在该补丁的 switch 里加一行。
 
 ## Mod 设置页（2026-10 引入）
 
