@@ -1,13 +1,18 @@
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Characters;
 using STS2RitsuLib.Scaffolding.Content;
+using STS2RitsuLib.Scaffolding.Godot;
+using STS2RitsuLib.Scaffolding.Visuals.StateMachine;
 
 namespace Zhijiang.ZhijiangCode.Characters.Diana;
 
 // 嘉然（Diana）。当前是"常规角色"骨架：没有第二套玩法机制，卡池里只有打击/防御。
-// 美术暂时复用贝拉资源的复制件（Zhijiang/images/characters/Diana/*），卡图路径已写好、文件待补。
+// 战斗人物模型用 Zhijiang/scenes/characters/Diana/Diana_character.tscn（逐帧 AnimatedSprite2D）。
+// ⚠️ 该场景的 attack/cast/die/hurt 帧图目前仍指向 images/characters/Bella/*，只有 idle 是嘉然自己的。
 [RegisterCharacter]
 public sealed class DianaCharacter : ModCharacterTemplate<DianaCardPool, DianaRelicPool, DianaPotionPool>
 {
@@ -19,6 +24,7 @@ public sealed class DianaCharacter : ModCharacterTemplate<DianaCardPool, DianaRe
     private const string SceneRoot = $"{Entry.ResPath}/scenes/characters";
     private const string ImageRoot = $"{Entry.ResPath}/images/characters";
 
+    private const string CharacterScenePath = $"{SceneRoot}/Diana/Diana_character.tscn";
     private const string CharacterIconScenePath = $"{SceneRoot}/Diana/Diana_character_icon.tscn";
     private const string CharacterSelectBgScenePath = $"{SceneRoot}/Diana/Diana_character_select_bg.tscn";
     private const string EnergyCounterScenePath = $"{SceneRoot}/Diana/Diana_energy_counter.tscn";
@@ -40,8 +46,8 @@ public sealed class DianaCharacter : ModCharacterTemplate<DianaCardPool, DianaRe
     // 只写需要替换的类别，未写的字段会被 RitsuLib 从占位角色配置里补齐。
     public override CharacterAssetProfile AssetProfile => new(
         Scenes: new CharacterSceneAssetSet(
-            // TODO(美术)：VisualsPath（战斗人物模型）暂缺，先回退占位角色（ironclad）。
-            // 补图时把 Bella_character.tscn 那份逐帧场景复制成 Diana_character.tscn 并填回这里。
+            // 战斗人物模型：逐帧 AnimatedSprite2D 场景（idle_loop / attack / cast / hurt / die）。
+            VisualsPath: CharacterScenePath,
             EnergyCounterPath: EnergyCounterScenePath,
             MerchantAnimPath: MerchantScenePath,
             RestSiteAnimPath: RestSiteScenePath),
@@ -73,6 +79,32 @@ public sealed class DianaCharacter : ModCharacterTemplate<DianaCardPool, DianaRe
     public override bool RequiresEpochAndTimeline => false;
     public override float AttackAnimDelay => 0f;
     public override float CastAnimDelay => 0f;
+
+    // 逐帧贴图场景的动画状态机：attack / hurt / cast（含 PowerUp）播完自动回 idle_loop，die 保持最后一帧。
+    protected override ModAnimStateMachine? SetupCustomCombatAnimationStateMachine(
+        Node visualsRoot, CharacterModel character)
+    {
+        return ModAnimStateMachineBuilder.Create()
+            .AddState("idle_loop", loop: true).AsInitial().Done()
+            .AddState("die").Done()
+            .AddState("hurt").WithNext("idle_loop").Done()
+            .AddState("attack").WithNext("idle_loop").Done()
+            .AddState("cast").WithNext("idle_loop").Done()
+            // 原版角色把 PowerUp（能力牌）也映射到 cast 动作。
+            .AddAnyState("Idle", "idle_loop")
+            .AddAnyState("Dead", "die")
+            .AddAnyState("Hit", "hurt")
+            .AddAnyState("Attack", "attack")
+            .AddAnyState("Cast", "cast")
+            .AddAnyState("PowerUp", "cast")
+            .BuildForVisualsRoot(visualsRoot, character);
+    }
+
+    // 让 RitsuLib 把普通 Godot 场景转换成游戏需要的 NCreatureVisuals。
+    protected override NCreatureVisuals? TryCreateCreatureVisuals()
+    {
+        return RitsuGodotNodeFactories.CreateFromScenePath<NCreatureVisuals>(CharacterScenePath);
+    }
 
     // 建筑师（Architect）战里这个人物的攻击特效列表，暂与贝拉一致。
     public override List<string> GetArchitectAttackVfx()

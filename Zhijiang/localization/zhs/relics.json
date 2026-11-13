@@ -2,42 +2,45 @@
   "ZHIJIANG_RELIC_BELLARIS.title": "贝极星",
   "ZHIJIANG_RELIC_BELLARIS.description": "战斗开始时：[gold]白拉[/gold]失去1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]力量[/gold]；[gold]黑拉[/gold]失去1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]敏捷[/gold]（状态翻转时随之切换）。[gold]白拉[/gold]：每打出1张技能牌，获得1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]格挡[/gold]；[gold]黑拉[/gold]：每打出1张攻击牌，对随机一名敌人造成1+（[gold]阴阳牌[/gold]数量差÷3）点伤害。",
   "ZHIJIANG_RELIC_BELLARIS.flavor": "贝武圣",
-
   "ZHIJIANG_RELIC_KIRA_BELLARIS.title": "闪耀贝极星",
   "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "[gold]白拉[/gold]：每打出1张技能牌，获得1+（[gold]阴阳牌[/gold]数量差÷3）点[gold]格挡[/gold]；[gold]黑拉[/gold]：每打出1张攻击牌，对随机一名敌人造成1+（[gold]阴阳牌[/gold]数量差÷3）点伤害。（无阴阳代价）",
   "ZHIJIANG_RELIC_KIRA_BELLARIS.flavor": "贝武圣·闪耀",
-
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.title": "晃悠悠",
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.description": "每打出一张[gold]反差牌[/gold]时，获得{HeartWallGain}点[img=24x24]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img]。",
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.flavor": "发卡轻轻晃动。",
-
   "ZHIJIANG_RELIC_HAMMER.title": "锤子",
   "ZHIJIANG_RELIC_HAMMER.description": "拾起时，牌组中所有[gold]打击[/gold]获得[gold]重放[/gold] 1并[gold]消耗[/gold]。",
   "ZHIJIANG_RELIC_HAMMER.flavor": "一锤，两锤。",
-
   "ZHIJIANG_RELIC_FRYING_PAN.title": "平底锅",
   "ZHIJIANG_RELIC_FRYING_PAN.description": "拾起时，牌组中所有[gold]防御[/gold]获得[gold]重放[/gold] 1并[gold]虚无[/gold]。",
   "ZHIJIANG_RELIC_FRYING_PAN.flavor": "热锅上的舞步。",
-
   "ZHIJIANG_RELIC_LUCIA_PC.title": "露西亚痛机",
   "ZHIJIANG_RELIC_LUCIA_PC.description": "每当你的[gold]白拉[/gold]/[gold]黑拉[/gold]状态翻转时，抽{Cards}张牌，获得{Block}点[gold]格挡[/gold]。",
   "ZHIJIANG_RELIC_LUCIA_PC.flavor": "痛机运转不停。",
-
   "ZHIJIANG_RELIC_SHAOMAI.title": "烧麦",
   "ZHIJIANG_RELIC_SHAOMAI.description": "拾起时，获得{MaxHp}点[gold]最大生命[/gold]。",
   "ZHIJIANG_RELIC_SHAOMAI.flavor": "皮薄馅大，一口一个。",
-
   "ZHIJIANG_RELIC_SPARK_LENCE.title": "神光棒",
   "ZHIJIANG_RELIC_SPARK_LENCE.description": "拾起时，选择牌组中最多{MaxSelect}张[gold]非中立[/gold]卡牌，[gold]反转[/gold]其[gold]阴阳属性[/gold]。",
   "ZHIJIANG_RELIC_SPARK_LENCE.flavor": "神光所指，阴阳逆转。",
   "ZHIJIANG_RELIC_SPARK_LENCE.selectionScreenPrompt": "选择最多{MaxSelect}张卡牌以反转其阴阳属性",
-
   "ZHIJIANG_RELIC_BEEF_JERKY.title": "牛肉干",
   "ZHIJIANG_RELIC_BEEF_JERKY.description": "你可以在[gold]卡牌奖励[/gold]中多选一张牌。",
   "ZHIJIANG_RELIC_BEEF_JERKY.flavor": "越嚼越有劲。",
-
   "SEA_GLASS.ZHIJIANG_CHARACTER_BELLA_CHARACTER.title": "贝拉之璃",
   "ZHIJIANG_RELIC_JIA_XIN_TANG.title": "嘉心糖",
-  "ZHIJIANG_RELIC_JIA_XIN_TANG.description": "",
-  "ZHIJIANG_RELIC_JIA_XIN_TANG.flavor": ""
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.description": "每场战斗开始时选择一种[gold]王牌花色[/gold]；本场战斗只有该花色的增益生效。{SuitEffect}",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.flavor": "甜甜的，解馋。",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.choose_hint": "选择本场战斗的[gold]王牌花色[/gold]",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_spade.title": "黑桃",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_spade.description": "手牌里每有 {Count} 张[gold]黑桃[/gold]，本回合获得 1 点[gold]力量[/gold]。",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_heart.title": "红桃",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_heart.description": "手牌里每有 {Count} 张[gold]红桃[/gold]，本回合获得 1 点[gold]敏捷[/gold]。",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_diamond.title": "方块",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_diamond.description": "手牌里每有 {Count} 张[gold]方块[/gold]，抽 2 张牌。",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_club.title": "梅花",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_club.description": "手牌里每有 {Count} 张[gold]梅花[/gold]，获得 1 点[gold]能量[/gold]。",
+  "ZHIJIANG_RELIC_SWEETEST_JIA_XIN_TANG.title": "最甜甜甜的嘉心糖",
+  "ZHIJIANG_RELIC_SWEETEST_JIA_XIN_TANG.description": "每场战斗开始时选择一种[gold]王牌花色[/gold]；本场战斗只有该花色的增益生效。门槛更宽：手牌里每 2 张即触发。{SuitEffect}",
+  "ZHIJIANG_RELIC_SWEETEST_JIA_XIN_TANG.flavor": "甜到心里去。"
 }

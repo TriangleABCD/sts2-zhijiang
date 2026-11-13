@@ -34,11 +34,13 @@ public sealed class DianaDefend : ModCardTemplate
         new BlockVar(5m, ValueProp.Move)
     ];
 
-    // 扑克牌面：方块 3（花色与点数是两个独立关键词）。
+    // 扑克牌面：方块 4（花色与点数是两个独立关键词）。
+    // 特意与打击的 ♠3 错开点数：同点判定只看点数，若基础牌都堆在 3 点上，
+    // 起手必然三条/炸弹，同点族的收益曲线就压不住。
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         DianaPokerKeywords.Diamond,
-        DianaPokerKeywords.Rank3
+        DianaPokerKeywords.Rank4
     ];
 
     public DianaDefend() : base(BaseEnergyCost, CardKind, CardRarityValue, CardTarget, ShowInCardLibrary)

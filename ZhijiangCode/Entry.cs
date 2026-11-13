@@ -6,6 +6,7 @@ using STS2RitsuLib.Interop;
 using STS2RitsuLib.Patching.Core;
 using Logger = MegaCrit.Sts2.Core.Logging.Logger;
 
+using Zhijiang.ZhijiangCode.Cards.Diana;
 using Zhijiang.ZhijiangCode.Characters.Bella;
 using Zhijiang.ZhijiangCode.Patches;
 using Zhijiang.ZhijiangCode.SecondResource;
@@ -66,6 +67,27 @@ public partial class Entry
         pokerTextPatcher.RegisterPatch<DianaPokerCardTextPatch>();
         if (!pokerTextPatcher.PatchAll())
             Logger.Warn("DianaPokerCardText patch failed to apply; poker face text will be hidden.");
+
+        // 嘉然扑克组合高亮：手牌描边（强度档位配色）+ 卡面角标，一次注册覆盖本 mod 全部卡牌。
+        DianaComboHighlight.RegisterOutline();
+
+        // 组合角标 + 手牌刷新时重算（手牌一变就重算，是显示与结算共用的唯一判定入口）。
+        var comboLitePatcher = RitsuLibFramework.CreatePatcher(ModId, "DianaComboBadge");
+        comboLitePatcher.RegisterPatch<DianaComboBadgePatch>();
+        comboLitePatcher.RegisterPatch<DianaComboHandRefreshPatch>();
+        if (!comboLitePatcher.PatchAll())
+            Logger.Warn("DianaComboBadge patches failed to apply; hand combo badges will be hidden.");
+
+        // 嘉心糖：在遗物描述末尾追加本场选定的王牌花色效果。
+        var suitDescPatcher = RitsuLibFramework.CreatePatcher(ModId, "DianaRelicSuitDescription");
+        suitDescPatcher.RegisterPatch<DianaRelicSuitDescriptionPatch>();
+        if (!suitDescPatcher.PatchAll())
+            Logger.Warn("DianaRelicSuitDescription patch failed to apply; relic description will not show the trump suit.");
+
+        // 嘉然扑克组合识别的自检：贪心/重叠/大小王这些规则一旦写错，
+        // 表现层和所有增益都会一起错，所以启动时用合成牌面跑一遍断言。
+        if (!DianaPokerCombos.RunSelfCheck(out string comboSelfCheckFailure))
+            Logger.Warn($"[DianaPokerCombos] self-check failed: {comboSelfCheckFailure}");
 
         Logger.Info("Zhijiang initialized.");
     }

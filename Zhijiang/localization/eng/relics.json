@@ -2,42 +2,45 @@
   "ZHIJIANG_RELIC_BELLARIS.title": "Bellaris",
   "ZHIJIANG_RELIC_BELLARIS.description": "At the start of combat: while [gold]Bai La[/gold], lose 1 [gold]Strength[/gold] (+1 per 3 [gold]Yin-Yang[/gold] card diff); while [gold]Hei La[/gold], lose 1 [gold]Dexterity[/gold] (+1 per 3 [gold]Yin-Yang[/gold] card diff). This switches accordingly when your state flips. [gold]Bai La[/gold]: each Skill played gains 1 (+1 per 3 [gold]Yin-Yang[/gold] card diff) [gold]Block[/gold]. [gold]Hei La[/gold]: each Attack played deals 1 (+1 per 3 [gold]Yin-Yang[/gold] card diff) damage to a random enemy.",
   "ZHIJIANG_RELIC_BELLARIS.flavor": "Bella the Martial Saint.",
-
   "ZHIJIANG_RELIC_KIRA_BELLARIS.title": "Kira Bellaris",
   "ZHIJIANG_RELIC_KIRA_BELLARIS.description": "[gold]Bai La[/gold]: each Skill played gains 1 (+1 per 3 [gold]Yin-Yang[/gold] card diff) [gold]Block[/gold]. [gold]Hei La[/gold]: each Attack played deals 1 (+1 per 3 [gold]Yin-Yang[/gold] card diff) damage to a random enemy. (No Yin-Yang cost.)",
   "ZHIJIANG_RELIC_KIRA_BELLARIS.flavor": "Bella the Radiant Martial Saint.",
-
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.title": "Swaying Hairpin",
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.description": "Whenever you play a [gold]Contrast card[/gold], gain {HeartWallGain} [img=24x24]res://Zhijiang/images/characters/Bella/HeartWall_text.png[/img].",
   "ZHIJIANG_RELIC_SWAYING_HAIRPIN.flavor": "The hairpin sways gently.",
-
   "ZHIJIANG_RELIC_HAMMER.title": "Hammer",
   "ZHIJIANG_RELIC_HAMMER.description": "Upon pickup, all [gold]Strikes[/gold] in your deck gain [gold]Replay[/gold] 1 and [gold]Exhaust[/gold].",
   "ZHIJIANG_RELIC_HAMMER.flavor": "One strike, two echoes.",
-
   "ZHIJIANG_RELIC_FRYING_PAN.title": "Frying Pan",
   "ZHIJIANG_RELIC_FRYING_PAN.description": "Upon pickup, all [gold]Defends[/gold] in your deck gain [gold]Replay[/gold] 1 and [gold]Ethereal[/gold].",
   "ZHIJIANG_RELIC_FRYING_PAN.flavor": "Dancing on a hot pan.",
-
   "ZHIJIANG_RELIC_LUCIA_PC.title": "LuciaPC",
   "ZHIJIANG_RELIC_LUCIA_PC.description": "Whenever your [gold]Bai La[/gold]/[gold]Hei La[/gold] state flips, draw {Cards} card and gain {Block} [gold]Block[/gold].",
   "ZHIJIANG_RELIC_LUCIA_PC.flavor": "The painful machine keeps running.",
-
   "ZHIJIANG_RELIC_SHAOMAI.title": "Shaomai",
   "ZHIJIANG_RELIC_SHAOMAI.description": "Upon pickup, gain {MaxHp} [gold]Max HP[/gold].",
   "ZHIJIANG_RELIC_SHAOMAI.flavor": "Thin skin, hearty filling.",
-
   "ZHIJIANG_RELIC_SPARK_LENCE.title": "Spark Lence",
   "ZHIJIANG_RELIC_SPARK_LENCE.description": "Upon pickup, choose up to {MaxSelect} non-neutral cards from your deck and [gold]flip[/gold] their [gold]Yin-Yang[/gold] attribute.",
   "ZHIJIANG_RELIC_SPARK_LENCE.flavor": "Where the spark points, yin and yang are reversed.",
   "ZHIJIANG_RELIC_SPARK_LENCE.selectionScreenPrompt": "Choose up to {MaxSelect} cards to flip their Yin-Yang attribute",
-
   "ZHIJIANG_RELIC_BEEF_JERKY.title": "Beef Jerky",
   "ZHIJIANG_RELIC_BEEF_JERKY.description": "You may select one additional card from a card reward.",
   "ZHIJIANG_RELIC_BEEF_JERKY.flavor": "Chewy, filling, and dependable.",
-
   "SEA_GLASS.ZHIJIANG_CHARACTER_BELLA_CHARACTER.title": "Bella Glass",
   "ZHIJIANG_RELIC_JIA_XIN_TANG.title": "Jia Xin Tang",
-  "ZHIJIANG_RELIC_JIA_XIN_TANG.description": "",
-  "ZHIJIANG_RELIC_JIA_XIN_TANG.flavor": ""
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.description": "At the start of each combat, choose a [gold]trump suit[/gold]. Only that suit's bonus applies for the combat.{SuitEffect}",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.flavor": "Sweet enough to cure a craving.",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.choose_hint": "Choose this combat's [gold]trump suit[/gold]",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_spade.title": "Spades",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_spade.description": "For every {Count} [gold]Spades[/gold] in your hand, gain 1 [gold]Strength[/gold] this turn.",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_heart.title": "Hearts",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_heart.description": "For every {Count} [gold]Hearts[/gold] in your hand, gain 1 [gold]Dexterity[/gold] this turn.",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_diamond.title": "Diamonds",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_diamond.description": "For every {Count} [gold]Diamonds[/gold] in your hand, draw 2 cards.",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_club.title": "Clubs",
+  "ZHIJIANG_RELIC_JIA_XIN_TANG.suit_club.description": "For every {Count} [gold]Clubs[/gold] in your hand, gain 1 [gold]Energy[/gold].",
+  "ZHIJIANG_RELIC_SWEETEST_JIA_XIN_TANG.title": "Sweetest Jia Xin Tang",
+  "ZHIJIANG_RELIC_SWEETEST_JIA_XIN_TANG.description": "At the start of each combat, choose a [gold]trump suit[/gold]. Only that suit's bonus applies. Wider threshold: every 2 cards triggers.{SuitEffect}",
+  "ZHIJIANG_RELIC_SWEETEST_JIA_XIN_TANG.flavor": "Sweet all the way down."
 }

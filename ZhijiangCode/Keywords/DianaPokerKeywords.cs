@@ -91,94 +91,130 @@ public sealed class DianaPokerKeywords
     private const string GoldClose = "[/gold]";
 
     private sealed record KeywordLookup(
-        IReadOnlyDictionary<CardKeyword, string> SuitSymbols,
-        IReadOnlyDictionary<CardKeyword, bool> SuitIsRed,
-        IReadOnlyDictionary<CardKeyword, string> RankTexts,
-        CardKeyword BigJokerValue,
-        CardKeyword SmallJokerValue);
+        IReadOnlyDictionary<CardKeyword, PokerSuit> Suits,
+        IReadOnlyDictionary<CardKeyword, int> Ranks);
 
-    // 关键词在注册完成（mod init）后才能取铸造值，所以延迟到第一次渲染时构建。
+    // 关键词在注册完成（mod init）后才能取铸造值，所以延迟到第一次使用时构建。
     private static readonly Lazy<KeywordLookup> Lookup = new(BuildLookup);
 
     private static KeywordLookup BuildLookup()
     {
         return new KeywordLookup(
-            new Dictionary<CardKeyword, string>
+            new Dictionary<CardKeyword, PokerSuit>
             {
-                [SuitSpadeId.GetModCardKeyword()] = "♠",
-                [SuitHeartId.GetModCardKeyword()] = "♥",
-                [SuitDiamondId.GetModCardKeyword()] = "♦",
-                [SuitClubId.GetModCardKeyword()] = "♣",
+                [SuitSpadeId.GetModCardKeyword()] = PokerSuit.Spade,
+                [SuitHeartId.GetModCardKeyword()] = PokerSuit.Heart,
+                [SuitDiamondId.GetModCardKeyword()] = PokerSuit.Diamond,
+                [SuitClubId.GetModCardKeyword()] = PokerSuit.Club,
             },
-            new Dictionary<CardKeyword, bool>
+            new Dictionary<CardKeyword, int>
             {
-                [SuitSpadeId.GetModCardKeyword()] = false,
-                [SuitHeartId.GetModCardKeyword()] = true,
-                [SuitDiamondId.GetModCardKeyword()] = true,
-                [SuitClubId.GetModCardKeyword()] = false,
-            },
-            new Dictionary<CardKeyword, string>
-            {
-                [RankAId.GetModCardKeyword()] = "A",
-                [Rank2Id.GetModCardKeyword()] = "2",
-                [Rank3Id.GetModCardKeyword()] = "3",
-                [Rank4Id.GetModCardKeyword()] = "4",
-                [Rank5Id.GetModCardKeyword()] = "5",
-                [Rank6Id.GetModCardKeyword()] = "6",
-                [Rank7Id.GetModCardKeyword()] = "7",
-                [Rank8Id.GetModCardKeyword()] = "8",
-                [Rank9Id.GetModCardKeyword()] = "9",
-                [Rank10Id.GetModCardKeyword()] = "10",
-                [RankJId.GetModCardKeyword()] = "J",
-                [RankQId.GetModCardKeyword()] = "Q",
-                [RankKId.GetModCardKeyword()] = "K",
-            },
-            BigJokerId.GetModCardKeyword(),
-            SmallJokerId.GetModCardKeyword());
+                [RankAId.GetModCardKeyword()] = PokerFace.AceRank,
+                [Rank2Id.GetModCardKeyword()] = 2,
+                [Rank3Id.GetModCardKeyword()] = 3,
+                [Rank4Id.GetModCardKeyword()] = 4,
+                [Rank5Id.GetModCardKeyword()] = 5,
+                [Rank6Id.GetModCardKeyword()] = 6,
+                [Rank7Id.GetModCardKeyword()] = 7,
+                [Rank8Id.GetModCardKeyword()] = 8,
+                [Rank9Id.GetModCardKeyword()] = 9,
+                [Rank10Id.GetModCardKeyword()] = 10,
+                [RankJId.GetModCardKeyword()] = 11,
+                [RankQId.GetModCardKeyword()] = 12,
+                [RankKId.GetModCardKeyword()] = 13,
+                [SmallJokerId.GetModCardKeyword()] = PokerFace.SmallJokerRank,
+                [BigJokerId.GetModCardKeyword()] = PokerFace.BigJokerRank,
+            });
     }
 
     /// <summary>
-    /// 把卡牌上的花色/点数关键词合成一行卡面文字（如 <c>[gold]♠3[/gold]</c>）。
-    /// 没有点数关键词的牌（非嘉然卡、状态牌、诅咒等）返回 null，调用方不注入任何内容。
+    /// 读出一张牌的牌面。没有点数关键词的牌（非嘉然卡、状态牌、诅咒等）返回 false。
+    /// 牌面是全部扑克相关判定（组合识别、卡面文字、以后的排序）的唯一入口。
     /// </summary>
-    public static string? BuildLabel(CardModel card)
+    public static bool TryGetFace(CardModel card, out PokerFace face)
     {
         KeywordLookup lookup = Lookup.Value;
 
-        string? suitSymbol = null;
-        var suitIsRed = false;
-        string? rankText = null;
+        var suit = PokerSuit.None;
+        var rank = 0;
 
         foreach (CardKeyword keyword in card.Keywords)
         {
-            if (lookup.SuitSymbols.TryGetValue(keyword, out string? symbol))
-            {
-                suitSymbol = symbol;
-                suitIsRed = lookup.SuitIsRed[keyword];
-            }
-            else if (lookup.RankTexts.TryGetValue(keyword, out string? text))
-            {
-                rankText = text;
-            }
-            else if (keyword == lookup.BigJokerValue)
-            {
-                // 大小王没有花色：牌面就是它自己。
-                return RedOpen + "大王" + RedClose;
-            }
-            else if (keyword == lookup.SmallJokerValue)
-            {
-                return GoldOpen + "小王" + GoldClose;
-            }
+            if (lookup.Suits.TryGetValue(keyword, out PokerSuit cardSuit))
+                suit = cardSuit;
+            else if (lookup.Ranks.TryGetValue(keyword, out int cardRank))
+                rank = cardRank;
         }
 
-        if (rankText is null)
-            return null;
+        if (rank == 0)
+        {
+            face = default;
+            return false;
+        }
 
-        if (suitSymbol is null)
+        // 大小王没有花色：即使误挂了花色关键词也不认。
+        face = new PokerFace(rank >= PokerFace.SmallJokerRank ? PokerSuit.None : suit, rank);
+        return true;
+    }
+
+    /// <summary>
+    /// 把卡牌上的牌面合成一行卡面文字（如 <c>[gold]♠3[/gold]</c>）。
+    /// 没有牌面的牌返回 null，调用方不注入任何内容。
+    /// </summary>
+    public static string? BuildLabel(CardModel card)
+    {
+        return TryGetFace(card, out PokerFace face) ? BuildLabel(face) : null;
+    }
+
+    /// <summary>牌面 → 卡面文字（红桃/方块/大王红，其余金色）。</summary>
+    public static string BuildLabel(PokerFace face)
+    {
+        if (face.Rank == PokerFace.BigJokerRank)
+            return RedOpen + "大王" + RedClose;
+
+        if (face.Rank == PokerFace.SmallJokerRank)
+            return GoldOpen + "小王" + GoldClose;
+
+        string rankText = RankText(face.Rank);
+
+        if (face.Suit == PokerSuit.None)
             return GoldOpen + rankText + GoldClose;
 
-        return suitIsRed
-            ? RedOpen + suitSymbol + RedClose + GoldOpen + rankText + GoldClose
-            : GoldOpen + suitSymbol + rankText + GoldClose;
+        string symbol = SuitSymbol(face.Suit);
+        return IsRedSuit(face.Suit)
+            ? RedOpen + symbol + RedClose + GoldOpen + rankText + GoldClose
+            : GoldOpen + symbol + rankText + GoldClose;
+    }
+
+    /// <summary>点数 → 显示文字（A/J/Q/K 用字母，其余用数字）。</summary>
+    public static string RankText(int rank)
+    {
+        return rank switch
+        {
+            PokerFace.AceRank => "A",
+            11 => "J",
+            12 => "Q",
+            13 => "K",
+            PokerFace.SmallJokerRank => "小王",
+            PokerFace.BigJokerRank => "大王",
+            _ => rank.ToString(),
+        };
+    }
+
+    private static string SuitSymbol(PokerSuit suit)
+    {
+        return suit switch
+        {
+            PokerSuit.Spade => "♠",
+            PokerSuit.Heart => "♥",
+            PokerSuit.Diamond => "♦",
+            PokerSuit.Club => "♣",
+            _ => string.Empty,
+        };
+    }
+
+    private static bool IsRedSuit(PokerSuit suit)
+    {
+        return suit is PokerSuit.Heart or PokerSuit.Diamond;
     }
 }
