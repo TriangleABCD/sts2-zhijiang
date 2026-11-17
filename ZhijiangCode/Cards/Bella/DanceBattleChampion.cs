@@ -52,7 +52,7 @@ public sealed class DanceBattleChampion : ModCardTemplate
 
         for (int i = 0; i < HitCount; i++)
         {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
         }
 
         // 格挡一次性获得（打出后结算一次，不是每次命中各给一次）。

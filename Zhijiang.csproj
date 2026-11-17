@@ -29,8 +29,8 @@
     <ItemGroup>
         <PackageReference Include="Krafs.Publicizer" Version="2.2.1" PrivateAssets="all"/>
         <PackageReference Include="Nothing.STS2RitsuLib.ModAnalyzers" Version="*" PrivateAssets="all"/>
-        <!-- STS2 0.107.1 兼容分支。兼容分支和 manifest 版本对齐规则见 README。 -->
-        <PackageReference Include="STS2.RitsuLib.Compat.0.107.1" Version="0.5.18" GeneratePathProperty="true"/>
+        <!-- STS2 0.111.x 兼容分支。兼容分支和 manifest 版本对齐规则见 README。 -->
+        <PackageReference Include="STS2.RitsuLib.Compat.0.111.0" Version="0.6.14" GeneratePathProperty="true"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -90,9 +90,9 @@
     </Target>
 
     <Target Name="SyncManifestDependencies" AfterTargets="Build" BeforeTargets="CopyMod"
-            Condition="'$(DesignTimeBuild)' != 'true' and '$(PkgSTS2_RitsuLib_Compat_0_107_1)' != ''">
+            Condition="'$(DesignTimeBuild)' != 'true' and '$(PkgSTS2_RitsuLib_Compat_0_111_0)' != ''">
         <PropertyGroup>
-            <RitsuLibVersion>$([System.IO.Path]::GetFileName('$(PkgSTS2_RitsuLib_Compat_0_107_1)'))</RitsuLibVersion>
+            <RitsuLibVersion>$([System.IO.Path]::GetFileName('$(PkgSTS2_RitsuLib_Compat_0_111_0)'))</RitsuLibVersion>
             <ManifestFile>$(MSBuildProjectDirectory)\$(MSBuildProjectName).json</ManifestFile>
         </PropertyGroup>
         <PropertyGroup>

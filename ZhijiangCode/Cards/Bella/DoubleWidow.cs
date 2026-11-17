@@ -50,7 +50,7 @@ public sealed class DoubleWidow : ModCardTemplate
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
@@ -62,7 +62,7 @@ public sealed class DoubleWidow : ModCardTemplate
             for (int i = 0; i < DynamicVars["ExtraHits"].IntValue; i++)
             {
                 await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                    .FromCard(this)
+                    .FromCard(this, cardPlay)
                     .Targeting(cardPlay.Target)
                     .Execute(choiceContext);
             }

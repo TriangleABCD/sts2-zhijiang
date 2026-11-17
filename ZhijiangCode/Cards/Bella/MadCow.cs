@@ -64,7 +64,7 @@ public sealed class MadCow : ModCardTemplate
         for (int i = 0; i < HitCount; i++)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(cardPlay.Target)
                 .Execute(choiceContext);
         }

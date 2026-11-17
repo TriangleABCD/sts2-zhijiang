@@ -55,7 +55,7 @@ public sealed class BellaPraysForRain : ModCardTemplate
         // 与卡面 {CurrentDamage} 同源，保证预览与实际一致。
         int damage = (int)((CalculatedVar)DynamicVars["CurrentDamage"]).Calculate(cardPlay.Target);
 
-        await DamageCmd.Attack(damage).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
+        await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
     }
 
     private static decimal CurrentDamage(CardModel card)

@@ -58,6 +58,6 @@ public sealed class ReliableSisterLaPower : ModPowerTemplate, ISecondaryResource
             return;
 
         Flash();
-        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target, damage, ValueProp.Unpowered, base.Owner, null);
+        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target, damage, ValueProp.Unpowered, base.Owner);
     }
 }

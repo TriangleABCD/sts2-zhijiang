@@ -65,7 +65,7 @@ public sealed class Unit01 : ModCardTemplate
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .WithHitCount(hitCount)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(enemy)
                 .Execute(choiceContext);
         }

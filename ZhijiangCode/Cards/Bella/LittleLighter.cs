@@ -58,7 +58,7 @@ public sealed class LittleLighter : ModCardTemplate
 
         // 造成 1 + 累计加成 伤害。
         await DamageCmd.Attack(1 + _bonus)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 

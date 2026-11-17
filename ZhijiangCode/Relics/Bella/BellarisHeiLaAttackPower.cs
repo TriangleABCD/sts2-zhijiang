@@ -51,6 +51,6 @@ public sealed class BellarisHeiLaAttackPower : PowerModel
 
         int damage = BellaYinYangService.ComputeMagnitude(player) + 1;
         Flash();
-        await CreatureCmd.Damage(choiceContext, target, damage, ValueProp.Unpowered, base.Owner, null);
+        await CreatureCmd.Damage(choiceContext, target, damage, ValueProp.Unpowered, base.Owner);
     }
 }

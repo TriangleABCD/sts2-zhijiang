@@ -55,7 +55,7 @@ public sealed class BbqBellaris : ModCardTemplate
 
         // 造成等于当前手牌数的伤害。
         int damage = PileType.Hand.GetPile(base.Owner).Cards.Count;
-        await DamageCmd.Attack(damage).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
+        await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
 
         // 弃牌堆加入 1 张灼伤。
         List<Burn> burns = new();

@@ -51,7 +51,7 @@ public sealed class TmallGenie : ModCardTemplate
         foreach (Creature enemy in base.CombatState?.HittableEnemies ?? Array.Empty<Creature>())
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(enemy)
                 .Execute(choiceContext);
         }
@@ -66,7 +66,7 @@ public sealed class TmallGenie : ModCardTemplate
                 if (target != null)
                 {
                     await DamageCmd.Attack(DynamicVars["HeiLaExtra"].BaseValue)
-                        .FromCard(this)
+                        .FromCard(this, cardPlay)
                         .Targeting(target)
                         .Execute(choiceContext);
                 }

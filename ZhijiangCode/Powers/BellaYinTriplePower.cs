@@ -63,7 +63,7 @@ public sealed class BellaYinTriplePower : PowerModel
     }
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props,
-        Creature? dealer, CardModel? cardSource)
+        Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
         if (cardSource == null)
             return 1m;

@@ -68,13 +68,15 @@ Copy-Item .\local.props.template .\local.props
 >
 > `Zhijiang.json` 中 `dependencies[STS2-RitsuLib].version` **必须**与 `.csproj` 里 `STS2.RitsuLib` 包实际编译使用的版本一致。模板构建时会自动同步该依赖版本；`min_game_version` 和有意声明较低运行时下限的场景仍需人工确认。详细步骤见下方 [发布前 checklist：版本对齐](#发布前-checklist版本对齐)。
 
-### 当前版本快照（截至 2026-05-22）
+### 当前版本快照（截至 2026-11-17，游戏 v0.111.1）
 
 | 项 | 值 |
 |---|---|
-| STS2 游戏当前版本 | `0.106.0` |
-| RitsuLib 当前版本 | `0.3.0` |
-| 模板 manifest 状态 | `min_game_version` 与 `dependencies[STS2-RitsuLib].version` 已对齐 |
+| STS2 游戏当前版本 | `0.111.1` |
+| RitsuLib 当前版本 | `0.6.14`（`STS2.RitsuLib.Compat.0.111.0`） |
+| 模板 manifest 状态 | `min_game_version` 与 `dependencies[STS2-RitsuLib].min_version` 已对齐（`0.111.0` / `0.6.14`） |
+
+> 0.111.x 的加载器仍读 `dependencies[].min_version`（反编译 `MegaCrit.Sts2.Core.Modding.ModDependency` 的 `[JsonPropertyName("min_version")]`），本文档早前写的 `dependencies[].version` 是笔误。
 
 ### 版本对应表
 

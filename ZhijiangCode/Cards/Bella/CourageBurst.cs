@@ -53,7 +53,7 @@ public sealed class CourageBurst : ModCardTemplate
         foreach (Creature enemy in enemies)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(enemy)
                 .Execute(choiceContext);
         }
@@ -63,7 +63,7 @@ public sealed class CourageBurst : ModCardTemplate
         {
             Creature target = enemies.OrderBy(e => e.CurrentHp).First();
             await DamageCmd.Attack(DynamicVars["LowestHpExtra"].BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .Execute(choiceContext);
         }

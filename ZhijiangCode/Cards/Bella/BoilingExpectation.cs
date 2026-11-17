@@ -59,7 +59,7 @@ public sealed class BoilingExpectation : ModCardTemplate
         int damage = (int)((CalculatedVar)DynamicVars["CurrentDamage"]).Calculate(cardPlay.Target);
 
         await DamageCmd.Attack(damage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
     }

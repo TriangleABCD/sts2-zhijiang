@@ -51,7 +51,7 @@ public sealed class PotHammerStrike : ModCardTemplate
         if (BellaYinYangService.IsBaiLa(base.Owner))
             damage += DynamicVars["BaiLaBonus"].IntValue;
 
-        await DamageCmd.Attack(damage).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
+        await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
     }
 
     protected override void OnUpgrade()

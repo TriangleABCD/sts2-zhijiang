@@ -64,7 +64,7 @@ public sealed class Heartfelt : ModCardTemplate
             if (enemy.Block > 0)
             {
                 int amountToRemove = Math.Min(enemy.Block, stripAmount);
-                await CreatureCmd.LoseBlock(enemy, amountToRemove);
+                await CreatureCmd.LoseBlock(choiceContext, enemy, amountToRemove, base.Owner.Creature);
             }
         }
     }

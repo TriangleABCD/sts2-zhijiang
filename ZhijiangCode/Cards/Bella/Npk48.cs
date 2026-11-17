@@ -77,7 +77,7 @@ public sealed class Npk48 : ModCardTemplate
         // 每张牛批对随机敌人造成伤害（随机弹射，可命中同一敌人）。
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(hitCount)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingRandomOpponents(base.CombatState!)
             .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);

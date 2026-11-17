@@ -4,15 +4,15 @@
   "pck_name": "Zhijiang",
   "author": "wyy",
   "description": "包含枝江 5 位角色 - ⌈贝拉Bella、嘉然Diana、乃琳Eileen、心宜Fiona、思诺Gladys⌋",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "has_pck": true,
   "has_dll": true,
   "affects_gameplay": true,
-  "min_game_version": "0.107.1",
+  "min_game_version": "0.111.0",
   "dependencies": [
     {
       "id": "STS2-RitsuLib",
-      "min_version": "0.5.11"
+      "min_version": "0.6.14"
     }
   ]
 }

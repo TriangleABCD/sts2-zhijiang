@@ -54,7 +54,7 @@ public sealed class TractorDescendsTheMountain : ModCardTemplate
         foreach (Creature enemy in base.CombatState?.HittableEnemies ?? Array.Empty<Creature>())
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(enemy)
                 .Execute(choiceContext);
         }

@@ -54,7 +54,7 @@ public sealed class YuriDomainExpert : ModCardTemplate
             damage += skillCount;
         }
 
-        await DamageCmd.Attack(damage).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
+        await DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
     }
 
     protected override void OnUpgrade()
